@@ -1,3 +1,3 @@
 # nmap
 
-[xmind](mindmap/nmap.png)
+![xmind](mindmap/nmap.png)
