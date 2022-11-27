@@ -1,3 +1,3 @@
 # nmap
 
-[xmind](docs/static/img/nmap.png)
+[xmind](mindmap/nmap.png)

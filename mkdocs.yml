@@ -5,4 +5,5 @@ repo_url: https://github.com/TimeLess613/kiwi
 theme: readthedocs
 nav:
   - Home: index.md
+  - footprinting: footprinting/nmap.md
   - About: about.md
