@@ -1,5 +1,5 @@
 # Practice
-
+笔记
 
 
 ### Color Scheme 配色方案
@@ -9,6 +9,13 @@
   <button data-md-color-scheme="default"><code>Default</code></button>
   <button data-md-color-scheme="slate"><code>Slate</code></button>
 </div>
+
+
+#### 灵感来源：https://ctf-wiki.org/
+##### For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+
+
+---
 <script>
   var buttons = document.querySelectorAll("button[data-md-color-scheme]")
   Array.prototype.forEach.call(buttons, function(button) {
@@ -18,8 +25,6 @@
     })
   })
 </script>
-
-
 <style>
   button[data-md-color-scheme]{
     width: 8.4rem;
@@ -40,5 +45,3 @@
   }
 </style>
 
-
-#### For full documentation visit [mkdocs.org](https://www.mkdocs.org).

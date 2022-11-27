@@ -1,8 +1,11 @@
 site_name: HackerPath of TimeLess613
 # site_url:
+# site_description:
 site_author: TimeLess613
+repo_name: TimeLess613/kiwi
 repo_url: https://github.com/TimeLess613/kiwi
 edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
+# copyright:
 
 nav:
   - Home: index.md
