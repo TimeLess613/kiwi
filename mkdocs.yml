@@ -1,9 +1,40 @@
-site_name: HackerPath
+site_name: HackerPath of TimeLess613
 # site_url:
 site_author: TimeLess613
 repo_url: https://github.com/TimeLess613/kiwi
-theme: readthedocs
+edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
+
 nav:
   - Home: index.md
-  - footprinting: footprinting/nmap.md
+  - footprinting: 
+      - 被动: 
+          - 搜索引擎: ''
+          - etc.: ''
+      - 主动:
+        - nmap: footprinting/nmap.md
   - About: about.md
+
+
+theme:
+  name: material
+  language: zh
+  palette:
+    primary: white
+    accent: red
+    scheme: preference
+  icon:
+    repo: fontawesome/brands/github-alt
+  # logo: static/img/logo.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.suggest
+    - search.highlight
+    - search.share
+  font:
+    text: Noto Sans
+    code: Source Code Pro
+plugins:
+  - search
+  # - minify:
+  #     minify_html: true
