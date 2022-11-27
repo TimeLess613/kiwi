@@ -10,11 +10,12 @@ edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
 nav:
   - Home: index.md
   - 信息收集: 
-      - 思路: Footprinting/summary.md
-      - 被动: Footprinting/footprinting.md
-      - 主动: Footprinting/waiting.md
-  - 扫描&枚举:
-      - nmap: Scan&Enumerate/nmap.md
+      - 思路: InformationGathering/summary.md
+      - 被动: InformationGathering/footprinting.md
+      - 主动: InformationGathering/scan.md
+  - 访问&提权: GainingAccess/waiting.md
+  - 权限维持: MaintainingAccess/waiting.md
+  - 痕迹清理: ClearingTracks/waiting.md
   - About: about.md
 
 
