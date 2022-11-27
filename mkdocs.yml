@@ -1,0 +1,8 @@
+site_name: HackerPath
+# site_url:
+site_author: TimeLess613
+# repo_url:
+theme: readthedocs
+nav:
+  - Home: index.md
+  - About: about.md
