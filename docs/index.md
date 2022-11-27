@@ -11,8 +11,9 @@
 </div>
 
 
-#### 灵感来源：https://ctf-wiki.org/
-##### For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+---
+灵感来源：https://ctf-wiki.org/
+For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 
 ---
