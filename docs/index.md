@@ -15,6 +15,7 @@
 灵感来源：https://ctf-wiki.org/
 
 *For full documentation visit [mkdocs.org](https://www.mkdocs.org).*
+*and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/publishing-your-site/).*
 
 
 ---
