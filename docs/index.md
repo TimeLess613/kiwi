@@ -1,5 +1,5 @@
 # Practice
-笔记
+笔记整理
 
 
 ### Color Scheme 配色方案
