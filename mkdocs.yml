@@ -48,5 +48,7 @@ plugins:
 # markdown_extensions:
 #   - attr_list
 #   - md_in_html
+extra_javascript:
+  - static/js/extra.js
 # extra_css:
 #   - static/css/extra.css
