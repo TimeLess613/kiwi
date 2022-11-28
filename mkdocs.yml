@@ -55,5 +55,5 @@ markdown_extensions:
 #   - md_in_html
 extra_javascript:
   - static/js/extra.js
-# extra_css:
-#   - static/css/extra.css
+extra_css:
+  - static/css/extra.css
