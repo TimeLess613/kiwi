@@ -3,8 +3,8 @@
 ## Practiced / Tried
 - nmap
 - metasploit
-  - msfvenom
-  - Meterpreter
+    - msfvenom
+    - Meterpreter
 
 ## Future Path
 - CEH
