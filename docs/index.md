@@ -1,5 +1,14 @@
-# Practice
-笔记整理
+# 笔记整理
+
+## Practiced / Tried
+- nmap
+- metasploit
+  - msfvenom
+  - Meterpreter
+
+## Future Path
+- CEH
+- 内网
 
 
 ## Material color palette 颜色主题
