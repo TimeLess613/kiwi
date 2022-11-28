@@ -11,7 +11,7 @@ nav:
   - Home: index.md
   - 信息收集: 
       - 被动: InformationGathering/footprinting.md
-      - 主动: InformationGathering/scan.md
+      - 主动: InformationGathering/network_scanning.md
       - 思路: InformationGathering/summary.md
   - 访问&提权: GainingAccess/waiting.md
   - 权限维持: MaintainingAccess/waiting.md
@@ -40,19 +40,7 @@ theme:
     text: Noto Sans
     code: Source Code Pro
 plugins:
-  - glightbox:
-      touchNavigation: true
-      loop: false
-      effect: zoom
-      slide_effect: slide
-      width: 100%
-      height: auto
-      zoomable: true
-      draggable: true
-      skip_classes:
-        - custom-skip-class-name
-      auto_caption: false
-      caption_position: bottom
+  - glightbox
   - search
   # - minify:
   #     minify_html: true
