@@ -43,3 +43,6 @@ plugins:
   - search
   # - minify:
   #     minify_html: true
+
+extra_css:
+  - static/css/extra.css
