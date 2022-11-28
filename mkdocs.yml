@@ -16,6 +16,7 @@ nav:
   - 访问&提权: GainingAccess/waiting.md
   - 权限维持: MaintainingAccess/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
+  - 模块: Modules/metasploit.md
   - About: about.md
 
 
