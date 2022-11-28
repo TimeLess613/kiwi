@@ -1,7 +1,3 @@
-## PTES（Penetration Testing Execution Standard）
-![PTES](mindmap/knowledge_PTES.png)
-
-
 ## metasploit知识类
 ### 6大核心模块
 ![6大核心模块](mindmap/metasploit_knowledge_6core_modules.png)

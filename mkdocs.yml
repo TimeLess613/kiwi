@@ -16,7 +16,10 @@ nav:
   - 访问&提权: GainingAccess/waiting.md
   - 权限维持: MaintainingAccess/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
-  - 模块: Modules/metasploit.md
+  - 模块: 
+      - PTES: Modules/ptes.md
+      - nmap: Modules/nmap.md
+      - metasploit: Modules/metasploit.md
   - About: about.md
 
 
@@ -45,7 +48,9 @@ plugins:
   # - minify:
   #     minify_html: true
 
-# markdown_extensions:
+markdown_extensions:
+  - toc:
+      permalink: true
 #   - attr_list
 #   - md_in_html
 extra_javascript:
