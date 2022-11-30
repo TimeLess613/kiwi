@@ -9,15 +9,17 @@ edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
 
 nav:
   - Home: index.md
+  - 基础概念: BasicConcept/index.md
   - 信息收集: 
-      - 被动: InformationGathering/footprinting.md
-      - 主动: InformationGathering/network_scanning.md
-      - 思路: InformationGathering/summary.md
-  - 访问&提权: GainingAccess/waiting.md
-  - 权限维持: MaintainingAccess/waiting.md
+      - 简介: GatheringInformation/index.md
+      - 踩点: GatheringInformation/footprinting.md
+      - 扫描: GatheringInformation/scanning.md
+      - 枚举: GatheringInformation/enumerate.md
+      - 思路: GatheringInformation/summary.md
+  - 初始访问&提权: GainingAccess/waiting.md
+  - 权限维持: Persistence/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
-  - 模块: 
-      - PTES: Modules/ptes.md
+  - 模块・思维导图: 
       - nmap: Modules/nmap.md
       - metasploit: Modules/metasploit.md
   - About: about.md

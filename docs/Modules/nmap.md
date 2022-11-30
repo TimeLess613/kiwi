@@ -1,2 +1,2 @@
 ## nmap
-link: [nmap思维导图](../InformationGathering/network_scanning.md#nmap)
+link: [nmap思维导图](../GatheringInformation/scanning.md#nmap)
