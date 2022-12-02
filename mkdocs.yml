@@ -53,7 +53,7 @@ plugins:
 markdown_extensions:
   - toc:
       permalink: true
-#   - attr_list
+  - attr_list
 #   - md_in_html
 extra_javascript:
   - static/js/extra.js
