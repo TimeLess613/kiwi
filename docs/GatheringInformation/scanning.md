@@ -1,3 +1,7 @@
 ## nmap
-主机发现、端口扫描、服务版本/OS侦测、FW绕过
+
+### 概要
+![xmind](../static/img/MindMap/nmap_outline.png)
+
+### 详细
 ![xmind](../static/img/MindMap/nmap.png)
