@@ -2,16 +2,9 @@
 
 ## Links
 - [MITRE ATT&CK®](https://attack.mitre.org/)
-
-## Practiced / Tried
-- nmap
-- metasploit
-    - msfvenom
-    - Meterpreter
-
-## Future Path
-- CEH
-- 内网
+- [exploit-db](https://www.exploit-db.com/)
+- [反弹shell生成器](https://www.revshells.com/)
+- [CyberChef](https://gchq.github.io/CyberChef/)
 
 
 ---

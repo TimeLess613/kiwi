@@ -19,7 +19,7 @@ nav:
   - 初始访问&提权: GainingAccess/waiting.md
   - 权限维持: Persistence/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
-  - 模块・思维导图: 
+  - 模块: 
       - nmap: Modules/nmap.md
       - metasploit: Modules/metasploit.md
   - About: about.md

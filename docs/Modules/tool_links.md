@@ -1,0 +1,3 @@
+- [exploit-db](https://www.exploit-db.com/)
+- [反弹shell生成器](https://www.revshells.com/)
+- [CyberChef](https://gchq.github.io/CyberChef/)
