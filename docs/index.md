@@ -5,6 +5,10 @@
 - [exploit-db](https://www.exploit-db.com/)
 - [反弹shell生成器](https://www.revshells.com/)
 - [CyberChef](https://gchq.github.io/CyberChef/)
+- 几个MD5解码网站
+  - https://hashes.com/en/decrypt/hash
+  - https://md5hashing.net/hash/md5/6ebcea65320589ca4f2f1ce039975995
+  - https://www.dcode.fr/md5-hash
 
 
 ---
