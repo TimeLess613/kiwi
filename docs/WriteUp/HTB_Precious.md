@@ -27,7 +27,7 @@ nmap -v -n -sC -sV -p ${ports} <ip> -oN Precious.nmap
 
 尝试本地用python开启http服务，随便建立一个文本，回到网页输入自己的URL。  
 会弹网页新标签显示刚刚文本的pdf。  
-又试了下将文本改为html，里面插入js的 `alert(0)`。再次访问，弹出pdf顺便js也有反映。不过XSS不大熟，止步于此……
+又试了下将文本改为html，里面插入js的 `alert(1)`。再次访问，弹出pdf顺便js也有反映。不过XSS不大熟，止步于此……
 
 *看Forum的提示，似乎要下载pdf看看属性。*
 
