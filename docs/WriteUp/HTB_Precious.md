@@ -79,7 +79,7 @@ home目录有用户 `henry`，ruby家目录 `.bundle/config` 里有其密码。
 转到henry账号，其家目录有flag。
 
 
-## get root shell
+## 提权
 ### PoC
 henry的 `sudo -l`，有root权限无密码执行 `/usr/bin/ruby /opt/update_dependencies.rb`  
 
