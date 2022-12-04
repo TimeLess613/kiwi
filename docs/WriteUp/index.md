@@ -1,2 +1,2 @@
-## HTB
-- [Precious](HTB_Precious.md)
+## HackTheBox WriteUp
+- [HTB WriteUp Precious](HTB_Precious.md)
