@@ -22,7 +22,10 @@ nav:
   - 模块: 
       - nmap: Modules/nmap.md
       - metasploit: Modules/metasploit.md
-  - 靶机wp: WriteUp/index.md
+  - 靶机WriteUp: 
+      HTB: 
+        - Precious: WriteUp/HTB_Precious.md
+        - Shoppy: WriteUp/HTB_Shoppy.md
 
 
 theme:
