@@ -9,6 +9,12 @@
     - <https://hashes.com/en/decrypt/hash>
     - <https://md5hashing.net/hash/md5/>
     - <https://www.dcode.fr/md5-hash>
+- [Email信誉](https://emailrep.io/)
+- [VirusTotal](https://www.virustotal.com/gui/home/search)
+- [InQuest（类似VT?）](https://labs.inquest.net/)
+- <https://urlscan.io/>
+- 浏览器沙盒（桌面交互）：<https://www.browserling.com/>
+- 浏览器沙盒：<https://www.wannabrowser.de/>
 
 
 ---
