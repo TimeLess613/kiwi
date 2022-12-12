@@ -1,7 +1,6 @@
 # 笔记整理
 
 ## Links
-- [MITRE ATT&CK®](https://attack.mitre.org/)
 - [exploit-db](https://www.exploit-db.com/)
 - [反弹shell生成器](https://www.revshells.com/)
 - [CyberChef](https://gchq.github.io/CyberChef/)
@@ -9,6 +8,9 @@
     - <https://hashes.com/en/decrypt/hash>
     - <https://md5hashing.net/hash/md5/>
     - <https://www.dcode.fr/md5-hash>
+
+- [MITRE ATT&CK® Navigator](https://mitre-attack.github.io/attack-navigator/)
+- [DeTT&CT : Mapping detection to MITRE ATT&CK](https://blog.nviso.eu/2022/03/09/dettct-mapping-detection-to-mitre-attck/)
 - [Email信誉](https://emailrep.io/)
 - [VirusTotal](https://www.virustotal.com/gui/home/search)
 - [InQuest（类似VT?）](https://labs.inquest.net/)
