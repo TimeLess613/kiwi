@@ -3,8 +3,10 @@
 ## Links
 - [exploit-db](https://www.exploit-db.com/)
 - [反弹shell生成器](https://www.revshells.com/)
+- [shell命令解释](https://explainshell.com/) （甚至包含豆知识）
 - [CyberChef](https://gchq.github.io/CyberChef/)
 - 几个MD5解码网站
+    - <https://www.somd5.com/>
     - <https://hashes.com/en/decrypt/hash>
     - <https://md5hashing.net/hash/md5/>
     - <https://www.dcode.fr/md5-hash>
