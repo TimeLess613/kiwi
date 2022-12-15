@@ -3,7 +3,7 @@
 CEH学习中...
 
 
-<img src="https://tryhackme-badges.s3.amazonaws.com/TimeLess613.png" alt="TryHackMe">
+<script src="https://tryhackme.com/badge/585269"></script>  
 
 ---
 ## Material color palette 颜色主题
