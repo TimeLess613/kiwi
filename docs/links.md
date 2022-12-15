@@ -1,4 +1,5 @@
 - [exploit-db](https://www.exploit-db.com/)
+- [rapid7-db](https://www.rapid7.com/db/)
 - [反弹shell生成器](https://www.revshells.com/)
 - [shell命令解释](https://explainshell.com/) （甚至包含豆知识）
 - [CyberChef](https://gchq.github.io/CyberChef/)
