@@ -26,6 +26,7 @@ nav:
       HTB: 
         - Precious: WriteUp/HTB_Precious.md
         - Shoppy: WriteUp/HTB_Shoppy.md
+  - Links: links.md
 
 
 theme:

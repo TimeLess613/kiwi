@@ -1,0 +1,18 @@
+- [exploit-db](https://www.exploit-db.com/)
+- [反弹shell生成器](https://www.revshells.com/)
+- [shell命令解释](https://explainshell.com/) （甚至包含豆知识）
+- [CyberChef](https://gchq.github.io/CyberChef/)
+- 几个MD5解码网站
+    - <https://www.somd5.com/>
+    - <https://hashes.com/en/decrypt/hash>
+    - <https://md5hashing.net/hash/md5/>
+    - <https://www.dcode.fr/md5-hash>
+
+- [MITRE ATT&CK® Navigator](https://mitre-attack.github.io/attack-navigator/)
+- [DeTT&CT : Mapping detection to MITRE ATT&CK](https://blog.nviso.eu/2022/03/09/dettct-mapping-detection-to-mitre-attck/)
+- [Email信誉](https://emailrep.io/)
+- [VirusTotal](https://www.virustotal.com/gui/home/search)
+- [InQuest（类似VT?）](https://labs.inquest.net/)
+- <https://urlscan.io/>
+- 浏览器沙盒（桌面交互）：<https://www.browserling.com/>
+- 浏览器沙盒：<https://www.wannabrowser.de/>
