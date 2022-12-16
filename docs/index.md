@@ -2,7 +2,7 @@
 
 CEH学习中...
 
-<script src="/static/js/extra.js"></script>  
+<script src="https://tryhackme.com/badge/585269"></script> 
 
 
 ---
