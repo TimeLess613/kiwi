@@ -2,8 +2,8 @@
 
 CEH学习中...
 
+<script src="/static/js/extra.js"></script>  
 
-<script src="https://tryhackme.com/badge/585269"></script>  
 
 ---
 ## Material color palette 颜色主题
@@ -131,6 +131,7 @@ button[data-md-color-accent]:hover, button[data-md-color-primary]:hover {
   opacity: .75;
 }
 </style>
+
 
 ---
 > 灵感来源：https://ctf-wiki.org/
