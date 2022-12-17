@@ -34,7 +34,7 @@ Waiting for machine retire...
 原来是NoSQL...
 
 最后，  
-联系[这个思路](../../GatheringInformation/summary.md#web安全信息收集思路)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个。  
+联系[这个思路](../GatheringInformation/summary.md#Web安全信息收集思路)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个。  
 ```bash
 #!/usr/bin/bash
 # -*- coding:utf-8 -*-
