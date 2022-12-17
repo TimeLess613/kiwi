@@ -8,7 +8,10 @@ edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
 # copyright:
 
 nav:
-  - Home: index.md
+  - 主页: 
+      - Home: index.md
+      - Links: links.md
+      - 配色变更: material_color_palette.md
   - 基础概念: BasicConcept/index.md
   - 信息收集: 
       - 简介: GatheringInformation/index.md
@@ -26,7 +29,7 @@ nav:
       HTB: 
         - Precious: WriteUp/HTB_Precious.md
         - Shoppy: WriteUp/HTB_Shoppy.md
-  - Links: links.md
+
 
 
 theme:
