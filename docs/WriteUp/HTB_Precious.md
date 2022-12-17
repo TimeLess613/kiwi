@@ -2,6 +2,43 @@ Waiting for machine retire...
 
 ---
 
+## 扫描
+
+## 漏洞分析
+
+
+### 80端口
+
+
+#### 研究网页功能
+
+
+
+## foothold
+
+### 升级为交互式shell
+
+
+## get user flag
+
+## 提权
+
+
+### PoC
+
+### 方法1：sudo反弹root shell
+
+### 方法2：给bash命令添加SUID
+
+### 方法3：命令执行
+
+
+
+
+## get root flag
+
+---
+
 ## 后记
 2022/12/4  
 其实算是第一次正经打HTB，以前稍微试了下还是觉得Web渗透知识不够的话有点难。  
