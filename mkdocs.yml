@@ -26,10 +26,10 @@ nav:
       - nmap: Modules/nmap.md
       - metasploit: Modules/metasploit.md
   - 靶机WriteUp: 
-      HTB: 
-        - Precious: WriteUp/HTB_Precious.md
-        - Shoppy: WriteUp/HTB_Shoppy.md
-        - Soccer: WriteUp/HTB_Soccer.md
+      - WP模板: WriteUp/WriteUp_template.md
+      - HTB_Precious: WriteUp/HTB_Precious.md
+      - HTB_Shoppy: WriteUp/HTB_Shoppy.md
+      - HTB_Soccer: WriteUp/HTB_Soccer.md
 
 
 
