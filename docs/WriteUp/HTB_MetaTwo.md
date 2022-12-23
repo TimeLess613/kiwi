@@ -18,7 +18,7 @@ Waiting for machine retire...
 
 ### 80端口
 
-- robot.txt
+- robots.txt
 - 网页源码
 
 
