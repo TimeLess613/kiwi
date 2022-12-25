@@ -36,9 +36,6 @@
 
 
 ## Initial Access
-*get shell简介*
-
----
 
 
 
@@ -50,9 +47,6 @@
 
 
 ## Privilege Escalation
-*提权简介*
-
----
 
 
 
@@ -62,7 +56,7 @@
 
 ---
 
-## 后记
+## 总结·后记
 
 YYYY/MM/YY
 ……
