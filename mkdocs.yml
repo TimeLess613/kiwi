@@ -19,7 +19,9 @@ nav:
       - 扫描: GatheringInformation/scanning.md
       - 枚举: GatheringInformation/enumerate.md
       - 思路: GatheringInformation/summary.md
-  - 初始访问&提权: GainingAccess/waiting.md
+  - 初始访问&提权: 
+      - 简介: GainingAccess/waiting.md
+      - WEB: GainingAccess/web.md
   - 权限维持: Persistence/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
   - 模块: 
