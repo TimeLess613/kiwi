@@ -3,6 +3,8 @@
 ### 思路
 ![xmind](../static/img/MindMap/UploadVulns.png){ width='1024' }
 
+> Magic Number：<https://en.wikipedia.org/wiki/List_of_file_signatures>
+
 ### 绕过
 
 **黑名单：**  
