@@ -1,6 +1,6 @@
 ## 基本渗透流程・方法论
 
-1. 信息收集阶段
+1. [信息收集阶段](../GatheringInformation/GatheringInformation.md)
     - 踩点
     - 扫描
     - 枚举
@@ -8,8 +8,8 @@
 1. （攻击规划/漏洞分析阶段）
 
 1. 攻击阶段
-    - 初始访问
-    - 提权
+    - [初始访问](../GainingAccess/waiting.md)
+    - [提权](../EscalatingPrivilege/)
 
 1. 后渗透（具体内容仍未整理）
     - 权限维持、后门

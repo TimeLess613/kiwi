@@ -12,16 +12,20 @@ nav:
       - Home: index.md
       - Links: links.md
       - 配色变更: material_color_palette.md
-  - 基础概念: BasicConcept/index.md
+  - 基础概念: BasicConcept/BasicConcept.md
   - 信息收集: 
-      - 简介: GatheringInformation/index.md
+      - 简介: GatheringInformation/GatheringInformation.md
       - 踩点: GatheringInformation/footprinting.md
       - 扫描: GatheringInformation/scanning.md
       - 枚举: GatheringInformation/enumerate.md
       - 思路: GatheringInformation/summary.md
-  - 初始访问&提权: 
+  - 初始访问: 
       - 简介: GainingAccess/waiting.md
       - WEB: GainingAccess/web.md
+  - 提权:
+      - 简介: EscalatingPrivilege/EscalatingPrivilege.md
+      - Linux: EscalatingPrivilege/linux.md
+      - Windows: EscalatingPrivilege/windows.md
   - 权限维持: Persistence/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
   - 模块: 
