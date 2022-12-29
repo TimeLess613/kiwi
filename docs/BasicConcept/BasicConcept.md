@@ -19,6 +19,7 @@
 
 
 ## PTES（Penetration Testing Execution Standard，渗透测试执行标准）
-*www.pentest-standard.org*
+
+> <www.pentest-standard.org>
 
 ![PTES](../static/img/MindMap/knowledge_PTES.png)
