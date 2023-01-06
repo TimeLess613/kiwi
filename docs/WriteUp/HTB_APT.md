@@ -48,7 +48,7 @@
     筛选完用户后，去碰撞本来的2000个hash
     - `crackmapexec` 多次尝试后被ban 【？但是其实应该首先尝试ntds里有效用户对应的hash？】
     - `getTGT.py` 【？getTGT认证错误次数过多的话不知道会不会也会被ban？】
-        - （`watch` 命令，监视getTGT保存到本地的有效用户信息）
+        - （`watch` 命令，此处用于监视getTGT保存到本地的有效用户信息）
 1. 找到一个有效用户（该用户能获取TGT即说明该账户&hash的组合是对的）
 1. 回到 `evil-winrm` 尝试连接（有hash了就尝试横向移动）
 1. 不行再试试其他横向移动工具——`psexec`，`wmiexec`，`dcomexec`，impacket里的`各种exec`
