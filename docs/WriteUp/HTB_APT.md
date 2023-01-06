@@ -51,7 +51,7 @@
         - （`watch` 命令，此处用于监视getTGT保存到本地的有效用户信息）
 1. 找到一个有效用户（该用户能获取TGT即说明该账户&hash的组合是对的）
 1. 回到 `evil-winrm` 尝试连接（有hash了就尝试横向移动）
-1. 不行再试试其他横向移动工具——`psexec`，`wmiexec`，`dcomexec`，impacket里的`各种exec`
+1. 不行再试试其他横向移动工具——`psexec`，`wmiexec`，`dcomexec`，impacket里的`各种exec` 【有微妙的区别。留坑，以及以后实验看看日志区别】
 1. 用户无权限执行各种exec的话，`reg.py` (即Windows的reg.exe)收集注册表信息。 **渗透中HKU根键及software等较常被利用（都因为这里通常保存用户/应用凭据相关的信息）**
 
 
@@ -72,7 +72,7 @@
 
 > [内网渗透之Responder攻防（上）](https://www.freebuf.com/articles/network/256844.html)
 
-开启Responder，然后根据[LOLBAS](https://lolbas-project.github.io/)在目标机利用Windows Defender的 `MpCmdRun.exe` 访问kali的IP，捕获ntlmv1（APT$用户）
+开启Responder，然后根据[LOLBAS](https://lolbas-project.github.io/)在目标机利用Windows Defender的 `MpCmdRun.exe` 访问kali的IP【？应该也能用powershell？实验看看生成的日志区别】，捕获ntlmv1（APT$用户）
 
 *Responder可以监听多个端口，使用多个协议，所以不一定需要投毒、名字解析才能捕获hash。对于直接访问IP，走HTTP、用SMB的UNC路径等都是可以捕获的*
 
