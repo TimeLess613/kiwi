@@ -24,8 +24,8 @@ nav:
       - WEB: GainingAccess/web.md
   - 提权:
       - 简介: EscalatingPrivilege/EscalatingPrivilege.md
-      - Linux: EscalatingPrivilege/linux.md
-      - Windows: EscalatingPrivilege/windows.md
+      - Linux: EscalatingPrivilege/waiting.md
+      - Windows: EscalatingPrivilege/waiting.md
   - 权限维持: Persistence/waiting.md
   - 痕迹清理: ClearingTracks/waiting.md
   - 模块: 
