@@ -4,15 +4,42 @@ Waiting for machine retire...
 
 ## 扫描
 
+```bash
+ports=$(nmap -n -Pn -sS  -p- <ip> --max-retries=1 | grep ^[0-9] | cut -d / -f1 | tr '\n' ',' | sed s/,$//)
+nmap -v -n -sC -sV -p ${ports} <ip> -oN Precious.nmap
+```
+
+
 ## 漏洞分析
 
+22端口（openssh 8.4p1 debian 5+deb11u1 (protocol 2.0)）找了一下似乎无漏洞。
 
 ### 80端口
 
+访问网页无显示，URL会跳转到 `precious.htb`，将其加入hosts文件后即可访问。
+
+- 无robots  
+- 网页源码无发现  
+- 目录枚举无发现  
+- 网页功能似乎是将网页转pdf  
 
 #### 研究网页功能
 
-可以尝试下载pdf研究一下属性。
+尝试几个网址无特别反应，似乎一定要 `http://` 或 `https://` 开头，且一直报错说不能用remote URL。
+
+*迷茫……看了眼Forum说既然不能用remote那可以试试local……*
+
+尝试本地用python开启http服务，随便建立一个文本，回到网页输入自己的URL。  
+会弹网页新标签显示刚刚文本的pdf。  
+又试了下将文本改为html，里面插入js的 `alert(1)`。再次访问，弹出pdf顺便js也有反映。不过XSS不大熟，止步于此……
+
+*看Forum的提示，似乎要下载pdf看看属性。*
+
+下载pdf，属性里没找到啥。  
+`strings` 命令看到 **pdfkit**，搜了下有[PoC](https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795)。
+        
+尝试 `` http://<ip>/?name=#{'%20`sleep 5`'} ``。有效，5秒后会直接显示web根目录下的内容。  
+
 
 ## foothold
 
