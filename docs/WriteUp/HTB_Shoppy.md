@@ -42,8 +42,15 @@ Waiting for machine retire...
 
 原来是NoSQL...
 
+说是多了个横向移动吧，其实和之前靶机比，从foothold开始获得的用户数量又没差。  
+大概是因为这次是web打点时用了一个账户，后来用的又是两个普通用户的账户而没有应用账户吧。
+
+以及以前一直觉得既然SSH能成功登陆，就已经知道自己登陆的是什么用户，那么 `id` 命令没啥意义。  
+这次随手一打竟然能发现deploy用户属于docker组，从而发现突破口，也属实是运气了……
+
+
 最后，  
-联系[这个思路](../GatheringInformation/summary.md#web_info_gathering)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个。  
+联系[这个思路](../GatheringInformation/summary.md#web_info_gathering)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个：
 
 ### HTB_easy_firstScaning
 
