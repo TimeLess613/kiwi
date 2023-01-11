@@ -1,7 +1,5 @@
 *此靶机并非自己所打，这篇WP只是看[红队笔记的靶机实操](https://www.bilibili.com/video/BV1FR4y1r7Do)做的一点笔记。*
 
-<iframe src="//player.bilibili.com/player.html?aid=349083034&bvid=BV1FR4y1r7Do&cid=932436916&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
 ---
 
 ## 漏洞分析
