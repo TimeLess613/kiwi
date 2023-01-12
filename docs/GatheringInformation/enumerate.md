@@ -1,4 +1,4 @@
-## NetBIOS
+## NetBIOS（NBNS UDP/137）
 
 - `nbtstat -a <remote IP>` 获取远程机器的NetBIOS表
 - `nbtstat -c` 获得NetBIOS表、解析cache。
@@ -15,7 +15,7 @@
 
 
 
-## LDAP（TCP/389）
+## LDAP（TCP/389 or 396?）
 
 
 
@@ -65,9 +65,9 @@
 ## other
 
 ### Telnet
-### SMB
 ### FTP/TFTP
-### RPC（TCP/UDP/111）
+### SMB（overNetBIOS TCP/139, overTCP TCP/445 = CIFS）
+### RPC（TCP/UDP/111? or 135）
 ### IPv6
 ### IPsec
 ### VoIP
