@@ -33,7 +33,7 @@
 - 木马、键盘记录
 - LLMNR/NBT-NS毒化：类比ARP毒化
 - Hash Injection（Pass the Hash）：因为是将hash注入到本地会话中
-- Internal Monologue（内部独白）：利用应用程序的SSPI调用NTLM认证，用如彩虹表等工具破解NetNTLM响应获得hash（之后便可PtH）
+- [Internal Monologue](https://www.triskelelabs.com/the-internal-monologue)（内部独白）：NetNTLM降级为NetNTLMv1，获取NetNTLMv1响应，用如彩虹表等工具破解，获得NTLMhash（之后便可PtH）
 - Kerberos密码攻击
     - 针对TGT：AS-REP Roasting
     - 针对TGS：Kerberoasting
