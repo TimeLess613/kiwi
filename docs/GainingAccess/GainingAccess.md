@@ -17,6 +17,9 @@
 
 ### 理解认证协议
 
+- NTLM：[参考](https://www.deelmind.com/pentest/domain/protocal.html#ntlm)
+- Kerberos：[参考](https://www.deelmind.com/pentest/domain/kerberos.html)
+
 ### 密码攻击的类型
 
 #### 非电子/非技术攻击
