@@ -8,7 +8,7 @@
 1. （攻击规划/漏洞分析阶段）
 
 1. 攻击阶段
-    - [初始访问](../GainingAccess/waiting.md)
+    - [初始访问](../GainingAccess/GainingAccess.md)
     - [提权](../EscalatingPrivilege/)
 
 1. 后渗透（具体内容仍未整理）
