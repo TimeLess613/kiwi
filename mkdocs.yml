@@ -20,7 +20,7 @@ nav:
       - 枚举: GatheringInformation/enumerate.md
       - 思路: GatheringInformation/summary.md
   - 初始访问: 
-      - 简介: GainingAccess/waiting.md
+      - 简介: GainingAccess/GainingAccess.md
       - WEB: GainingAccess/web.md
   - 提权:
       - 简介: EscalatingPrivilege/EscalatingPrivilege.md
