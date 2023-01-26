@@ -33,7 +33,7 @@
 不太使用，易被检测、暴露IP、速度慢（上限为网速，所以用offline）、账户被锁定
 
 - 暴破、推测、字典
-- 木马、键盘记录
+- 木马、键盘记录（从离线查看内容的角度来说，也算offline。看怎么考……）
 - LLMNR/NBT-NS毒化：类比ARP毒化
 - Hash Injection（Pass the Hash）：因为是将hash注入到本地会话中
 - [Internal Monologue](https://www.triskelelabs.com/the-internal-monologue)（内部独白）：NetNTLM降级为NetNTLMv1，获取NetNTLMv1响应，用如彩虹表等工具破解，获得NTLMhash（之后便可PtH）
