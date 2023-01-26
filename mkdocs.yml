@@ -26,8 +26,8 @@ nav:
       - 简介: EscalatingPrivilege/EscalatingPrivilege.md
       - Linux: EscalatingPrivilege/waiting.md
       - Windows: EscalatingPrivilege/waiting.md
-  - 权限维持: Persistence/waiting.md
-  - 痕迹清理: ClearingTracks/waiting.md
+  - 权限维持: Persistence/Persistence.md
+  - 痕迹清理: ClearingTracks/ClearingTracks.md
   - 模块: 
       - nmap: Modules/nmap.md
       - metasploit: Modules/metasploit.md
