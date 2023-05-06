@@ -1,4 +1,4 @@
-Difficulty: Easy
+*Difficulty: Easy*
 
 ---
 

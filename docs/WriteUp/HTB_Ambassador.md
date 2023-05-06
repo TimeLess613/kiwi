@@ -1,4 +1,4 @@
-Difficulty: Medium
+*Difficulty: Medium*
 
 ---
 
