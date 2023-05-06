@@ -1,3 +1,7 @@
+Difficulty: Medium
+
+---
+
 ## 扫描
 
 果然用之前写的[对Easy机器的扫描脚本](../WriteUp/HTB_Shoppy.md#htb_easy_firstscaning)不大好使了啊……  

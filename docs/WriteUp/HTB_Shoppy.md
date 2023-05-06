@@ -1,3 +1,7 @@
+Difficulty: Easy
+
+---
+
 ## 扫描
 
 ### 端口
