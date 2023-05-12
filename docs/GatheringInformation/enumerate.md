@@ -59,7 +59,7 @@
 
 目标：域传送有效的DNS
 
-- `nslookup (ls -d <DNS hostname>)??`
+- `nslookup (ls -d <DNS hostname>)`
 - dig
 
 ## other
