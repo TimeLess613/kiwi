@@ -30,6 +30,7 @@ nav:
   - 痕迹清理: ClearingTracks/ClearingTracks.md
   - 模块: 
       - nmap: Modules/nmap.md
+      - burpsuite: Modules/burpsuite.md
       - metasploit: Modules/metasploit.md
   - 靶机WriteUp: 
       - WP模板: WriteUp/WriteUp_template.md
