@@ -32,6 +32,8 @@ nav:
       - nmap: Modules/nmap.md
       - burpsuite: Modules/burpsuite.md
       - metasploit: Modules/metasploit.md
+      - enumerate_tools: Modules/enumerate_tools.md
+      - sqlmap: Modules/sqlmap.md
   - 靶机WriteUp: 
       - WP模板: WriteUp/WriteUp_template.md
       - HTB_Precious: WriteUp/HTB_Precious.md

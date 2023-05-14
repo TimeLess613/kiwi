@@ -1,0 +1,1 @@
+![sqlmap](../static/img/MindMap/sqlmap.png)

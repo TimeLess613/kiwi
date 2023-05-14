@@ -1,4 +1,12 @@
-## NetBIOS（NBNS UDP/137）
+
+## 工具集
+
+[MindMap](../Modules/enumerate_tools.md)
+
+
+## Protocol
+
+### NetBIOS（NBNS UDP/137）
 
 - `nbtstat -a <remote IP>` 获取远程机器的NetBIOS表
 - `nbtstat -c` 获得NetBIOS表、解析cache。
@@ -11,15 +19,15 @@
 - `net view /domain:<domain name>`
 
 
-## SNMP
+### SNMP
 
 
 
-## LDAP（TCP/389 or 396?）
+### LDAP（TCP/389 or 396?）
 
 
 
-## NTP（UDP/123）
+### NTP（UDP/123）
 
 能收集的信息：
 
@@ -35,7 +43,7 @@
 - nmap
 
 
-## NFS（TCP/2049）
+### NFS（TCP/2049）
 
 能收集的信息：
 
@@ -51,18 +59,17 @@
 - SuperEnum（有脚本）
 
 
-## SMTP（TCP/25）
+### SMTP（TCP/25）
 
 
 
-## DNS
+### DNS
 
 目标：域传送有效的DNS
 
 - `nslookup (ls -d <DNS hostname>)`
 - dig
 
-## other
 
 ### Telnet
 ### FTP/TFTP
