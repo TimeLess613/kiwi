@@ -1,7 +1,9 @@
 
 ## 近况
 
-- 5月6日：CEHv11 合格
+- 2023年5月6日：CEHv11 合格
+
+    ![meme](./static/img/meme_CEH.JPG){ width='450' }
 
 
 ## 靶机平台
