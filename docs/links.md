@@ -5,7 +5,7 @@
 
 ## shell
 - [反弹shell生成器](https://www.revshells.com/)
-- [shell命令解释](https://explainshell.com/) （甚至包含豆知识）
+- [shell命令解释](https://explainshell.com/) 
 
 
 ## Living Off the Land
@@ -44,6 +44,11 @@
 - 浏览器沙盒（截图&关联信息）：<https://urlscan.io/>
 - 浏览器沙盒（桌面交互）：<https://www.browserling.com/>
 - 微步在线：<https://s.threatbook.com/>
+
+
+## 客户端识别
+- UA识别：<https://explore.whatismybrowser.com/useragents/parse/>
+- [FingerprintJS](https://github.com/fingerprintjs/fingerprintjs)
 
 
 ## Other
