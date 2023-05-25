@@ -58,5 +58,5 @@
 
 ## 总结·后记
 
-YYYY/MM/YY
+YYYY/MM/DD
 ……
