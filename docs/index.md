@@ -3,7 +3,7 @@
 
 - 2023年5月6日：CEHv11 合格（*Certification Number: ECC0935718624*）
 
-    ![meme](./static/img/meme_CEH.JPG){ width='450' }
+    ![meme](./static/img/meme-CEH.JPG){ width='450' }
 
 
 ## 靶机平台

