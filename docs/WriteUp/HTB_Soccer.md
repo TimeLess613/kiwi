@@ -1,4 +1,6 @@
-Waiting for machine retire...
+**Waiting for machine retire...**
+
+*Difficulty: Easy*
 
 ---
 
