@@ -18,7 +18,7 @@
 
 ## 扫描
 
-自己常用的扫描脚本：[工作流](./HTB_Busqueda.md#workflow-scan)
+将自己侦查时常用的命令写了个脚本：[工作流](./HTB_Busqueda.md#workflow-scan)
 
 ## 漏洞分析
 
