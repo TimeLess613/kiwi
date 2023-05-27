@@ -6,7 +6,7 @@
 
 ## 扫描
 
-开始尝试用自己写的[这个脚本](./HTB_Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描，子域扫完之后枚举目录。
+开始尝试用自己写的[这个脚本](./HTB-Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描，子域扫完之后枚举目录。
 
 
 

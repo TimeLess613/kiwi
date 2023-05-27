@@ -35,18 +35,18 @@ nav:
       - enumerate_tools: Modules/enumerate_tools.md
       - sqlmap: Modules/sqlmap.md
   - 靶机WriteUp: 
-      - WP模板: WriteUp/WriteUp_template.md
-      - HTB_Precious: WriteUp/HTB_Precious.md
-      - HTB_Shoppy: WriteUp/HTB_Shoppy.md
-      - HTB_Soccer: WriteUp/HTB_Soccer.md
-      - HTB_MetaTwo: WriteUp/HTB_MetaTwo.md
-      - HTB_Ambassador: WriteUp/HTB_Ambassador.md
-      - HTB_APT: WriteUp/HTB_APT.md
-      - HTB_MonitorsTwo: WriteUp/HTB_MonitorsTwo.md
-      - HTB_Busqueda: WriteUp/HTB_Busqueda.md
-      - HTB_PC: WriteUp/HTB_PC.md
-      - HTB_Inject: WriteUp/HTB_Inject.md
-      - HTB_Stocker: WriteUp/HTB_Stocker.md
+      - WP模板: WriteUp/WriteUp-template.md
+      - HTB-Precious: WriteUp/HTB-Precious.md
+      - HTB-Shoppy: WriteUp/HTB-Shoppy.md
+      - HTB-Soccer: WriteUp/HTB-Soccer.md
+      - HTB-MetaTwo: WriteUp/HTB-MetaTwo.md
+      - HTB-Ambassador: WriteUp/HTB-Ambassador.md
+      - HTB-APT: WriteUp/HTB-APT.md
+      - HTB-MonitorsTwo: WriteUp/HTB-MonitorsTwo.md
+      - HTB-Busqueda: WriteUp/HTB-Busqueda.md
+      - HTB-PC: WriteUp/HTB-PC.md
+      - HTB-Inject: WriteUp/HTB-Inject.md
+      - HTB-Stocker: WriteUp/HTB-Stocker.md
 
 
 

@@ -4,7 +4,7 @@
 
 ## 扫描
 
-先用自己写的[这个脚本](./HTB_Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描
+先用自己写的[这个脚本](./HTB-Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描
 
 - 开放端口：21, 22, 80
 - 没发现子域
@@ -572,5 +572,5 @@ root@meta2:~# cat root.txt
 至此，终于打完了5台Esay（Photobomb的WP没写），再打一台Medium就要脱离Script Kiddie，走向Hacker啦~
 
 这台也是这段时间活跃的5台Easy里用户评价最难的一台。  
-不过有了前几台的经验，似乎稍微领悟到一点套路，于是WP的格式也逐渐改善，最后定下一个大体上的[WP模板](../WriteUp/WriteUp_template.md)。  
+不过有了前几台的经验，似乎稍微领悟到一点套路，于是WP的格式也逐渐改善，最后定下一个大体上的[WP模板](../WriteUp/WriteUp-template.md)。  
 一是方便今后写WP，另一个是提醒自己把握渗透流程，时刻都要明白自己处于哪个阶段、目的是什么。

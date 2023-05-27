@@ -4,7 +4,7 @@
 
 ## 扫描
 
-开始尝试用自己写的[这个脚本](./HTB_Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描，子域扫完之后枚举目录。
+开始尝试用自己写的[这个脚本](./HTB-Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描，子域扫完之后枚举目录。
 
 - 活动端口：22，80，9091
 - 没发现子域

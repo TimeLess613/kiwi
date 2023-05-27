@@ -6,7 +6,7 @@
 
 ## 扫描
 
-将自己侦查时常用的命令写了个脚本：[工作流](./HTB_Busqueda.md#workflow-scan)
+将自己侦查时常用的命令写了个脚本：[工作流](./HTB-Busqueda.md#workflow-scan)
 
 - 22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
 - 80/tcp open  http    nginx 1.18.0 (Ubuntu)
