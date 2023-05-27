@@ -44,6 +44,8 @@ nav:
       - HTB_APT: WriteUp/HTB_APT.md
       - HTB_MonitorsTwo: WriteUp/HTB_MonitorsTwo.md
       - HTB_Busqueda: WriteUp/HTB_Busqueda.md
+      - HTB_PC: WriteUp/HTB_PC.md
+      - HTB_Inject: WriteUp/HTB_Inject.md
 
 
 
