@@ -69,14 +69,16 @@ username=admin&password=admin
  
 *后来了解到似乎sqlmap似乎不能测试NoSQLi？而对于NoSQLi另有个[NoSQLMap](https://github.com/codingo/NoSQLMap) 0.0*
 
-*不懂了……看了眼官方论坛说[IppSec解说的Shoppy](https://www.youtube.com/watch?v=AJc53DUdt1M&t=220s)十分具有参考性 0.0*
+*不懂了……然后看了眼官方论坛说[IppSec解说的Shoppy](https://www.youtube.com/watch?v=AJc53DUdt1M&t=220s)十分具有参考性 0.0*
 
 看了眼wappalyzer插件，发现有Node.js。  
 根据[IppSec解说的Shoppy](https://www.youtube.com/watch?v=AJc53DUdt1M&t=220s)，这里似乎是一样的情况，[NoSQLi](https://book.hacktricks.xyz/pentesting-web/nosql-injection#basic-authentication-bypass)
 
 顺便记录几个知识点：
+
 - `username[$ne]=toto&password[$ne]=toto` 这种在username用数组的，或者就单纯是字符串(scalar)的，一般是PHP、Apache
-- 而npm服务器、Node.js就一般更改将报头 `Content-Type` 的 `application/x-www-form-urlencoded` 改为 `application/json`，然后用json格式的payload：`{"username": {"$ne": null}, "password": {"$ne": null} }`
+- 而npm服务器、Node.js就一般将报头 `Content-Type` 的 `application/x-www-form-urlencoded` 改为 `application/json`，然后用json格式的payload：`{"username": {"$ne": null}, "password": {"$ne": null} }`
+    - 也可在改完报头后，先试试请求正常的json数据，或者少放一个json值，确认一下服务器是否解析json
 
 #### NoSQLi绕过登陆
 
