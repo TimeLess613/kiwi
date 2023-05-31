@@ -1,6 +1,6 @@
 # Write Up 模板
 
-（模板更新：2023/05/28）
+（模板更新：2023/05/31）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板
 - [MetaTwo](../WriteUp/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处
@@ -18,16 +18,18 @@
 
 ## 扫描
 
-将自己侦查时常用的命令写了个脚本：[工作流](./HTB-Busqueda.md#workflow-scan)
+自用扫描脚本：[工作流](./HTB-Busqueda.md#workflow-scan)
 
-- 22/tcp open  ssh &nbsp; &nbsp; &nbsp; &nbsp; OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
-- 80/tcp open  http &nbsp; &nbsp; &nbsp; nginx 1.18.0 (Ubuntu)
+```
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+```
 
 ## 漏洞分析
 
 
 
-### 80端口
+## 80端口
 
 - robots.txt
 - 网页信息
@@ -36,11 +38,11 @@
 - 子域枚举
 - 目录枚举
 
-#### 研究网页功能
+### 研究网页功能
 
-#### 子域：
+### 子域：
 
-### xx端口
+## xx端口
 
 
 
@@ -52,6 +54,8 @@
 ## flag: user
 
 
+
+## 探索
 
 
 
