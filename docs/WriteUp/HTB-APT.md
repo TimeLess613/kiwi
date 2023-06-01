@@ -10,10 +10,10 @@
 
 ### 135端口（提供web服务时是593）
 
-- RPC协议提供DCOM服务。一般RPC上跑的是dcom（解决基于网络的互操作）服务组件，各组件/方法以uuid识别。
-- `rpcclient`（默认连接139会话）
-- (impacket) `rpcdump.py`（可以直接把impacket路径加入PATH）
-- `rpcmap`：暴破/映射uuid的信息。找到对应方法能枚举出（哪里的？）网卡ip——IPv6——再次nmap扫端口
+- 一般RPC协议上会跑DCOM服务，以解决基于网络的互操作，各组件/方法以UUID识别。
+- `rpcclient`（默认连接端口139而不是135，所以要指定）
+- ([impacket](https://www.secureauth.com/labs/open-source-tools/impacket/)) `rpcdump.py`（可以直接把impacket路径加入PATH：`export PATH=/usr/share/doc/python3-impacket/examples:$PATH`）
+- ([impacket](https://www.secureauth.com/labs/open-source-tools/impacket/)) `rpcmap.py`：rpcdump后不知道各组件是干嘛的——暴破/映射UUID的信息。找到对应方法能枚举出（哪里的？）网卡ip——IPv6——再次nmap扫端口
 
 ### 445 
 
