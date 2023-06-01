@@ -30,9 +30,10 @@ nav:
   - 痕迹清理: ClearingTracks/ClearingTracks.md
   - 模块: 
       - nmap: Modules/nmap.md
-      - burpsuite: Modules/burpsuite.md
-      - metasploit: Modules/metasploit.md
-      - enumerate_tools: Modules/enumerate_tools.md
+      - Burpsuite: Modules/burpsuite.md
+      - Metasploit: Modules/metasploit.md
+      - SliverC2: Modules/sliver_c2.md
+      - Enumerate_Tools: Modules/enumerate_tools.md
       - sqlmap: Modules/sqlmap.md
   - 靶机WriteUp: 
       - WP模板: WriteUp/WriteUp-template.md
@@ -48,6 +49,7 @@ nav:
       - HTB-Inject: WriteUp/HTB-Inject.md
       - HTB-Stocker: WriteUp/HTB-Stocker.md
       - HTB-OnlyForYou: WriteUp/HTB-OnlyForYou.md
+      - HTB-Escape: WriteUp/HTB-Escape.md
 
 
 
