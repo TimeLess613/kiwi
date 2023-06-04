@@ -37,13 +37,13 @@
 1. `(impacket) secretdump.py -ntds ntds.dit -system register/SYSTEM LOCAL`（可在线也可本地转储）【？查一下为什么需要注册表信息？】
 1. 由于5985 wsman是开放的，有了hash可直接用 `evil-winrm` 尝试高权限用户的pth（注意hash格式，因为第一段可能是空的LMhash）。其他很具体的普通人名账户估计都是低权限
 1. 备份文件的时效性低，不知道当前时间点哪些账户有用——hash碰撞（因为不同密码生成的hash有可能相同）
-    而由于用户太多，直接碰撞的话计算量太大——用户筛选，看看哪个用户有效（如靶机本来2000用户→3用户）——**预认证机制**——用 `kerbrute` 或者nmap脚本 `krb5-enum-users`（后者快很多）
+    - 而由于用户太多，直接碰撞的话计算量太大——用户筛选，看看哪个用户有效（如靶机本来2000用户→3用户）——**预认证机制**——用 `kerbrute` 或者nmap脚本 `krb5-enum-users`（后者快很多）
     筛选完用户后，去碰撞本来的2000个hash
     - `crackmapexec` 多次尝试后被ban 【？但是其实应该首先尝试ntds里有效用户对应的hash？】
     - `getTGT.py` 【？getTGT认证错误次数过多的话不知道会不会也会被ban？】
         - （`watch` 命令，此处用于监视getTGT保存到本地的有效用户信息）
 1. 找到一个有效用户（该用户能获取TGT即说明该账户&hash的组合是对的）
-1. 回到 `evil-winrm` 尝试连接（有hash了就尝试横向移动）
+1. 回到 `evil-winrm` 尝试连接（**有hash了就尝试横向移动**）
 1. 不行再试试其他横向移动工具——`psexec`，`wmiexec`，`dcomexec`，impacket里的`各种exec` 【有微妙的区别。留坑，以及以后实验看看日志区别】
 1. 用户无权限执行各种exec的话，`reg.py` (即Windows的reg.exe)收集注册表信息。 **渗透中HKU根键及software等较常被利用（都因为这里通常保存用户/应用凭据相关的信息）**
 
