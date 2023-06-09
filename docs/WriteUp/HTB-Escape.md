@@ -96,7 +96,7 @@ PORT      STATE         SERVICE
 ## flag: user
 
 ```bash
-└─$ evil-winrm -i ${HTB_IP} -u Ryan.Cooper -p NuclearMosquito3
+└─$ evil-winrm -i ${HTB_IP} -u Ryan.Cooper -p Nu…………o3
 
 Evil-WinRM shell v3.4
 
