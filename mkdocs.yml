@@ -26,8 +26,9 @@ nav:
       - 简介: EscalatingPrivilege/EscalatingPrivilege.md
       - Linux: EscalatingPrivilege/waiting.md
       - Windows: EscalatingPrivilege/waiting.md
-  - 权限维持: Persistence/Persistence.md
-  - 痕迹清理: ClearingTracks/ClearingTracks.md
+  - 后渗透:
+      - 权限维持: PostExploitation/Persistence.md
+      - 痕迹清理: PostExploitation/ClearingTracks.md
   - 模块: 
       - nmap: Modules/nmap.md
       - Burpsuite: Modules/burpsuite.md
@@ -35,6 +36,7 @@ nav:
       - SliverC2: Modules/sliver_c2.md
       - Enumerate_Tools: Modules/enumerate_tools.md
       - sqlmap: Modules/sqlmap.md
+      - Tunneling: Modules/tunneling.md
   - 靶机WriteUp: 
       - WP模板: WriteUp/WriteUp-template.md
       - HTB-Precious: WriteUp/HTB-Precious.md
