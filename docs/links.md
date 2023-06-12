@@ -24,6 +24,8 @@
 
 ## Whois
 - <https://who.is/>
+- ipinfo.io：`curl ipinfo.io/xx.xx.xx.xx`
+- [greynoise.io](https://www.greynoise.io/)：有API的话可以去github装客户端
 
 
 ## MITRE ATT&CK®相关
@@ -36,7 +38,7 @@
 - [InQuest（类似VT?）](https://labs.inquest.net/)
 - 奇安信：<https://ti.qianxin.com/>
 - 360：<https://ti.360.net/#/homepage>
-- [Email信誉](https://emailrep.io/)
+- [Email信誉](https://emailrep.io/)：`curl emailrep.io/name.what@gmail.com`
 
 
 ## 沙盒
