@@ -34,6 +34,7 @@ nav:
       - Burpsuite: Modules/burpsuite.md
       - Metasploit: Modules/metasploit.md
       - SliverC2: Modules/sliver_c2.md
+      - Viper: Modules/viper.md
       - Enumerate_Tools: Modules/enumerate_tools.md
       - sqlmap: Modules/sqlmap.md
       - Tunneling: Modules/tunneling.md
