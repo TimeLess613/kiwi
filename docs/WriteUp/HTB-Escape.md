@@ -94,7 +94,7 @@ Password for [WORKGROUP\kali]:
 
 从 `/Public` 下载了一个PDF，其他共享没有什么信息。
 
-![HTB-Escape-445-pdf](../static/img/HTB-Escape-445-pdf.png)
+![HTB-Escape-445-pdf](../static/img/WP/HTB-Escape-445-pdf.png)
 
 ### 获得SQL临时凭据
 

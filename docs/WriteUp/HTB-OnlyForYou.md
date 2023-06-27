@@ -90,19 +90,19 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 是个叫Gogs的什么git服务。
 
 发现两个用户  
-![HTB-OnlyForYou-lport3000](../static/img/HTB-OnlyForYou-lport3000.png){ width='720' }
+![HTB-OnlyForYou-lport3000](../static/img/WP/HTB-OnlyForYou-lport3000.png){ width='720' }
 
 
 #### 8001
 
 又一个登陆界面  
-![HTB-OnlyForYou-lport8001](../static/img/HTB-OnlyForYou-lport8001.png){ width='450' }
+![HTB-OnlyForYou-lport8001](../static/img/WP/HTB-OnlyForYou-lport8001.png){ width='450' }
 
 
 #### 7474
 
 没怎么见过，似乎叫Neo4j。查了下是个NoSQL图形数据库  
-![HTB-OnlyForYou-lport7474](../static/img/HTB-OnlyForYou-lport7474.png){ width='720' }
+![HTB-OnlyForYou-lport7474](../static/img/WP/HTB-OnlyForYou-lport7474.png){ width='720' }
 
 也搞清楚了另一个端口7687  
 > [Neo4j is a graph database management system developed by Neo4j. Default ports are 6362 (Backup), 7474 (HTTP), 7473 (HTTPS), 7687 (Bolt).](https://exploit-notes.hdks.org/exploit/database/neo4j-pentesting/)
