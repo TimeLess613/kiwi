@@ -8,7 +8,7 @@
 
 emmmm，知识点太偏了，玩家评分也较低。结果还是围观大佬的方法打完。就不想写详细版了……姑且传个攻击路径图吧。
 
-### 攻击路径速览
+### Attack Path Overview
 
 ![AttackPath](../static/img/WP/AttackPath/HTB-Topology.png){ width='450' }
 

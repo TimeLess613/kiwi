@@ -20,9 +20,9 @@
 
 xxx
 
-### 攻击路径速览
+### Attack Path Overview
 
-![attack-path](../static/img/WP/AttackPath/HTB-template.png){ width='450' }
+![attack-path](../static/img/WP/AttackPath/HTB-template.png){ width='360' }
 
 
 ## 扫描
