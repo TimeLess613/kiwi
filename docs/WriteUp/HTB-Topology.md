@@ -10,7 +10,7 @@ emmmm，知识点太偏了，玩家评分也较低。结果还是围观大佬的
 
 ### 攻击路径速览
 
-![AttackPath](../static/img/AttackPath/HTB-Topology.png){ width='450' }
+![AttackPath](../static/img/AttackPath/WP/HTB-Topology.png){ width='450' }
 
 
 ---
