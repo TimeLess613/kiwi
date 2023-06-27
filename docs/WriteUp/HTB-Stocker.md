@@ -230,7 +230,7 @@ OK，那就写个反弹shell……
 看了眼官方论坛，说可以看看 `/var/www/dev/index.js` 这个文件？不知道怎么知道要找这个文件的……
 
 *后来翻找WP，看到[这篇](https://blog.213.se/stocker-hackthebox/)解释得很详细。原来是需要一点Node.js的知识啊，要了解这个项目的架构。*  
-*之前用[第一个XSS的payload](./HTB-Stocker-active.md#pdfxss)时我们知道订单文档的路径是在 `/var/www/dev/pos/` 下面，谁知道这个“dev”就是子域这个dev啊……以及 `index.js` 这个文件较重要。*
+*之前用[第一个XSS的payload](./HTB-Stocker.md#pdfxss)时我们知道订单文档的路径是在 `/var/www/dev/pos/` 下面，谁知道这个“dev”就是子域这个dev啊……以及 `index.js` 这个文件较重要。*
 
 根据提示，发送payload `<iframe src=file:///var/www/dev/index.js width='1000' height='1000'></iframe>`后，获得 `/var/www/dev/index.js` 文件下的密码：
 ```bash

@@ -1,6 +1,6 @@
 # Write Up 模板
 
-（模板更新：2023/05/31）
+（模板更新：2023/06/27）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板
 - [MetaTwo](../WriteUp/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处
@@ -16,6 +16,15 @@
 
 ---
 
+## Summary
+
+xxx
+
+### 攻击路径速览
+
+![attack-path](../static/img/AttackPath/xxx.png){ width='450' }
+
+
 ## 扫描
 
 自用扫描脚本：[工作流](./HTB-Busqueda.md#workflow-scan)
@@ -25,13 +34,15 @@
 80/tcp open  http    nginx 1.18.0 (Ubuntu)
 ```
 
-## 漏洞分析
+## 攻击路径规划·漏洞分析
 
+常规简单靶机，22端口SSH的版本较新，优先度放低。先看80端口的Web。
 
 
 ## 80端口
 
 - robots.txt
+- .git/config
 - 网页信息
 - 网页功能
 - 网页源码
