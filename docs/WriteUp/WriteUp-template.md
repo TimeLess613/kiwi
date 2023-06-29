@@ -1,6 +1,6 @@
 # Write Up 模板
 
-（模板更新：2023/06/27）
+（模板更新：2023/06/29）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板
 - [MetaTwo](../WriteUp/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处
@@ -29,6 +29,7 @@ xxx
 
 自用扫描脚本：[工作流](./HTB-Busqueda.md#workflow-scan)
 
+开放端口：
 ```
 22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
 80/tcp open  http    nginx 1.18.0 (Ubuntu)
@@ -41,13 +42,13 @@ xxx
 
 ## 80端口
 
-- robots.txt
-- .git/config
-- 网页信息
-- 网页功能
-- 网页源码
-- 子域枚举
-- 目录枚举
+- robots.txt：无
+- .git/config：无
+- 网页信息：无特别发现
+- 网页功能：xxxx
+- 网页源码：无特别发现
+- 子域枚举：无特别发现
+- 目录枚举：无特别发现
 
 ### 研究网页功能
 
