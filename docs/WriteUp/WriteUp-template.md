@@ -22,7 +22,7 @@ xxx
 
 ### Attack Path Overview
 
-![attack-path](../static/img/WP/AttackPath/HTB-template.png){ width='360' }
+![attack-path](../static/img/WP/AttackPath/HTB-template.png){ width='450' }
 
 
 ## 扫描
