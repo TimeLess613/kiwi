@@ -95,7 +95,7 @@ cat root.txt
 
 稍微改一下扫描的工作流
 
-```bash
+```bash title="nmapscan_workflow.sh"
 #!/usr/bin/bash
 # -*- coding:utf-8 -*-
 
