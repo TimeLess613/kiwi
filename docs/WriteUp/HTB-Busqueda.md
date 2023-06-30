@@ -119,7 +119,7 @@ echo "[info] Running NSE vuln scan background..."
 echo "[info] ==============================================="
 
 echo "[info] Checking if there is domain for add to hosts..."
-HEADER_Location=$(curl -I ${HTB_IP} | grep "Location:")
+HEADER_Location=$(curl -I ${HTB_IP} | grep -q "Location:" || true)
 
 if [[ ${HEADER_Location} != '' ]];then
   HTB_DOMAIN=$(echo ${HEADER_Location} | grep -oP '(?<=Location: http://).*' | tr -d '/\r')
