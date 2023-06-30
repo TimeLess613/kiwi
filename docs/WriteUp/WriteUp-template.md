@@ -67,11 +67,17 @@ xxx
 
 
 
-## 探索
-
-
 
 ## Privilege Escalation
+
+### 探索
+
+基础探索一把梭：
+
+- 有当前用户的凭据所以先看了眼 `sudo -l`：没有sudo可执行
+- SUID：无特别发现
+- cron：有个php引人注目，不过内容是清理会话。也无其他特别发现
+- 用户家目录隐藏文件：
 
 ### PoC (CVE-yyyy-xxxx)
 
