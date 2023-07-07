@@ -25,6 +25,7 @@
 ## IoC
 - [ThreatMiner](https://www.threatminer.org/)
 - [VirusTotal](https://www.virustotal.com/gui/home/search/)
+- [Threat Intelligence Platform](https://threatintelligenceplatform.com/)
 - [Robtex](https://www.robtex.com/)：a Threat Intel site that provides information about IP addresses, domain names, etc.
 - <https://otx.alienvault.com/>
 - [InQuest](https://labs.inquest.net/)
@@ -34,12 +35,19 @@
 - [情报社区X](https://x.threatbook.com/)
 
 
-## Whois
+## Whois/DNS
 - ipinfo.io：`curl ipinfo.io/xx.xx.xx.xx`
 - <https://www.whoxy.com>
 - <https://whois.domaintools.com/>
 - <https://who.is/>
+- [ViewDNS.info](https://viewdns.info/)
 - [greynoise.io](https://www.greynoise.io/)：有API的话可以去github装客户端
+
+
+## 网络空间资产搜索引擎
+- [Shodan](https://www.shodan.io/)
+- [Censys](https://search.censys.io/)
+- [FOFA](https://fofa.info/)
 
 
 ## SandBox
