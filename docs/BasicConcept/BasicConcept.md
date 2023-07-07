@@ -11,8 +11,9 @@
     - [初始访问](../GainingAccess/GainingAccess.md)
     - [提权](../EscalatingPrivilege/)
 
-1. 后渗透（具体内容仍未整理）
-    - 权限维持、后门
+1. 后渗透
+    - [权限维持](../PostExploitation/Persistence.md)
+    - 内网探索
     - 痕迹清理
     - 获取数据/flag
 
