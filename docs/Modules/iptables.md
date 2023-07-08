@@ -1,7 +1,7 @@
 
 2023/07/08
 
-背景：玩TryHackme时需要使用Windows，然而在Windows上使用openvpn不知道为何无法连接目标网络。于是尝试依旧用kali连接THM，然后将Windows访问THM的流量转发到kali。
+背景：玩TryHackMe时需要用Windows，然而在Windows上使用openvpn不知道为何无法连接目标网络。于是尝试依旧用kali连接THM，然后将Windows访问THM的流量转发到kali。
 
 拓扑：Windows(10.10.10.20) —— KALI(eth0:10.10.10.10) —— KALI(enumad) —— THM目标网络(10.200.49.0/24)
 
