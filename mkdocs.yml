@@ -38,6 +38,7 @@ nav:
       - Enumerate_Tools: Modules/enumerate_tools.md
       - sqlmap: Modules/sqlmap.md
       - Tunneling: Modules/tunneling.md
+      - iptables: Modules/iptables.md
   - 靶机WriteUp: 
       - WP模板: WriteUp/WriteUp-template.md
       - HTB-Precious: WriteUp/HTB-Precious.md
