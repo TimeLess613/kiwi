@@ -256,7 +256,7 @@ PD9waHANCi8qKiBUaGUgbmFtZSBvZiB0aGUgZGF0YWJhc2UgZm9yIFdvcmRQcmVzcyAqLw0KZGVmaW5l
 
 DB似乎目前还无从下手，但别忘记我们扫到过FTP端口。  
 尝试连接FTP成功，似乎是WordPress和什么邮件的文件夹（备份）？  
-一个一个get太慢了，于是参考[这里](https://stackoverflow.com/questions/113886/how-to-recursively-download-a-folder-via-ftp-on-linux)，把FTP上的文件都下载下来慢慢看（注意：密码由于有特殊字符所以要用引号括住）。  
+一个一个get太慢了，于是参考[这里](https://stackoverflow.com/questions/113886/how-to-recursively-download-a-folder-via-ftp-on-linux)，用wget把FTP上的文件都下载下来慢慢看（注意：密码由于有特殊字符所以要用引号括住）。  
 文件挺多的样子，放后台慢慢下。  
 
 **但是其实我是期望get shell的。**  
