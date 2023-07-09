@@ -53,7 +53,7 @@
 #### 目录遍历
 
 尝试目录遍历，发现 `img=../` 能显示文件：  
-![directory_traversal](../static/img/WP/HTB-Inject-directory_traversal.png)
+![HTB-Inject-directory_traversal](./evidence-img/HTB-Inject-directory_traversal.png)
 
 噢……看来不是上传webshell
 

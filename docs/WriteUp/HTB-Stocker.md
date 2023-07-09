@@ -99,17 +99,17 @@ Vary: Accept
 绕过登陆后会重定向到"/stock"，这个目录我们之前也枚举到过。  
 而由于cookie值固定，我们现在应该算是已登录的状态了。  
 用浏览器访问一下 `http://dev.stocker.htb/stock`，成功进入：  
-![HTB-Stockers-login](../static/img/WP/HTB-Stockers-login.png)
+![HTB-Stockers-login](./evidence-img/HTB-Stockers-login.png)
 
 
 #### 拦截、修改订单请求发现注入点
 
 进入`/stock` 界面后，随便点点，发现似乎就是一个购物页面。发送订单之后会给你一个链接，点开就是刚刚买东西的订单？  
 再看看Burp的请求，似乎Item那里的值就是请求里title的值：  
-![HTB-Stockers-purchase](../static/img/WP/HTB-Stockers-purchase.png)
+![HTB-Stockers-purchase](./evidence-img/HTB-Stockers-purchase.png)
 
 尝试Burp拦截请求，将“Cup”改为“/etc/passwd”看看结果。的确Item值有变化：  
-![HTB-Stockers-edit_req](../static/img/WP/HTB-Stockers-edit_req.png)
+![HTB-Stockers-edit_req](./evidence-img/HTB-Stockers-edit_req.png)
 
 不过光显示“/etc/passwd”没啥意义啊……
 
@@ -154,7 +154,7 @@ Modify Date                     : 2023:05:28 02:32:30+00:00
 ```
 
 将上面的payload放到Item的值，注入有效：  
-![HTB-Stockers-pdf](../static/img/WP/HTB-Stockers-pdf.png)
+![HTB-Stockers-pdf](./evidence-img/HTB-Stockers-pdf.png)
 
 *一开始尝试 `<img src="x" onerror="document.write('test')" />` 不行，还想着估计有双引号的payload都不行。后来试了下只要把双引号转义一下就行：`<img src=\"x\" onerror=\"document.write('test')\" />`*
 
