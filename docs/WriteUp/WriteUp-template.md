@@ -1,24 +1,32 @@
 # Write Up 模板
 
-（模板更新：2023/07/09）
+（模板更新：2023/07/24）
 
-- 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板
-- [MetaTwo](../WriteUp/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处
-- 对于仍在Active的机器，都会在WP开头写上 **Waiting for machine retire...**，表示这边暂时不会给出详细WP。不过会列一些提示，大致上是看官方Forum的话会有的程度。等机器退役后，会更新出详细WP
+- 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板。
+- 可能我对WP这个词的理解有偏差，更应该说是我自己的打靶、学习笔记，所以会记录许多踩坑与思路等废话。
+- [MetaTwo](../WriteUp/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处。
+- 对于仍在Active的机器，都会在WP开头写上 **Waiting for machine retire...**，表示这边暂时不会给出详细WP。不过会列一些提示，大致上是看官方Forum的话会有的程度。等机器退役后，会更新出详细WP。
 
 
 下面是WP模板：
-----------------------------
+------------
 
 **Waiting for machine retire...**
-
-*Difficulty: Easy*
 
 ---
 
 ## Summary
 
+*Difficulty: Easy*
+
 xxx
+
+### Relevant Skills
+
+- nmap
+- 子域枚举
+- sudo提权
+- ……
 
 ### Attack Path Overview
 
