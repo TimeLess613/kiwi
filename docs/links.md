@@ -9,13 +9,13 @@
 
 ## shell
 - [反弹shell生成器](https://www.revshells.com/)
-- [shell命令解释](https://explainshell.com/) 
+- [shell命令解释](https://explainshell.com/)
+- [WADComs](https://wadcoms.github.io/): a quick view of which commands you can run to enumerate/exploit an AD.
 
 
 ## Living Off the Land
 - [GTFOBins](https://gtfobins.github.io/)
 - [LOLBAS](https://lolbas-project.github.io/)
-
 
 ## 漏洞库
 - [exploit-db](https://www.exploit-db.com/)
@@ -42,6 +42,15 @@
 - <https://who.is/>
 - [ViewDNS.info](https://viewdns.info/)
 - [greynoise.io](https://www.greynoise.io/)：有API的话可以去github装客户端
+- <dnsdumpster.com>
+
+### 域名历史解析IP
+- <https://securitytrails.com/>
+- <site.ip138.com> - 国际版：<https://dnsdblookup.com/>
+
+### IP反查域名
+- <https://dns.aizhan.com/>
+
 
 
 ## 网络空间资产搜索引擎
