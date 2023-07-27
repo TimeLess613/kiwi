@@ -8,21 +8,26 @@
 
 
 ## shell
+
 - [反弹shell生成器](https://www.revshells.com/)
 - [shell命令解释](https://explainshell.com/)
-- [WADComs](https://wadcoms.github.io/): a quick view of which commands you can run to enumerate/exploit an AD.
 
 
 ## Living Off the Land
+
 - [GTFOBins](https://gtfobins.github.io/)
 - [LOLBAS](https://lolbas-project.github.io/)
+    - [WADComs](https://wadcoms.github.io/): a quick view of which commands you can run to enumerate/exploit an AD.
+
 
 ## 漏洞库
+
 - [exploit-db](https://www.exploit-db.com/)
 - [rapid7-db](https://www.rapid7.com/db/)
 
 
 ## IoC
+
 - [ThreatMiner](https://www.threatminer.org/)
 - [VirusTotal](https://www.virustotal.com/gui/home/search/)
 - [Threat Intelligence Platform](https://threatintelligenceplatform.com/)
@@ -35,35 +40,47 @@
 - [情报社区X](https://x.threatbook.com/)
 
 
-## Whois/DNS
+## Whois
+
 - ipinfo.io：`curl ipinfo.io/xx.xx.xx.xx`
 - <https://www.whoxy.com>
 - <https://whois.domaintools.com/>
 - <https://who.is/>
+
+### Whois反查
+
+
+## DNS
+
+- <https://dnsdumpster.com/>
 - [ViewDNS.info](https://viewdns.info/)
 - [greynoise.io](https://www.greynoise.io/)：有API的话可以去github装客户端
-- <dnsdumpster.com>
 
 ### 域名历史解析IP
+
 - <https://securitytrails.com/>
-- <site.ip138.com> - 国际版：<https://dnsdblookup.com/>
+- <https://site.ip138.com/> （国际版：<https://dnsdblookup.com/>）
 
 ### IP反查域名
+
 - <https://dns.aizhan.com/>
 
 
 
 ## 网络空间资产搜索引擎
+
 - [Shodan](https://www.shodan.io/)
 - [Censys](https://search.censys.io/)
 - [FOFA](https://fofa.info/)
 
 
 ## SandBox
+
 - [Hybrid-Analysis](https://www.hybrid-analysis.com/)
 - [微步云沙箱](https://s.threatbook.com/)
 
 ### 浏览器沙箱
+
 - <https://www.wannabrowser.de/>：看网页源码
 - <https://urlscan.io/>：截图&关联信息
 - <https://www.browserling.com/>：桌面交互
@@ -81,17 +98,20 @@
 
 
 ## 客户端识别
+
 - UA识别：<https://explore.whatismybrowser.com/useragents/parse/>
 - [FingerprintJS](https://github.com/fingerprintjs/fingerprintjs)
 
 
 ## MITRE ATT&CK®相关
+
 - [MITRE ATT&CK® Navigator](https://mitre-attack.github.io/attack-navigator/)
 - [DeTT&CT : Mapping detection to MITRE ATT&CK](https://blog.nviso.eu/2022/03/09/dettct-mapping-detection-to-mitre-attck/)
 
 
 
 ## Other
+
 - Web档案：<https://archive.org/>
 - 画布：<https://excalidraw.com/>
 - 狼组安全团队公开知识库：<https://wiki.wgpsec.org/>
