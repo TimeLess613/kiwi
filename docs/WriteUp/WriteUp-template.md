@@ -1,6 +1,6 @@
 # Write Up 模板
 
-（模板更新：2023/07/24）
+（模板更新：2023/07/29）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板。
 - 可能我对WP这个词的理解有偏差，更应该说是我自己的打靶、学习笔记，所以会记录许多踩坑与思路等废话。
@@ -33,7 +33,7 @@ xxx
 ![attack-path](./AttackPath/HTB-template.png){ width='450' }
 
 
-## 扫描
+## External Recon - nmap
 
 自用扫描脚本：[工作流](https://github.com/TimeLess613/workflow-scan4HTB/blob/main/workflow-scan4HTB.sh)
 
@@ -79,9 +79,9 @@ PORT      STATE SERVICE VERSION
 
 ## Privilege Escalation
 
-### 探索
+### Internal Recon
 
-基础探索一把梭：
+基础信息收集一把梭：
 
 - 用户家目录的隐藏文件：无
 - 有当前用户的凭据所以先看了眼 `sudo -l`：没有sudo可执行
