@@ -22,12 +22,14 @@
 
 ## 漏洞库
 
+- [Vulners](https://vulners.com/)
 - [exploit-db](https://www.exploit-db.com/)
 - [rapid7-db](https://www.rapid7.com/db/)
 
 
 ## IoC
 
+- [GreyNoise](https://viz.greynoise.io/)
 - [ThreatMiner](https://www.threatminer.org/)
 - [VirusTotal](https://www.virustotal.com/gui/home/search/)
 - [Threat Intelligence Platform](https://threatintelligenceplatform.com/)
