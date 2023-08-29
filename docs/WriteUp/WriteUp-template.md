@@ -17,7 +17,7 @@
 
 ## Summary
 
-*Difficulty: Easy*
+*`OS: Linux/Windows` `Difficulty: Easy`*
 
 xxx
 
