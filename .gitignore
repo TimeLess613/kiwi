@@ -1,4 +1,6 @@
 site
-docs/WriteUp/HTB-Active/*
+# Because of links, the active WPs need to be placed at the same dir.
 docs/WriteUp/*-active.md
+# But should the word active be placed as a prefix or as a suffix?
+docs/WriteUp/HTB-active-*.md
 docs/WriteUp/AttackPath/orig-xmind
