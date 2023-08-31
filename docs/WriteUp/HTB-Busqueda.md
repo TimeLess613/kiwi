@@ -157,7 +157,7 @@ $ cat config
 ### 密码重复 - SSH
 
 *……卡了很久……谁想到svc的SSH密码竟然和cody一样。后来复习hacktricks，发现其实[这里](https://book.hacktricks.xyz/linux-hardening/privilege-escalation#known-passwords)有提到，只是以前草草扫过根本没印象。*  
-原来cody的密码svc也能用……  
+原来cody的密码svc也能用……*后来看[0xdf的WP](https://0xdf.gitlab.io/2023/08/12/htb-busqueda.html#shell-as-root)才发现，原来svc的用户名就是cody……*  
 虽然本身就有svc的shell，不过有没有密码一个很大的不同就是是否能查看 `sudo -l`。以及在这之前，还是换成SSH连接吧。
 
 ### sudo探索
