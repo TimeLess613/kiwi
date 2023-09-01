@@ -7,6 +7,7 @@ repo_url: https://github.com/TimeLess613/kiwi
 edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
 # copyright:
 
+# Naming convention: UpperCamelCase/PascalCase for dir and that's main page. 
 nav:
   - 主页: 
       - Home: index.md
@@ -14,18 +15,18 @@ nav:
       - 配色变更: material_color_palette.md
   - 基础概念: BasicConcept/BasicConcept.md
   - 信息收集: 
-      - 简介: GatheringInformation/GatheringInformation.md
-      - 踩点: GatheringInformation/footprinting.md
-      - 扫描: GatheringInformation/scanning.md
-      - 枚举: GatheringInformation/enumerate.md
-      - 思路: GatheringInformation/summary.md
+      - 简介: InformationGathering/InformationGathering.md
+      - 踩点: InformationGathering/footprinting.md
+      - 扫描: InformationGathering/scanning.md
+      - 枚举: InformationGathering/enumerate.md
+      - 思路: InformationGathering/summary.md
   - 初始访问: 
-      - 简介: GainingAccess/GainingAccess.md
-      - WEB: GainingAccess/web.md
+      - 简介: InitialAccess/InitialAccess.md
+      - WEB: InitialAccess/web.md
   - 提权:
-      - 简介: EscalatingPrivilege/EscalatingPrivilege.md
-      - Linux: EscalatingPrivilege/waiting.md
-      - Windows: EscalatingPrivilege/waiting.md
+      - 简介: PrivilegeEscalation/PrivilegeEscalation.md
+      - Linux: PrivilegeEscalation/waiting.md
+      - Windows: PrivilegeEscalation/waiting.md
   - 后渗透:
       - 权限维持: PostExploitation/Persistence.md
       - 痕迹清理: PostExploitation/ClearingTracks.md

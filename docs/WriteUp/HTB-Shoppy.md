@@ -165,7 +165,7 @@ root.txt
 
 
 最后，  
-联系[这个思路](../GatheringInformation/summary.md#web_info_gathering)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个：
+联系[这个思路](../InformationGathering/summary.md#web_info_gathering)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个：
 
 ### HTB_easy_firstScaning
  
