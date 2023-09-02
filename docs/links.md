@@ -1,6 +1,6 @@
 ## 编码
 - [CyberChef](https://gchq.github.io/CyberChef/)
-- 几个MD5解码网站：
+- MD5解码：
     - <https://www.somd5.com/>
     - <https://hashes.com/en/decrypt/hash/>
     - <https://md5hashing.net/hash/md5/>
@@ -13,7 +13,7 @@
 - [shell命令解释](https://explainshell.com/)
 
 
-## Living Off the Land
+## LOL（Living Off the Land）
 
 - [GTFOBins](https://gtfobins.github.io/)
 - [LOLBAS](https://lolbas-project.github.io/)
@@ -37,36 +37,45 @@
 - <https://otx.alienvault.com/>
 - [InQuest](https://labs.inquest.net/)
 - Reputation Center（思科）：<https://talosintelligence.com/reputation>
+- [OPSWAT MetaDefender](https://metadefender.opswat.com/)
+- （[greynoise.io](https://www.greynoise.io/)：有API的话可以去github装客户端）
+
+### Malware hash
+
+- [MalwareBazaar](https://bazaar.abuse.ch/browse/)
+- [MalShare](https://malshare.com/)
+
+### 国内
+
 - [奇安信威胁情报中心](https://ti.qianxin.com/)
 - [360威胁情报中心](https://ti.360.net/#/homepage)
 - [情报社区X](https://x.threatbook.com/)
 
 
-## Whois
+## have IP/Domain
+
+- <https://check-host.net/>
+- DB：<https://securitytrails.com/>
+    - 域名解析历史、子域
+    - IP反查域名
+- <https://dnsdumpster.com/>
+- [ViewDNS](https://viewdns.info/)
+- <https://site.ip138.com/> （国际版：<https://dnsdblookup.com/>）
+    - 域名解析历史
+
+
+## have Domain
+
+- <https://who.is/>
+- <https://www.whoxy.com/>
+- <https://whois.domaintools.com/>
+- <https://whois.gandi.net/>
+
+
+## have IP
 
 - ipinfo.io：`curl ipinfo.io/xx.xx.xx.xx`
-- <https://www.whoxy.com>
-- <https://whois.domaintools.com/>
-- <https://who.is/>
-
-### Whois反查
-
-
-## DNS
-
-- <https://dnsdumpster.com/>
-- [ViewDNS.info](https://viewdns.info/)
-- [greynoise.io](https://www.greynoise.io/)：有API的话可以去github装客户端
-
-### 域名历史解析IP
-
-- <https://securitytrails.com/>
-- <https://site.ip138.com/> （国际版：<https://dnsdblookup.com/>）
-
-### IP反查域名
-
-- <https://dns.aizhan.com/>
-
+- IP反查域名：<https://dns.aizhan.com/>
 
 
 ## 网络空间资产搜索引擎
@@ -80,6 +89,7 @@
 
 - [Hybrid-Analysis](https://www.hybrid-analysis.com/)
 - [微步云沙箱](https://s.threatbook.com/)
+- <https://app.any.run/>（要注册）
 
 ### 浏览器沙箱
 
