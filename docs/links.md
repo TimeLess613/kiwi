@@ -62,6 +62,7 @@
 - [ViewDNS](https://viewdns.info/)
 - <https://site.ip138.com/> （国际版：<https://dnsdblookup.com/>）
     - 域名解析历史
+- <https://securityheaders.com/>：分析 HTTP 响应标头并提供目标站点安全状况的基本分析。
 
 
 ## have Domain
@@ -70,6 +71,7 @@
 - <https://www.whoxy.com/>
 - <https://whois.domaintools.com/>
 - <https://whois.gandi.net/>
+- <https://searchdns.netcraft.com/>
 
 
 ## have IP
