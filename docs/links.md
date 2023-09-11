@@ -54,7 +54,7 @@
 
 ## have IP/Domain
 
-- <https://check-host.net/>
+- 多地ping：<https://check-host.net/>
 - DB：<https://securitytrails.com/>
     - 域名解析历史、子域
     - IP反查域名
@@ -113,7 +113,8 @@
 
 ## 客户端识别
 
-- UA识别：<https://explore.whatismybrowser.com/useragents/parse/>
+- UA识别：[WhatIsMyBrowser](https://explore.whatismybrowser.com/useragents/parse/)
+- 钓鱼生成：[Canarytokens](https://canarytokens.org/generate)
 - [FingerprintJS](https://github.com/fingerprintjs/fingerprintjs)
 
 
