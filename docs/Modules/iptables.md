@@ -30,9 +30,11 @@ sudo iptables -t nat -A POSTROUTING -o enumad -s 10.10.10.20 -j MASQUERADE
 ```
 
 - `-j MASQUERADE`：动态地对源地址进行网络地址转换（SNAT），用于实现源地址伪装，使其看起来好像是从转发规则出口的接口发送的。*在一个网络中，当你有多个主机通过一个公共IP地址连接到互联网时，你需要使用NAT来转换网络数据包的源地址和目标地址。这使得数据包在从私有网络传输到公共网络时，看起来好像是由NAT设备（通常是路由器）发送的，而不是来自于原始的主机。*
-- 似乎Linux上的 `IP MASQUERADE` 就是一般意义上的 `NAPT`
+- Linux上的 `IP MASQUERADE` 就是一般意义上的 `NAPT`
+- 与方法2类似，可理解为方法1指定出口的源IP为接口并配置MASQUERADE，而方法2直接指定源IP为接口的IP。
 
 #### 方法2
+
 
 ```bash
 sudo iptables -t nat -A PREROUTING -s 10.10.10.20 -d 10.10.10.10 -j DNAT --to-destination 10.50.47.202
