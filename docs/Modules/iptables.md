@@ -49,6 +49,10 @@ sudo iptables -A FORWARD -i enumad -o eth0 -d 10.10.10.20 -m state --state RELAT
 sudo iptables -t nat -A POSTROUTING -o enumad -s 10.10.10.20 -j MASQUERADE
 ```
 
+> - 这个方法是最详细的，包括了防火墙规则和NAT规则。
+> - 前两条规则用于允许从10.10.10.20到10.50.47.202的流量通过防火墙。第一条规则允许出站流量，第二条规则允许相关或已建立的流量返回。
+> - 第三条规则使用MASQUERADE对流量进行NAT（同方法1的第二条规则），以便从10.10.10.20发送的流量经过enumad接口时具有伪装的源IP地址。
+
 ### 其他命令
 
 - 确认配置的NAT表：`sudo iptables -t nat -L`
