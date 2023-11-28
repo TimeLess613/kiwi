@@ -55,8 +55,8 @@ PORT      STATE SERVICE VERSION
 - robots.txt：无
 - .git/config：无
 - 网页信息：无特别发现
-- 网页功能：xxxx
 - 网页源码：无特别发现
+- 网页功能：xxxx
 - 子域枚举：无特别发现
 - 目录枚举：无特别发现
 
