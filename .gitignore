@@ -3,4 +3,5 @@ site
 docs/WriteUp/*-active.md
 # But should the word active be placed as a prefix or as a suffix?
 docs/WriteUp/HTB-active-*.md
-docs/WriteUp/AttackPath/orig-xmind
+
+docs/WriteUp/AttackPath/*.xmind
