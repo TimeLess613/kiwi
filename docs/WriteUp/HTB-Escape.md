@@ -4,6 +4,15 @@
 
 ---
 
+## Summary
+
+*`OS: Windows` `Difficulty: Medium`*
+
+### Attack Path Overview
+
+![attack-path](./AttackPath/HTB-Escape.png){ width='450' }
+
+
 ## 扫描
 
 由于是Windows机器且是Medium，姑且扫一下全端口吧
