@@ -30,7 +30,7 @@ nav:
   - 后渗透:
       - 权限维持: PostExploitation/Persistence.md
       - 痕迹清理: PostExploitation/ClearingTracks.md
-  - 模块: 
+  - Resources: 
       - nmap: Modules/nmap.md
       - Burpsuite: Modules/burpsuite.md
       - Metasploit: Modules/metasploit.md
