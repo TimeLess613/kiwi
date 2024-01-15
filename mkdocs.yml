@@ -7,6 +7,57 @@ repo_url: https://github.com/TimeLess613/kiwi
 edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
 # copyright:
 
+
+# --- config ---
+theme:
+  name: material
+  language: zh
+  palette:
+    primary: white
+    accent: red
+    scheme: preference
+  icon:
+    repo: fontawesome/brands/github-alt
+  # logo: static/img/logo.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+  font:
+    text: Noto Sans
+    code: Source Code Pro
+plugins:
+  - glightbox
+  - search
+  - tags
+  # - minify:
+  #     minify_html: true
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+#   - md_in_html
+extra_javascript:
+  - static/js/extra.js
+extra_css:
+  - static/css/extra.css
+
+# --- End of config ---
+
+
+
 # Naming convention: UpperCamelCase/PascalCase for dir and that's main page. 
 nav:
   - 主页: 
@@ -62,51 +113,3 @@ nav:
       - HTB-Codify: WriteUp/HTB-Codify.md
       - HTB-Hospital: WriteUp/HTB-Hospital.md
       - HTB-Devvortex: WriteUp/HTB-Devvortex.md
-      
-
-
-
-theme:
-  name: material
-  language: zh
-  palette:
-    primary: white
-    accent: red
-    scheme: preference
-  icon:
-    repo: fontawesome/brands/github-alt
-  # logo: static/img/logo.png
-  features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - search.share
-    - content.code.copy
-  font:
-    text: Noto Sans
-    code: Source Code Pro
-plugins:
-  - glightbox
-  - search
-  - tags
-  # - minify:
-  #     minify_html: true
-
-markdown_extensions:
-  - toc:
-      permalink: true
-  - attr_list
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-#   - md_in_html
-extra_javascript:
-  - static/js/extra.js
-extra_css:
-  - static/css/extra.css
