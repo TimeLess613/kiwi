@@ -90,6 +90,7 @@ theme:
 plugins:
   - glightbox
   - search
+  - tags
   # - minify:
   #     minify_html: true
 
