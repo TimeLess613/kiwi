@@ -80,6 +80,7 @@
 - <https://whois.domaintools.com/>
 - <https://whois.gandi.net/>
 - <https://searchdns.netcraft.com/>
+- ICP备案查询：<https://beian.miit.gov.cn/#/Integrated/recordQuery>
 
 
 ## have IP
