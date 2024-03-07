@@ -13,6 +13,12 @@
 ![HackTheBox](https://www.hackthebox.com/badge/image/688543)
 
 
+## Credly
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="22441f3b-1b15-4c88-8d1c-ea093558dcca" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e52c4cc0-ffb8-4099-8c39-255b16ce434c" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
 
 ---
 
