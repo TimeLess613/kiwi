@@ -1,10 +1,4 @@
 
-## 近况
-
-- 2023年5月6日：CEHv11 合格（*Certification Number: ECC0935718624*）
-
-    ![meme](./static/img/meme-CEH.JPG){ width='450' }
-
 
 ## 靶机平台
 
@@ -13,11 +7,18 @@
 ![HackTheBox](https://www.hackthebox.com/badge/image/688543)
 
 
-## Credly
+## Certificates 
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="22441f3b-1b15-4c88-8d1c-ea093558dcca" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e52c4cc0-ffb8-4099-8c39-255b16ce434c" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+
+<div>
+  <img src="./static/img/ECC0935718624.png" alt="CEH_2E345519D3F7" style="width: 15%; margin-right: 2%;">
+  <img src="./static/img/meme-CEH.JPG" alt="meme" style="width: 35%;">
+</div>
+
 
 
 ---
