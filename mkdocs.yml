@@ -12,13 +12,13 @@ edit_uri: https://github.com/TimeLess613/kiwi/tree/main/docs
 theme:
   name: material
   language: zh
+  icon:
+    repo: fontawesome/brands/github-alt
+  # logo: static/img/logo.png
   palette:
     primary: white
     accent: red
     scheme: preference
-  icon:
-    repo: fontawesome/brands/github-alt
-  # logo: static/img/logo.png
   features:
     - navigation.tabs
     - navigation.tabs.sticky
