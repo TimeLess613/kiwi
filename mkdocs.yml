@@ -27,6 +27,7 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
+    - header.autohide
   font:
     text: Noto Sans
     code: Source Code Pro
