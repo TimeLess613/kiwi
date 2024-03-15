@@ -2,9 +2,9 @@
 
 ## 靶机平台
 
-<script src="https://tryhackme.com/badge/585269"></script> 
-
 ![HackTheBox](https://www.hackthebox.com/badge/image/688543)
+
+<script src="./static/js/THM_badge_585269.js"></script> 
 
 
 ## Certificates 
