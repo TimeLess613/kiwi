@@ -93,7 +93,7 @@ PORT      STATE SERVICE VERSION
 
 - IP、端口
 - 用户家目录的隐藏文件：无
-- 有当前用户的凭据所以先看了眼 `sudo -l`：没有sudo可执行
+- `sudo -l`：没有sudo可执行
 - SUID：无特别发现
 - cron：有个php引人注目，不过内容是清理会话。也无其他特别发现
 
