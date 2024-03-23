@@ -91,6 +91,7 @@ PORT      STATE SERVICE VERSION
 
 基础信息收集一把梭：
 
+- IP、端口
 - 用户家目录的隐藏文件：无
 - 有当前用户的凭据所以先看了眼 `sudo -l`：没有sudo可执行
 - SUID：无特别发现
