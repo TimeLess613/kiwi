@@ -63,7 +63,7 @@ PORT      STATE SERVICE VERSION
 - 网页源码：无特别发现
 - 网页功能：xxxx
 - 子域枚举：无域名/无特别发现
-- 目录枚举：无特别发现
+- 目录枚举：`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.11.8:5000/`，无特别发现
 
 ### 研究网页功能
 
@@ -93,7 +93,7 @@ PORT      STATE SERVICE VERSION
 - 用户家目录的隐藏文件：无
 - `sudo -l`：没有sudo可执行
 - SUID：无特别发现
-- cron：有个php引人注目，不过内容是清理会话。也无其他特别发现
+- cron：`crontab -l`，`ls /etc/cron*`，无特别发现
 
 ### PoC (CVE-yyyy-xxxx)
 
