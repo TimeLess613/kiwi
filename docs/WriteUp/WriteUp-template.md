@@ -1,13 +1,13 @@
 ---
 tags:
-  - tag1
-  - tag2
+  - Linux/Windows
+  - Easy/Medium
   - tag3
 ---
 
 # Write Up 模板
 
-（模板更新：2023/07/29）
+（模板更新：2024/04/14）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板。
 - 可能我对WP这个词的理解有偏差，更应该说是我自己的打靶、学习笔记，所以会记录许多踩坑与思路等废话。
@@ -23,8 +23,6 @@ tags:
 ---
 
 ## Summary
-
-*`OS: Linux/Windows` `Difficulty: Easy/Medium`*
 
 xxx
 
