@@ -218,7 +218,7 @@ def sendmessage(email, subject, message, ip):
 
 ### 转战主站表单注入
 
-burp里首先用ping验证一下，收到ping。（不过不知道为什么开头有几行由我kali发起的请求？）
+burp里首先用ping验证一下，收到ping。（不过不知道为什么开头有几行由我kali发起的请求？ *:2024/5/18:因为是我连接网页发送payload，开头几行是连接网页时的三次握手以及发送数据包（S代表SYN，.代表ACK，P代表PSH）。*）
 
 payload：`name=admin&email=admin@test.lab;ping 10.xx.xx.xx&subject=asdf&message=asdf`  
 响应：
