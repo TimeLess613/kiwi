@@ -16,9 +16,29 @@ theme:
     repo: fontawesome/brands/github-alt
   # logo: static/img/logo.png
   palette:
-    primary: white
-    accent: red
-    scheme: preference
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: cyan
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -31,12 +51,6 @@ theme:
   font:
     text: Noto Sans
     code: Source Code Pro
-plugins:
-  - glightbox
-  - search
-  - tags
-  # - minify:
-  #     minify_html: true
 
 markdown_extensions:
   - toc:
@@ -50,6 +64,16 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
 #   - md_in_html
+
+plugins:
+  - glightbox
+  - search
+  - tags
+  # - roamlinks
+  # - blog
+  # - minify:
+  #     minify_html: true
+
 extra_javascript:
   - static/js/extra.js
 extra_css:
