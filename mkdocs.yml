@@ -88,7 +88,7 @@ nav:
   - 主页: 
       - Home: index.md
       - ToolLinks: tool-links.md
-      - 配色变更: material_color_palette.md
+      - 配色变更: material-color-palette.md
   - 基础概念: BasicConcept/BasicConcept.md
   - 信息收集: 
       - 简介: InformationGathering/InformationGathering.md
