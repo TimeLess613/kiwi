@@ -87,7 +87,7 @@ extra_css:
 nav:
   - 主页: 
       - Home: index.md
-      - Links: links.md
+      - ToolLinks: tool-links.md
       - 配色变更: material_color_palette.md
   - 基础概念: BasicConcept/BasicConcept.md
   - 信息收集: 
