@@ -43,6 +43,8 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
+    # - navigation.sections
+    - navigation.path
     - search.suggest
     - search.highlight
     - search.share
