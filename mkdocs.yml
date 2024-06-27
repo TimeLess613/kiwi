@@ -43,7 +43,6 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
-    # - navigation.sections
     - navigation.path
     - search.suggest
     - search.highlight
@@ -58,6 +57,7 @@ markdown_extensions:
   - toc:
       permalink: true
   - attr_list
+  - def_list
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -71,7 +71,7 @@ plugins:
   - glightbox
   - search
   - tags
-  # - roamlinks
+  - roamlinks
   # - blog
   # - minify:
   #     minify_html: true
@@ -88,57 +88,62 @@ extra_css:
 # Naming convention: UpperCamelCase/PascalCase for dir and that's main page. 
 nav:
   - 主页: 
-      - Home: index.md
-      - ToolLinks: tool-links.md
-      - 配色变更: material-color-palette.md
+    - Home: index.md
+    - ToolLinks: tool-links.md
+    - 配色变更: material-color-palette.md
   - 基础概念: BasicConcept/BasicConcept.md
   - 信息收集: 
-      - 简介: InformationGathering/InformationGathering.md
-      - 踩点: InformationGathering/footprinting.md
-      - 扫描: InformationGathering/scanning.md
-      - 枚举: InformationGathering/enumerate.md
-      - 思路: InformationGathering/summary.md
+    - 简介: InformationGathering/InformationGathering.md
+    - 踩点: InformationGathering/footprinting.md
+    - 扫描: InformationGathering/scanning.md
+    - 枚举: InformationGathering/enumerate.md
+    - 思路: InformationGathering/summary.md
   - 初始访问: 
-      - 简介: InitialAccess/InitialAccess.md
-      - WEB: InitialAccess/web.md
+    - 简介: InitialAccess/InitialAccess.md
+    - WEB: InitialAccess/web.md
   - 提权:
-      - 简介: PrivilegeEscalation/PrivilegeEscalation.md
-      - Linux: PrivilegeEscalation/waiting.md
-      - Windows: PrivilegeEscalation/waiting.md
+    - 简介: PrivilegeEscalation/PrivilegeEscalation.md
+    - Linux: PrivilegeEscalation/waiting.md
+    - Windows: PrivilegeEscalation/waiting.md
   - 后渗透:
-      - 权限维持: PostExploitation/Persistence.md
-      - 痕迹清理: PostExploitation/ClearingTracks.md
+    - 权限维持: PostExploitation/Persistence.md
+    - 痕迹清理: PostExploitation/ClearingTracks.md
   - Resources: 
-      # - Linux:
-      #   - Linux命令: Resources/Linux/linux_command.md
-      - nmap: Resources/nmap.md
-      - Burpsuite: Resources/burpsuite.md
-      - Metasploit: Resources/metasploit.md
-      - SliverC2: Resources/sliver_c2.md
-      - Viper: Resources/viper.md
-      - Enumerate_Tools: Resources/enumerate_tools.md
-      - sqlmap: Resources/sqlmap.md
-      - Tunneling: Resources/tunneling.md
-      - iptables: Resources/iptables.md
+    # - Linux:
+    #   - Linux命令: Resources/Linux/linux_command.md
+    - nmap: Resources/nmap.md
+    - Burpsuite: Resources/burpsuite.md
+    - Metasploit: Resources/metasploit.md
+    - SliverC2: Resources/sliver_c2.md
+    - Viper: Resources/viper.md
+    - Enumerate_Tools: Resources/enumerate_tools.md
+    - sqlmap: Resources/sqlmap.md
+    - Tunneling: Resources/tunneling.md
+    - iptables: Resources/iptables.md
   - 靶机WriteUp: 
-      - WP模板: WriteUp/WriteUp-template.md
-      - HTB-Precious: WriteUp/HTB-Precious.md
-      - HTB-Shoppy: WriteUp/HTB-Shoppy.md
-      - HTB-Soccer: WriteUp/HTB-Soccer.md
-      - HTB-MetaTwo: WriteUp/HTB-MetaTwo.md
-      - HTB-Ambassador: WriteUp/HTB-Ambassador.md
-      - HTB-APT: WriteUp/HTB-APT.md
-      - HTB-MonitorsTwo: WriteUp/HTB-MonitorsTwo.md
-      - HTB-Busqueda: WriteUp/HTB-Busqueda.md
-      - HTB-PC: WriteUp/HTB-PC.md
-      - HTB-Inject: WriteUp/HTB-Inject.md
-      - HTB-Stocker: WriteUp/HTB-Stocker.md
-      - HTB-OnlyForYou: WriteUp/HTB-OnlyForYou.md
-      - HTB-Escape: WriteUp/HTB-Escape.md
-      - HTB-Topology: WriteUp/HTB-Topology.md
-      - HTB-Pilgrimage: WriteUp/HTB-Pilgrimage.md
-      - HTB-Sau: WriteUp/HTB-Sau.md
-      - HTB-Authority: WriteUp/HTB-Authority.md
-      - HTB-Codify: WriteUp/HTB-Codify.md
-      - HTB-Hospital: WriteUp/HTB-Hospital.md
-      - HTB-Devvortex: WriteUp/HTB-Devvortex.md
+    - WP模板: WriteUp/WriteUp-template.md
+    - HTB-Precious: WriteUp/HTB-Precious.md
+    - HTB-Shoppy: WriteUp/HTB-Shoppy.md
+    - HTB-Soccer: WriteUp/HTB-Soccer.md
+    - HTB-MetaTwo: WriteUp/HTB-MetaTwo.md
+    - HTB-Ambassador: WriteUp/HTB-Ambassador.md
+    - HTB-APT: WriteUp/HTB-APT.md
+    - HTB-MonitorsTwo: WriteUp/HTB-MonitorsTwo.md
+    - HTB-Busqueda: WriteUp/HTB-Busqueda.md
+    - HTB-PC: WriteUp/HTB-PC.md
+    - HTB-Inject: WriteUp/HTB-Inject.md
+    - HTB-Stocker: WriteUp/HTB-Stocker.md
+    - HTB-OnlyForYou: WriteUp/HTB-OnlyForYou.md
+    - HTB-Escape: WriteUp/HTB-Escape.md
+    - HTB-Topology: WriteUp/HTB-Topology.md
+    - HTB-Pilgrimage: WriteUp/HTB-Pilgrimage.md
+    - HTB-Sau: WriteUp/HTB-Sau.md
+    - HTB-Authority: WriteUp/HTB-Authority.md
+    - HTB-Codify: WriteUp/HTB-Codify.md
+    - HTB-Hospital: WriteUp/HTB-Hospital.md
+    - HTB-Devvortex: WriteUp/HTB-Devvortex.md
+  - BlueTeam:
+    - Splunk:
+      - SPL memo: BlueTeam/Splunk/spl-memo.md
+      - Splunk知识点: BlueTeam/Splunk/splunk-memo.md
+      - Knowledge Object: BlueTeam/Splunk/knowledge-object.md
