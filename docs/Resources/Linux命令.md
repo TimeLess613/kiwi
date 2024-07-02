@@ -77,7 +77,7 @@ https://explainshell.com/
 
 `echo $'{\"username\":\"a\",\"password\":\"a\"}'`
 
-![[Pasted image 20240310160123.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240310160123.png]]
 
 
 
@@ -236,7 +236,7 @@ find / \( -path /proc -o -path /run \) -prune -o \( -user $(id -un) -o -group $(
 	- 没有`{文件}`则读取标准输入
 
 **要grep带两个短横线`--`的（如help页面），不能直接搜`"--"`而需要`grep -- "--"`：**  
-![[Pasted image 20240311163220.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240311163220.png]]
 
 - 可对压缩文件的grep（对未压缩文件也有效）：`zgrep  {pattern} {文件}`。
  ^02828b
@@ -473,7 +473,7 @@ world
 - 默认选项：`-e`，只输出在终端，而不改变文件
 - `-i`：直接修改文件，而不输出在终端
 
-![[Pasted image 20240310224233.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240310224233.png]]
 
 - $表示最后一行
 - ‘$aString’表示最后一行增加。必须用单引号！因为双引号会以为是调用变量？
@@ -481,7 +481,7 @@ world
 	- **踩坑**：可能涉及权限不够问题，因为sed是首先编辑好临时文件然后用临时文件替换源文件。
 
 **正则**
-![[Pasted image 20240310224318.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240310224318.png]]
 
 
 ### awk
@@ -510,7 +510,7 @@ world
 
 #### NR与FNR
 
-![[Pasted image 20240311172420.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240311172420.png]]
 
 #### 指定输出分隔符（OFS）
 
@@ -765,7 +765,7 @@ reboot
 
 #### [[Linux发行版#Debain系列]]
 
-![[Pasted image 20240311181744.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240311181744.png]]
 
 **重启命令2：**`sudo service networking restart`
 
@@ -818,7 +818,7 @@ CentOS6及之前都在用这个，CentOS7开始用新的命令：[[Linux命令#f
 
 
 理解：
-![[Pasted image 20240311165707.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240311165707.png]]
 
 
 
