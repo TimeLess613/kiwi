@@ -120,6 +120,7 @@ nav:
     - sqlmap: Resources/sqlmap.md
     - Tunneling: Resources/tunneling.md
     - iptables: Resources/iptables.md
+    - 简单网络服务: Resources/simple-network-service.md
   - 靶机WriteUp: 
     - WP模板: WriteUp/WriteUp-template.md
     - HTB-Precious: WriteUp/HTB-Precious.md
