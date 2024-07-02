@@ -128,8 +128,8 @@ field extractor自动帮我们构建正则表达式。
 
 #### 添加参数
 
-另外：可以用fieldformat来让结果可以用数字顺序排列。用eval的话则是以字母排列。
-![[Untitled (2).png]]
+另外：可以用fieldformat来让结果可以用数字顺序排列。用eval的话则是以字母排列。  
+![[static/img/ATTACHMENTS/splunk-macros.png]]
 
 
 ## [命名约定](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Developnamingconventionsforknowledgeobjecttitles)

@@ -336,8 +336,8 @@ foreach后指定要循环的字段（可用通配符）
 
 ### 常见functions
 
-![[Untitled.png]]
-![[Untitled (1).png]]
+![[static/img/ATTACHMENTS/splunk-functions-1.png]]
+![[static/img/ATTACHMENTS/splunk-functions-2.png]]
 
 ### [Conversion类——字符串格式化](https://docs.splunk.com/Documentation/Splunk/9.2.0/SearchReference/ConversionFunctions)
 
@@ -346,7 +346,7 @@ foreach后指定要循环的字段（可用通配符）
 
 ### spath
 
-![[Pasted image 20240304184920.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240304184920.png]]
 
 - 最好都指定：input/output是指定字段，而path是指定路径
 - 指定子路径/key用点或方括号（即字典/json，所以可以用点分形式，也可以用list['key']形式）
@@ -408,15 +408,16 @@ foreach后指定要循环的字段（可用通配符）
 
 - searchmatch()
 - cidrmatch()：判断指定字段是否匹配CIDR。
-	![[Untitled 1.png]]
+	![[static/img/ATTACHMENTS/splunk-cidrmatch.png]]
 - match()：正则匹配。
 
 
 #### replace
 
 `replace(<literal string/field>, <regex pattern>, <subsititution>)`
+
 下例，用\1或\2来捕获/传递regex中的分组使其保持原样，替换掉中间部分。
-	![[Untitled (1) 1.png]]
+	![[static/img/ATTACHMENTS/splunk-replace.png]]
 
 #### coalesce：合并
 
@@ -511,7 +512,7 @@ index=…
 
 #### GUI
 
-![[Pasted image 20240304183118.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240304183118.png]]
 
 ### 注意（没懂）
 
@@ -538,7 +539,7 @@ Auto-Extracted：只能在root dataset使用
 
 - `summariesonly=t`：仅搜索以TSIDX格式汇总的数据——即不搜索raw data
 - 也可以这样搜（结构如下，from方式好像主要用于相关search）：`| from datamodel Endpoint.Ports`
-	![[Pasted image 20240304183545.png]]
+	![[static/img/ATTACHMENTS/Pasted image 20240304183545.png]]
 
 ### 时间范围指定
 
@@ -579,7 +580,7 @@ datamodel不可用earliest那种，需要 `where relative_time()`
 
 ### datamodel转tstat
 
-![[Pasted image 20240304183901.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240304183901.png]]
 
 
 
@@ -608,7 +609,7 @@ index="ad_pisc_japan" sourcetype="ALOG_ACCESS_AD" action="LOGON-Failure"
 
 ## 从splunk的conf看字段变换
 
-![[Pasted image 20240304184614.png]]
+![[static/img/ATTACHMENTS/Pasted image 20240304184614.png]]
 
 
 ## bin
