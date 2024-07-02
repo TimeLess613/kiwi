@@ -109,6 +109,7 @@ nav:
     - 权限维持: PostExploitation/Persistence.md
     - 痕迹清理: PostExploitation/ClearingTracks.md
   - Resources: 
+    - Linux命令: Resources/Linux命令.md
     - nmap: Resources/nmap.md
     - Burpsuite: Resources/burpsuite.md
     - Metasploit: Resources/metasploit.md
