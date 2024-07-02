@@ -49,6 +49,7 @@ theme:
     - search.share
     - content.code.copy
     - header.autohide
+    - toc.follow
   font:
     text: Noto Sans
     code: Source Code Pro
