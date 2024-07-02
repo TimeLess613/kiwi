@@ -554,7 +554,7 @@ datamodel不可用earliest那种，需要 `where relative_time()`
 
 
 
-## tstat
+## tstats
 
 - 用于统计Tsidx文件的。如果Tsidx文件没有目标字段，搜索则不会返回结果。
 - 使用from从特定data model拉取event。
