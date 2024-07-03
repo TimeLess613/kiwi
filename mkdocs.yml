@@ -152,6 +152,9 @@ nav:
     - HTB-Codify: WriteUp/HTB-Codify.md
     - HTB-Hospital: WriteUp/HTB-Hospital.md
     - HTB-Devvortex: WriteUp/HTB-Devvortex.md
+    - HTB-Surveillance: WriteUp/HTB-Surveillance.md
+    - HTB-Jab: WriteUp/HTB-Jab.md
+    # - HTB-Headless: WriteUp/HTB-Headless.md
   - BlueTeam:
     - Splunk:
       - SPL memo: BlueTeam/Splunk/SPL memo.md

@@ -4,11 +4,6 @@ tags:
   - HTB/Easy
 ---
 
-**Waiting for machine retire...**
-
-
----
-
 ## 扫描
 
 将自己侦查时常用的命令写了个脚本：[工作流](./HTB-Busqueda.md#workflow-scan)

@@ -36,7 +36,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-template.png){ width='450' }
+![attack-path](./AttackPath/HTB-template.png){ width='500' }
 
 
 ## External Recon - nmap
