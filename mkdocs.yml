@@ -110,7 +110,16 @@ nav:
     - 权限维持: PostExploitation/Persistence.md
     - 痕迹清理: PostExploitation/ClearingTracks.md
   - Resources: 
-    - Linux命令: Resources/Linux命令.md
+    - Linux:
+      - Linux命令: Resources/Linux/Linux命令.md
+      - Linux文件权限: Resources/Linux/Linux文件权限.md
+      - 分区: Resources/Linux/分区.md
+      - 命令风格: Resources/Linux/命令风格.md
+      - Linux发行版: Resources/Linux/Linux发行版.md
+      - 换行符: Resources/Linux/换行符.md
+      - 配置Linux图形桌面连接: Resources/Linux/配置Linux图形桌面连接.md
+    - General:
+      - 正则表达式: Resources/General/正则表达式.md
     - nmap: Resources/nmap.md
     - Burpsuite: Resources/burpsuite.md
     - Metasploit: Resources/metasploit.md
