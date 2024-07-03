@@ -1,5 +1,7 @@
-*Difficulty: Easy*
-
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
 ---
 
 ## 扫描

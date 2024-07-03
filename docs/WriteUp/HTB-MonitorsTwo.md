@@ -1,4 +1,8 @@
-*Difficulty: Easy*
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
 
 考完CEH，久违地回来打一打靶。都有点忘了怎么操作了……
 

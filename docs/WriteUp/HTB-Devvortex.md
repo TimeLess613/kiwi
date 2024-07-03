@@ -1,7 +1,12 @@
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
+
 ## Summary
 
-*`OS: Linux` `Difficulty: Easy`*
-
+...
 
 ### Relevant Skills
 

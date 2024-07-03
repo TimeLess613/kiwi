@@ -1,9 +1,12 @@
+---
+tags:
+  - HTB/Windows
+  - HTB/Medium
+---
+
 ## Summary
 
-*`OS: Windows` `Difficulty: Medium`*
-
-xxx
-
+...
 ### Attack Path Overview
 
 ![attack-path](./AttackPath/HTB-Authority.png){ width='450' }

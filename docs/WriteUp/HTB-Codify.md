@@ -1,7 +1,10 @@
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
 
 ## Summary
-
-*`OS: Linux` `Difficulty: Easy`*
 
 以简单的知识点也能构建出这么巧妙的一台，非常有趣。
 

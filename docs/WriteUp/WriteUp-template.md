@@ -1,8 +1,9 @@
 ---
 tags:
-  - Linux/Windows
-  - Easy/Medium
-  - tag3
+  - HTB/Easy
+  - HTB/Linux
+  - HTB/Medium
+  - HTB/Windows
 ---
 
 # Write Up 模板
@@ -24,7 +25,7 @@ tags:
 
 ## Summary
 
-xxx
+...
 
 ### Relevant Skills
 

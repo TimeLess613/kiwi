@@ -1,4 +1,8 @@
-*`OS: Linux/Windows` `Difficulty: Easy`*
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
 
 **由于有部分是边写边打，有部分是打了后写，所以靶机IP和payload细节（如id、token的值）会有差异。**
 

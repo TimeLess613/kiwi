@@ -1,6 +1,11 @@
+---
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
+
 **Waiting for machine retire...**
 
-*Difficulty: Easy*
 
 ---
 

@@ -1,11 +1,12 @@
-*Difficulty: Easy*
-
 ---
-
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
 
 ## Summary
 
-xxx
+...
 
 ### Attack Path Overview
 

@@ -1,8 +1,12 @@
+---
+tags:
+  - HTB/Windows
+  - HTB/Medium
+---
+
 ## Summary
 
-*`OS: Windows` `Difficulty: Medium`*
-
-xxx
+...
 
 ### Relevant Skills
 

@@ -1,5 +1,7 @@
-*Difficulty: Medium*
-
+---
+tags:
+  - HTB/Linux
+  - HTB/Medium
 ---
 
 ## 扫描

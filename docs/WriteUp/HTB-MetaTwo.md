@@ -1,7 +1,8 @@
-*Difficulty: Easy*
-
 ---
-
+tags:
+  - HTB/Linux
+  - HTB/Easy
+---
 ## 扫描
 
 先用自己写的[这个脚本](./HTB-Shoppy.md#htb_easy_firstscaning)进行首先的基础扫描

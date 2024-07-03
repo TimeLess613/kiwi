@@ -1,4 +1,8 @@
-*Difficulty: Medium*
+---
+tags:
+  - HTB/Windows
+  - HTB/Medium
+---
 
 第一次打Windows的靶机……也是边打边学了。
 
@@ -6,7 +10,7 @@
 
 ## Summary
 
-*`OS: Windows` `Difficulty: Medium`*
+...
 
 ### Attack Path Overview
 
