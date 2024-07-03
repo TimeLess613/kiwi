@@ -5,7 +5,7 @@ tags:
 
 ## 命令解释网址
 
-https://explainshell.com/
+<https://explainshell.com/>
 
 ## 终端快捷键
 
