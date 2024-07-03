@@ -154,6 +154,6 @@ nav:
     - HTB-Devvortex: WriteUp/HTB-Devvortex.md
   - BlueTeam:
     - Splunk:
-      - SPL memo: BlueTeam/Splunk/spl-memo.md
+      - SPL memo: BlueTeam/Splunk/SPL memo.md
       - Splunk知识点: BlueTeam/Splunk/Splunk知识点.md
-      - Knowledge Object: BlueTeam/Splunk/knowledge-object.md
+      - Knowledge Object: BlueTeam/Splunk/Knowledge Object.md

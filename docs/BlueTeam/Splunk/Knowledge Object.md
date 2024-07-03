@@ -1,3 +1,8 @@
+---
+tags:
+  - IT/Splunk
+  - IT/蓝队
+---
 Knowledge Objects是一组用于发现和分析数据的工具。即splunk界面中，点设定，其中第一个大分类就叫Knowledge！
 
 - 权限：即私人、某个APP、所有APP——所以反推，能调整这些权限的都算Knowledge Object。
@@ -128,8 +133,9 @@ field extractor自动帮我们构建正则表达式。
 
 #### 添加参数
 
-另外：可以用fieldformat来让结果可以用数字顺序排列。用eval的话则是以字母排列。  
-![[static/img/ATTACHMENTS/splunk-macros.png]]
+另外：可以用fieldformat来让结果可以用数字顺序排列。用eval的话则是以字母排列。
+
+![[splunk-macros.png]]
 
 
 ## [命名约定](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Developnamingconventionsforknowledgeobjecttitles)

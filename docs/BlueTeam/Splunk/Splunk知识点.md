@@ -1,3 +1,8 @@
+---
+tags:
+  - IT/Splunk
+  - IT/蓝队
+---
 
 ## Search time operations sequence
 
