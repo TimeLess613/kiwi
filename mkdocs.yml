@@ -88,9 +88,9 @@ extra_css:
 
 # Naming convention: UpperCamelCase/PascalCase for dir and that's main page. 
 nav:
-  - 主页: 
-    - Home: index.md
-    - ToolLinks: tool-links.md
+  - Home: 
+    - 主页: index.md
+    - Tool Links: tool-links.md
     - 配色变更: material-color-palette.md
   - 基础概念: BasicConcept/BasicConcept.md
   - 信息收集: 
@@ -110,6 +110,16 @@ nav:
     - 权限维持: PostExploitation/Persistence.md
     - 痕迹清理: PostExploitation/ClearingTracks.md
   - Resources: 
+    - nmap: Resources/nmap.md
+    - Burpsuite: Resources/burpsuite.md
+    - Metasploit: Resources/metasploit.md
+    - SliverC2: Resources/sliver_c2.md
+    - Viper: Resources/viper.md
+    - Enumerate Tools: Resources/enumerate_tools.md
+    - sqlmap: Resources/sqlmap.md
+    - Tunneling: Resources/tunneling.md
+    - iptables: Resources/iptables.md
+    - 简单网络服务: Resources/simple-network-service.md
     - Linux:
       - Linux命令: Resources/Linux/Linux命令.md
       - Linux文件权限: Resources/Linux/Linux文件权限.md
@@ -120,16 +130,6 @@ nav:
       - 配置Linux图形桌面连接: Resources/Linux/配置Linux图形桌面连接.md
     - General:
       - 正则表达式: Resources/General/正则表达式.md
-    - nmap: Resources/nmap.md
-    - Burpsuite: Resources/burpsuite.md
-    - Metasploit: Resources/metasploit.md
-    - SliverC2: Resources/sliver_c2.md
-    - Viper: Resources/viper.md
-    - Enumerate_Tools: Resources/enumerate_tools.md
-    - sqlmap: Resources/sqlmap.md
-    - Tunneling: Resources/tunneling.md
-    - iptables: Resources/iptables.md
-    - 简单网络服务: Resources/simple-network-service.md
   - 靶机WriteUp: 
     - WP模板: WriteUp/WriteUp-template.md
     - HTB-Precious: WriteUp/HTB-Precious.md
