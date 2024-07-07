@@ -159,6 +159,7 @@ nav:
     - HTB-Surveillance: WriteUp/HTB-Surveillance.md
     - HTB-Jab: WriteUp/HTB-Jab.md
     # - HTB-Headless: WriteUp/HTB-Headless.md
+    # - HTB-PermX: WriteUp/HTB-PermX.md
   - BlueTeam:
     - Splunk:
       - SPL memo: BlueTeam/Splunk/SPL memo.md
