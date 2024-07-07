@@ -70,7 +70,11 @@ markdown_extensions:
 
 plugins:
   - glightbox
-  - search
+  - search:
+      lang: 
+        - zh
+        - ja
+        - en
   - tags
   - roamlinks
   # - blog
