@@ -158,7 +158,7 @@ nav:
     - HTB-Devvortex: WriteUp/HTB-Devvortex.md
     - HTB-Surveillance: WriteUp/HTB-Surveillance.md
     - HTB-Jab: WriteUp/HTB-Jab.md
-    # - HTB-Headless: WriteUp/HTB-Headless.md
+    - HTB-Headless: WriteUp/HTB-Headless.md
     # - HTB-PermX: WriteUp/HTB-PermX.md
   - BlueTeam:
     - Splunk:
