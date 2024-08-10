@@ -76,7 +76,7 @@ job检查里的 `command.search.lookups`。
 > [!NOTE] 其实有[cidrmatch](https://docs.splunk.com/Documentation/SCS/current/SearchReference/ConditionalFunctions#cidrmatch.28.26lt.3Bcidr.26gt.3B.2C_.26lt.3Bip.26gt.3B.29)
 
 ```sql
-index=dns_pisc_all
+index=dns
 | rex field=src "(?<IP_OCTET123>^\d+\.\d+\.\d+)\.(?<IP_OCTET4>\d+$)"
 | eval CIDR=if(IP_OCTET4<128, IP_OCTET123.".0", IP_OCTET123.".128")
 | lookup infrasec_ip_lookup CIDR OUTPUT Company as src_Company
@@ -607,7 +607,7 @@ datamodel不可用earliest那种，需要 `where relative_time()`
 ### memo&例子
 
 ```sql
-index="ad_pisc_japan" sourcetype="ALOG_ACCESS_AD" action="LOGON-Failure" 
+index="ad" sourcetype="ALOG_ACCESS_AD" action="LOGON-Failure" 
 | bin span=1h _time 
 | stats count as fail_count by  user _time
 | streamstats current=f window=1 last(fail_count) as prev_fail_count by user
