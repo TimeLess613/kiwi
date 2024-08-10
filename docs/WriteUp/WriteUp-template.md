@@ -8,7 +8,7 @@ tags:
 
 # Write Up 模板
 
-（模板更新：2024/04/14）
+（模板更新：2024/08/10）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板。
 - 可能我对WP这个词的理解有偏差，更应该说是我自己的打靶、学习笔记，所以会记录许多踩坑与思路等废话。
@@ -42,7 +42,7 @@ tags:
 ## External Recon - nmap
 
 自用扫描脚本：[工作流](https://github.com/TimeLess613/workflow-scan4HTB/blob/main/workflow-scan4HTB.sh)  
-`curl -s https://raw.githubusercontent.com/TimeLess613/workflow-scan4HTB/main/workflow-scan4HTB.sh | sudo bash -s <HTB-IP>`
+`curl -s https://raw.githubusercontent.com/TimeLess613/workflow-scan4HTB/main/workflow-scan4HTB.sh | sudo bash -s <HTB-MachineName> <HTB_IP>`
 
 开放端口：
 ```
