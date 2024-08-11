@@ -223,7 +223,7 @@ transaction命令会添加2个字段到raw events：
 
 ^fc8c23
 
-over理解为：”相对于xxx字段的每个值”。
+over理解为：“针对”、“对于xxx字段的每个值”。
 
 over的值会显示在行，而by的值显示为列。那么其实over和by没有太大差别，仅仅是展示的效果——即over是x轴，而by表示对统计进行分组
 
