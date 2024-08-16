@@ -8,20 +8,23 @@ tags:
 
 # Write Up 模板
 
-（模板更新：2024/08/10）
+（模板更新：2024/08/16）
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板。
 - 可能我对WP这个词的理解有偏差，更应该说是我自己的打靶、学习笔记，所以会记录许多踩坑与思路等废话。
-- [MetaTwo](../WriteUp/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处。
-- 对于仍在Active的机器，都会在WP开头写上 **Waiting for machine retire...**，表示这边暂时不会给出详细WP。不过会列一些提示，大致上是看官方Forum的话会有的程度。等机器退役后，会更新出详细WP。
+- [MetaTwo](HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处。
+- 对于仍在Active的机器，如果发布的话，都会在WP开头写上 **Waiting for machine retire...**，表示这边暂时不会给出详细WP。不过会列一些提示。等机器退役后，会更新出详细WP。
 
 
-下面是WP模板：
-------------
+## （个人整理用）关于WP的图片处理步骤
 
-**Waiting for machine retire...**
+1. 先直接粘贴图片
+2. 更改图片名称
+3. 将图片移动到`evidence-img/`
+4. 更改WP中的图片链接名为新图片名称——Obsidian会自动链接，但是要注意将WP移动到mkdocs后链接是否需要加上`./evidence-img/`前缀。
 
----
+## 下面是WP模板：：
+
 
 ## Summary
 
@@ -36,7 +39,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-template.png){ width='500' }
+![attack-path](HTB-template.png){ width='500' }
 
 
 ## External Recon - nmap
@@ -92,9 +95,24 @@ PORT      STATE SERVICE VERSION
 
 - IP、端口
 - 用户家目录的隐藏文件：无
+- 环境变量：`env`
 - `sudo -l`：没有sudo可执行
 - SUID：无特别发现
+- 可写文件：`find /etc -writable -ls 2>/dev/null`
 - cron：`crontab -l`，`ls /etc/cron*`，无特别发现
+- 其他目录：
+	- `/interesting_folder`
+	- `/var/www/interesting_folder`
+	- `/var/mail/user_name`
+	- `/opt/interesting_folder`
+	- `/usr/local/interesting_folder`
+	- `/usr/local/bin/interesting_folder`
+	- `/usr/local/share/interesting_folder`
+	- `/etc/hosts`
+	- `/tmp`
+	- `/mnt`
+	- `/media`
+	- `/etc`
 
 ### PoC (CVE-yyyy-xxxx)
 
@@ -111,6 +129,6 @@ PORT      STATE SERVICE VERSION
 
 ## 总结·后记
 
-YYYY/MM/DD
+2024/MM/DD
 
 ……
