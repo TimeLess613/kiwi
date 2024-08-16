@@ -1,9 +1,4 @@
 site
-# Because of links, the active WPs need to be placed at the same dir level, and keep the links as is.
-docs/WriteUp/*-active.md
-# But should the word active be placed as a prefix or as a suffix?
-docs/WriteUp/HTB-active-*.md
-# How about prefix? But actually I want to set prefix to HTB. Because maybe there are other platform.
-docs/WriteUp/active-*.md
 
-docs/WriteUp/AttackPath/*.xmind
+docs/writeup/active/HTB-*
+docs/writeup/attackpath/*.xmind
