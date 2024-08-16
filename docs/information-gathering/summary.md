@@ -23,4 +23,4 @@
 
 ## 域渗透思路
 
-参考这篇WP笔记：[HTB_APT](../WriteUp/HTB-APT.md#_3)
+参考这篇WP笔记：[HTB_APT](./../writeup/retired/HTB-APT.md#_3)

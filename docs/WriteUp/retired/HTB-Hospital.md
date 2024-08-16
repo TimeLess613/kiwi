@@ -17,7 +17,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Hospital.png){ width='450' }
+![attack-path](./../attackpath/HTB-Hospital.png){ width='450' }
 
 
 ## External Recon - nmap
@@ -108,7 +108,7 @@ do_connect: Connection to 10.10.11.241 failed (Error NT_STATUS_RESOURCE_NAME_NOT
 
 注册账号后可以登陆。显示一个上传界面。默认只能上传图片。估计可以绕过上传webshell？
 
-![HTB-Hospital-8080-logined](./evidence-img/HTB-Hospital-8080-logined.png)
+![HTB-Hospital-8080-logined](./../evidence-img/HTB-Hospital-8080-logined.png)
 
 开启Burp拦截，更改webshell文件的扩展名以.jpg结尾，然后拦截请求包删掉.jpg。
 
@@ -378,7 +378,7 @@ smb: \hospital.htb\Policies\> ls {6AC1786C-016F-11D2-945F-00C04fB984F9}\
 
 再次登录，正常显示webmail界面了：
 
-![HTB-Hospital-](./evidence-img/HTB-Hospital-webmail.jpg)
+![HTB-Hospital-](./../evidence-img/HTB-Hospital-webmail.jpg)
 
 有一封邮件，联系人为 `drbrown@hospital.htb`。  
 谷歌一下邮件关键字 `ghostscript eps exploit`，发现下面PoC。
@@ -488,15 +488,15 @@ PS C:\xampp> cat passwords.txt
 想起来有RDP端口开放，Windows还是GUI好操作于是RDP连接，进入后发现有个selenium脚本在执行。以Administrator凭据登陆Webmail网页。  
 静静地看他操作，登录的瞬间IE弹出提示问要不要保存凭据……当然要啊！我已经感觉得应该没几个人是按照我这个路线提权的了！
 
-![HTB-Hospital-selenium-ps](./evidence-img/HTB-Hospital-selenium-ps.png)
+![HTB-Hospital-selenium-ps](./../evidence-img/HTB-Hospital-selenium-ps.png)
 
 *后来试了下关掉powershell会自动重来，所以这种路线也是可以重现的。以及即使没有用浏览器保存凭据，也可以在selenium要输入密码的时候将鼠标点击到其他地方（如用户名输入框），也能看到输入的密码是什么。*
 
-![HTB-Hospital-selenium-web](./evidence-img/HTB-Hospital-selenium-web.png)
+![HTB-Hospital-selenium-web](./../evidence-img/HTB-Hospital-selenium-web.png)
 
 最后在凭据管理器中获得 `Administrator:Th3B3stH0sp1t4l9786!`。
 
-![HTB-Hospital-CredManager](./evidence-img/HTB-Hospital-CredManager.png)
+![HTB-Hospital-CredManager](./../evidence-img/HTB-Hospital-CredManager.png)
 
 
 ## flag: root
@@ -504,7 +504,7 @@ PS C:\xampp> cat passwords.txt
 最后RDP登陆Administrator获得root flag：
 `xfreerdp /cert:ignore /v:10.10.11.241 /u:Administrator /p:'Th3B3stH0sp1t4l9786!'`
 
-![HTB-Hospital-Administrator](./evidence-img/HTB-Hospital-Administrator.png)
+![HTB-Hospital-Administrator](./../evidence-img/HTB-Hospital-Administrator.png)
 
 
 ---

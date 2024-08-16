@@ -593,7 +593,7 @@ sau@pc:~$ curl 127.0.0.1:8000/login?next=http://127.0.0.1:8000/
 本来还弄了个SSH隧道，访问了一下pyLoad网页。  
 尝试了一下默认凭据登陆、SQLi，没什么进展。
 
-![pyLoad](./evidence-img/HTB-PC-SSHtunneling.png)
+![pyLoad](./../evidence-img/HTB-PC-SSHtunneling.png)
 
 然后发现原来有[gitlab项目](https://github.com/pyload/pyload)，能运行命令。
 ```bash

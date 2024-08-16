@@ -19,7 +19,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Jab.png){ width='450' }
+![attack-path](./../attackpath/HTB-Jab.png){ width='450' }
 
 
 ## External Recon - nmap
@@ -166,7 +166,7 @@ configurationNamingContext: CN=Configuration,DC=jab,DC=htb
 没辙了，感觉要研究一下这个Jabber的使用。又看了眼[wiki](https://zh.wikipedia.org/zh-cn/XMPP)说似乎是个聊天软件，以及XMPP是分布式的即时通信系统，然后有客户端服务端什么的。那么下载个客户端，连接目标主机这个服务端应该能发现些什么信息？  
 问了下ChatGPT推荐了个客户端，我选择了使用pidgin。
 
-![HTB-Jab_client](./evidence-img/HTB-Jab_client.png)
+![HTB-Jab_client](./../evidence-img/HTB-Jab_client.png)
 
 <style>
   .flex-container {
@@ -180,33 +180,33 @@ configurationNamingContext: CN=Configuration,DC=jab,DC=htb
 
 **添加账号：**
 <div class="flex-container">
-  <img src="../evidence-img/HTB-Jab-pidgin.png" alt="HTB-Jab-pidgin">
-  <img src="../evidence-img/HTB-Jab-pidgin-1.png" alt="HTB-Jab-pidgin-1">
+  <img src="../../evidence-img/HTB-Jab-pidgin.png" alt="HTB-Jab-pidgin">
+  <img src="../../evidence-img/HTB-Jab-pidgin-1.png" alt="HTB-Jab-pidgin-1">
 </div>
 
 **由于勾选了“在服务器上创建此新账号”，所以要注册：**
 <div class="flex-container">
-  <img src="../evidence-img/HTB-Jab-pidgin-2.png" alt="HTB-Jab-pidgin-2">
-  <img src="../evidence-img/HTB-Jab-pidgin-3.png" alt="HTB-Jab-pidgin-3">
+  <img src="../../evidence-img/HTB-Jab-pidgin-2.png" alt="HTB-Jab-pidgin-2">
+  <img src="../../evidence-img/HTB-Jab-pidgin-3.png" alt="HTB-Jab-pidgin-3">
 </div>
 
 **勾选启用进行连接（似乎刚注册的号需要等一段时间才能连接上）：**  
 然后探索一下这个XMPP客户端能干什么，发现了一个“搜索用户”的选项
 <div class="flex-container">
-  <img src="../evidence-img/HTB-Jab-pidgin-4.png" alt="HTB-Jab-pidgin-4">
-  <img src="../evidence-img/HTB-Jab-pidgin-5.png" alt="HTB-Jab-pidgin-5">
+  <img src="../../evidence-img/HTB-Jab-pidgin-4.png" alt="HTB-Jab-pidgin-4">
+  <img src="../../evidence-img/HTB-Jab-pidgin-5.png" alt="HTB-Jab-pidgin-5">
 </div>
 
 **根据提示，那直接用通配符试试搜索所有用户：**
 <div class="flex-container">
-  <img src="../evidence-img/HTB-Jab-pidgin-6.png" alt="HTB-Jab-pidgin-6">
-  <img src="../evidence-img/HTB-Jab-pidgin-7.png" alt="HTB-Jab-pidgin-7">
+  <img src="../../evidence-img/HTB-Jab-pidgin-6.png" alt="HTB-Jab-pidgin-6">
+  <img src="../../evidence-img/HTB-Jab-pidgin-7.png" alt="HTB-Jab-pidgin-7">
 </div>
 
 **由于无法复制用户清单，而我们又发现有个调试窗口，打开后再次执行刚刚的操作，可以发现调式窗口以XML格式输出了所有用户。点击保存。**
 <div class="flex-container">
-  <img src="../evidence-img/HTB-Jab-pidgin-8.png" alt="HTB-Jab-pidgin-8">
-  <img src="../evidence-img/HTB-Jab-pidgin-9.png" alt="HTB-Jab-pidgin-9">
+  <img src="../../evidence-img/HTB-Jab-pidgin-8.png" alt="HTB-Jab-pidgin-8">
+  <img src="../../evidence-img/HTB-Jab-pidgin-9.png" alt="HTB-Jab-pidgin-9">
 </div>
 
 
@@ -417,8 +417,8 @@ description: The Protected Health Information (PHI) property specifies whether
 
 尝试用这个号登录pidgin，在菜单发现“添加聊天”中有个“聊天室列表”。在其中发现一个叫“pentest2003”的聊天室，里面提到之前的渗透测试中破解了一个带SPN的账号（`svc_openfire:!@#$%^&*(1qazxsw`）。似乎已经删除SPN了，但是没说改密码的事情。可以尝试是否可以利用？
 
-![HTB-Jab-pidgin-10](./evidence-img/HTB-Jab-pidgin-10.png)
-![HTB-Jab-pidgin-11](./evidence-img/HTB-Jab-pidgin-11.png)
+![HTB-Jab-pidgin-10](./../evidence-img/HTB-Jab-pidgin-10.png)
+![HTB-Jab-pidgin-11](./../evidence-img/HTB-Jab-pidgin-11.png)
 
 
 ## svc_openfire凭据下的探索
@@ -434,7 +434,7 @@ description: The Protected Health Information (PHI) property specifies whether
 `nxc ldap 10.10.11.4 -u svc_openfire -p '!@#$%^&*(1qazxsw' --bloodhound -c all -ns 10.10.11.4`
 
 结果输出一个zip文件，然后意识到需要GUI，于是还得[安装完整的bloodhound](https://www.kali.org/tools/bloodhound/)。配置好之后上传zip结果文件，点了点预定义的搜索没发现什么有用的信息（可能主要是不太会用）。最后想到直接搜搜目前拿到的两个域账户，结果发现`svc_openfire`似乎是可利用的：
-![HTB-bloodhound-svc_openfire](./evidence-img/HTB-Jab-bloodhound-svc_openfire.png)
+![HTB-bloodhound-svc_openfire](./../evidence-img/HTB-Jab-bloodhound-svc_openfire.png)
 
 
 ### ExecuteDCOM
@@ -468,11 +468,11 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 ## Initial Access
 
 由于无法输出命令结果到终端，为了验证命令是否真的被执行，于是尝试ping自己并监听网卡，发现收到ping包——即命令可成功执行：
-![HTB-Jab-ping](./evidence-img/HTB-Jab-ping.png)
+![HTB-Jab-ping](./../evidence-img/HTB-Jab-ping.png)
 
 
 接下来就准备反弹shell，成功接收：
-![HTB-Jab-foothold](./evidence-img/HTB-Jab-foothold.png)
+![HTB-Jab-foothold](./../evidence-img/HTB-Jab-foothold.png)
 
 
 
@@ -526,13 +526,13 @@ chisel server -p 12312 --reverse    #Server -- Attacker
 
 配置完成后浏览器访问，成功显示console登录界面：
 
-![openfire](./evidence-img/HTB-Jab-openfire.png)
+![openfire](./../evidence-img/HTB-Jab-openfire.png)
 
 接下来就是按照[github大佬的exp](https://github.com/miko550/CVE-2023-32315)了。
 
 不过，执行exp后用新创建的用户登录会失败：
 
-![HTB-Jab-openfire-1](./evidence-img/HTB-Jab-openfire-1.png)
+![HTB-Jab-openfire-1](./../evidence-img/HTB-Jab-openfire-1.png)
 
 这也正常，可以发现登录界面写了版本`4.7.5`，而`CVE-2023-32315`也正好在这个版本修复了。
 
@@ -542,13 +542,13 @@ chisel server -p 12312 --reverse    #Server -- Attacker
 #### 插件漏洞获得反弹shell
 
 但是，我们可以用`svc_openfire`账户成功登陆：  
-![HTB-Jab-openfire-2](./evidence-img/HTB-Jab-openfire-2.png)
+![HTB-Jab-openfire-2](./../evidence-img/HTB-Jab-openfire-2.png)
 
 继续试试这个插件能否使用，  
-![HTB-Jab-openfire-3](./evidence-img/HTB-Jab-openfire-3.png)
+![HTB-Jab-openfire-3](./../evidence-img/HTB-Jab-openfire-3.png)
 
 经过和之前一样的ping方式验证，这个插件还是可以执行任意命令，于是毫不犹豫执行反弹shell命令，成功getshell：  
-![HTB-Jab-openfire-4](./evidence-img/HTB-Jab-openfire-4.png)
+![HTB-Jab-openfire-4](./../evidence-img/HTB-Jab-openfire-4.png)
 
 
 ## flag: root

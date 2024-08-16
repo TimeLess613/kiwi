@@ -9,7 +9,7 @@ tags:
 ...
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Sau.png){ width='450' }
+![attack-path](./../attackpath/HTB-Sau.png){ width='450' }
 
 
 ## 扫描
@@ -34,7 +34,7 @@ PORT      STATE    SERVICE REASON      VERSION
 
 ## 55555端口
 
-![HTB-Sau-port55555](./evidence-img/HTB-Sau-port55555.png)
+![HTB-Sau-port55555](./../evidence-img/HTB-Sau-port55555.png)
 
 由于是web应用，且不是常规80端口，应该不会有robots.txt之类的信息。大概率是研究他这个应用的功能。
 
@@ -55,7 +55,7 @@ PORT      STATE    SERVICE REASON      VERSION
 顺便看burp的抓包可以发现，创建这个basket的POST请求正好是PoC里说的那个可以利用的API。  
 而在这个管理界面上方有个设置按钮，点开可以发现里面的参数即对应PoC里payload的几个参数。
 
-![HTB-Sau-port55555-basket](./evidence-img/HTB-Sau-port55555-basket.png)
+![HTB-Sau-port55555-basket](./../evidence-img/HTB-Sau-port55555-basket.png)
 
 所以基本理清楚了PoC的利用方式。即创建一个接收请求的basket，并将它配置为你想forward的url，PoC文章里是“http://127.0.0.1:80/test”。而我们这台靶机也疑似运行着80端口，只是没有公开。所以如果我们将forward_url配置为“http://127.0.0.1:80”就有可能访问到那个本地的80端口。
 
@@ -72,17 +72,17 @@ PORT      STATE    SERVICE REASON      VERSION
 
 琢磨了半天，最终在Settings界面看到关于 `proxy_response` 参数的解释（下图），这么看的话这个界面的3个方框和capacity都是对于 `forward_url` 的配置。而刚刚的payload里是 `"proxy_response": false`，如果设置为true（即将这个设置勾上），那么应该在请求我们的basket URL之后，basket会将请求转发到 `forward_url` 并接收响应返回给我们。相当于是个代理。  
 *不理解payload参数直接复制就用不可取啊……*  
-![HTB-Sau-port55555-basket-settings](./evidence-img/HTB-Sau-port55555-basket-settings.png)
+![HTB-Sau-port55555-basket-settings](./../evidence-img/HTB-Sau-port55555-basket-settings.png)
 
 ### 本地80端口暴露
 
 以及突然想到，既然PoC的payload即用POST API创建一个配置好的basket，那其实也可以不用命令行，直接在网页创建basket再更改设置，效果应该一样？  
 于是试着在网页创建basket并按下图配置之后，访问我的basket（http://10.10.11.224:55555/poc11）。  
-![HTB-Sau-port55555-basket-PoC-settings](./evidence-img/HTB-Sau-port55555-basket-PoC-settings.png)
+![HTB-Sau-port55555-basket-PoC-settings](./../evidence-img/HTB-Sau-port55555-basket-PoC-settings.png)
 
 果然可以。成功暴露目标的本地80端口。  
 本来以为一定要按照PoC的参数来，没想到Settings界面的capacity保持原本的200不变也行。  
-![HTB-Sau-port55555-basket-PoC-forward](./evidence-img/HTB-Sau-port55555-basket-PoC-forward.png)
+![HTB-Sau-port55555-basket-PoC-forward](./../evidence-img/HTB-Sau-port55555-basket-PoC-forward.png)
 
 很明显，这个80端口服务的页脚写着 `Maltrail (v0.53)`。
 
@@ -215,7 +215,7 @@ be4f……86de
 这次靶机一个PoC反复用挺有意思的。
 
 以及sudo -l不用密码还挺意外的，后来又去看了眼sudoers似乎也没相关配置，不是很懂：
-![HTB-Sau-postscript-sudoers](./evidence-img/HTB-Sau-postscript-sudoers.png)
+![HTB-Sau-postscript-sudoers](./../evidence-img/HTB-Sau-postscript-sudoers.png)
 
 *【穿越】后来稍微测试了一下，似乎无论什么命令只要是配置了 `(ALL : ALL) NOPASSWD`，那么就能无密码执行 `sudo -l`。更具体的就没试了。*
 

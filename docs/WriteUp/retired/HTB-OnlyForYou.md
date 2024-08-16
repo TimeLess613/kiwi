@@ -413,7 +413,7 @@ sliver (SMILING_WET-BAR) > portfwd
 是个叫Gogs的什么git服务。
 
 发现两个用户  
-![HTB-OnlyForYou-lport3000](./evidence-img/HTB-OnlyForYou-lport3000.png){ width='720' }
+![HTB-OnlyForYou-lport3000](./../evidence-img/HTB-OnlyForYou-lport3000.png){ width='720' }
 
 另有登陆界面，不知道能否SQLi。  
 不过感觉是拿到了这俩用户的密码之后，登陆进来看脚本漏洞什么的？
@@ -421,14 +421,14 @@ sliver (SMILING_WET-BAR) > portfwd
 #### 8001
 
 又一个登陆界面  
-![HTB-OnlyForYou-lport8001](./evidence-img/HTB-OnlyForYou-lport8001.png){ width='450' }
+![HTB-OnlyForYou-lport8001](./../evidence-img/HTB-OnlyForYou-lport8001.png){ width='450' }
 
 看了眼wappalyzer，deployment项目里有Gogs。那应该就是和端口3000配套的？
 
 #### 7474
 
 没怎么见过，似乎叫Neo4j。查了下是个NoSQL图形数据库  
-![HTB-OnlyForYou-lport7474](./evidence-img/HTB-OnlyForYou-lport7474.png){ width='720' }
+![HTB-OnlyForYou-lport7474](./../evidence-img/HTB-OnlyForYou-lport7474.png){ width='720' }
 
 也搞清楚了另一个端口7687  
 > [Neo4j is a graph database management system developed by Neo4j. Default ports are 6362 (Backup), 7474 (HTTP), 7473 (HTTPS), 7687 (Bolt).](https://exploit-notes.hdks.org/exploit/database/neo4j-pentesting/)

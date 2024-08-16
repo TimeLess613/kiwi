@@ -573,5 +573,5 @@ root@meta2:~# cat root.txt
 至此，终于打完了5台Esay（Photobomb的WP没写），再打一台Medium就要脱离Script Kiddie，走向Hacker啦~
 
 这台也是这段时间活跃的5台Easy里用户评价最难的一台。  
-不过有了前几台的经验，似乎稍微领悟到一点套路，于是WP的格式也逐渐改善，最后定下一个大体上的[WP模板](../WriteUp/WriteUp-template.md)。  
+不过有了前几台的经验，似乎稍微领悟到一点套路，于是WP的格式也逐渐改善，最后定下一个大体上的[WP模板](./../active/writeup-template.md)。  
 一是方便今后写WP，另一个是提醒自己把握渗透流程，时刻都要明白自己处于哪个阶段、目的是什么。

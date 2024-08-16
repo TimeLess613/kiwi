@@ -38,7 +38,7 @@ HTB_IP='10.10.11.180'; cat -e /etc/hosts && sudo sh -c "echo \"${HTB_IP}    $(cu
 admin界面有搜索框，输入 `admin` 搜索有回显admin的密码。看上去感觉是MD5加密。  
 在搜索框输入同样的 `NoSQLi`，成功回显所有用户（admin和josh）的账号密码。
 
-放进[MD5解码网站](../tool-links.md#_2)试试。`josh` 用户可成功解码。
+放进[MD5解码网站](./../../tool-links.md#_2)试试。`josh` 用户可成功解码。
 
 但是至此似乎没什么其他攻击路径了。
 
@@ -167,7 +167,7 @@ root.txt
 
 
 最后，  
-联系[这个思路](../InformationGathering/summary.md#web_info_gathering)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个：
+联系[这个思路](./../../information-gathering/summary.md#web_info_gathering)，感觉信息搜集可以弄一个简易脚本。以后试试直接用这个：
 
 ### HTB_easy_firstScaning
  

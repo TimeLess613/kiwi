@@ -1,6 +1,6 @@
 ## 基本渗透流程・方法论
 
-1. [信息收集阶段](../InformationGathering/InformationGathering.md)
+1. [信息收集阶段](../information-gathering/information-gathering.md)
     - 踩点
     - 扫描
     - 枚举
@@ -8,11 +8,11 @@
 1. （攻击规划/漏洞分析阶段）
 
 1. 攻击阶段
-    - [初始访问](../InitialAccess/InitialAccess.md)
-    - [提权](../PrivilegeEscalation/)
+    - [初始访问](../initial-access/initial-access.md)
+    - [提权](../privilege-escalation/)
 
 1. 后渗透
-    - [权限维持](../PostExploitation/Persistence.md)
+    - [权限维持](../post-exploitation/Persistence.md)
     - 内网探索
     - 痕迹清理
     - 获取数据/flag

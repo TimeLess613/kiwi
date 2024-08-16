@@ -12,7 +12,7 @@ tags:
 
 - 基本上HTB的机器（可能只是Esay机器）都会使用这个WP模板。
 - 可能我对WP这个词的理解有偏差，更应该说是我自己的打靶、学习笔记，所以会记录许多踩坑与思路等废话。
-- [MetaTwo](HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处。
+- [MetaTwo](./../retired/HTB-MetaTwo.md)之前WP模板并未成形，所以语言、格式上会略有不同。以后可能也会不断改善这个模板的不足之处。
 - 对于仍在Active的机器，如果发布的话，都会在WP开头写上 **Waiting for machine retire...**，表示这边暂时不会给出详细WP。不过会列一些提示。等机器退役后，会更新出详细WP。
 
 
@@ -21,7 +21,7 @@ tags:
 1. 先直接粘贴图片
 2. 更改图片名称
 3. 将图片移动到`evidence-img/`
-4. 更改WP中的图片链接名为新图片名称——Obsidian会自动链接，但是要注意将WP移动到mkdocs后链接是否需要加上`./evidence-img/`前缀。
+4. 更改WP中的图片链接名为新图片名称——Obsidian会自动链接，但是要注意将WP移动到mkdocs后链接是否需要加上`./../evidence-img/`前缀。
 
 ## 下面是WP模板：：
 
@@ -39,7 +39,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](HTB-template.png){ width='500' }
+![attack-path](./../attackpath/HTB-template.png){ width='500' }
 
 
 ## External Recon - nmap

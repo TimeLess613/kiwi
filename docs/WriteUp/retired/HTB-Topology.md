@@ -15,7 +15,7 @@ emmmm，太偏了，玩家评分也较低。结果还是围观大佬的方法打
 
 ### Attack Path Overview
 
-![AttackPath](./AttackPath/HTB-Topology.png){ width='450' }
+![attack-path](./../attackpath/HTB-Topology.png){ width='450' }
 
 
 ---

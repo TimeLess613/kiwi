@@ -9,7 +9,7 @@ tags:
 ...
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Authority.png){ width='450' }
+![attack-path](./../attackpath/HTB-Authority.png){ width='450' }
 
 
 ## 扫描
@@ -480,20 +480,20 @@ IIS的默认界面，没发现其他什么有用的信息。
 
 访问 `10.10.11.222:8443`，会报错需要TLS。那么试试 `https://10.10.11.222:8443`，会重定向到 `https://10.10.11.222:8443/pwm/private/login`。
 
-![HTB-Authority-8443](./evidence-img/HTB-Authority-8443.png)
+![HTB-Authority-8443](./../evidence-img/HTB-Authority-8443.png)
 
 尝试用前面的凭据登录，都报错。
 
 然后点击下面的按钮，只需要密码。像是要ldap的，而前面有个密码正好不知道用户名，想着可能就是这里用，但是结果登陆失败。  
 不过注意到页面下方的认证记录？有写用户名是 `svc_pwm`，那么看来是该用前面破解的 `svc_pwm`:`pWm_@dm!N_!23` 这组凭据。其实所有凭据都试一遍最终也可以登入。（后来才发觉这就是PWM的管理界面）
 
-![HTB-Authority-8443-loginError](./evidence-img/HTB-Authority-8443-loginError.png)
+![HTB-Authority-8443-loginError](./../evidence-img/HTB-Authority-8443-loginError.png)
 
 
 尝试输入密码，成功登入
 
 
-![HTB-Authority-8443-logined](./evidence-img/HTB-Authority-8443-logined.png)
+![HTB-Authority-8443-logined](./../evidence-img/HTB-Authority-8443-logined.png)
 
 
 ## Initial Access
@@ -501,7 +501,7 @@ IIS的默认界面，没发现其他什么有用的信息。
 可以在上图的WARN看到LDAP服务器 `ldaps://authority.authority.htb:636`。找到配置尝试添加kali为LDAP服务器。
 
 
-![HTB-Authority-8443-ldap-setting](./evidence-img/HTB-Authority-8443-ldap-setting.png)
+![HTB-Authority-8443-ldap-setting](./../evidence-img/HTB-Authority-8443-ldap-setting.png)
 
 执行`sudo responder -I tun0 -v`，然后点击 `Test LDAP Profile`，可以收到明文凭据 `svc_ldap:lDaP_1n_th3_cle4r!`：
 ```bash

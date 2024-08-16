@@ -96,23 +96,23 @@ nav:
     - 主页: index.md
     - Tool Links: tool-links.md
     - 配色变更: material-color-palette.md
-  - 基础概念: BasicConcept/BasicConcept.md
+  - 基础概念: basic-concepts/basic-concepts.md
   - 信息收集: 
-    - 简介: InformationGathering/InformationGathering.md
-    - 踩点: InformationGathering/footprinting.md
-    - 扫描: InformationGathering/scanning.md
-    - 枚举: InformationGathering/enumerate.md
-    - 思路: InformationGathering/summary.md
+    - 简介: information-gathering/information-gathering.md
+    - 踩点: information-gathering/footprinting.md
+    - 扫描: information-gathering/scanning.md
+    - 枚举: information-gathering/enumerate.md
+    - 思路: information-gathering/summary.md
   - 初始访问: 
-    - 简介: InitialAccess/InitialAccess.md
-    - WEB: InitialAccess/web.md
+    - 简介: initial-access/initial-access.md
+    - WEB: initial-access/web.md
   - 提权:
-    - 简介: PrivilegeEscalation/PrivilegeEscalation.md
-    - Linux: PrivilegeEscalation/waiting.md
-    - Windows: PrivilegeEscalation/waiting.md
+    - 简介: privilege-escalation/privilege-escalation.md
+    - Linux: privilege-escalation/waiting.md
+    - Windows: privilege-escalation/waiting.md
   - 后渗透:
-    - 权限维持: PostExploitation/Persistence.md
-    - 痕迹清理: PostExploitation/ClearingTracks.md
+    - 权限维持: post-exploitation/Persistence.md
+    - 痕迹清理: post-exploitation/ClearingTracks.md
   - Resources: 
     - nmap: Resources/nmap.md
     - Burpsuite: Resources/burpsuite.md
@@ -135,32 +135,32 @@ nav:
     - General:
       - 正则表达式: Resources/General/正则表达式.md
   - 靶机WriteUp: 
-    - WP模板: WriteUp/WriteUp-template.md
-    - HTB-Precious: WriteUp/HTB-Precious.md
-    - HTB-Shoppy: WriteUp/HTB-Shoppy.md
-    - HTB-Soccer: WriteUp/HTB-Soccer.md
-    - HTB-MetaTwo: WriteUp/HTB-MetaTwo.md
-    - HTB-Ambassador: WriteUp/HTB-Ambassador.md
-    - HTB-APT: WriteUp/HTB-APT.md
-    - HTB-MonitorsTwo: WriteUp/HTB-MonitorsTwo.md
-    - HTB-Busqueda: WriteUp/HTB-Busqueda.md
-    - HTB-PC: WriteUp/HTB-PC.md
-    - HTB-Inject: WriteUp/HTB-Inject.md
-    - HTB-Stocker: WriteUp/HTB-Stocker.md
-    - HTB-OnlyForYou: WriteUp/HTB-OnlyForYou.md
-    - HTB-Escape: WriteUp/HTB-Escape.md
-    - HTB-Topology: WriteUp/HTB-Topology.md
-    - HTB-Pilgrimage: WriteUp/HTB-Pilgrimage.md
-    - HTB-Sau: WriteUp/HTB-Sau.md
-    - HTB-Authority: WriteUp/HTB-Authority.md
-    - HTB-Codify: WriteUp/HTB-Codify.md
-    - HTB-Hospital: WriteUp/HTB-Hospital.md
-    - HTB-Devvortex: WriteUp/HTB-Devvortex.md
-    - HTB-Surveillance: WriteUp/HTB-Surveillance.md
-    - HTB-Jab: WriteUp/HTB-Jab.md
-    - HTB-Headless: WriteUp/HTB-Headless.md
-    # - HTB-PermX: WriteUp/HTB-PermX.md
-    # - HTB-Sea: WriteUp/HTB-Sea.md
+    - WP模板: writeup/active/writeup-template.md
+    - HTB-Precious: writeup/retired/HTB-Precious.md
+    - HTB-Shoppy: writeup/retired/HTB-Shoppy.md
+    - HTB-Soccer: writeup/retired/HTB-Soccer.md
+    - HTB-MetaTwo: writeup/retired/HTB-MetaTwo.md
+    - HTB-Ambassador: writeup/retired/HTB-Ambassador.md
+    - HTB-APT: writeup/retired/HTB-APT.md
+    - HTB-MonitorsTwo: writeup/retired/HTB-MonitorsTwo.md
+    - HTB-Busqueda: writeup/retired/HTB-Busqueda.md
+    - HTB-PC: writeup/retired/HTB-PC.md
+    - HTB-Inject: writeup/retired/HTB-Inject.md
+    - HTB-Stocker: writeup/retired/HTB-Stocker.md
+    - HTB-OnlyForYou: writeup/retired/HTB-OnlyForYou.md
+    - HTB-Escape: writeup/retired/HTB-Escape.md
+    - HTB-Topology: writeup/retired/HTB-Topology.md
+    - HTB-Pilgrimage: writeup/retired/HTB-Pilgrimage.md
+    - HTB-Sau: writeup/retired/HTB-Sau.md
+    - HTB-Authority: writeup/retired/HTB-Authority.md
+    - HTB-Codify: writeup/retired/HTB-Codify.md
+    - HTB-Hospital: writeup/retired/HTB-Hospital.md
+    - HTB-Devvortex: writeup/retired/HTB-Devvortex.md
+    - HTB-Surveillance: writeup/retired/HTB-Surveillance.md
+    - HTB-Jab: writeup/retired/HTB-Jab.md
+    - HTB-Headless: writeup/retired/HTB-Headless.md
+    # - HTB-PermX: writeup/retired/HTB-PermX.md
+    # - HTB-Sea: writeup/retired/HTB-Sea.md
   - BlueTeam:
     - Splunk:
       - SPL memo: BlueTeam/Splunk/SPL memo.md

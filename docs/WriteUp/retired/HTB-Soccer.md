@@ -175,7 +175,7 @@ UniOn Select 1,2,schema_name fRoM information_schema.schemata
 - 注意到我在 `/check` 页面发送的请求并没有显示在burp的 `HTTP history` 里
 - 用检查网页元素的方式（Ctrl+Shift+C）点击 `/check` 页面的输入框看看，发现这里有个 `event`，点了几下进入到Debugger界面
 
-    ![HTB-Soccer-debugger](./evidence-img/HTB-Soccer-debugger.png)
+    ![HTB-Soccer-debugger](./../evidence-img/HTB-Soccer-debugger.png)
 
 后来发现这就是网页源码的script部分:
 ```html

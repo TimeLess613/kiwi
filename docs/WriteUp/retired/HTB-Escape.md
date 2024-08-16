@@ -14,7 +14,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Escape.png){ width='450' }
+![attack-path](./../attackpath/HTB-Escape.png){ width='450' }
 
 
 ## 扫描
@@ -107,7 +107,7 @@ Password for [WORKGROUP\kali]:
 
 从 `/Public` 下载了一个PDF，其他共享没有什么信息。
 
-![HTB-Escape-445-pdf](./evidence-img/HTB-Escape-445-pdf.png)
+![HTB-Escape-445-pdf](./../evidence-img/HTB-Escape-445-pdf.png)
 
 ### 获得SQL临时凭据
 

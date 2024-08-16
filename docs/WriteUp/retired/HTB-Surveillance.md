@@ -18,7 +18,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Surveillance.png){ width='500' }
+![attack-path](./../attackpath/HTB-Surveillance.png){ width='500' }
 
 
 ## External Recon - nmap
@@ -350,7 +350,7 @@ LISTEN    0         128                  [::1]:8080               [::]:*       u
 
 在kali访问 `127.0.0.1:8080`，显示为ZoneMinder的登录界面。
 
-![HTB-Surveillance-8080](./evidence-img/HTB-Surveillance-8080.png)
+![HTB-Surveillance-8080](./../evidence-img/HTB-Surveillance-8080.png)
 
 看了下网页源码想找找版本信息来着，不过没找到。其中还发现 `__csrf_magic` 的固定隐藏值，不太清楚是否有CSRF的相关漏洞能利用。
 

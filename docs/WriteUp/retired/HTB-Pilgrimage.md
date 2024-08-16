@@ -10,7 +10,7 @@ tags:
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Pilgrimage.png){ width='450' }
+![attack-path](./../attackpath/HTB-Pilgrimage.png){ width='450' }
 
 
 ## 扫描
@@ -195,7 +195,7 @@ db_dump: ASCII text
 
 所以关键是将这个16进制文本转换为sqlite数据。问了一下ChatGPT：
 
-![HTB-Pilgrimage-change_file_format](./evidence-img/HTB-Pilgrimage-change_file_format.png)
+![HTB-Pilgrimage-change_file_format](./../evidence-img/HTB-Pilgrimage-change_file_format.png)
 
 照着用 `xxd` 命令之后又用 `file` 命令确认，似乎成功转换为sqlite数据库文件了。
 ```bash
@@ -406,6 +406,6 @@ cat root.txt
 2023/06/26
 
 这次的突破口是.git泄露啊，还是第一次听说。所以网站根目录下不能放.git文件夹。  
-以及后来看了一下各个目录暴破的字典，都没有看.git下的文件的。看来以后也需要将其作为一个攻击向量，在最开始就一并尝试。于是又更新了我的[WP模板](./WriteUp-template.md)。  
+以及后来看了一下各个目录暴破的字典，都没有看.git下的文件的。看来以后也需要将其作为一个攻击向量，在最开始就一并尝试。于是又更新了我的[WP模板](./../active/writeup-template.md)。  
 
 然后就是几次图片payload的利用。本来以为会是图片webshell，竟然是以其他方式，有意思。不过具体原理也依旧没详细看，挖坑等之后有空补补了……

