@@ -195,7 +195,7 @@ find / \( -path /proc -o -path /run \) -prune -o \( -user $(id -un) -o -group $(
 - `find / -perm -u=s -type f 2>/dev/null`
 - `find / -user root -perm -4000 2>/dev/null` (但是注意有时候可能可以横向移动所以不只找root)
 	- 常用：`find / -perm -4000 2>/dev/null -exec ls -l {} \;`
-		- **进化/简写：**`find / -perm -4000 2>/dev/null -ls`
+		- **进化/简写：**`find / -perm -4000 -ls 2>/dev/null`
 
 根据man手册：
 
