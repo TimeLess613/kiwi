@@ -161,6 +161,7 @@ nav:
     - HTB-Headless: writeup/retired/HTB-Headless.md
     # - HTB-PermX: writeup/retired/HTB-PermX.md
     # - HTB-Sea: writeup/retired/HTB-Sea.md
+    
   - BlueTeam:
     - Splunk:
       - SPL memo: BlueTeam/Splunk/SPL memo.md
