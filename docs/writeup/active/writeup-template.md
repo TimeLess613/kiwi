@@ -19,9 +19,9 @@ tags:
 ## （个人整理用）关于WP的图片处理步骤
 
 1. 先直接粘贴图片
-2. 更改图片名称
+2. 更改图片名称（WP以外的情况可以直接移动图片到`static/img/ATTACHMENTS/`，`{ width='500' }`调整大小也有效）
 3. 将图片移动到`evidence-img/`
-4. 更改WP中的图片链接名为新图片名称——Obsidian会自动链接，但是要注意将WP移动到mkdocs后链接是否需要加上`./../evidence-img/`前缀。
+4. 更改WP中的图片链接名为新图片名称——Obsidian会自动链接，但是要注意将WP移动到mkdocs后链接需要加上`./../evidence-img/`前缀。
 
 ## 下面是WP模板：：
 
@@ -67,7 +67,7 @@ PORT      STATE SERVICE VERSION
 - 网页源码：无特别发现
 - 网页功能：xxxx
 - 子域枚举：无域名/无特别发现
-- 目录枚举：`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.11.8:5000/`，无特别发现
+- 目录枚举：无特别发现
 
 ### 研究网页功能
 

@@ -4,7 +4,7 @@ tags:
 ---
 ## SSH原理概述
 
-> https://www.ramkitech.com/2012/04/how-to-do-ssh-tunneling-port-forwarding.html
+> https://www.ramkitech.com/2012/04/how-to-do-ssh-tunneling-port-forwarding.html  
 > 在terminal中，当我们敲入ssh someone@private-server.org时，terminal application将调用ssh client，ssh client则连接到private-server.org机器的22端口(由ssh server监听).然后client和server交换Identitiy,public key, cipher suite info并且在server端创建一个新的shell process.随后client和server之间就建立了安全的通道了,这样之后的所有command及response都通过这个secure channel来传递。
 > 比如当ssh连接建立后，我执行ls命令。那么ls命令将由ssh client加密封装通过该通道发往server。server则解密取出命令'ls'并且在shell(该shell就是ssh链接创建时所创建的)中执行,所有的输出将被redirect到该隧道的另一端-ssh client上,最后ssh client则解密取出output消息打印在terminal application上。
 
