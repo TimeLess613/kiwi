@@ -121,7 +121,9 @@ nav:
     - Viper: Resources/viper.md
     - Enumerate Tools: Resources/enumerate_tools.md
     - sqlmap: Resources/sqlmap.md
-    - Tunneling: Resources/tunneling.md
+    - Tunneling: 
+      - Tunneling: Resources/tunneling.md
+      - SSH Tunneling: Resources/SSH Tunneling.md
     - iptables: Resources/iptables.md
     - 简单网络服务: Resources/simple-network-service.md
     - Linux:

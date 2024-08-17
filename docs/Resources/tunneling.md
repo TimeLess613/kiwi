@@ -1,8 +1,6 @@
 ## SSH
 
-### Local Port Forwarding
-### Remote Port Forwarding
-### Dynamic Tunneling (socks5 proxy)
+[SSH Tunneling](./SSH%20Tunneling.md)
 
 
 ## HTTP/S
