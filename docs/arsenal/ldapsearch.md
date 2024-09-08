@@ -13,7 +13,7 @@ tags:
 - 上述构造式优点：只用修改最后两部分
 - `()` 括号处为过滤表达式，可以不要
 - 可先查当前账户的LDAP树：`(sAMAccountName=username)`
-- <optional_attributes>：需要返回的属性。如用`*`、`dn`
+- `optional_attributes`：需要返回的属性。如用`*`、`dn`
 
 
 ### 例子
@@ -66,7 +66,7 @@ ldapsearch -x -H ldap://<ldap-srv> -s base namingcontexts
 
 ### 语法
 
-LDAP 过滤器具有一个或多个子句，每个子句都用括号括起来。每个子句的计算结果为 True 或 False。 LDAP 语法过滤子句采用该形式：`(<AD Attribute><value>)`
+LDAP 过滤器具有一个或多个子句，每个子句都用括号括起来。每个子句的计算结果为 True 或 False。 LDAP 语法过滤子句采用该形式：`(<AD Attribute><comparison operator><value>)`
 
 - `AD Attribute`：即AD属性
 - `comparison operator`（不支持仅用">"和"<"）
