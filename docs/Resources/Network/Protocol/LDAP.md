@@ -95,7 +95,7 @@ LDAPサービスへログインした後、どの OU 配下の情報を扱うか
 - DSE: DSA-specific entry
 - DSA：**Directory System Agent**，它是LDAP目录服务的一个核心组件，负责处理LDAP客户端的请求，并管理目录信息树（DIT）中的数据。
 
-### Search with nmap
+### Search with [[nmap]]
 
 > we should check the nmap output for the [RootDSE](https://www.ibm.com/docs/en/zos/3.1.0?topic=considerations-root-dse) and any potential hostname.
 

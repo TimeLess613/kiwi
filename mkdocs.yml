@@ -114,38 +114,47 @@ nav:
   - 后渗透:
     - 权限维持: post-exploitation/Persistence.md
     - 痕迹清理: post-exploitation/ClearingTracks.md
-  - Resources: 
-    - 简单网络服务: Resources/simple-network-service.md
-    - Protocol:
-      - SSH: Resources/Protocol/SSH.md
-      - LDAP: Resources/Protocol/LDAP.md
-      - SNMP: Resources/Protocol/SNMP.md
-      - SMTP: Resources/Protocol/SMTP.md
-      - Gopher: Resources/Protocol/Gopher.md
-    - Arsenal:
-      - nmap: Resources/nmap.md
-      - ldapsearch: Resources/ldapsearch.md
-      - Burpsuite: Resources/burpsuite.md
-      - Metasploit: Resources/metasploit.md
-      - SliverC2: Resources/sliver_c2.md
-      - Viper: Resources/viper.md
-      - Enumerate Tools: Resources/enumerate_tools.md
-      - sqlmap: Resources/sqlmap.md
+  - 武器库:
+    - nmap: arsenal/nmap.md
+    - Burpsuite: arsenal/burpsuite.md
+    - Metasploit: arsenal/metasploit.md
+    - SliverC2: arsenal/sliver-c2.md
+    - Viper: arsenal/viper.md
+    - Enumerate Tools: arsenal/enumerate-tools.md
+    - sqlmap: arsenal/sqlmap.md
+    - ldapsearch: arsenal/ldapsearch.md
     - Tunneling: 
-      - Tunneling: Resources/tunneling.md
-      - SSH Tunneling: Resources/SSH Tunneling.md
+      - Tunneling: arsenal/tunneling.md
+      - SSH Tunneling: arsenal/SSH Tunneling.md
+
+  - Resources: 
+    - 简单网络服务渗透: Resources/simple-network-service.md
+    - Network:
+      - Email: Resources/Network/Email.md
+      - Protocol:
+        - SSH: Resources/Network/Protocol/SSH.md
+        - LDAP: Resources/Network/Protocol/LDAP.md
+        - SNMP: Resources/Network/Protocol/SNMP.md
+        - SMTP: Resources/Network/Protocol/SMTP.md
+        - DNS: Resources/Network/Protocol/DNS.md
+        - NetBIOS: Resources/Network/Protocol/NetBIOS.md
+        - Gopher: Resources/Network/Protocol/Gopher.md
     - General:
       - 正则表达式: Resources/General/正则表达式.md
-      - Email: Resources/General/Email.md
+    - API:
+      - SASL: Resources/API/SASL.md
+    - PKI:
+      - 公钥证书: Resources/PKI/公钥证书.md
     - Linux:
       - Linux发行版: Resources/Linux/Linux发行版.md
       - Linux命令: Resources/Linux/Linux命令.md
+      - Linux各种括号: Resources/Linux/Linux各种括号.md
       - Linux文件权限: Resources/Linux/Linux文件权限.md
       - 分区: Resources/Linux/分区.md
       - 命令风格: Resources/Linux/命令风格.md
       - 换行符: Resources/Linux/换行符.md
       - 配置Linux图形桌面连接: Resources/Linux/配置Linux图形桌面连接.md
-      - iptables: Resources/iptables.md
+      - iptables: Resources/Linux/iptables.md
   - BlueTeam:
     - Splunk:
       - SPL memo: BlueTeam/Splunk/SPL memo.md

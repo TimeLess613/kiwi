@@ -146,8 +146,5 @@ SMTP服务器地址——相当于信封。
 
 ## 钓鱼
 
-#渗透 
-
-Defang：如在URL、IP的点两边加上中括号，`[.]`。 #IT/蓝队 
-
-Pixel tracking： [https://www.theverge.com/22288190/email-pixel-trackers-how-to-stop-images-automatic-download](https://www.theverge.com/22288190/email-pixel-trackers-how-to-stop-images-automatic-download)
+- Defang：如在URL、IP的点两边加上中括号，`[.]`。 #IT/蓝队 
+- Pixel tracking： [email-pixel-trackers-how-to-stop-images-automatic-download](https://www.theverge.com/22288190/email-pixel-trackers-how-to-stop-images-automatic-download)

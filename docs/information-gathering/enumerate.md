@@ -1,7 +1,7 @@
 
 ## 工具集
 
-[MindMap](../Resources/enumerate_tools.md)
+[MindMap](../arsenal/enumerate-tools.md)
 
 
 ## Protocol

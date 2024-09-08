@@ -1,6 +1,6 @@
 ## SSH
 
-[SSH Tunneling](./SSH%20Tunneling.md)
+[SSH Tunneling](SSH%20Tunneling.md)
 
 
 ## HTTP/S
