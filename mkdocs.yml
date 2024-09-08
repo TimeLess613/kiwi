@@ -44,6 +44,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - navigation.path
+    - navigation.expand
     - search.suggest
     - search.highlight
     - search.share
@@ -114,28 +115,43 @@ nav:
     - 权限维持: post-exploitation/Persistence.md
     - 痕迹清理: post-exploitation/ClearingTracks.md
   - Resources: 
-    - nmap: Resources/nmap.md
-    - Burpsuite: Resources/burpsuite.md
-    - Metasploit: Resources/metasploit.md
-    - SliverC2: Resources/sliver_c2.md
-    - Viper: Resources/viper.md
-    - Enumerate Tools: Resources/enumerate_tools.md
-    - sqlmap: Resources/sqlmap.md
+    - 简单网络服务: Resources/simple-network-service.md
+    - Protocol:
+      - SSH: Resources/Protocol/SSH.md
+      - LDAP: Resources/Protocol/LDAP.md
+      - SNMP: Resources/Protocol/SNMP.md
+      - SMTP: Resources/Protocol/SMTP.md
+      - Gopher: Resources/Protocol/Gopher.md
+    - Arsenal:
+      - nmap: Resources/nmap.md
+      - ldapsearch: Resources/ldapsearch.md
+      - Burpsuite: Resources/burpsuite.md
+      - Metasploit: Resources/metasploit.md
+      - SliverC2: Resources/sliver_c2.md
+      - Viper: Resources/viper.md
+      - Enumerate Tools: Resources/enumerate_tools.md
+      - sqlmap: Resources/sqlmap.md
     - Tunneling: 
       - Tunneling: Resources/tunneling.md
       - SSH Tunneling: Resources/SSH Tunneling.md
-    - iptables: Resources/iptables.md
-    - 简单网络服务: Resources/simple-network-service.md
+    - General:
+      - 正则表达式: Resources/General/正则表达式.md
+      - Email: Resources/General/Email.md
     - Linux:
+      - Linux发行版: Resources/Linux/Linux发行版.md
       - Linux命令: Resources/Linux/Linux命令.md
       - Linux文件权限: Resources/Linux/Linux文件权限.md
       - 分区: Resources/Linux/分区.md
       - 命令风格: Resources/Linux/命令风格.md
-      - Linux发行版: Resources/Linux/Linux发行版.md
       - 换行符: Resources/Linux/换行符.md
       - 配置Linux图形桌面连接: Resources/Linux/配置Linux图形桌面连接.md
-    - General:
-      - 正则表达式: Resources/General/正则表达式.md
+      - iptables: Resources/iptables.md
+  - BlueTeam:
+    - Splunk:
+      - SPL memo: BlueTeam/Splunk/SPL memo.md
+      - Splunk知识点: BlueTeam/Splunk/Splunk知识点.md
+      - Knowledge Object: BlueTeam/Splunk/Knowledge Object.md
+    - Email安全: BlueTeam/Email安全.md
   - 靶机WriteUp: 
     - WP模板: writeup/active/writeup-template.md
     - HTB-Precious: writeup/retired/HTB-Precious.md
@@ -163,8 +179,4 @@ nav:
     - HTB-Headless: writeup/retired/HTB-Headless.md
     # - HTB-PermX: writeup/retired/HTB-PermX.md
     # - HTB-Sea: writeup/retired/HTB-Sea.md
-  - BlueTeam:
-    - Splunk:
-      - SPL memo: BlueTeam/Splunk/SPL memo.md
-      - Splunk知识点: BlueTeam/Splunk/Splunk知识点.md
-      - Knowledge Object: BlueTeam/Splunk/Knowledge Object.md
+  
