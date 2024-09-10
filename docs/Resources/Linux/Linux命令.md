@@ -104,10 +104,8 @@ tags:
 - atime：Access，文件打开
 - mtime：Modify，文件内容变动 ^fda64b
 - ctime：**Change**，inode变动——即文件属性（权限、所有权等）变动时ctime会变。一般来说文件创建的时间也差不多是inode创建的时间
-
-- ls -l 默认显示的是ctime
-
-- 由于是贴上**系统时间**，所以可以用“date -s”改系统时间后再操作
+	- ls -l 默认显示的是ctime
+	- 由于是贴上**系统时间**，所以可以用 `date -s` 改系统时间后再操作
 
 - [[Linux命令#^64f8c7|查看块大小：`stat file.txt | grep IO`]]
 
@@ -184,6 +182,7 @@ touch已存在的文件或目录时会刷新时间。`touch /*` 刷新所有。
 ```bash
 find / \( -path /proc -o -path /run \) -prune -o \( -user $(id -un) -o -group $(id -gn) \) -type f -ls 2>/dev/null
 ```
+
 - `-path`：匹配路径pattern，可以用通配符。
 - `-o`：或
 - `-prune`：排除
@@ -376,21 +375,21 @@ world
 
 ### vi/vim
 
-|      |                           |
-| ---- | ------------------------- |
-| `x`  | vim: Cut character        |
-| `dw` | vim: Cut word             |
-| `dd` | vim: Cut full line        |
-| `yw` | vim: Copy word            |
-| `yy` | vim: Copy full line       |
-| `p`  | vim: Paste                |
-| `:1` | vim: Go to line number 1. |
+| 输入           | 效果                        |
+| ------------ | ------------------------- |
+| `x`          | vim: Cut character        |
+| `dw`         | vim: Cut word             |
+| `dd`         | vim: Cut full line        |
+| `yw`         | vim: Copy word            |
+| `yy`         | vim: Copy full line       |
+| `p`          | vim: Paste                |
+| `:1`         | vim: Go to line number 1. |
+| `dd`         | 删除光标所在行                   |
+| `## dd {数字}` | 删除指定行                     |
+| `u`          | 撤回                        |
+| `:set nu`    | 显示行号                      |
+| `:set nonu`  | 不显示行号                     |
 
-- `dd`：删除光标所在行
-- `## dd {数字}`：删除指定行
-- `u`：撤回
-- `:set nu`：显示行号
-- `:set nonu`：不显示行号
 
 **注释快捷键**
 
