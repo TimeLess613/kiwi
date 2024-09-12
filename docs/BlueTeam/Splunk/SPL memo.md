@@ -341,6 +341,7 @@ foreach后指定要循环的字段（可用通配符）
 > 比如search不支持两个字段间的比较，而where可以。
 
 > [!NOTE] 关于[通配符](https://docs.splunk.com/Documentation/SCS/current/Search/Wildcards)
+> 
 > - 不要使用`*`，因为会被解释为文字字符（literal character）或数学符号
 > - 使用`LIKE`操作符，或者[`like(<string>, <pattern>)`函数](https://docs.splunk.com/Documentation/SCS/current/SearchReference/ConditionalFunctions#like.28.26lt.3Bstr.26gt.3B.2C_.26lt.3Bpattern.26gt.3B.29)
 > - 使用`%`（表示多个字符）或`_`（表示单个字符）
