@@ -126,6 +126,7 @@ tags:
 
 ### 域传输
 
+副DNS向主DNS发送 `AXFR`(Asynchronous Full Zone Transfer) 的请求。主DNS返回[[DNS#SOA|SOA]]。
 
 ```bash
 # 如果成功，可能会暴露 HTTP server names
@@ -183,10 +184,12 @@ gobuster dns -r $target_ip -d $target_domain -w $dns_wordlist -t 100
 
 - `dig tryhackme.com @1.1.1.1`
 
-能从域名的官方DNS查到权威解答，而nslookup是从cache中得到的非权威解答
+能从域名的官方DNS查到权威解答，而nslookup是从cache中得到的非权威解答。（?）
 
 - 要获取电子邮件记录，请指定`-t MX`：`dig <target> -t MX`
-- 要获得区域传输，请指定 `axfr`。
+- 要获得区[[DNS#域传输|域传输]]，请指定 `axfr`：`dig axfr @nsztm1.digi.ninja zonetransfer.me`。
+	- **`@nsztm1.digi.ninja`**：这是指定的 DNS 服务器地址，`@` 后面的部分表示要向 `nsztm1.digi.ninja` 这个 DNS 服务器发送查询请求。
+	- **`zonetransfer.me`**：这是要查询的域名，也就是请求的 DNS 区域。`zonetransfer.me` 是一个用于演示区域传输风险的域名。
 
 ### nslookup命令
 

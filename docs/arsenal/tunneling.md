@@ -21,7 +21,7 @@
 
 ### tools
 
-- dnscat2（P133）
+- [dnscat2](https://github.com/iagox86/dnscat2)
 - Iodine
 - DNSTunnel（dnstunnel.de）
 - Netcross
@@ -31,3 +31,8 @@
 
 - ProxyChains
 - EarthWorm
+
+
+## ICMP
+
+- [ptunnel-ng](https://github.com/utoni/ptunnel-ng)

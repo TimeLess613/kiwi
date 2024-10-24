@@ -38,7 +38,7 @@ ssh -f -N -R 1122:10.5.5.11:22 -R 13306:10.5.5.11:3306 -o "UserKnownHostsFile=/d
 
 #### 有用选项
 
--fNTCg
+-**fNT**Cg
 
 - -f：后台进程，不占用当前shell，只有认证时会到前台。（似乎即使Meterpreter进程死了，ssh隧道依旧生效）
 - -N：静默连接（只当作隧道。即不创建shell channel，不登录到远程shell、不发出ssh命令）

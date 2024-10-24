@@ -19,9 +19,9 @@ tags:
 ## （个人整理用）关于WP的图片处理步骤
 
 1. 先直接粘贴图片
-2. 更改图片名称（WP以外的情况可以直接移动图片到`static/img/ATTACHMENTS/`，`{ width='500' }`调整大小也有效）
+2. 在WP中右键便捷更改图片名称（WP以外的情况可以直接移动图片到`static/img/ATTACHMENTS/`，`{ width='500' }`调整大小也有效）
 3. 将图片移动到`evidence-img/`
-4. 更改WP中的图片链接名为新图片名称——Obsidian会自动链接，但是要注意将WP移动到mkdocs后链接需要加上`./../evidence-img/`前缀。
+4. Obsidian似乎会自动链接，但是要注意将WP移动到mkdocs后链接需要加上`./../evidence-img/`前缀。
 
 ## 下面是WP模板：：
 
