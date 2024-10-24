@@ -512,7 +512,7 @@ index=…
 
 ## datamodel
 
-执行无参数的命令 `| datamodel`：显示所有datamodel（json格式）。
+执行无参数的命令 `| datamodel`：显示所有datamodel（json格式）。  
 其中，objectNameList里的就是dataset——即dataset是datamodel组成部分。每种dataset又有对应的tag标识（[参考理解](https://docs.splunk.com/Documentation/CIM/5.1.1/User/Authentication)）
 
 ### 3种datasets：
