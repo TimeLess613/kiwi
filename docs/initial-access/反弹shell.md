@@ -213,7 +213,7 @@ kali默认没有。安装：`sudo apt install rlwrap`
 
 - 二进制文件：`wget https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true`
 
-文件传输的方法参照：[[File Transfers]]
+文件传输的方法参照：[[FileTransfers-Linux]]、[[FileTransfers-Windows]]
 
 > [!NOTE] Windows上似乎socat不比nc稳定
 
