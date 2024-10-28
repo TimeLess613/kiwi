@@ -132,12 +132,17 @@ nav:
     - Network:
       - Email: Resources/Network/Email.md
       - Protocol:
+        - DNS: Resources/Network/Protocol/DNS.md
+        - Whois: Resources/Network/Protocol/Whois.md
         - SSH: Resources/Network/Protocol/SSH.md
         - LDAP: Resources/Network/Protocol/LDAP.md
+        - NetBIOS: Resources/Network/Protocol/NetBIOS.md
+        - SMB: Resources/Network/Protocol/SMB.md
+        - RPC: Resources/Network/Protocol/RPC.md
+        - WinRM: Resources/Network/Protocol/WinRM.md
         - SNMP: Resources/Network/Protocol/SNMP.md
         - SMTP: Resources/Network/Protocol/SMTP.md
-        - DNS: Resources/Network/Protocol/DNS.md
-        - NetBIOS: Resources/Network/Protocol/NetBIOS.md
+        - NFS: Resources/Network/Protocol/NFS.md
         - Gopher: Resources/Network/Protocol/Gopher.md
     - General:
       - 正则表达式: Resources/General/正则表达式.md
