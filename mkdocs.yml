@@ -141,6 +141,7 @@ nav:
       - Protocol:
         - DNS: Resources/Network/Protocol/DNS.md
         - Whois: Resources/Network/Protocol/Whois.md
+        - ICMP: Resources/Network/Protocol/ICMP.md
         - SSH: Resources/Network/Protocol/SSH.md
         - LDAP: Resources/Network/Protocol/LDAP.md
         - NetBIOS: Resources/Network/Protocol/NetBIOS.md
@@ -169,6 +170,7 @@ nav:
       - iptables: Resources/Linux/iptables.md
       - 命名管道: Resources/Linux/命名管道.md
       - 修改IP: Resources/Linux/修改IP.md
+      - 终端: Resources/Linux/终端.md
   - BlueTeam:
     - Splunk:
       - SPL memo: BlueTeam/Splunk/SPL memo.md

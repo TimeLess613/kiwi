@@ -59,7 +59,7 @@ DCOM：Distributed Component Object Model。 [https://learn.microsoft.com/en-us/
 
 ### RPCclient
 
-`rpcclient -U user <ip>`
+`rpcclient -U "" <ip>`
 
 进入之后的命令：  
 ```
@@ -68,3 +68,4 @@ enumdomusers
 enumalsgroups domain|builtin
 lookupnames <user or group name>
 ```
+
