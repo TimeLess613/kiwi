@@ -1,4 +1,10 @@
 
+
+## Enumeration Methodology
+
+> <https://academy.hackthebox.com/storage/modules/112/enum-method3.png> 
+> <https://academy.hackthebox.com/storage/modules/112/pentest-labyrinth.png>
+
 ## 工具集
 
 [MindMap](../arsenal/enumerate-tools.md)
@@ -6,7 +12,7 @@
 
 ## Protocol
 
-### NetBIOS（NBNS UDP/137）
+### [[NetBIOS]]（NBNS UDP/137）
 
 - `nbtstat -a <remote IP>` 获取远程机器的NetBIOS表
 - `nbtstat -c` 获得NetBIOS表、解析cache。
@@ -23,7 +29,7 @@
 
 
 
-### LDAP（TCP/389 or 396?）
+### [[LDAP]]（TCP/389）
 
 
 
@@ -43,7 +49,7 @@
 - nmap
 
 
-### NFS（TCP/2049）
+### [[NFS]]（TCP/2049）
 
 能收集的信息：
 
@@ -59,16 +65,16 @@
 - SuperEnum（有脚本）
 
 
-### SMTP（TCP/25）
+### [[SMTP]]（TCP/25）
 
 
 
-### DNS
+### [[DNS]]
 
 目标：域传送有效的DNS
 
 - `nslookup (ls -d <DNS hostname>)`
-- dig
+- `dig`
 
 
 ### Telnet
@@ -79,3 +85,4 @@
 ### IPsec
 ### VoIP
 ### BGP（TCP/179）
+

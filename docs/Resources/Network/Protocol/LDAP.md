@@ -110,7 +110,11 @@ sudo nmap -Pn --script ldap-rootdse.nse $target_ip
 ---
 
 
-## GC
+## 全局目录（Global Catalog）
+
+全局目录更新并同步所有 DC 上的目录副本。
+
+> Large networks may have multiple DCs managed by a Global Catalog that updates and synchronizes directory copies across all DCs.
 
 ![[Pasted image 20240816125026.png]]
 
