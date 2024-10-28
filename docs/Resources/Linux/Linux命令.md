@@ -1004,6 +1004,7 @@ pam：Pluggable Authentication Modules，可插拔式认证模块。
 
 - `apt update` 只是检查更新（应用更新的软件源 `/etc/apt/sources.list`）
 - 还有`remove`命令
+
 > apt 需要单独运行 apt update 命令来检查更新的原因在于其设计哲学和工作方式的不同。 
 > apt 使用的是 Debian 软件包管理系统，而 yum 使用的是 RPM 软件包管理系统。这两者的设计和原理不同，导致了它们在更新软件包列表方面有所不同。
 > 在 apt 中，软件包列表和软件包信息存储在本地缓存中（通常位于 /var/lib/apt/lists/ 目录下），而不是每次运行 apt 命令时都会实时从远程存储库下载。因此，需要定期运行 apt update 来更新本地缓存，以确保您获得最新的软件包信息。
