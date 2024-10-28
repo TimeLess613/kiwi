@@ -27,28 +27,6 @@ tags:
 
 ![[Pasted image 20240328001258.png]]
 
-```mermaid
-flowchart LR
-
-    A(ICMP ping) --- B(ICMP Echo ping)
-
-    A --- C(ICMP 时间戳 ping)
-
-    A --- D(ICMP 掩码 ping)
-
-    B --- E( -PE)
-
-    B --- F(ICMP Type0)
-
-    C --- G( -PP)
-
-    C --- H(ICMP Type14)
-
-    D --- I( -PM)
-
-    D --- J(ICMP Type18)
-```
-
 
 ## port0
 
