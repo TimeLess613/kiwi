@@ -1,0 +1,5794 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="TimeLess613">
+      
+      
+      
+        <link rel="prev" href="../../../Resources/Linux/%E7%BB%88%E7%AB%AF/">
+      
+      
+        <link rel="next" href="../Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>SPL memo - HacKnowledgeBase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="HacKnowledgeBase" class="md-header__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HacKnowledgeBase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SPL memo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-tabs__link">
+        
+  
+    
+  
+  基础概念
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../information-gathering/information-gathering/" class="md-tabs__link">
+          
+  
+  信息收集
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../initial-access/initial-access/" class="md-tabs__link">
+          
+  
+  初始访问
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../privilege-escalation/privilege-escalation/" class="md-tabs__link">
+          
+  
+  提权
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../post-exploitation/Persistence/" class="md-tabs__link">
+          
+  
+  后渗透
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arsenal/nmap/" class="md-tabs__link">
+          
+  
+  武器库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Resources/simple-network-service/" class="md-tabs__link">
+          
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  BlueTeam
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../writeup/active/writeup-template/" class="md-tabs__link">
+          
+  
+  靶机WriteUp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HacKnowledgeBase" class="md-nav__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HacKnowledgeBase
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tool-links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tool Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../material-color-palette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配色变更
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    信息收集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            信息收集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/information-gathering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/footprinting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    踩点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/scanning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    扫描
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/enumerate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    枚举
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    思路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    初始访问
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            初始访问
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/initial-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WEB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/%E5%8F%8D%E5%BC%B9shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    反弹shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    提权
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            提权
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/privilege-escalation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            后渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/Persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    权限维持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/ClearingTracks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    痕迹清理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tunneling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/SSH%20Tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            File Transfers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WIndows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    武器库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            武器库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/nmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/Netcat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netcat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/burpsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Burpsuite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/metasploit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metasploit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sliver-c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SliverC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/viper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Viper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/enumerate-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enumerate Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/ldapsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ldapsearch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/simple-network-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简单网络服务渗透
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4_2" id="__nav_8_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Protocol
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/DNS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/Whois/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whois
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/ICMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ICMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/LDAP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/NetBIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NetBIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SMB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/RPC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/WinRM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WinRM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SNMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/SMTP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/NFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Network/Protocol/Gopher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gopher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/General/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/API/SASL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SASL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PKI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            PKI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/PKI/%E5%85%AC%E9%92%A5%E8%AF%81%E4%B9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    公钥证书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%8F%91%E8%A1%8C%E7%89%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux发行版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux各种括号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux文件权限
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分区
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%91%BD%E4%BB%A4%E9%A3%8E%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令风格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    换行符
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E9%85%8D%E7%BD%AELinux%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置Linux图形桌面连接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命名管道
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E4%BF%AE%E6%94%B9IP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改IP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/Linux/%E7%BB%88%E7%AB%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    终端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    BlueTeam
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            BlueTeam
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Splunk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Splunk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SPL memo
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SPL memo
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      非常有用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      语法注意点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语法注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#andornot" class="md-nav__link">
+    <span class="md-ellipsis">
+      布尔运算符必须大写（AND，OR，NOT）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于NOT 和 !=
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field_namefield_value" class="md-nav__link">
+    <span class="md-ellipsis">
+      字段搜索（field_name=field_value）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urldecode" class="md-nav__link">
+    <span class="md-ellipsis">
+      urldecode()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      地理地图
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      lookup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      lookup调试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cidr-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      CIDR lookup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputlookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      inputlookup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="inputlookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookup-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      显示保存的lookup table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      subsearch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="subsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      “突破上限”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      | union
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    <span class="md-ellipsis">
+      return
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keepevicted" class="md-nav__link">
+    <span class="md-ellipsis">
+      keepevicted选项
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="keepevicted选项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transactions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      判断Transactions是否完成
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于选项默认值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      stats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="stats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      eventstats（追加列——双重统计）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streamstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      streamstats（动态统计）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于表结合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于表结合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      append（追加行）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendcols" class="md-nav__link">
+    <span class="md-ellipsis">
+      appendcols（追加列）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendpipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      appendpipe（追加行——双重统计）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      join
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabular-output-vs-stats-like-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabular output vs. Stats-like output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabular output vs. Stats-like output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xyseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      xyseries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#untalbexyseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      untalbe——xyseries的逆运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xyseries-vs-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      xyseries vs. chart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreach" class="md-nav__link">
+    <span class="md-ellipsis">
+      foreach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fillnull" class="md-nav__link">
+    <span class="md-ellipsis">
+      fillnull
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eval-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      eval-functions详解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="eval-functions详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eval-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      调用eval-function的几种方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="调用eval-function的几种方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fieldformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      fieldformat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      常见functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversion类——字符串格式化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text类——字符串处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spath" class="md-nav__link">
+    <span class="md-ellipsis">
+      spath
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="spath">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eval" class="md-nav__link">
+    <span class="md-ellipsis">
+      eval函数形式更简单
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substr" class="md-nav__link">
+    <span class="md-ellipsis">
+      substr
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-and-conditional-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison and Conditional functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison and Conditional functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    <span class="md-ellipsis">
+      case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    <span class="md-ellipsis">
+      in
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchingtruefalseif" class="md-nav__link">
+    <span class="md-ellipsis">
+      各种Matching功能，返回TRUE/FALSE（多与if连用）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      replace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coalesce" class="md-nav__link">
+    <span class="md-ellipsis">
+      coalesce：合并
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      splunk正则
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="splunk正则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urlfqdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      URL提取FQDN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URL提取FQDN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      切片方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      rest——conf确认
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看所有字段状况
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexdatamodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看index属于哪个datamodel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datamodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      datamodel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="datamodel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      3种datasets：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3种datasets：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意（没懂）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pivot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pivot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      时间范围指定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relative_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      relative_time
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      tstat
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tstat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      通配符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datamodeltstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      datamodel转tstat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stats_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      stats变体
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="stats变体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spl-memoeventstats-spl-memostreamstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPL memo#eventstats（追加列——双重统计） 和 SPL memo#streamstats（动态统计）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memo" class="md-nav__link">
+    <span class="md-ellipsis">
+      memo&amp;例子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splunkconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      从splunk的conf看字段变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      时间
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时间">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      范围指定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      格式化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="格式化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strftime" class="md-nav__link">
+    <span class="md-ellipsis">
+      strftime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strptimetime_field-the_time_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      strptime(&lt;time_field&gt;, &lt;the_time_format&gt;)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      同比环比
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="同比环比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timewrap-int-timescale" class="md-nav__link">
+    <span class="md-ellipsis">
+      timewrap [&lt;int&gt;] &lt;timescale&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      mv相关
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算带宽（Bytes）单位
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Splunk知识点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Knowledge%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Knowledge Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Email%E5%AE%89%E5%85%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email安全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    靶机WriteUp
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            靶机WriteUp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/active/writeup-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WP模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Precious/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Precious
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Shoppy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Shoppy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Soccer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Soccer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-MetaTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MetaTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Ambassador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Ambassador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-APT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-APT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-MonitorsTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MonitorsTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Busqueda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Busqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-PC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-PC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Inject/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Inject
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Stocker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Stocker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-OnlyForYou/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-OnlyForYou
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Escape/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Escape
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Topology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Topology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Pilgrimage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Pilgrimage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Sau/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Sau
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Authority/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Authority
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Codify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Codify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Hospital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Hospital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Devvortex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Devvortex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Surveillance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Surveillance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Jab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Jab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Headless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Headless
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      非常有用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      语法注意点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语法注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#andornot" class="md-nav__link">
+    <span class="md-ellipsis">
+      布尔运算符必须大写（AND，OR，NOT）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于NOT 和 !=
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field_namefield_value" class="md-nav__link">
+    <span class="md-ellipsis">
+      字段搜索（field_name=field_value）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urldecode" class="md-nav__link">
+    <span class="md-ellipsis">
+      urldecode()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      地理地图
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      lookup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      lookup调试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cidr-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      CIDR lookup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputlookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      inputlookup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="inputlookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookup-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      显示保存的lookup table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      subsearch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="subsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      “突破上限”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      | union
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    <span class="md-ellipsis">
+      return
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keepevicted" class="md-nav__link">
+    <span class="md-ellipsis">
+      keepevicted选项
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="keepevicted选项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transactions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      判断Transactions是否完成
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于选项默认值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      stats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="stats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      eventstats（追加列——双重统计）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streamstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      streamstats（动态统计）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于表结合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于表结合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      append（追加行）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendcols" class="md-nav__link">
+    <span class="md-ellipsis">
+      appendcols（追加列）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendpipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      appendpipe（追加行——双重统计）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      join
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabular-output-vs-stats-like-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabular output vs. Stats-like output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabular output vs. Stats-like output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xyseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      xyseries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#untalbexyseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      untalbe——xyseries的逆运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xyseries-vs-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      xyseries vs. chart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreach" class="md-nav__link">
+    <span class="md-ellipsis">
+      foreach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fillnull" class="md-nav__link">
+    <span class="md-ellipsis">
+      fillnull
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eval-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      eval-functions详解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="eval-functions详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eval-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      调用eval-function的几种方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="调用eval-function的几种方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fieldformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      fieldformat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      常见functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversion类——字符串格式化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text类——字符串处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spath" class="md-nav__link">
+    <span class="md-ellipsis">
+      spath
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="spath">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eval" class="md-nav__link">
+    <span class="md-ellipsis">
+      eval函数形式更简单
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substr" class="md-nav__link">
+    <span class="md-ellipsis">
+      substr
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-and-conditional-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison and Conditional functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison and Conditional functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    <span class="md-ellipsis">
+      case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    <span class="md-ellipsis">
+      in
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchingtruefalseif" class="md-nav__link">
+    <span class="md-ellipsis">
+      各种Matching功能，返回TRUE/FALSE（多与if连用）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      replace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coalesce" class="md-nav__link">
+    <span class="md-ellipsis">
+      coalesce：合并
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      splunk正则
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="splunk正则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urlfqdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      URL提取FQDN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URL提取FQDN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      切片方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      rest——conf确认
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看所有字段状况
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexdatamodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看index属于哪个datamodel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datamodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      datamodel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="datamodel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      3种datasets：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3种datasets：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意（没懂）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pivot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pivot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      时间范围指定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relative_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      relative_time
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      tstat
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tstat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      通配符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datamodeltstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      datamodel转tstat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stats_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      stats变体
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="stats变体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spl-memoeventstats-spl-memostreamstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPL memo#eventstats（追加列——双重统计） 和 SPL memo#streamstats（动态统计）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memo" class="md-nav__link">
+    <span class="md-ellipsis">
+      memo&amp;例子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splunkconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      从splunk的conf看字段变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      时间
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时间">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      范围指定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      格式化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="格式化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strftime" class="md-nav__link">
+    <span class="md-ellipsis">
+      strftime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strptimetime_field-the_time_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      strptime(&lt;time_field&gt;, &lt;the_time_format&gt;)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      同比环比
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="同比环比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timewrap-int-timescale" class="md-nav__link">
+    <span class="md-ellipsis">
+      timewrap [&lt;int&gt;] &lt;timescale&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      mv相关
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算带宽（Bytes）单位
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <span class="md-tag">IT/Splunk</span>
+    
+  
+    
+    
+    
+      <span class="md-tag">IT/蓝队</span>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>SPL memo</h1>
+
+<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permanent link">&para;</a></h2>
+<p><a href="https://docs.splunk.com/Documentation/Splunk/9.0.1/SearchTutorial/WelcometotheSearchTutorial">https://docs.splunk.com/Documentation/Splunk/9.0.1/SearchTutorial/WelcometotheSearchTutorial</a></p>
+<h2 id="_1">非常有用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://www.splunk.com/en_us/blog/security/hunting-with-splunk-the-basics.html">https://www.splunk.com/en_us/blog/security/hunting-with-splunk-the-basics.html</a></p>
+<h2 id="_2">语法注意点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="andornot">布尔运算符必须大写（AND，OR，NOT）<a class="headerlink" href="#andornot" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有优先度：小括号表达式&gt;NOT&gt;AND&gt;OR</li>
+<li>空格默认为AND</li>
+<li>可用括号分组</li>
+<li>OR的列表表示：字段 IN (value1, value2, value3)</li>
+</ul>
+<h3 id="not">关于NOT 和 !=<a class="headerlink" href="#not" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"NOT" 可以对搜索结果进行否定。搜索结果将返回不包含指定字段名、和值的事件。</li>
+<li>"!=" 用于在SPL中对字段进行比较（即默认了这个字段必须存在）</li>
+</ul>
+<h3 id="field_namefield_value">字段搜索（field_name=field_value）<a class="headerlink" href="#field_namefield_value" title="Permanent link">&para;</a></h3>
+<ul>
+<li>key区分大小写</li>
+<li>value不分大小写</li>
+</ul>
+<h2 id="urldecode"><code>urldecode()</code><a class="headerlink" href="#urldecode" title="Permanent link">&para;</a></h2>
+<p>内置URL解码</p>
+<ul>
+<li><code>urldecode("url-string")</code></li>
+<li><code>urldecode(url-field)</code></li>
+</ul>
+<blockquote>
+<p>[!NOTE] 不要在字段名称两边使用双引号 <code>"</code>。
+尝试不带引号。如果这不起作用，请使用单引号 <code>'</code>。</p>
+</blockquote>
+<h2 id="_3">地理地图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>| iplocation <src_ip></td>
+<td></td>
+</tr>
+<tr>
+<td>| geostats</td>
+<td></td>
+</tr>
+<tr>
+<td>Choropleth maps<br><br>等值线图</td>
+<td>| geom <KMZ_file><br><br>KMZ: compressed Keyhole Markup Language file。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lookup">lookup<a class="headerlink" href="#lookup" title="Permanent link">&para;</a></h2>
+<p>用于在搜索时追加外部字段。
+甚至有自动。</p>
+<p><code>...| lookup &lt;lookup-table-name&gt; &lt;lookup-field1&gt; AS &lt;field-on-searchResult&gt; [output|outputnew filed2 filed3]</code></p>
+<ul>
+<li>意思是：在指定的table中匹配<code>&lt;lookup-field1&gt;</code>与搜索结果中的字段（由<code>AS</code>指定，本质为重命名）匹配，并追加匹配行的指定OUTPUT字段（不指定默认追加所有字段）</li>
+<li><code>&lt;lookup-field1&gt;</code>：需要event和lookup表的字段同名</li>
+<li>匹配不到的将会赋值NULL</li>
+<li>output：覆盖已有字段</li>
+<li>outputnew：不覆盖</li>
+</ul>
+<h3 id="lookup_1">lookup调试<a class="headerlink" href="#lookup_1" title="Permanent link">&para;</a></h3>
+<p>job检查里的 <code>command.search.lookups</code>。</p>
+<h3 id="cidr-lookup">CIDR lookup<a class="headerlink" href="#cidr-lookup" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>[!NOTE] 其实有<a href="https://docs.splunk.com/Documentation/SCS/current/SearchReference/ConditionalFunctions#cidrmatch.28.26lt.3Bcidr.26gt.3B.2C_.26lt.3Bip.26gt.3B.29">cidrmatch</a></p>
+</blockquote>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">index</span><span class="o">=</span><span class="n">dns</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">|</span><span class="w"> </span><span class="n">rex</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="n">src</span><span class="w"> </span><span class="ss">&quot;(?&lt;IP_OCTET123&gt;^\d+\.\d+\.\d+)\.(?&lt;IP_OCTET4&gt;\d+$)&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">CIDR</span><span class="o">=</span><span class="k">if</span><span class="p">(</span><span class="n">IP_OCTET4</span><span class="o">&lt;</span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="n">IP_OCTET123</span><span class="p">.</span><span class="ss">&quot;.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">IP_OCTET123</span><span class="p">.</span><span class="ss">&quot;.128&quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">|</span><span class="w"> </span><span class="n">lookup</span><span class="w"> </span><span class="n">infrasec_ip_lookup</span><span class="w"> </span><span class="n">CIDR</span><span class="w"> </span><span class="k">OUTPUT</span><span class="w"> </span><span class="n">Company</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">src_Company</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">src_Company</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">|</span><span class="w"> </span><span class="n">makeresults</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">ip</span><span class="o">=</span><span class="ss">&quot;10.2.4.2,10.2.4.3&quot;</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">|</span><span class="w"> </span><span class="n">makemv</span><span class="w"> </span><span class="n">delim</span><span class="o">=</span><span class="ss">&quot;,&quot;</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">|</span><span class="w"> </span><span class="n">mvexpand</span><span class="w"> </span><span class="n">ip</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">|</span><span class="w"> </span><span class="n">rex</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="n">ip</span><span class="w"> </span><span class="ss">&quot;(?&lt;IP_OCTET123&gt;^\d+\.\d+\.\d+)\.(?&lt;IP_OCTET4&gt;\d+$)&quot;</span><span class="w"> </span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">CIDR</span><span class="o">=</span><span class="k">if</span><span class="p">(</span><span class="n">IP_OCTET4</span><span class="o">&lt;</span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="n">IP_OCTET123</span><span class="p">.</span><span class="ss">&quot;.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">IP_OCTET123</span><span class="p">.</span><span class="ss">&quot;.128&quot;</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">|</span><span class="w"> </span><span class="n">lookup</span><span class="w"> </span><span class="n">infrasec_ip_lookup</span><span class="w"> </span><span class="n">CIDR</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="o">|</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="n">_</span><span class="o">*</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="o">|</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="n">Company</span><span class="p">,</span><span class="w"> </span><span class="n">Manager</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Management Area&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Management Section&quot;</span>
+</span></code></pre></div>
+<h2 id="inputlookup">inputlookup<a class="headerlink" href="#inputlookup" title="Permanent link">&para;</a></h2>
+<h3 id="lookup-table">显示保存的lookup table<a class="headerlink" href="#lookup-table" title="Permanent link">&para;</a></h3>
+<p><code>| inputlookup  infrasec_ipaddress_lookup.csv</code></p>
+<ul>
+<li>理解：将lookup的数据 input/导入 到splunk。</li>
+</ul>
+<blockquote>
+<p>[!NOTE] 注意：别用<code>outputlookup</code>，那是保存！！</p>
+</blockquote>
+<h2 id="subsearch">subsearch<a class="headerlink" href="#subsearch" title="Permanent link">&para;</a></h2>
+<p>子搜索用方括号，会首先处理——可理解为子进程</p>
+<ul>
+<li>默认1W行的结果上限（公司改到5w） ——&gt; <a href="https://docs.splunk.com/Documentation/Splunk/latest/Admin/Limitsconf">各种限制（limits.conf）</a></li>
+<li>默认1min的执行时间</li>
+<li>注意：如果外部搜索在real-time执行，那么子搜索默认全时间搜索——所以可以限定时间来规避。另外，子搜索永远不会以real-time执行。</li>
+</ul>
+<p>甚至可以用 <code>NOT [subsearch]</code> 的形式。子搜索的结果展开的话，其实就是用OR连接的各个键值对，然后用AND连接子搜索结果与外部搜索。</p>
+<ul>
+<li>理解：可单拎出子搜索然后结尾加上 <code>| format</code> 看看区别——将子搜索的结果用大量括号/OR/AND连接然后赋值给search字段。</li>
+</ul>
+<h3 id="_4">优化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>如果子搜索的结果非常大，用eval&amp;stat组合更为效率（如下对比）</p>
+<ul>
+<li><code>[search index=x sourcetype=xxx flag=1 | dedup user | fields user]</code></li>
+<li><code>| eval flag=if(sourcetype=xxx,1,0) | stats max(flag) as flag_1 by user | where flag_1=1 | sort user</code></li>
+</ul>
+<p>经常运行的搜索/地方（schedule、dashboard）不建议使用子搜索。</p>
+<h3 id="_5">“突破上限”<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>关键是多嵌套一个子搜索以获取指定目标。</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">index</span><span class="o">=</span><span class="n">ad_ja</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="n">AD</span><span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">USR_ID</span><span class="o">=</span><span class="n">global_id</span><span class="w"> </span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">AD_USERID</span><span class="w"> </span><span class="n">USR_ID</span><span class="w"> </span><span class="n">action</span><span class="w"> </span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="o">|</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="k">type</span><span class="o">=</span><span class="k">outer</span><span class="w"> </span><span class="n">USR_ID</span><span class="w"> </span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p">[</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="k">index</span><span class="o">=</span><span class="n">ids</span><span class="w"> </span><span class="n">earliest</span><span class="o">=-</span><span class="mi">1</span><span class="n">d</span><span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="k">index</span><span class="o">=</span><span class="n">ad_ja</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="n">AD</span><span class="w"> </span><span class="n">earliest</span><span class="o">=-</span><span class="mi">1</span><span class="n">mon</span><span class="o">@</span><span class="n">mon</span><span class="w"> </span><span class="n">latest</span><span class="o">=@</span><span class="n">mon</span><span class="w"> </span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">dedup</span><span class="w"> </span><span class="n">global_id</span><span class="w"> </span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="n">global_id</span><span class="w"> </span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="k">rename</span><span class="w"> </span><span class="n">global_id</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">USR_ID</span><span class="p">]</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">]</span>
+</span></code></pre></div>
+<h3 id="union"><code>| union</code><a class="headerlink" href="#union" title="Permanent link">&para;</a></h3>
+<ul>
+<li>union 命令可以组合<a href="https://docs.splunk.com/Documentation/Splunk/9.0.3/SearchReference/Union#:~:text=Merges%20the%20results%20from%20two%20or%20more%20datasets%20into%20one%20dataset.">两个或多个不同数据集的结果</a>（数据模型、子搜索、查找和保存的搜索）。</li>
+<li>join 命令<a href="https://docs.splunk.com/Documentation/Splunk/9.0.3/SearchReference/Join#:~:text=You%20can%20use%20the%20join%20command%20to%20combine%20the%20results%20of%20a%20main%20search%20(left%2Dside%20dataset)%20with%20the%20results%20of%20either%20another%20dataset%20or%20a%20subsearch%20(right%2Dside%20dataset).">只能组合两个数据集</a>。</li>
+</ul>
+<h3 id="return">return<a class="headerlink" href="#return" title="Permanent link">&para;</a></h3>
+<p>相当于子搜索中fields命令的精细控制版本。</p>
+<ul>
+<li>默认返回1条结果</li>
+<li>可以用 <code>$&lt;field&gt;</code> 仅返回value</li>
+<li>可以用 <code>&lt;alias&gt;=&lt;field&gt;</code> 改变字段名</li>
+</ul>
+<h2 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h2>
+<p><code>| transaction (&lt;field&gt;|&lt;field-list&gt;) [options]</code></p>
+<p>将不同源的数据聚集到一起并按照给定条件分组——将给定字段一样的值进行分组，如sessionID。其他字段变成多值（类似<code>stats values()</code>）。</p>
+<p>transaction命令会添加2个字段到raw events：</p>
+<ul>
+<li>duration：transaction中第一个和最后一个event的秒数。</li>
+<li>eventcount：transaction中的event数。（搜索结果不展开的话默认显示5条）</li>
+</ul>
+<blockquote>
+<p>[!NOTE] transaction默认是根据时间倒序来计算的
+所以pipe到transaction之前，注意使用 <code>| sort -_time</code>。</p>
+</blockquote>
+<h3 id="keepevicted">keepevicted选项<a class="headerlink" href="#keepevicted" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>keepevicted=0</code>：默认，仅显示完成了的transaction。</li>
+<li><code>keepevicted=1</code>：显示所有transaction</li>
+</ul>
+<blockquote>
+<p>[!NOTE] evicted: 被驱逐的</p>
+</blockquote>
+<h4 id="transactions_1">判断Transactions是否完成<a class="headerlink" href="#transactions_1" title="Permanent link">&para;</a></h4>
+<p>当设置<code>keepevicted=1</code>时，对于所有结果中“被驱逐的”transaction，其<code>closed_txn</code><strong>字段</strong>：</p>
+<ul>
+<li>0：未完成——即“被驱逐”的。</li>
+<li>1：完成。</li>
+</ul>
+<h3 id="_6">关于选项默认值<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>maxspan：-1（无限制）</li>
+<li>maxpause：-1（无限制）</li>
+<li>maxevents：1000</li>
+</ul>
+<blockquote>
+<p>[!NOTE] 注意（对比<code>stats</code>）
+<code>transaction</code>默认具有1000的上限——即到达1000就会新开一个transaction。而<code>stats</code>无上限。</p>
+</blockquote>
+<h3 id="_7">优化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>transaction</code>是resource intensive型命令。所以除了以下情况，尽量用更高效的<code>stats</code> 命令。</p>
+<ul>
+<li>需要根据多个字段进行分组。</li>
+<li>需要定义开始/结束或分段时间。</li>
+<li>希望保留每条event与raw data的关联。</li>
+</ul>
+<h2 id="stats">stats<a class="headerlink" href="#stats" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>[!NOTE] 踩坑：统计时注意event是否有目标字段
+stats只会统计有目标字段的event。所以如果原event中<strong>某些event没有A字段</strong>，而BY子句又写了A字段，那么将只会统计有A字段的那部分event。即可能丢失一部分自己从搜索结果看到的内容。</p>
+</blockquote>
+<p>^fc8c23</p>
+<p>over理解为：“针对”、“对于xxx字段的每个值”。</p>
+<p>over的值会显示在行，而by的值显示为列。那么其实over和by没有太大差别，仅仅是展示的效果——即over是x轴，而by表示对统计进行分组</p>
+<p>使用over时只能指定一个by字段。
+当不使用over直接by两个字段，则第一个字段被视为over。</p>
+<h3 id="eventstats">eventstats（追加列——双重统计）<a class="headerlink" href="#eventstats" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="./#stats变体">SPL memo#stats变体</a></li>
+</ul>
+<p>当我用过一次stats后，还想更进一步统计时，再加一个stats的话会生成一个新table覆盖前面的统计——所以，用eventstats的话能追加一列计算前面统计结果的统计（即保留原统计）。</p>
+<h3 id="streamstats">streamstats（动态统计）<a class="headerlink" href="#streamstats" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="./#stats变体">SPL memo#stats变体</a></li>
+</ul>
+<p>比eventstats控制得更精细——能统计指定条数的event，如移动平均。能统计每个event，如stats的count是每行的总数，而steamstats则可以计算multi数据。
+<strong>且保留时间的时间顺序。</strong></p>
+<blockquote>
+<p>[!NOTE] 关键
+动态计算每条event。如count时，每有一条event被使用，就count加一。<strong>即累积计算。</strong>  </p>
+<p>[!NOTE] 注意
+仅运行这个命令是创建一个字段，不会转换为图表形式。</p>
+</blockquote>
+<p>特殊选项：</p>
+<ul>
+<li>window：指定使用多少条event（包括当前+之前）。默认为0，即所有。</li>
+<li>current：默认为ture。即包含当前事件。</li>
+<li>global：true为跨越分组统计。</li>
+</ul>
+<h2 id="_8">关于表结合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><a href="https://qiita.com/frozencatpisces/items/9704ef60fc03889fd2fb#%E5%B7%A6%E5%A4%96%E9%83%A8%E7%B5%90%E5%90%88">各种表结合</a>
+<a href="https://community.splunk.com/t5/Splunk-Search/What-are-the-differences-between-append-appendpipe-and/m-p/135561">关于几个append</a></p>
+</blockquote>
+<h3 id="append">append（追加行）<a class="headerlink" href="#append" title="Permanent link">&para;</a></h3>
+<p>根据字段名是否一致，呈现的结果会不同——即纵向or斜向结合</p>
+<h3 id="appendcols">appendcols（追加列）<a class="headerlink" href="#appendcols" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>[!NOTE] 陷阱
+如果搜索和子搜索以相同的顺序产生相同数量的结果，则可以安全地使用此命令。否则，您将得到误导性的结果。</p>
+</blockquote>
+<h3 id="appendpipe">appendpipe（追加行——双重统计）<a class="headerlink" href="#appendpipe" title="Permanent link">&para;</a></h3>
+<p>相当于添加一个统计的子搜索到行尾——如果sort了又可以展现小计的效果。
+（似乎splunk将行的值叫做label）</p>
+<h3 id="join">join<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>join [field] [type=] [search]</code>：<ul>
+<li>指定字段的话，默认是求集合（inner结合）</li>
+<li>可以指定 <code>type=outer</code>（外部结合）——对于没有匹配到的，会添加null值的字段</li>
+<li><code>[field]</code>不存在的event将被忽略</li>
+</ul>
+</li>
+</ul>
+<h2 id="tabular-output-vs-stats-like-output">Tabular output vs. Stats-like output<a class="headerlink" href="#tabular-output-vs-stats-like-output" title="Permanent link">&para;</a></h2>
+<h3 id="xyseries">xyseries<a class="headerlink" href="#xyseries" title="Permanent link">&para;</a></h3>
+<p><code>| xyseries &lt;x-field&gt; &lt;y-name-field&gt; &lt;y-data-field&gt;</code></p>
+<p>主要应用为突破timechart只能有两列的限制？——在stats+eval的统计后，加上时间会有3列。于是指定时间为x轴，另外两列分别为y轴名及其值。但是似乎可以将eval提到 timechart/stats 前就可避免3列的情况……但是！关于为什么要在 stats等命令后使用eval——因为这样的SPL更简单——且更关键的是：能更自由地交换 x/y 轴。</p>
+<h3 id="untalbexyseries">untalbe——xyseries的逆运算<a class="headerlink" href="#untalbexyseries" title="Permanent link">&para;</a></h3>
+<h3 id="xyseries-vs-chart">xyseries vs. chart<a class="headerlink" href="#xyseries-vs-chart" title="Permanent link">&para;</a></h3>
+<p><code>…| chart A over B by C</code> = <code>…| stats A by B,C | …| xyseries B C A</code></p>
+<h3 id="foreach">foreach<a class="headerlink" href="#foreach" title="Permanent link">&para;</a></h3>
+<p>foreach后指定要循环的字段（可用通配符）
+<strong>开一个子搜索</strong>，里面用<code>&lt;&lt;FIELD&gt;&gt;</code> 调用被循环字段的值。</p>
+<h2 id="fillnull">fillnull<a class="headerlink" href="#fillnull" title="Permanent link">&para;</a></h2>
+<p><code>...| fillnul [value=&lt;string&gt;] [&lt;field-list&gt;]</code></p>
+<ul>
+<li>默认填充“0”</li>
+<li>不限定字段的话填充所有null字段。</li>
+</ul>
+<h2 id="eval-functions">eval-functions详解<a class="headerlink" href="#eval-functions" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>[!NOTE] 将无引号、单引号解释为字段，将双引号解释为值。注意：值是大小写敏感的！</p>
+</blockquote>
+<h3 id="eval-function">调用<code>eval-function</code>的几种方式<a class="headerlink" href="#eval-function" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>You can use evaluation functions with the <code>eval</code>, <code>fieldformat</code>, and <code>where</code> commands, and as part of eval expressions with other commands.</p>
+</blockquote>
+<ul>
+<li><code>...| eval &lt;field&gt;=function(..)</code></li>
+<li><code>...| where function(..)</code></li>
+<li><code>...| fieldformat &lt;field&gt;=function(..)</code></li>
+<li><code>...| stats stats-func(eval(function(..)))</code></li>
+</ul>
+<h4 id="fieldformat">fieldformat<a class="headerlink" href="#fieldformat" title="Permanent link">&para;</a></h4>
+<ul>
+<li>使用和eval一样的函数</li>
+<li>仅更改值的显示，而不更改底层的值。</li>
+<li>注意：格式化的值无法被用于其他命令，所以要晚于pipeline使用。</li>
+</ul>
+<h4 id="where">where<a class="headerlink" href="#where" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>[!NOTE] 将无引号、单引号解释为字段，将双引号解释为值。注意：值是大小写敏感的！</p>
+<p>[!NOTE] 为什么有where命令
+比如search不支持两个字段间的比较，而where可以。</p>
+<p>[!NOTE] 关于<a href="https://docs.splunk.com/Documentation/SCS/current/Search/Wildcards">通配符</a></p>
+<ul>
+<li>不要使用<code>*</code>，因为会被解释为文字字符（literal character）或数学符号</li>
+<li>使用<code>LIKE</code>操作符，或者<a href="https://docs.splunk.com/Documentation/SCS/current/SearchReference/ConditionalFunctions#like.28.26lt.3Bstr.26gt.3B.2C_.26lt.3Bpattern.26gt.3B.29"><code>like(&lt;string&gt;, &lt;pattern&gt;)</code>函数</a></li>
+<li>使用<code>%</code>（表示多个字符）或<code>_</code>（表示单个字符）</li>
+</ul>
+</blockquote>
+<h3 id="functions">常见functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/splunk-functions-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="splunk-functions-1.png" src="../../../static/img/ATTACHMENTS/splunk-functions-1.png" /></a>
+<a class="glightbox" href="../../../static/img/ATTACHMENTS/splunk-functions-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="splunk-functions-2.png" src="../../../static/img/ATTACHMENTS/splunk-functions-2.png" /></a></p>
+<h3 id="conversion"><a href="https://docs.splunk.com/Documentation/Splunk/9.2.0/SearchReference/ConversionFunctions">Conversion类——字符串格式化</a><a class="headerlink" href="#conversion" title="Permanent link">&para;</a></h3>
+<h3 id="text"><a href="https://docs.splunk.com/Documentation/Splunk/9.2.0/SearchReference/TextFunctions">Text类——字符串处理</a><a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
+<h3 id="spath">spath<a class="headerlink" href="#spath" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304184920.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20240304184920.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304184920.png" /></a></p>
+<ul>
+<li>最好都指定：input/output是指定字段，而path是指定路径</li>
+<li>指定子路径/key用点或方括号（即字典/json，所以可以用点分形式，也可以用list['key']形式）</li>
+<li>用大括号表示本来的列表。其结果提取为多值的字段——如果要分展开来就用mvexpand</li>
+</ul>
+<h4 id="eval">eval函数形式更简单<a class="headerlink" href="#eval" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>... | eval locDesc=spath(_raw, "vendorProductSet.product.desc.locDesc")</code></li>
+</ul>
+<h4 id="substr">substr<a class="headerlink" href="#substr" title="Permanent link">&para;</a></h4>
+<h3 id="comparison-and-conditional-functions"><a href="http://docs.splunk.com/Documentation/Splunk/9.2.0/SearchReference/ConditionalFunctions">Comparison and Conditional functions</a><a class="headerlink" href="#comparison-and-conditional-functions" title="Permanent link">&para;</a></h3>
+<h4 id="case">case<a class="headerlink" href="#case" title="Permanent link">&para;</a></h4>
+<p>注意最后可能需要一个<code>ture()</code>来保证有值，否则默认<code>NULL</code>。</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">|</span><span class="w"> </span><span class="n">spath</span><span class="w"> </span><span class="k">input</span><span class="o">=</span><span class="n">Mitre</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="ss">&quot;{}.Code&quot;</span><span class="w"> </span><span class="k">output</span><span class="o">=</span><span class="n">MITRE_Code</span><span class="w"> </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">|</span><span class="w"> </span><span class="n">spath</span><span class="w"> </span><span class="k">input</span><span class="o">=</span><span class="n">Mitre</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="ss">&quot;{}.Label&quot;</span><span class="w"> </span><span class="k">output</span><span class="o">=</span><span class="n">MITRE_Label</span><span class="w"> </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">MITRE</span><span class="o">=</span><span class="n">mvzip</span><span class="p">(</span><span class="n">MITRE_Code</span><span class="p">,</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;: &quot;</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">MITRE</span><span class="o">=</span><span class="k">if</span><span class="p">(</span><span class="k">isnull</span><span class="p">(</span><span class="n">MITRE</span><span class="p">),</span><span class="ss">&quot;NULL&quot;</span><span class="p">,</span><span class="n">MITRE</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">MITRE_Label</span><span class="o">=</span><span class="k">if</span><span class="p">(</span><span class="k">isnull</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">),</span><span class="ss">&quot;NULL&quot;</span><span class="p">,</span><span class="n">MITRE_Label</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="o">|</span><span class="w"> </span><span class="n">mvexpand</span><span class="w"> </span><span class="n">MITRE_Label</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">MITRE_Label_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">case</span><span class="p">(</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Reconnaissance%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Resource Development%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Initial Access%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Execution%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Persistence%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Privilege Escalation%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Defense Evasion%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Credential Access%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Discovery%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Lateral Movement%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Collection%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Command and Control%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Exfiltration%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="k">like</span><span class="p">(</span><span class="n">MITRE_Label</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Impact%&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="k">true</span><span class="p">(),</span><span class="w"> </span><span class="mi">15</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">)</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="n">MITRE_Label_order</span>
+</span></code></pre></div>
+<h4 id="validate">validate<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h4>
+<p><code>case</code>的反面，不匹配的话返回，匹配第一个条件则继续确认后面的条件。</p>
+<h4 id="in">in<a class="headerlink" href="#in" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>[!NOTE] 必须在eval的<code>if</code>或<code>case</code>函数中使用</p>
+</blockquote>
+<p>如：<code>...| eval error = if(in(status, "404", "503"), "true", "false")</code></p>
+<h4 id="matchingtruefalseif">各种Matching功能，返回TRUE/FALSE（多与if连用）<a class="headerlink" href="#matchingtruefalseif" title="Permanent link">&para;</a></h4>
+<ul>
+<li>searchmatch()</li>
+<li>cidrmatch()：判断指定字段是否匹配CIDR。
+    <a class="glightbox" href="../../../static/img/ATTACHMENTS/splunk-cidrmatch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="splunk-cidrmatch.png" src="../../../static/img/ATTACHMENTS/splunk-cidrmatch.png" /></a></li>
+<li>match()：正则匹配。</li>
+</ul>
+<h4 id="replace">replace<a class="headerlink" href="#replace" title="Permanent link">&para;</a></h4>
+<p><code>replace(&lt;literal string/field&gt;, &lt;regex pattern&gt;, &lt;subsititution&gt;)</code>
+下例，用\1或\2来捕获/传递regex中的分组使其保持原样，替换掉中间部分。
+    <a class="glightbox" href="../../../static/img/ATTACHMENTS/splunk-replace.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="splunk-replace.png" src="../../../static/img/ATTACHMENTS/splunk-replace.png" /></a></p>
+<h4 id="coalesce">coalesce：合并<a class="headerlink" href="#coalesce" title="Permanent link">&para;</a></h4>
+<p>对指定的（多个）字段中，返回第一个非null值。用于多种log（如多家厂商等）对同一含义的数据有不同字段名时，自己创建一个上层字段来吸收他们的字段名差异。</p>
+<h2 id="splunk">splunk正则<a class="headerlink" href="#splunk" title="Permanent link">&para;</a></h2>
+<ul>
+<li>regex：单纯作为过滤器。且“最小匹配？”——有pattern字符串的一段就算匹配【可能是因为指定了字段，所以hit就可】</li>
+<li>rex：正则提取字段，匹配后保存到某个字段</li>
+<li>erex：更简单，类似自动提取，只需给一个例子</li>
+</ul>
+<blockquote>
+<p><a href="../../../Resources/General/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></p>
+<p>[!NOTE] <a href="https://docs.splunk.com/Documentation/SCS/current/Search/AboutSplunkregularexpressions">Splunk regular expressions are PCRE (Perl Compatible Regular Expressions)</a></p>
+</blockquote>
+<h3 id="urlfqdn">URL提取FQDN<a class="headerlink" href="#urlfqdn" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">index</span><span class="o">=</span><span class="n">proxy_a</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">|</span><span class="w"> </span><span class="n">rex</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;^(?:(?:https?|tcp)://)?(?&lt;FQDN&gt;[^:/?#]+)(?::\d+)?\b(?:/|$)&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">|</span><span class="w"> </span><span class="n">dedup</span><span class="w"> </span><span class="n">FQDN</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="o">|</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">FQDN</span>
+</span></code></pre></div>
+<h4 id="_9">切片方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">index</span><span class="o">=</span><span class="ss">&quot;proxy_c&quot;</span><span class="w"> </span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">url1</span><span class="o">=</span><span class="n">split</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="ss">&quot;/&quot;</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">url2</span><span class="o">=</span><span class="n">mvindex</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">url3</span><span class="o">=</span><span class="n">split</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span><span class="ss">&quot;:&quot;</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">fqdn</span><span class="o">=</span><span class="n">mvindex</span><span class="p">(</span><span class="n">url3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">fqdn</span>
+</span></code></pre></div>
+<h2 id="restconf">rest——conf确认<a class="headerlink" href="#restconf" title="Permanent link">&para;</a></h2>
+<p>オンプレの環境：<code>/opt/splunk/etc/apps/TA-recordedfuture/local/recordedfuture_settings.conf</code>
+splunk cloud の場合は以下 spl より確認：
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">|</span><span class="w"> </span><span class="n">localop</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="o">|</span><span class="w"> </span><span class="n">rest</span><span class="w"> </span><span class="n">splunk_server</span><span class="o">=</span><span class="k">local</span><span class="w"> </span><span class="o">/</span><span class="n">servicesNS</span><span class="o">/</span><span class="n">nobody</span><span class="o">/</span><span class="n">TA</span><span class="o">-</span><span class="n">recordedfuture</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">conf</span><span class="o">-</span><span class="n">recordedfuture_settings</span><span class="o">/</span>
+</span></code></pre></div></p>
+<p>对比URL：<code>https://&lt;tenant&gt;.splunkcloud.com/ja-JP/app/TA-recordedfuture/rfes_enrich_ip</code></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">|</span><span class="w"> </span><span class="n">localop</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">|</span><span class="w"> </span><span class="n">rest</span><span class="w"> </span><span class="n">splunk_server</span><span class="o">=</span><span class="k">local</span><span class="w"> </span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">TA</span><span class="o">-</span><span class="n">recordedfuture</span><span class="o">/</span><span class="n">enrich</span>
+</span></code></pre></div>
+<h2 id="_10">查看所有字段状况<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>个数、唯一数、值等。</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">index</span><span class="o">=</span><span class="err">…</span><span class="w"> </span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">|</span><span class="w"> </span><span class="n">fieldsummary</span>
+</span></code></pre></div>
+<h2 id="indexdatamodel">查看index属于哪个datamodel<a class="headerlink" href="#indexdatamodel" title="Permanent link">&para;</a></h2>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">|</span><span class="w"> </span><span class="n">datamodel</span><span class="w"> </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">|</span><span class="w"> </span><span class="n">rex</span><span class="w"> </span><span class="n">field</span><span class="o">=</span><span class="n">_raw</span><span class="w"> </span><span class="ss">&quot;\&quot;</span><span class="n">modelName</span><span class="err">\</span><span class="ss">&quot;\s*\:\s*\&quot;</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">modelName</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="err">\</span><span class="ss">&quot;]+)\&quot;&quot; </span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="ss">| fields modelName </span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="ss">| table modelName </span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="ss">| map maxsearches=40 search=&quot;</span><span class="n">tstats</span><span class="w"> </span><span class="o">`</span><span class="n">summariesonly</span><span class="o">`</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">datamodel</span><span class="o">=</span><span class="err">$</span><span class="n">modelName$</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sourcetype</span><span class="p">,</span><span class="k">index</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">modelName</span><span class="o">=</span><span class="err">\</span><span class="ss">&quot;$modelName$\&quot;</span><span class="err">&quot;</span>
+</span></code></pre></div>
+<h2 id="map"><a href="https://docs.splunk.com/Documentation/SplunkCloud/9.0.2209/SearchReference/Map?ref=hk">map</a><a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
+<h2 id="datamodel">datamodel<a class="headerlink" href="#datamodel" title="Permanent link">&para;</a></h2>
+<p>执行无参数的命令 <code>| datamodel</code>：显示所有datamodel（json格式）。<br />
+其中，objectNameList里的就是dataset——即dataset是datamodel组成部分。每种dataset又有对应的tag标识（<a href="https://docs.splunk.com/Documentation/CIM/5.1.1/User/Authentication">参考理解</a>）</p>
+<h3 id="3datasets">3种datasets：<a class="headerlink" href="#3datasets" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Events：不包含transforming命令和pipe的搜索</li>
+<li>Searches：包含pipe到transforming的搜索</li>
+<li>Transactions：包含transaction命令的搜索</li>
+</ul>
+<h4 id="gui">GUI<a class="headerlink" href="#gui" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304183118.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20240304183118.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304183118.png" /></a></p>
+<h3 id="_11">注意（没懂）<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>前提：有event或search dataset。</li>
+<li>并不会从永久data model加速中获益</li>
+</ul>
+<h3 id="add-field">Add Field<a class="headerlink" href="#add-field" title="Permanent link">&para;</a></h3>
+<p>Auto-Extracted：只能在root dataset使用</p>
+<h3 id="pivot">Pivot<a class="headerlink" href="#pivot" title="Permanent link">&para;</a></h3>
+<p>就是no-code可视化。</p>
+<h3 id="_12">命令<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><code>| datamodel [&lt;data_model_name&gt;] [&lt;dataset_name&gt;] [&lt;data_model_search_mode&gt;] [strict_fields=&lt;bool&gt;] [allow_old_summaries=&lt;bool&gt;] [summariesonly=&lt;bool&gt;]</code></p>
+<ul>
+<li>
+<p>data_model_search_mode：<code>search</code> | <code>flat</code> | <code>acceleration_search</code></p>
+<ul>
+<li><code>search</code>：显示指定datamodel/dataset的所有event。并且每个字段在侧边栏会显示数据结构的从属关系。</li>
+<li><code>flat</code>：与search相反，不会显示字段的从属关系。</li>
+</ul>
+</li>
+<li>
+<p><code>summariesonly=t</code>：仅搜索以TSIDX格式汇总的数据——即不搜索raw data</p>
+</li>
+<li>也可以这样搜（结构如下，from方式好像主要用于相关search）：<code>| from datamodel Endpoint.Ports</code>
+    <a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304183545.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20240304183545.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304183545.png" /></a></li>
+</ul>
+<h3 id="_13">时间范围指定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>datamodel不可用earliest那种，需要 <code>where relative_time()</code></p>
+<h2 id="relative_time">relative_time<a class="headerlink" href="#relative_time" title="Permanent link">&para;</a></h2>
+<p>注意返回的是epoch time格式。</p>
+<p>以下示例指定最早时间为 2 小时前对齐小时，最晚时间为 1 小时前对齐小时：
+<code>... | where _time&gt;relative_time(now(), "-2h@h") AND _time&lt;relative_time(now(), "-1h@h")</code></p>
+<h2 id="tstat">tstat<a class="headerlink" href="#tstat" title="Permanent link">&para;</a></h2>
+<ul>
+<li>用于统计Tsidx文件的。如果Tsidx文件没有目标字段，搜索则不会返回结果。</li>
+<li>使用from从特定data model拉取event。</li>
+<li>使用where来过滤。</li>
+<li>使用by来分组。</li>
+<li>是Generating命令（需要前导管道符）。</li>
+<li>使用注意：最好写上dataset的完整路径（无论datamodel还是字段）。</li>
+</ul>
+<p>例：
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">...</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tstats</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">index</span><span class="o">=</span><span class="n">botsv2</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sourcetype</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">...</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">`</span><span class="n">tstats</span><span class="o">`</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">datamodel</span><span class="o">=</span><span class="n">Authentication</span><span class="p">.</span><span class="n">Authentication</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">_time</span><span class="p">,</span><span class="n">Authentication</span><span class="p">.</span><span class="n">action</span><span class="w"> </span><span class="n">span</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="w"> </span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="o">|</span><span class="w"> </span><span class="n">timechart</span><span class="w"> </span><span class="n">minspan</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span><span class="w"> </span><span class="n">useother</span><span class="o">=`</span><span class="n">useother</span><span class="o">`</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Authentication</span><span class="p">.</span><span class="n">action</span><span class="w"> </span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="o">|</span><span class="w"> </span><span class="o">`</span><span class="n">drop_dm_object_name</span><span class="p">(</span><span class="ss">&quot;Authentication&quot;</span><span class="p">)</span><span class="o">`</span>
+</span></code></pre></div></p>
+<h3 id="_14">通配符<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>仅可在where子句中使用通配符搜索。</p>
+<h3 id="datamodeltstat">datamodel转tstat<a class="headerlink" href="#datamodeltstat" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304183901.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20240304183901.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304183901.png" /></a></p>
+<h2 id="stats_1">stats变体<a class="headerlink" href="#stats_1" title="Permanent link">&para;</a></h2>
+<h3 id="spl-memoeventstats-spl-memostreamstats"><a href="./#eventstats追加列双重统计">SPL memo#eventstats（追加列——双重统计）</a> 和 <a href="./#streamstats动态统计">SPL memo#streamstats（动态统计）</a><a class="headerlink" href="#spl-memoeventstats-spl-memostreamstats" title="Permanent link">&para;</a></h3>
+<ul>
+<li>两者都是统计事件并给每个事件放入一个新字段</li>
+<li>不过eventstats是静态，而streamstats是动态——即streamstats加入的新字段的统计值会根据统计事件的数目而变动/滑动</li>
+</ul>
+<p><a href="https://www.bitsioinc.com/using-splunk-statistical-commands-eventstats-and-streamstats/#:~:text=Splunk%20streamstats%20command%20calculates%20a,requests%20as%20events%20are%20seen">https://www.bitsioinc.com/using-splunk-statistical-commands-eventstats-and-streamstats/#:~:text=Splunk%20streamstats%20command%20calculates%20a,requests%20as%20events%20are%20seen</a>.</p>
+<h3 id="memo">memo&amp;例子<a class="headerlink" href="#memo" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">index</span><span class="o">=</span><span class="ss">&quot;ad&quot;</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="ss">&quot;ALOG_ACCESS_AD&quot;</span><span class="w"> </span><span class="n">action</span><span class="o">=</span><span class="ss">&quot;LOGON-Failure&quot;</span><span class="w"> </span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="o">|</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="n">span</span><span class="o">=</span><span class="mi">1</span><span class="n">h</span><span class="w"> </span><span class="n">_time</span><span class="w"> </span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fail_count</span><span class="w"> </span><span class="k">by</span><span class="w">  </span><span class="k">user</span><span class="w"> </span><span class="n">_time</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="o">|</span><span class="w"> </span><span class="n">streamstats</span><span class="w"> </span><span class="k">current</span><span class="o">=</span><span class="n">f</span><span class="w"> </span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">last</span><span class="p">(</span><span class="n">fail_count</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">prev_fail_count</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">user</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="o">|</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">fail_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">prev_fail_count</span><span class="o">*</span><span class="mi">70</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">fail_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">prev_fail_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">_time</span><span class="o">=</span><span class="n">strftime</span><span class="p">(</span><span class="n">_time</span><span class="p">,</span><span class="ss">&quot;%m-%d_%H:%M&quot;</span><span class="p">)</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="n">_time</span>
+</span></code></pre></div>
+<h2 id="splunkconf">从splunk的conf看字段变换<a class="headerlink" href="#splunkconf" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304184614.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20240304184614.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240304184614.png" /></a></p>
+<h2 id="bin">bin<a class="headerlink" href="#bin" title="Permanent link">&para;</a></h2>
+<p>将连续的数值放入离散的集/容器中（timechart内置了span一样）</p>
+<p>如：时间（按1小时间隔放置。即不管几分几秒，直接按小时的数分配）</p>
+<ul>
+<li><code>| bin span=1h _time</code><ul>
+<li><code>span</code> 和 <code>_time</code> 可以互换位置</li>
+<li>还可以 as 新字段</li>
+</ul>
+</li>
+</ul>
+<p>不是只能bin时间字段！！</p>
+<h2 id="_15">时间<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">范围指定<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><a class="glightbox" href="../Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/#earliestlatest" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Splunk知识点#earliest&amp;latest" src="../Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/#earliestlatest" /></a></p>
+</blockquote>
+<p><strong>格式：<code>%m/%d/%Y:%H:%M:%S</code></strong></p>
+<ul>
+<li><code>earliest=01/31/2023:00:00:00 latest=04/30/2023:00:00:00</code></li>
+</ul>
+<blockquote>
+<p>[!NOTE] datamodel用不了这种形式</p>
+</blockquote>
+<h3 id="_17">格式化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="strftime"><code>strftime</code><a class="headerlink" href="#strftime" title="Permanent link">&para;</a></h4>
+<p>如果自己想指定时间，注意timestamp的单位需要是秒（即timestamp默认为毫秒，要除以1000）！</p>
+<ul>
+<li><code>| eval _time=strftime(_time,"%m-%d_%H:%M")</code></li>
+<li><code>| fieldformat _time=strftime(_time,"%Y-%m-%dT%H:%M:%S.%l%z")</code></li>
+<li><code>%T</code> 就是：<code>%H:%M:%S</code></li>
+<li><code>%F</code> 就是：<code>%Y-%m-%d</code> （ISO8601格式）</li>
+<li><strong>注意：计算字段的值别忘了用单引号括住！</strong></li>
+</ul>
+<h4 id="strptimetime_field-the_time_format"><code>strptime(&lt;time_field&gt;, &lt;the_time_format&gt;)</code><a class="headerlink" href="#strptimetime_field-the_time_format" title="Permanent link">&para;</a></h4>
+<p>是将指定格式的时间转为 epoch time格式。</p>
+<h2 id="_18">同比环比<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">index</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="ss">&quot;ad_g&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="n">ALOG</span><span class="w"> </span><span class="n">earliest</span><span class="o">=-</span><span class="mi">0</span><span class="n">d</span><span class="o">@</span><span class="n">d</span><span class="w"> </span><span class="n">latest</span><span class="o">=</span><span class="n">now</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">flag_date</span><span class="o">=</span><span class="ss">&quot;Today&quot;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="o">|</span><span class="w"> </span><span class="n">append</span><span class="w"> </span><span class="p">[</span><span class="k">search</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="ss">&quot;ad_g&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sourcetype</span><span class="o">=</span><span class="n">ALOG</span><span class="w"> </span><span class="n">earliest</span><span class="o">=-</span><span class="mi">7</span><span class="n">d</span><span class="o">@</span><span class="n">d</span><span class="w"> </span><span class="n">latest</span><span class="o">=-</span><span class="mi">6</span><span class="n">d</span><span class="o">@</span><span class="n">d</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">flag_date</span><span class="o">=</span><span class="ss">&quot;Last week&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">_time</span><span class="o">=</span><span class="n">_time</span><span class="o">+</span><span class="mi">86400</span><span class="o">*</span><span class="mi">7</span><span class="p">]</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="o">|</span><span class="w"> </span><span class="n">timechart</span><span class="w"> </span><span class="n">span</span><span class="o">=</span><span class="mi">1</span><span class="n">d</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">flag_date</span>
+</span></code></pre></div>
+<h3 id="timewrap-int-timescale"><code>timewrap [&lt;int&gt;] &lt;timescale&gt;</code><a class="headerlink" href="#timewrap-int-timescale" title="Permanent link">&para;</a></h3>
+<p>一般跟随在 timechart 结果后。</p>
+<h2 id="mv">mv相关<a class="headerlink" href="#mv" title="Permanent link">&para;</a></h2>
+<p>很多时候mv函数的参数都有个表达式——因为mv是list数据，所以mv函数的意图是迭代处理。</p>
+<ul>
+<li><code>…| eval failure_user_count=mvcount(mvfilter(match(v_ua, "-Failure")))</code></li>
+<li><code>…| eval v_normal_error_uni = mvdedup(mvmap(v_uat , replace(v_uat, "WRITE_", "READ_")))</code></li>
+</ul>
+<h2 id="_19">字符串处理<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p><code>tostring(field, "commas")</code></p>
+<h3 id="bytes">计算带宽（Bytes）单位<a class="headerlink" href="#bytes" title="Permanent link">&para;</a></h3>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">...</span><span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="k">isnull</span><span class="p">(</span><span class="n">bytes</span><span class="p">),</span><span class="w"> </span><span class="ss">&quot;n/a&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">)</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="o">|</span><span class="w"> </span><span class="n">eval</span><span class="w"> </span><span class="k">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">case</span><span class="p">(</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="n">bytes</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="n">bytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="ss">&quot; GB&quot;</span><span class="p">,</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="n">bytes</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="n">bytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="ss">&quot; MB&quot;</span><span class="p">,</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="n">bytes</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="n">bytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="ss">&quot; KB&quot;</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="k">true</span><span class="p">(),</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="ss">&quot; B&quot;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="p">)</span>
+</span></code></pre></div>
+* 第一行的eval，因为：<a href="./#fc8c23">注意踩坑</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.path", "navigation.expand", "search.suggest", "search.highlight", "search.share", "content.code.copy", "header.autohide", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../static/js/extra.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

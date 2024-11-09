@@ -1,0 +1,7390 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="TimeLess613">
+      
+      
+      
+        <link rel="prev" href="../Linux%E5%8F%91%E8%A1%8C%E7%89%88/">
+      
+      
+        <link rel="next" href="../Linux%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Linux命令 - HacKnowledgeBase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="HacKnowledgeBase" class="md-header__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HacKnowledgeBase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linux命令
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-tabs__link">
+        
+  
+    
+  
+  基础概念
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../information-gathering/information-gathering/" class="md-tabs__link">
+          
+  
+  信息收集
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../initial-access/initial-access/" class="md-tabs__link">
+          
+  
+  初始访问
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../privilege-escalation/privilege-escalation/" class="md-tabs__link">
+          
+  
+  提权
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../post-exploitation/Persistence/" class="md-tabs__link">
+          
+  
+  后渗透
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arsenal/nmap/" class="md-tabs__link">
+          
+  
+  武器库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../simple-network-service/" class="md-tabs__link">
+          
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../BlueTeam/Splunk/SPL%20memo/" class="md-tabs__link">
+          
+  
+  BlueTeam
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../writeup/active/writeup-template/" class="md-tabs__link">
+          
+  
+  靶机WriteUp
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="HacKnowledgeBase" class="md-nav__button md-logo" aria-label="HacKnowledgeBase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HacKnowledgeBase
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TimeLess613/kiwi" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TimeLess613/kiwi
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tool-links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tool Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../material-color-palette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配色变更
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic-concepts/basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    信息收集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            信息收集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/information-gathering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/footprinting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    踩点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/scanning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    扫描
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/enumerate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    枚举
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../information-gathering/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    思路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    初始访问
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            初始访问
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/initial-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WEB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../initial-access/%E5%8F%8D%E5%BC%B9shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    反弹shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    提权
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            提权
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/privilege-escalation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../privilege-escalation/waiting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            后渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/Persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    权限维持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/ClearingTracks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    痕迹清理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tunneling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/SSH%20Tunneling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Tunneling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    File Transfers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            File Transfers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../post-exploitation/FileTransfers-Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WIndows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    武器库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            武器库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/nmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/Netcat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netcat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/burpsuite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Burpsuite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/metasploit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metasploit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sliver-c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SliverC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/viper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Viper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/enumerate-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enumerate Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arsenal/ldapsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ldapsearch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simple-network-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简单网络服务渗透
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerShell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4_2" id="__nav_8_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Protocol
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/DNS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/Whois/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whois
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/ICMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ICMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/SSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/LDAP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/NetBIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NetBIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/SMB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/RPC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/WinRM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WinRM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/SNMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNMP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/SMTP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/NFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Protocol/Gopher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gopher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../General/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/SASL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SASL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PKI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            PKI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PKI/%E5%85%AC%E9%92%A5%E8%AF%81%E4%B9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    公钥证书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%E5%8F%91%E8%A1%8C%E7%89%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux发行版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Linux命令
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Linux命令
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令解释网址
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      终端快捷键
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境变量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看指定进程的环境变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      未分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="未分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      jar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iconv" class="md-nav__link">
+    <span class="md-ellipsis">
+      iconv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#man" class="md-nav__link">
+    <span class="md-ellipsis">
+      man
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dollar-sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      dollar sign
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件和目录管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件和目录管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      mv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      realpath
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      stat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    <span class="md-ellipsis">
+      touch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkdir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      提取文件名/文件夹名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      软链接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      find
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据时间查找
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="根据时间查找">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      相对时间
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      绝对时间（特定时间）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      排除搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suid" class="md-nav__link">
+    <span class="md-ellipsis">
+      找设置了SUID的文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      -exec
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zipgrep" class="md-nav__link">
+    <span class="md-ellipsis">
+      zipgrep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tail" class="md-nav__link">
+    <span class="md-ellipsis">
+      tail
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件比较
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件比较">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comm" class="md-nav__link">
+    <span class="md-ellipsis">
+      comm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      diff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vimdiff" class="md-nav__link">
+    <span class="md-ellipsis">
+      vimdiff
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locate" class="md-nav__link">
+    <span class="md-ellipsis">
+      locate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    <span class="md-ellipsis">
+      file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exiftool" class="md-nav__link">
+    <span class="md-ellipsis">
+      exiftool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binwalk" class="md-nav__link">
+    <span class="md-ellipsis">
+      binwalk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strace" class="md-nav__link">
+    <span class="md-ellipsis">
+      strace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hexeditor" class="md-nav__link">
+    <span class="md-ellipsis">
+      hexeditor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      统计目录大小
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      文本处理和编辑
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文本处理和编辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vivim" class="md-nav__link">
+    <span class="md-ellipsis">
+      vi/vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tee" class="md-nav__link">
+    <span class="md-ellipsis">
+      tee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      wc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniq" class="md-nav__link">
+    <span class="md-ellipsis">
+      uniq
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paste" class="md-nav__link">
+    <span class="md-ellipsis">
+      paste
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tr" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      cut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      sed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      awk
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="awk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件可用【/PATTERN/】正则匹配
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nrfnr" class="md-nav__link">
+    <span class="md-ellipsis">
+      NR与FNR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      指定输出分隔符（OFS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      转大写
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonjq" class="md-nav__link">
+    <span class="md-ellipsis">
+      [[json#jq命令]]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      xargs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统信息和服务管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="系统信息和服务管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      history
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    <span class="md-ellipsis">
+      date
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务管理器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="服务管理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行级别
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运行级别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      init方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemctl方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      桌面环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemctl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      更改主机名
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="更改主机名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      临时
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      永久
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看hostname详细信息
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uname" class="md-nav__link">
+    <span class="md-ellipsis">
+      uname
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="uname">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arch" class="md-nav__link">
+    <span class="md-ellipsis">
+      arch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#os" class="md-nav__link">
+    <span class="md-ellipsis">
+      OS版本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      top
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watch" class="md-nav__link">
+    <span class="md-ellipsis">
+      watch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      shell环境
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shell环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binsh-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      /bin/sh -c
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      终端环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络和通信
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络和通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      路由表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      dhclient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      修改IP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="修改IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linuxredhat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Redhat系列
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linuxdebain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Debain系列
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      netstat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ss" class="md-nav__link">
+    <span class="md-ellipsis">
+      ss
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmtui" class="md-nav__link">
+    <span class="md-ellipsis">
+      nmtui
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      iptables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld" class="md-nav__link">
+    <span class="md-ellipsis">
+      firewalld
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="firewalld">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认9个zone的默认配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      项目理解firewalld
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      用户和权限管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用户和权限管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#su" class="md-nav__link">
+    <span class="md-ellipsis">
+      su
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useradd" class="md-nav__link">
+    <span class="md-ellipsis">
+      useradd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      passwd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sudo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sudo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo -l
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudoers" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置sudoers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pam" class="md-nav__link">
+    <span class="md-ellipsis">
+      pam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      wheel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chmod" class="md-nav__link">
+    <span class="md-ellipsis">
+      chmod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chown" class="md-nav__link">
+    <span class="md-ellipsis">
+      chown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chgrp" class="md-nav__link">
+    <span class="md-ellipsis">
+      chgrp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chage" class="md-nav__link">
+    <span class="md-ellipsis">
+      chage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      软件包管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="软件包管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linuxdebain_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Debain系列
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux发行版#Debain系列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aptadvanced-packaging-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      apt（Advanced Packaging Tool）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linuxredhat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Redhat系列
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux发行版#Redhat系列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpmred-hat-package-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      rpm（Red-Hat Package Manager）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yumyellowdog-updater-modified" class="md-nav__link">
+    <span class="md-ellipsis">
+      yum（Yellowdog Updater Modified）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="yum（Yellowdog Updater Modified）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      报错解决
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnfdandified-yum" class="md-nav__link">
+    <span class="md-ellipsis">
+      dnf（Dandified YUM）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拓展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epelextra-packages-for-enterprise-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPEL（Extra Packages for Enterprise Linux）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pippip-installs-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      pip（Pip Installs Packages）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      磁盘、分区、文件系统管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="磁盘、分区、文件系统管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lsblk" class="md-nav__link">
+    <span class="md-ellipsis">
+      lsblk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      fdisk
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fdisk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      gdisk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkfs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      mount
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mount">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findmnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      findmnt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fstab" class="md-nav__link">
+    <span class="md-ellipsis">
+      fstab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#df" class="md-nav__link">
+    <span class="md-ellipsis">
+      df
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      压缩和解压
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="压缩和解压">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      tar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zip" class="md-nav__link">
+    <span class="md-ellipsis">
+      zip
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gz" class="md-nav__link">
+    <span class="md-ellipsis">
+      gz
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      ps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      BSD命令风格的参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unix命令风格的参数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      kill
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      日志和监控
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份和恢复
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度和计划任务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="调度和计划任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#corn" class="md-nav__link">
+    <span class="md-ellipsis">
+      corn
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux各种括号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux文件权限
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分区
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%91%BD%E4%BB%A4%E9%A3%8E%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令风格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%8D%A2%E8%A1%8C%E7%AC%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    换行符
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%85%8D%E7%BD%AELinux%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置Linux图形桌面连接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命名管道
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BF%AE%E6%94%B9IP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改IP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BB%88%E7%AB%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    终端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BlueTeam
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            BlueTeam
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Splunk
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Splunk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/SPL%20memo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SPL memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/Splunk%E7%9F%A5%E8%AF%86%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Splunk知识点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Splunk/Knowledge%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Knowledge Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BlueTeam/Email%E5%AE%89%E5%85%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email安全
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    靶机WriteUp
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            靶机WriteUp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/active/writeup-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WP模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Precious/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Precious
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Shoppy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Shoppy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Soccer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Soccer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-MetaTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MetaTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Ambassador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Ambassador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-APT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-APT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-MonitorsTwo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-MonitorsTwo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Busqueda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Busqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-PC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-PC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Inject/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Inject
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Stocker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Stocker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-OnlyForYou/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-OnlyForYou
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Escape/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Escape
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Topology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Topology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Pilgrimage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Pilgrimage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Sau/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Sau
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Authority/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Authority
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Codify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Codify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Hospital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Hospital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Devvortex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Devvortex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Surveillance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Surveillance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Jab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Jab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeup/retired/HTB-Headless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTB-Headless
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令解释网址
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      终端快捷键
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境变量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看指定进程的环境变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      未分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="未分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      jar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iconv" class="md-nav__link">
+    <span class="md-ellipsis">
+      iconv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#man" class="md-nav__link">
+    <span class="md-ellipsis">
+      man
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dollar-sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      dollar sign
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件和目录管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件和目录管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      mv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      realpath
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      stat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    <span class="md-ellipsis">
+      touch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkdir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      提取文件名/文件夹名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      软链接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      find
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据时间查找
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="根据时间查找">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      相对时间
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      绝对时间（特定时间）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      排除搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suid" class="md-nav__link">
+    <span class="md-ellipsis">
+      找设置了SUID的文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      -exec
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zipgrep" class="md-nav__link">
+    <span class="md-ellipsis">
+      zipgrep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tail" class="md-nav__link">
+    <span class="md-ellipsis">
+      tail
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件比较
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件比较">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comm" class="md-nav__link">
+    <span class="md-ellipsis">
+      comm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      diff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vimdiff" class="md-nav__link">
+    <span class="md-ellipsis">
+      vimdiff
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locate" class="md-nav__link">
+    <span class="md-ellipsis">
+      locate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    <span class="md-ellipsis">
+      file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exiftool" class="md-nav__link">
+    <span class="md-ellipsis">
+      exiftool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binwalk" class="md-nav__link">
+    <span class="md-ellipsis">
+      binwalk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strace" class="md-nav__link">
+    <span class="md-ellipsis">
+      strace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hexeditor" class="md-nav__link">
+    <span class="md-ellipsis">
+      hexeditor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      统计目录大小
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      文本处理和编辑
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文本处理和编辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vivim" class="md-nav__link">
+    <span class="md-ellipsis">
+      vi/vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tee" class="md-nav__link">
+    <span class="md-ellipsis">
+      tee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      wc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniq" class="md-nav__link">
+    <span class="md-ellipsis">
+      uniq
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paste" class="md-nav__link">
+    <span class="md-ellipsis">
+      paste
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tr" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      cut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      sed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      awk
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="awk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件可用【/PATTERN/】正则匹配
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nrfnr" class="md-nav__link">
+    <span class="md-ellipsis">
+      NR与FNR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      指定输出分隔符（OFS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      转大写
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonjq" class="md-nav__link">
+    <span class="md-ellipsis">
+      [[json#jq命令]]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      xargs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统信息和服务管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="系统信息和服务管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      history
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    <span class="md-ellipsis">
+      date
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务管理器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="服务管理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行级别
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运行级别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      init方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemctl方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      桌面环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemctl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      更改主机名
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="更改主机名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      临时
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      永久
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看hostname详细信息
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uname" class="md-nav__link">
+    <span class="md-ellipsis">
+      uname
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="uname">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arch" class="md-nav__link">
+    <span class="md-ellipsis">
+      arch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#os" class="md-nav__link">
+    <span class="md-ellipsis">
+      OS版本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      top
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watch" class="md-nav__link">
+    <span class="md-ellipsis">
+      watch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      shell环境
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shell环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binsh-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      /bin/sh -c
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      终端环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络和通信
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络和通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      路由表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      dhclient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      修改IP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="修改IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linuxredhat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Redhat系列
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linuxdebain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Debain系列
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      netstat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ss" class="md-nav__link">
+    <span class="md-ellipsis">
+      ss
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmtui" class="md-nav__link">
+    <span class="md-ellipsis">
+      nmtui
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      iptables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld" class="md-nav__link">
+    <span class="md-ellipsis">
+      firewalld
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="firewalld">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认9个zone的默认配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      项目理解firewalld
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      用户和权限管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用户和权限管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#su" class="md-nav__link">
+    <span class="md-ellipsis">
+      su
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useradd" class="md-nav__link">
+    <span class="md-ellipsis">
+      useradd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      passwd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sudo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sudo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo -l
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudoers" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置sudoers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pam" class="md-nav__link">
+    <span class="md-ellipsis">
+      pam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      wheel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chmod" class="md-nav__link">
+    <span class="md-ellipsis">
+      chmod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chown" class="md-nav__link">
+    <span class="md-ellipsis">
+      chown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chgrp" class="md-nav__link">
+    <span class="md-ellipsis">
+      chgrp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chage" class="md-nav__link">
+    <span class="md-ellipsis">
+      chage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      软件包管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="软件包管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linuxdebain_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Debain系列
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux发行版#Debain系列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aptadvanced-packaging-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      apt（Advanced Packaging Tool）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linuxredhat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux发行版#Redhat系列
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux发行版#Redhat系列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpmred-hat-package-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      rpm（Red-Hat Package Manager）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yumyellowdog-updater-modified" class="md-nav__link">
+    <span class="md-ellipsis">
+      yum（Yellowdog Updater Modified）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="yum（Yellowdog Updater Modified）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      报错解决
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnfdandified-yum" class="md-nav__link">
+    <span class="md-ellipsis">
+      dnf（Dandified YUM）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拓展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epelextra-packages-for-enterprise-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPEL（Extra Packages for Enterprise Linux）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pippip-installs-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      pip（Pip Installs Packages）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      磁盘、分区、文件系统管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="磁盘、分区、文件系统管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lsblk" class="md-nav__link">
+    <span class="md-ellipsis">
+      lsblk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      fdisk
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fdisk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      gdisk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkfs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      mount
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mount">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findmnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      findmnt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fstab" class="md-nav__link">
+    <span class="md-ellipsis">
+      fstab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#df" class="md-nav__link">
+    <span class="md-ellipsis">
+      df
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      压缩和解压
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="压缩和解压">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      tar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zip" class="md-nav__link">
+    <span class="md-ellipsis">
+      zip
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gz" class="md-nav__link">
+    <span class="md-ellipsis">
+      gz
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      ps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      BSD命令风格的参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unix命令风格的参数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      kill
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      日志和监控
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份和恢复
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度和计划任务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="调度和计划任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#corn" class="md-nav__link">
+    <span class="md-ellipsis">
+      corn
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <span class="md-tag">IT/Linux</span>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>Linux命令</h1>
+
+<h2 id="_1">命令解释网址<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://explainshell.com/">https://explainshell.com/</a></p>
+<h2 id="_2">终端快捷键<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>ctrl+w</code> 删左词</li>
+<li><code>alt+d</code> 删右词</li>
+<li><code>ctrl+u</code> 删到头</li>
+<li><code>ctrl+k</code> 删到尾</li>
+</ul>
+<h2 id="_3">环境变量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>env</code>：显示环境变量</li>
+<li>
+<p><code>set</code>：显示环境变量和shell变量</p>
+</li>
+<li>
+<p>环境变量：继承给子进程的变量。子进程的环境变量与父进程无关。</p>
+</li>
+<li>shell变量：只在当前shell有效的变量，不继承给子进程。</li>
+</ul>
+<h3 id="_4">查看指定进程的环境变量<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>cat /proc/{pid}/environ</code></li>
+<li><code>cat /proc/1229/environ | sed -e 's/\x00/\n/g'</code><ul>
+<li>把默认的间隔NULL (\x00) 替换成换行</li>
+</ul>
+</li>
+</ul>
+<h2 id="_5">未分类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="jar">jar<a class="headerlink" href="#jar" title="Permanent link">&para;</a></h3>
+<p>列出JAR文件的内容：<code>jar tf myapp.jar</code></p>
+<p>在JAR文件中的文本文件中搜索关键字：</p>
+<ul>
+<li><code>jar xf myapp.jar some/text/file.txt</code></li>
+<li><code>grep "search_term" some/text/file.txt</code></li>
+</ul>
+<h3 id="iconv">iconv<a class="headerlink" href="#iconv" title="Permanent link">&para;</a></h3>
+<ul>
+<li>iconv：即"字符集转换"。</li>
+<li>语法：<code>iconv -f source_encoding -t target_encoding input_file &gt; output_file</code></li>
+<li>对Windows实用（转为UTF-16LE）：<code>echo -en "[Command]" | iconv -t UTF-16LE | base64 -w 0</code> ^f44db6</li>
+</ul>
+<h3 id="man">man<a class="headerlink" href="#man" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">部分</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>用户指令</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>内核系统调用的编程接口</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>C库的编程接口</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>特殊文件。如设备节点和驱动程序</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>档案格式</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>屏幕保护程序等游戏和娱乐</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>杂</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>系统管理命令</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dollar-sign"><a href="https://unix.stackexchange.com/questions/48106/what-does-it-mean-to-have-a-dollarsign-prefixed-string-in-a-script">dollar sign</a><a class="headerlink" href="#dollar-sign" title="Permanent link">&para;</a></h3>
+<p><code>$'…'</code></p>
+<p><code>echo $'{\"username\":\"a\",\"password\":\"a\"}'</code></p>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240310160123.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240310160123.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240310160123.png" /></a></p>
+<h2 id="_6">文件和目录管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="mv">mv<a class="headerlink" href="#mv" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>[!NOTE] 注意覆盖权限 #渗透/利用 
+文件是否能被覆盖，不是取决于文件的权限，而是目标文件的目录权限。目录权限能写入的话，则用户能选择是否覆盖目标文件。</p>
+</blockquote>
+<h3 id="realpath">realpath<a class="headerlink" href="#realpath" title="Permanent link">&para;</a></h3>
+<p>用于将相对路径或符号链接转换成绝对路径。</p>
+<h3 id="stat">stat<a class="headerlink" href="#stat" title="Permanent link">&para;</a></h3>
+<p>可用<code>stat &lt;文件名&gt;</code>查询inode信息。</p>
+<p>文件时间戳</p>
+<ul>
+<li>atime：Access，文件打开</li>
+<li>mtime：Modify，文件内容变动 ^fda64b</li>
+<li>
+<p>ctime：<strong>Change</strong>，inode变动——即文件属性（权限、所有权等）变动时ctime会变。一般来说文件创建的时间也差不多是inode创建的时间</p>
+<ul>
+<li>ls -l 默认显示的是ctime</li>
+<li>由于是贴上<strong>系统时间</strong>，所以可以用 <code>date -s</code> 改系统时间后再操作</li>
+</ul>
+</li>
+<li>
+<p><a href="./#64f8c7查看块大小stat-filetxt"> grep IO`</a></p>
+</li>
+</ul>
+<h3 id="touch">touch<a class="headerlink" href="#touch" title="Permanent link">&para;</a></h3>
+<p>touch已存在的文件或目录时会刷新时间。<code>touch /*</code> 刷新所有。</p>
+<h3 id="mkdir">mkdir<a class="headerlink" href="#mkdir" title="Permanent link">&para;</a></h3>
+<p><code>mkdir -p</code>：递归创建</p>
+<h3 id="_7">提取文件名/文件夹名<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>basename [pathname] [suffix]</code></li>
+<li><code>dirname [pathname]</code></li>
+</ul>
+<h3 id="_8">软链接<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><code>ln -s &lt;目标文件&gt; &lt;链接名&gt;</code></p>
+<p>如：<code>ln -s /etc/passwd the_symlink</code></p>
+<h3 id="find">find<a class="headerlink" href="#find" title="Permanent link">&para;</a></h3>
+<p><code>find / -name '*.c'</code></p>
+<ul>
+<li><code>-name</code>：搜索文件名</li>
+<li><code>-i</code>：不区分大小写</li>
+<li><code>-type d</code>：找文件夹</li>
+<li><code>-user</code>：按文件属主查找</li>
+</ul>
+<h4 id="_9">根据时间查找<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h5 id="_10">相对时间<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<ul>
+<li>find <a href="./#fda64b">-mtime</a> [+/-] n：从当前时刻开始推，<ul>
+<li>0：当前时间往前推，过去24h内</li>
+<li>n：当前时间往前推，n天前的过去24h内</li>
+<li>正负表示指定时刻的方向的全部：+为左（以外，过去的过去），-为右（以内，过去的将来）<ul>
+<li>+n：<strong>超过</strong>n天前的</li>
+<li>-n：n天<strong>内的</strong>（包括今天）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+2 ←---|--2--|--------→ -2
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--|-----|-----|-----|-----|
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  4     3     2     1     0(现在)
+</span></code></pre></div>
+<h5 id="_11">绝对时间（特定时间）<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>find /path/to/search -type f -newermt "YYYY-MM-DD HH:MM:SS"</code></li>
+</ul>
+<blockquote>
+<p>[!NOTE] 关于排查
+黑客可能只修改了mtime，而忘了ctime。</p>
+</blockquote>
+<h4 id="_12">排除搜索<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>仅将输出结果过滤，依旧会遍历所有不需要的目录。</p>
+<ul>
+<li><code>find -name "*.js" -not -path "./directory/*"</code><ul>
+<li><code>-not</code>可以替换为感叹号（<code>!</code>）</li>
+<li><strong>需要指定排除多个则用如下命令</strong>（使用转义的小括号）</li>
+</ul>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>find<span class="w"> </span>/<span class="w"> </span><span class="se">\(</span><span class="w"> </span>-path<span class="w"> </span>/proc<span class="w"> </span>-o<span class="w"> </span>-path<span class="w"> </span>/run<span class="w"> </span><span class="se">\)</span><span class="w"> </span>-prune<span class="w"> </span>-o<span class="w"> </span><span class="se">\(</span><span class="w"> </span>-user<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-un<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span>-group<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-gn<span class="k">)</span><span class="w"> </span><span class="se">\)</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-ls<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span></code></pre></div>
+<ul>
+<li><code>-path</code>：匹配路径pattern，可以用通配符。</li>
+<li><code>-o</code>：或</li>
+<li><code>-prune</code>：排除</li>
+<li><strong><code>-ls</code>：原来这个可以列出详细信息，不用<code>-exec</code>的方式了。</strong></li>
+</ul>
+<h4 id="suid">找设置了SUID的文件<a class="headerlink" href="#suid" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>find / -perm -u=s -type f 2&gt;/dev/null</code></li>
+<li><code>find / -user root -perm -4000 2&gt;/dev/null</code> (但是注意有时候可能可以横向移动所以不只找root)<ul>
+<li>常用：<code>find / -perm -4000 2&gt;/dev/null -exec ls -l {} \;</code><ul>
+<li><strong>进化/简写：</strong><code>find / -perm -4000 -ls 2&gt;/dev/null</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>根据man手册：</p>
+<ul>
+<li>尽量用 <code>/</code> 代替 <code>+</code></li>
+<li>-perm 664：精准查找664</li>
+<li>-perm -664：查找权限<strong>至少</strong>为664的，如会匹配出0777</li>
+<li>-perm /222：查找<strong>任意一个</strong>权限为2的（即-perm /220结果也一样）</li>
+</ul>
+<h4 id="-exec">-exec<a class="headerlink" href="#-exec" title="Permanent link">&para;</a></h4>
+<p><code>-exec COMMAND "{}" \; -quit</code></p>
+<ul>
+<li>花括号两边也可以不用双引号</li>
+<li>以分号表示命令结束，但避免意外所以一般加上反斜杠转义</li>
+<li>花括号里为-exec前面命令的结果</li>
+<li>只有部分命令后有-exec选项。如find</li>
+<li>-quit：匹配到一个结果就停止</li>
+</ul>
+<p><code>find /Documents -type f -exec grep -H Milledgeville {} \;</code></p>
+<h3 id="grep">grep<a class="headerlink" href="#grep" title="Permanent link">&para;</a></h3>
+<ul>
+<li>仅输出匹配内容而非整行：<code>grep -o</code></li>
+<li>将匹配pattern写在文件：<code>grep -f &lt;pattern_file&gt;</code></li>
+<li>
+<p>显示匹配行之后的n行：<code>grep -A n "pattern" file</code></p>
+</li>
+<li>
+<p><code>egrep  {pattern} {文件}</code>：同grep -E</p>
+<blockquote>
+<p>[!NOTE] 有时egrep比grep快（egrep按原样处理meta字符而无需转义）</p>
+</blockquote>
+</li>
+<li>
+<p><code>fgrep</code>是单纯搜字符串（效率高些），而不会把特殊符号看做正则表达。</p>
+<ul>
+<li>和 "grep -F" 一样</li>
+<li>没有<code>{文件}</code>则读取标准输入</li>
+</ul>
+</li>
+</ul>
+<p><strong>要grep带两个短横线<code>--</code>的（如help页面），不能直接搜<code>"--"</code>而需要<code>grep -- "--"</code>：</strong><br />
+<a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311163220.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240311163220.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311163220.png" /></a></p>
+<ul>
+<li>可对压缩文件的grep（对未压缩文件也有效）：<code>zgrep  {pattern} {文件}</code>。
+ ^02828b</li>
+<li>过滤空行(<code>^$</code>)和<code>#</code>：<code>egrep -vn "^$|#"</code>、<code>grep -Evn "^$|#"</code><ul>
+<li><code>^$|#</code>的<code>|</code>两边不能有空格！会被识别进pattern里</li>
+<li><code>$</code>表示结尾，空行的话实际上有个<code>$</code>（<code>cat -e</code>可知）</li>
+<li><code>|</code>是逻辑或</li>
+<li><code>-n</code>输出对应的行号</li>
+</ul>
+</li>
+</ul>
+<p><strong>踩坑：</strong></p>
+<ul>
+<li>grep搜不到结果则rc为1，所以要小心使用<code>set -e</code>（不过应该可以用命令替换——子shell）</li>
+<li><code>grep -f</code>无结果。考虑f文件是否从window传输而来。即使用awk整理，但换行符未处理：：<a href="../%E6%8D%A2%E8%A1%8C%E7%AC%A6/#转换与删除">换行符#转换与删除</a></li>
+<li><code>tail -f</code>的多个grep有时无法输出部分结果——用行缓冲解决<code>grep --line-buffered</code>（默认情况下，当标准输出是终端时输出是行缓冲的，否则是块缓冲——即达到一定的数据量，一般是4~64KB，如grep命令在中间时）<ul>
+<li>[x] <a href="https://stackoverflow.com/questions/26362450/piping-of-grep-is-not-working-with-tail">piping-of-grep-is-not-working-with-tail</a></li>
+<li>[ ] <a href="https://stackoverflow.com/questions/7161821/how-to-grep-a-continuous-stream">how-to-grep-a-continuous-stream</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="zipgrep">zipgrep<a class="headerlink" href="#zipgrep" title="Permanent link">&para;</a></h3>
+<p>搜索包含在ZIP文件中的文本文件，它会解压缩ZIP文件并在其中搜索文本。</p>
+<ul>
+<li>对比：<a href="./#02828b">zgrep</a>不会解压整个文件，而是在压缩文件（<code>.gz</code>）中直接搜索文本。</li>
+<li>对于在JAR文件内搜索文本，应该使用<code>zipgrep</code>命令，因为JAR文件实际上是ZIP格式的压缩文件，其中包含Java类文件和其他资源。</li>
+</ul>
+<blockquote>
+<p>[!NOTE] .gz和.zip
+1. <strong>压缩算法</strong>：
+  - <code>.gz</code>文件使用的是GZIP压缩算法，这是一种广泛使用的压缩技术，特别是在Unix和Linux系统中。GZIP旨在提供高效的数据压缩，而不是打包或归档多个文件。
+  - <code>.zip</code>文件不仅使用不同的压缩算法（通常是DEFLATE），还支持打包和压缩多个文件和目录到一个单独的<code>.zip</code>文件中。这意味着<code>.zip</code>文件可以包含文件系统的结构信息，如目录和文件属性。
+1. <strong>用途</strong>：
+  - <code>.gz</code>格式通常用于压缩单个文件。当需要压缩多个文件或目录时，通常会先使用<code>tar</code>命令将它们打包成一个<code>.tar</code>文件，然后再使用<code>gzip</code>压缩，形成<code>.tar.gz</code>或<code>.tgz</code>文件。
+  - <code>.zip</code>格式则更加灵活，可以直接在一个<code>.zip</code>文件中压缩和打包多个文件和目录。这使得<code>.zip</code>文件非常适合跨平台共享，因为<code>.zip</code>格式被大多数操作系统原生支持。</p>
+</blockquote>
+<h3 id="tail">tail<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>-n 2</code>：指定显示2行</li>
+<li><code>-n +2</code>： 指从第2行开始</li>
+</ul>
+<h3 id="_13">文件比较<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="comm">comm<a class="headerlink" href="#comm" title="Permanent link">&para;</a></h4>
+<p><code>comm [-n] &lt;file1&gt; &lt;file2&gt;</code></p>
+<ul>
+<li>输出3列，分别是：仅file1有的行、仅file2有的行、file1和2都有的行</li>
+<li>-n：n可以是1、2、3。“-”可理解为减号，指定不显示哪些列。</li>
+</ul>
+<h4 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h4>
+<p>输出：用“-”表示仅file1有的行，用“+”表示仅file2有的行。</p>
+<p>两个常用option：</p>
+<ul>
+<li>-u：unified格式，统合着看</li>
+<li>-c：context格式，显示上下文，输出就比unified格式多很多。</li>
+</ul>
+<h4 id="vimdiff">vimdiff<a class="headerlink" href="#vimdiff" title="Permanent link">&para;</a></h4>
+<p>多个文件打开vim。像winmerge。</p>
+<h3 id="locate">locate<a class="headerlink" href="#locate" title="Permanent link">&para;</a></h3>
+<p>与find不同，find是去硬盘找，而locate是在<code>/var/lib/slocate/slocate.db</code>中找，所以locate快。而这个数据库不是实时更新的，手动更新数据库命令：<code>updatedb</code>（似乎默认每天<code>cron</code>跑一次）。</p>
+<h3 id="file">file<a class="headerlink" href="#file" title="Permanent link">&para;</a></h3>
+<p>确认文件类型。</p>
+<h3 id="exiftool">exiftool<a class="headerlink" href="#exiftool" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>[!NOTE] EXIF: EXchangeable Image File Format</p>
+</blockquote>
+<p>读取、写入和处理图像、音频、视频和PDF 元数据。</p>
+<p><code>exiftool -a -u brochure.pdf</code></p>
+<h3 id="strings">strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h3>
+<p>隐写、确认2进制文件中的字符串。</p>
+<h3 id="binwalk">binwalk<a class="headerlink" href="#binwalk" title="Permanent link">&para;</a></h3>
+<p>• 可查看文件有无捆绑：<code>binwalk &lt;file&gt;</code></p>
+<h3 id="strace">strace<a class="headerlink" href="#strace" title="Permanent link">&para;</a></h3>
+<p>追踪2进制运行的系统调用。</p>
+<p><strong>经验：</strong></p>
+<ul>
+<li>当出现“read(0,”并卡住时，很有可能是等待用户输入</li>
+<li>重点关注openat——与文件的交互</li>
+<li>似乎可以用<code>-e trace=open,read</code></li>
+</ul>
+<h3 id="hexeditor">hexeditor<a class="headerlink" href="#hexeditor" title="Permanent link">&para;</a></h3>
+<p>查看16进制。</p>
+<h3 id="_14">统计目录大小<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>du -sh</code></p>
+<h2 id="_15">文本处理和编辑<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="echo">echo<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h3>
+<p>解析[[编码#转义序列|转义序列]]：<code>echo -e</code></p>
+<p>如：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;hello \nworld&#39;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>hello<span class="w"> </span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>world
+</span></code></pre></div></p>
+<h3 id="vivim">vi/vim<a class="headerlink" href="#vivim" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>vim: Cut character</td>
+</tr>
+<tr>
+<td><code>dw</code></td>
+<td>vim: Cut word</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>vim: Cut full line</td>
+</tr>
+<tr>
+<td><code>yw</code></td>
+<td>vim: Copy word</td>
+</tr>
+<tr>
+<td><code>yy</code></td>
+<td>vim: Copy full line</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>vim: Paste</td>
+</tr>
+<tr>
+<td><code>:1</code></td>
+<td>vim: Go to line number 1.</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td><code>## dd {数字}</code></td>
+<td>删除指定行</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>撤回</td>
+</tr>
+<tr>
+<td><code>:set nu</code></td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td><code>:set nonu</code></td>
+<td>不显示行号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注释快捷键</strong></p>
+<ul>
+<li>快速注释一行：大写字母"I"进入行首插入模式，输入注释符号（如“#”）。</li>
+<li>快速取消注释一行：按下小写字母“x”删除注释符号。</li>
+<li>快速注释多行：将光标移动到要注释的第一行上，按下大写字母“V”进入可视行模式，移动光标到要注释的最后一行，按下大写字母“I”进入行首插入模式，输入注释符号（如“#”）。</li>
+<li>快速取消注释多行：将光标移动到要取消注释的第一行上，按下大写字母“V”进入可视行模式，移动光标到要取消注释的最后一行，按下小写字母“x”删除注释符号。</li>
+</ul>
+<h3 id="tee">tee<a class="headerlink" href="#tee" title="Permanent link">&para;</a></h3>
+<p>命名源于一种T型管道（tee）。表示可以分岔——即可以将命令的标准输出流也分出一部分到其他地方（如文件）。</p>
+<ul>
+<li><code>tee</code>：<code>&gt;</code>（即覆盖）</li>
+<li><code>tee -a</code>：<code>&gt;&gt;</code>（即追加）</li>
+</ul>
+<h3 id="wc">wc<a class="headerlink" href="#wc" title="Permanent link">&para;</a></h3>
+<p><code>wc</code>结果输出统计的3个数：文件中的行数、单词数、字符数。</p>
+<ul>
+<li>-l：行数</li>
+<li>-w：单词数</li>
+<li>-c：字符数</li>
+</ul>
+<h3 id="sort">sort<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h3>
+<p>按第5列进行数字排序（降序）：<code>sort -t= -k3,3 -nr &lt;file&gt;</code></p>
+<ul>
+<li>-t：分隔符。默认为空格，此处指定为等号</li>
+<li>-k：指定key，有许多形式。在这里以数字3表示第3列开始，到第3列结束。单列的话也可简写作：-k3</li>
+<li>-n：以数字排序</li>
+<li>-r：降序</li>
+</ul>
+<p><strong>去重：sort -u</strong></p>
+<h3 id="uniq">uniq<a class="headerlink" href="#uniq" title="Permanent link">&para;</a></h3>
+<p>去重&amp;统计：<code>uniq -c</code></p>
+<blockquote>
+<p>[!NOTE] 要先sort一遍再uniq
+因为uniq是每次都检查连续的行然后取第一行</p>
+</blockquote>
+<p><code>grep "Edg" $logFile | awk '{ print $10 }' |  sort -n | uniq -c | sort -rn | head</code></p>
+<ul>
+<li>-n：数字排序（不然字符排序的话，会<code>[1, 11, 2, 3, ...]</code>这样排）</li>
+<li>-r：逆序</li>
+<li>-c：显示count数（即统计，<strong>否则只是去重还不如用<code>sort -u</code></strong>）</li>
+</ul>
+<h3 id="paste">paste<a class="headerlink" href="#paste" title="Permanent link">&para;</a></h3>
+<p><code>paste -sd ','</code>：多行数据合并为单行，以逗号分隔</p>
+<ul>
+<li>-s：将 <code>paste</code> 命令的处理方式<strong>从并行改为串行</strong>（<strong>默认</strong>情况下，<code>paste</code> 会<strong>并行合并多个文件的对应行</strong>）。串行模式下，<code>paste</code> 会将单个文件的所有行合并成一行</li>
+<li>-d：指定分隔符</li>
+</ul>
+<h3 id="tr">tr<a class="headerlink" href="#tr" title="Permanent link">&para;</a></h3>
+<p>替换或删除文件中的字符</p>
+<ul>
+<li>换行替换：<code>tr "\n" " "</code><ul>
+<li>可用单引号</li>
+</ul>
+</li>
+<li>删除回车符：<code>tr -d "\r"</code><ul>
+<li>等同于 <code>sed "s/^M//"、sed "s/\r//"</code>。注意：这个“^M”不是手打的，是<code>Ctrl+V+Ctrl+M</code>输入的“回车符”</li>
+<li><code>-d</code>：即<code>--delete</code>，删除指令字符（注意：以字符而不是整个单词为单位）</li>
+</ul>
+</li>
+</ul>
+<h3 id="cut">cut<a class="headerlink" href="#cut" title="Permanent link">&para;</a></h3>
+<p><code>cut -d " " -f 4</code></p>
+<h3 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h3>
+<p>处理多行可用cut，而文本流可用sed命令。</p>
+<ul>
+<li>默认选项：<code>-e</code>，只输出在终端，而不改变文件</li>
+<li><code>-i</code>：直接修改文件，而不输出在终端</li>
+</ul>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240310224233.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240310224233.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240310224233.png" /></a></p>
+<ul>
+<li>$表示最后一行</li>
+<li>‘$aString’表示最后一行增加。必须用单引号！因为双引号会以为是调用变量？<ul>
+<li>a和String之间可以用空格、反斜杠、或者不空。（反斜杠的话注意是否有特殊转义）</li>
+<li><strong>踩坑</strong>：可能涉及权限不够问题，因为sed是首先编辑好临时文件然后用临时文件替换源文件。</li>
+</ul>
+</li>
+</ul>
+<p><strong>正则</strong>
+<a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240310224318.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240310224318.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240310224318.png" /></a></p>
+<h3 id="awk">awk<a class="headerlink" href="#awk" title="Permanent link">&para;</a></h3>
+<p>相比于sed处理一行的数据流，awk倾向把每行按字段分割处理。对格式化的文本处理能力强。</p>
+<blockquote>
+<p>详细：<a href="https://www.linuxprobe.com/basic-usage-awk.html" title="awk的基本使用方法">awk的基本使用方法</a></p>
+</blockquote>
+<p><strong>例：</strong>
+<code>awk -F',' '{print $1,$2}'   log.txt</code></p>
+<ul>
+<li>使用","分割（默认空格）</li>
+<li>写成一行要用单引号</li>
+</ul>
+<p><strong>实用（第4列去重）：</strong>
+<code>zfgrep 'xxx/' ./*/httpaccess-vpn.log* | awk '!seen[$4]++ { print $4, $7, $8, $10 }'</code></p>
+<ul>
+<li>定义一个seen数组。</li>
+<li>数组的值如果未定义，默认是0——false</li>
+<li>然后递增将值加1——true</li>
+<li>然后感叹号取非</li>
+<li>debug：<code>'!seen[$4]++ { print $4, $7, $8,$10; print "seen["$4"]= ", seen[$4] }'</code></li>
+</ul>
+<h4 id="pattern">条件可用【/PATTERN/】正则匹配<a class="headerlink" href="#pattern" title="Permanent link">&para;</a></h4>
+<h4 id="nrfnr">NR与FNR<a class="headerlink" href="#nrfnr" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311172420.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240311172420.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311172420.png" /></a></p>
+<h4 id="ofs">指定输出分隔符（OFS）<a class="headerlink" href="#ofs" title="Permanent link">&para;</a></h4>
+<p><code>… | awk -F '|' '{OFS=":"; print $11,$14}' | tr -d ' '</code></p>
+<h4 id="_16">转大写<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><code>echo "Hello World" | awk '{print toupper($0)}'</code></p>
+<h3 id="jsonjq">[[json#jq命令]]<a class="headerlink" href="#jsonjq" title="Permanent link">&para;</a></h3>
+<h3 id="xargs">xargs<a class="headerlink" href="#xargs" title="Permanent link">&para;</a></h3>
+<p>理解xargs与管道符的区别：</p>
+<ul>
+<li><code>echo '--help' | cat</code></li>
+<li><code>echo '--help' | xargs cat</code></li>
+</ul>
+<p>xargs的默认命令是echo，这意味着通过管道传递给xargs的输入将会包含换行和空白，不过通过xargs的处理，换行和空白将被空格取代。</p>
+<h2 id="_17">系统信息和服务管理<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="history">history<a class="headerlink" href="#history" title="Permanent link">&para;</a></h3>
+<ul>
+<li>保存在用户主目录的 <code>.bash_history</code> 文件里</li>
+<li><code>!&lt;命令行号&gt;</code>：执行目标命令</li>
+</ul>
+<p><strong>相关环境变量：</strong></p>
+<ul>
+<li><code>HISTSIZE</code>和<code>HISTFILESIZE</code> 可控制大小</li>
+<li><code>HISTTIMEFORMAT</code>：时间戳<ul>
+<li>可用<code>export HISTTIMEFORMAT="[%F %T] "</code>显示历史命令时间</li>
+<li>%F：ISO8601格式</li>
+<li>%T：24小时制</li>
+<li>其他格式参照strftime手册</li>
+</ul>
+</li>
+</ul>
+<h3 id="date">date<a class="headerlink" href="#date" title="Permanent link">&para;</a></h3>
+<p>用<code>+</code>指定格式：<code>date '+&lt;format&gt;'</code>，或<code>date +'&lt;format&gt;'</code>。<code>+</code>字符在引号内外都可，因为<code>+</code>字符在这里不需要特殊处理，<strong>重点是加号和format之间不能有空格</strong>。</p>
+<p>赋值（<a href="../Linux%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/#97ed2e">命令替换</a>）：<code>DATE=$(date +%Y%m%d)</code></p>
+<ul>
+<li><code>-d 'N days ago'</code>：获取N日前的时间。</li>
+<li><code>-d 'N days'</code>：获取N日后的时间。</li>
+</ul>
+<p>-s：修改系统时间</p>
+<ul>
+<li>重启系统可以恢复</li>
+<li>如果配置了NTP，似乎会逐渐同步时间</li>
+<li>立即强制同步时间：<ul>
+<li>如果使用chronyd：<code>sudo systemctl restart chronyd</code></li>
+<li>如果使用ntpd：<code>sudo systemctl restart ntp</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_18">服务管理器<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h4>
+<ul>
+<li>旧</li>
+<li>用service系列命令（是对<code>/etc/init.d</code>目录下服务脚本的封装）</li>
+</ul>
+<h4 id="systemd">systemd<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h4>
+<ul>
+<li>新</li>
+<li>用<a href="./#systemctl">systemctl</a>系列命令</li>
+</ul>
+<h3 id="_19">运行级别<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="init_1">init方式<a class="headerlink" href="#init_1" title="Permanent link">&para;</a></h4>
+<p><strong><code>init &lt;runlevel&gt;</code>命令切换运行级别</strong></p>
+<ul>
+<li>0：关机</li>
+<li>6：重启</li>
+<li>3：命令行界面</li>
+<li>5：图形界面</li>
+</ul>
+<h4 id="systemctl">systemctl方式<a class="headerlink" href="#systemctl" title="Permanent link">&para;</a></h4>
+<p><strong>查看当前运行级别（下面结果表示从3级别切换到了5级别）</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>runlevel
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="m">3</span><span class="w"> </span><span class="m">5</span>
+</span></code></pre></div></p>
+<p><strong>查看当前默认启动级别</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>get-default
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>graphical.target
+</span></code></pre></div></p>
+<p><strong>设置默认第3/5运行级别（命令行/图形）</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>set-default<span class="w"> </span>multi-user-target
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>set-default<span class="w"> </span>graphical-targete
+</span></code></pre></div></p>
+<h4 id="_20">桌面环境<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p><strong>查看</strong></p>
+<ul>
+<li>可用的：ls /usr/share/xsessions/</li>
+<li>当前的：echo $XDG_CURRENT_DESKTOP</li>
+</ul>
+<p><strong>安装</strong>：<a href="../%E9%85%8D%E7%BD%AELinux%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/#32a346">安装桌面环境</a></p>
+<h3 id="systemctl_1">systemctl<a class="headerlink" href="#systemctl_1" title="Permanent link">&para;</a></h3>
+<p>注意：修改服务单元文件（如下面的<code>/etc/systemd/system/k3s.service</code>）后，需要<strong>重启daemon</strong>：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>k3s
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>$<span class="w"> </span>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/systemd/system/k3s.service
+</span></code></pre></div></p>
+<h3 id="_21">更改主机名<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">临时<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p><code>hostname xxx</code></p>
+<h4 id="_23">永久<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vi<span class="w"> </span>/etc/hostname
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>reboot
+</span></code></pre></div>
+<h4 id="hostname">查看hostname详细信息<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h4>
+<p><code>hostnamectl</code></p>
+<h3 id="uname">uname<a class="headerlink" href="#uname" title="Permanent link">&para;</a></h3>
+<p>即unix name。</p>
+<ul>
+<li><code>-a</code>：显示所有信息：主机名、内核版本、硬件等。</li>
+<li><code>-r</code>：内核信息。可以确认是否有内核漏洞。<ul>
+<li>如：<code>5.10.0-kali3-amd64</code>，版本号对应：<code>主版本号.次版本号.修订版本号</code>。<ul>
+<li><em>Linux3.0版本之前，次版本号的奇数是开发版、偶数是稳定版</em></li>
+<li><em>之后放弃了这种标识，改用LTS、RC等</em></li>
+</ul>
+</li>
+<li>内核详细信息：<code>cat /proc/version</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="arch">arch<a class="headerlink" href="#arch" title="Permanent link">&para;</a></h4>
+<p>显示架构。即<code>uname -a</code>结果中<code>x86_64</code>那个部分。</p>
+<h3 id="os">OS版本<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
+<p><code>cat /etc/os-release</code> 或 <code>cat /etc/lsb-release</code>（红帽）</p>
+<h3 id="cpu">CPU信息<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
+<p><code>cat /proc/cpuinfo</code></p>
+<h3 id="top">top<a class="headerlink" href="#top" title="Permanent link">&para;</a></h3>
+<p><code>top -n 1</code>：n1即指刷新一次。</p>
+<blockquote>
+<p><a href="https://milestone-of-se.nesuke.com/sv-basic/linux-basic/top-command/">界面解释</a>
+- <code>load average</code> が高い状態というのは「プロセスからディスクへの書き込みが積滞している」状態を示していることが多く</p>
+</blockquote>
+<p><em>n个CPU——则load average的最大负荷为“n”。</em></p>
+<h3 id="watch">watch<a class="headerlink" href="#watch" title="Permanent link">&para;</a></h3>
+<ul>
+<li>命令监控。</li>
+<li><code>watch -n &lt;刷新秒数&gt; &lt;被监控命令&gt;</code></li>
+</ul>
+<h3 id="shell">shell环境<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h3>
+<ul>
+<li>查看当前用户使用的shell：<code>echo $SHELL</code></li>
+<li>查看本机可用shell：<code>cat /etc/shells</code></li>
+</ul>
+<h4 id="binsh-c"><code>/bin/sh -c</code><a class="headerlink" href="#binsh-c" title="Permanent link">&para;</a></h4>
+<p><strong>必要场景：</strong><br />
+比如，一般用户执行<code>echo "hello" &gt; test.txt</code>，是OK的。但是把test.txt设置为root后，就算用<code>sudo echo "hello" &gt; test.txt</code>再写入就没权限了。<br />
+因为重定向符号也是bash命令，而sudo只是让echo提权，没有提升重定向符号的权限。（关于报错的时间点，其实有个shell解析命令的问题：不是写入的时候报错。shell解析一行的每个命令程序，而重定向或pipe也是命令，且会暂时打开文件，是在此时触发权限问题）</p>
+<p><strong>两种解决方法：</strong></p>
+<ol>
+<li><code>sudo sh -c 'command'</code>。让bash将一个字符串作为完整命令，sudo的影响范围就可以扩展到整条命令。</li>
+<li><code>echo "hello" | sudo tee &lt;file&gt;</code>。因为echo并不需要sudo，将sudo的提权给tee命令进行文件写入。</li>
+</ol>
+<p>理解shell进程： <a href="https://blog.csdn.net/renzhentinghai/article/details/82662024">https://blog.csdn.net/renzhentinghai/article/details/82662024</a></p>
+<ul>
+<li>exec和source一样不新建子进程，而区别为：<strong>调用exec是以新的进程去代替原来的进程，但进程的PID保持不变。</strong> 替换了原来进程上下文的内容。原进程的代码段，数据段，堆栈段被新的进程所代替。</li>
+</ul>
+<h3 id="_24">终端环境<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>不同的终端类型可能支持不同的颜色方案、字符集、以及特殊功能（如光标移动）。</p>
+</blockquote>
+<ul>
+<li>查看当前环境：<code>echo $TERM</code></li>
+<li>常用终端类型：<code>xterm</code>、<code>xterm-256color</code></li>
+</ul>
+<h2 id="_25">网络和通信<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="_26">路由表<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p><code>netstat -rn</code></p>
+<h3 id="dhclient">dhclient<a class="headerlink" href="#dhclient" title="Permanent link">&para;</a></h3>
+<p><code>dhclient</code>：获取新的IP地址。如果已经有IP，则需要先释放：</p>
+<ul>
+<li><code>dhclient -r</code>：释放当前的IP地址（的租约）</li>
+</ul>
+<p><code>-v</code>：详细</p>
+<ul>
+<li>log文件路径：<code>/var/lib/dhcp/dhclient.leases</code></li>
+</ul>
+<blockquote>
+<p>[!NOTE] [[Kali搭建#Hyper-V]]的虚拟机还原快照后可能网络不通。原因：可能是ARP表（新旧快照MAC和IP不对应了）。所以重新分配DHCP：<code>dhclient -r &amp;&amp; sudo dhclient</code></p>
+</blockquote>
+<h3 id="ip">修改IP<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
+<h4 id="linuxredhat"><a href="../Linux%E5%8F%91%E8%A1%8C%E7%89%88/#redhat系列">Linux发行版#Redhat系列</a><a class="headerlink" href="#linuxredhat" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>/etc/sysconfig/network-scripts</code></li>
+<li>用init做服务管理器的OS：<code>service networking restart</code></li>
+<li>用systemd做服务管理器的OS：<code>systemctl restart network</code></li>
+<li>CentOS8之后用：<code>systemctl restart NetworkManager</code>
+    <a href="https://i-think-it.net/rhel8-network-restart/">https://i-think-it.net/rhel8-network-restart/</a></li>
+</ul>
+<h4 id="linuxdebain"><a href="../Linux%E5%8F%91%E8%A1%8C%E7%89%88/#debain系列">Linux发行版#Debain系列</a><a class="headerlink" href="#linuxdebain" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311181744.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240311181744.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311181744.png" /></a></p>
+<p><strong>重启命令2：</strong><code>sudo service networking restart</code></p>
+<blockquote>
+<p>[!NOTE] 上述两种重启命令
+总的来说，这两个命令实际上是等效的，它们都用于重启网络服务。
+<code>sudo service networking restart</code>是一种更推荐的方式，因为它是一种通用的命令形式，适用于多个服务和操作系统。
+而<code>/etc/init.d/networking restart</code>则直接指向网络服务的启动脚本文件，是一种更具体的方式。</p>
+</blockquote>
+<h3 id="netstat">netstat<a class="headerlink" href="#netstat" title="Permanent link">&para;</a></h3>
+<p>参照<a href="./#ss">Linux命令#ss</a></p>
+<h3 id="ss">ss<a class="headerlink" href="#ss" title="Permanent link">&para;</a></h3>
+<p>netstat的替代。</p>
+<ul>
+<li>-a：正在使用的所有port/socket</li>
+<li>-n：显示端口数字而不解析为服务名</li>
+<li>-o：显示timer（如果有的话）</li>
+<li>-p：显示进程</li>
+<li>-t：显示TCP</li>
+<li>-l：显示正在监听的端口</li>
+</ul>
+<p><strong>状态</strong></p>
+<ul>
+<li>UNCONN：unconnected の意味で、UDPにおける待ち受けポートを表します。</li>
+<li>ESTAB：3way handshakeが成功した状態、つまりTCPコネクションが確立した状態を意味します。</li>
+</ul>
+<h3 id="nmtui">nmtui<a class="headerlink" href="#nmtui" title="Permanent link">&para;</a></h3>
+<h3 id="iptables">iptables<a class="headerlink" href="#iptables" title="Permanent link">&para;</a></h3>
+<p>iptables是Linux系统流行的防火墙软件，在大部分发行版中都自带。而容器的访问控制主要通过iptables来进行管理和实现。
+CentOS6及之前都在用这个，CentOS7开始用新的命令：<a href="./#firewalld">firewalld</a>（但是原理还是iptables，算是封装了）。</p>
+<ul>
+<li><code>iptables -t 表名 --list --line-numbers</code></li>
+<li><code>iptables -t 表名 -L 链名</code><ul>
+<li><code>iptables -t nat -L -n</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>关于linux转发windows流量以实现windows与THM、HTB的VPN互通：<a href="https://timeless613.github.io/kiwi/Resources/iptables/">https://timeless613.github.io/kiwi/Resources/iptables/</a></p>
+</blockquote>
+<p><strong>（Netfilter5表5链）</strong></p>
+<p>理解：
+<a class="glightbox" href="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311165707.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="static/img/ATTACHMENTS/Pasted image 20240311165707.png" src="../../../static/img/ATTACHMENTS/Pasted%20image%2020240311165707.png" /></a></p>
+<h3 id="firewalld">firewalld<a class="headerlink" href="#firewalld" title="Permanent link">&para;</a></h3>
+<p>实际使用命令：<code>firewall-cmd</code></p>
+<p>CentOS7默认这个而不是iptables了。</p>
+<ul>
+<li>主要因为虚拟化趋势使得Linux的网络非常复杂，用iptables配置太困难。且iptables的设置还可能和应用程序设置冲突，管理混乱。</li>
+<li>特点：可以为每个NIC配置设定</li>
+</ul>
+<p>相关配置文件：<code>/usr/lib/firewalld</code></p>
+<h4 id="9zone">默认9个zone的默认配置<a class="headerlink" href="#9zone" title="Permanent link">&para;</a></h4>
+<ol>
+<li>trusted：允许所有包通过（允许进出）。【如果添加了端口等配置，则只允许配置的规则通过。其他zone估计一样】</li>
+<li>drop：丢弃所有外部进来的包（内部的包可以出去，但是丢弃了返回的包，所以实际上就是无法通信）</li>
+<li>block：block基本会屏蔽外部进来的包——除了从内部出去的包的返回包（对比drop）</li>
+<li>public：默认仅允许ssh和dhcpv6-client通信</li>
+<li>dmz：默认仅允许ssh</li>
+<li>external：</li>
+<li>internal：</li>
+<li>work：</li>
+<li>home：</li>
+</ol>
+<p>通常，命令行配置的是入站规则。出站通信通常不需要额外配置，因为大多数防火墙默认情况下会允许出站通信。</p>
+<h4 id="_27">基本命令<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p><code>firewall-cmd [--zone=trusted] --list-all</code></p>
+<ul>
+<li>不指定zone的话会显示默认zone（firewall-cmd --get-default-zone）</li>
+<li>默认zone：当网络数据包到达系统上的接口时，如果没有明确指定要分配给哪个区域时，数据包将被分配到的默认区域。默认区域的作用是定义了对于未知来源的数据包应该应用哪些防火墙规则。</li>
+</ul>
+<p><code>firewall-cmd --list-all-zones</code>：也会显示未活动的zone</p>
+<p><code>--permanent</code>：持久设置</p>
+<h4 id="firewalld_1">项目理解firewalld<a class="headerlink" href="#firewalld_1" title="Permanent link">&para;</a></h4>
+<p>SOAR EdgeGW server:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>firewalld<span class="w"> </span>-y
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>firewalld
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>trusted<span class="w"> </span>--add-interface<span class="o">=</span>cni0<span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>trusted<span class="w"> </span>--add-interface<span class="o">=</span>flannel.1<span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>trusted<span class="w"> </span>--add-port<span class="o">=</span><span class="m">443</span>/tcp<span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>trusted<span class="w"> </span>--add-port<span class="o">=</span><span class="m">6443</span>/tcp<span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>trusted<span class="w"> </span>--add-port<span class="o">=</span><span class="m">10250</span>/tcp
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-port<span class="o">=</span><span class="m">22</span>/tcp
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>firewalld
+</span></code></pre></div></p>
+<h2 id="_28">用户和权限管理<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="su">su<a class="headerlink" href="#su" title="Permanent link">&para;</a></h3>
+<p>切换用户。</p>
+<p><code>su</code>和<code>su -</code>：</p>
+<ul>
+<li>su命令不指定user名则默认root</li>
+<li><code>su -</code>是用户和<a href="./#shell环境">Linux命令#shell环境</a>都切换，所以<strong>环境变量会不同</strong></li>
+<li><code>su</code>只切换了用户，就可能出现PATH错误</li>
+</ul>
+<h3 id="useradd">useradd<a class="headerlink" href="#useradd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>-m</code>：自动添加家目录（似乎默认）</li>
+<li><code>-s /bin/bash</code>： 创建时指定shell（默认/bin/sh或bash?），或者可以之后编辑passed文件修改</li>
+</ul>
+<blockquote>
+<p>[!NOTE] 添加新用户后，要用<code>passwd</code>命令给他加密码，否则无法登陆。</p>
+</blockquote>
+<h3 id="passwd">passwd<a class="headerlink" href="#passwd" title="Permanent link">&para;</a></h3>
+<p><code>passwd [user]</code>：更改（当前/指定）用户密码</p>
+<h3 id="sudo">sudo<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h3>
+<h4 id="sudo_1">sudo流程<a class="headerlink" href="#sudo_1" title="Permanent link">&para;</a></h4>
+<p>sudo 执行命令的流程是当前用户切换到其他用户（<code>-u</code>指定，不指定则<strong>默认root</strong>），然后<strong>以指定身份执行命令，执行完成后，直接退回到当前用户</strong>。</p>
+<p><strong>例子： <code>-u</code> 指定用户</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>www-data@misdirection:/var/www/html/wordpress$<span class="w"> </span>sudo<span class="w"> </span>-l
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>…
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>User<span class="w"> </span>www-data<span class="w"> </span>may<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>commands<span class="w"> </span>on<span class="w"> </span>localhost:
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="o">(</span>brexit<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>/bin/bash
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>www-data@misdirection:/var/www/html/wordpress$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>brexit<span class="w"> </span>/bin/bash
+</span></code></pre></div></p>
+<h4 id="sudo-l"><code>sudo -l</code><a class="headerlink" href="#sudo-l" title="Permanent link">&para;</a></h4>
+<p>查看是否有sudo权限。</p>
+<ul>
+<li>会要求当前用户的密码</li>
+<li>但是，只要sudoers配置有任意一条<code>NOPASSWD</code>，那么就可以无密码执行<code>sudo -l</code>（有可能只显示配置了<code>NOPASSWD</code>的命令，未测试）</li>
+</ul>
+<h4 id="sudoers">配置sudoers<a class="headerlink" href="#sudoers" title="Permanent link">&para;</a></h4>
+<p>尽量别动 <code>/etc/sudoers</code> 文件，而是<strong>往 <code>/etc/sudoers.d/</code> 里添加</strong>。
+其格式为：<code>&lt;用户名/%组名&gt;   主机名=(可切换的用户:可切换的组) [NOPASSWD: ]ALL</code></p>
+<p><strong>发现</strong></p>
+<ul>
+<li>即使sudoers文件里配置了绝对路径，命令行依然可以用相对路径——只要参照$PATH后的绝对路径和sudoers文件里的一样就行</li>
+</ul>
+<p><strong>例子</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>testuser<span class="w">        </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>/bin/bash
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>%kali-trusted<span class="w">   </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>ALL
+</span></code></pre></div></p>
+<h3 id="pam">pam<a class="headerlink" href="#pam" title="Permanent link">&para;</a></h3>
+<p>pam：Pluggable Authentication Modules，可插拔式认证模块。</p>
+<p><code>/etc/pam.d/</code>：</p>
+<ul>
+<li>system-auth</li>
+<li>password-auth</li>
+<li>fingerprint-auth</li>
+<li>smartcard-auth</li>
+</ul>
+<h3 id="wheel">wheel<a class="headerlink" href="#wheel" title="Permanent link">&para;</a></h3>
+<p>源于big wheel：大人物。</p>
+<h3 id="chmod">chmod<a class="headerlink" href="#chmod" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Linux文件权限" src="../Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" /></a></p>
+<h3 id="chown">chown<a class="headerlink" href="#chown" title="Permanent link">&para;</a></h3>
+<p><code>chown -R user:group</code></p>
+<ul>
+<li>-R：递归</li>
+</ul>
+<h3 id="chgrp">chgrp<a class="headerlink" href="#chgrp" title="Permanent link">&para;</a></h3>
+<h3 id="chage">chage<a class="headerlink" href="#chage" title="Permanent link">&para;</a></h3>
+<p>修改密码策略。</p>
+<p><code>chage -l &lt;user&gt;</code>：确认用户密码策略。</p>
+<h2 id="_29">软件包管理<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="linuxdebain_1"><a href="../Linux%E5%8F%91%E8%A1%8C%E7%89%88/#debain系列">Linux发行版#Debain系列</a><a class="headerlink" href="#linuxdebain_1" title="Permanent link">&para;</a></h3>
+<h4 id="aptadvanced-packaging-tool">apt（Advanced Packaging Tool）<a class="headerlink" href="#aptadvanced-packaging-tool" title="Permanent link">&para;</a></h4>
+<ul>
+<li>DEB 包格式</li>
+</ul>
+<p>检查更新&amp;安装更新（即更新库和更新软件）：<code>apt update &amp;&amp; apt upgrade &lt;包名&gt;</code></p>
+<ul>
+<li><code>apt update</code> 只是检查更新（应用更新的软件源 <code>/etc/apt/sources.list</code>）</li>
+<li>还有<code>remove</code>命令</li>
+</ul>
+<blockquote>
+<p>apt 需要单独运行 apt update 命令来检查更新的原因在于其设计哲学和工作方式的不同。 
+apt 使用的是 Debian 软件包管理系统，而 yum 使用的是 RPM 软件包管理系统。这两者的设计和原理不同，导致了它们在更新软件包列表方面有所不同。
+在 apt 中，软件包列表和软件包信息存储在本地缓存中（通常位于 /var/lib/apt/lists/ 目录下），而不是每次运行 apt 命令时都会实时从远程存储库下载。因此，需要定期运行 apt update 来更新本地缓存，以确保您获得最新的软件包信息。
+与之不同，yum 使用的是元数据缓存，它会定期从远程存储库下载最新的元数据信息，而不需要用户手动运行额外的命令来更新软件包列表。这意味着 yum 在运行 yum update 时会自动检查并使用最新的软件包信息。
+这种设计差异是因为apt 和 yum 的设计哲学和背后的发行版之间的差异，它们的目标是为不同的 Linux 发行版提供软件包管理。</p>
+</blockquote>
+<p><strong>列出（已安装）的软件包：<code>apt list [--installed]</code></strong></p>
+<h3 id="linuxredhat_1"><a href="../Linux%E5%8F%91%E8%A1%8C%E7%89%88/#redhat系列">Linux发行版#Redhat系列</a><a class="headerlink" href="#linuxredhat_1" title="Permanent link">&para;</a></h3>
+<h4 id="rpmred-hat-package-manager">rpm（<strong>Red-Hat P</strong>ackage Manager）<a class="headerlink" href="#rpmred-hat-package-manager" title="Permanent link">&para;</a></h4>
+<ul>
+<li>RPM 包格式</li>
+<li><strong>推荐用yum（后被<code>dnf</code>替代）</strong>——YUM是建立在 RPM 基础之上的高级包管理工具</li>
+</ul>
+<h4 id="yumyellowdog-updater-modified">yum（Yellowdog Updater Modified）<a class="headerlink" href="#yumyellowdog-updater-modified" title="Permanent link">&para;</a></h4>
+<p>解决rpm繁琐的包依赖。</p>
+<p>配置文件：/etc/yum.conf</p>
+<p><strong>列出（已安装）的软件包：<code>yum list [installed]</code></strong>
+更新包：<code>yum upgrade &lt;包名&gt;</code>。等价于<code>yum update --obsoletes</code>，而由于 /etc/yum.conf 里默认有obsoletes=1，所以和yum update没区别。</p>
+<h5 id="_30"><strong>报错解决</strong><a class="headerlink" href="#_30" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>This system is not registered with an entitlement server. You can use subscription-manager to register.</p>
+</blockquote>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>vi<span class="w"> </span>/etc/yum/pluginconf.d/subscription-manager.conf
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>yum<span class="w"> </span>clean<span class="w"> </span>all
+</span></code></pre></div>
+<h4 id="dnfdandified-yum">dnf（Dandified YUM）<a class="headerlink" href="#dnfdandified-yum" title="Permanent link">&para;</a></h4>
+<p>yum进化版。基本上系统都配置了yum与dnf命令的互换。</p>
+<h4 id="_31">拓展<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<h5 id="epelextra-packages-for-enterprise-linux">EPEL（Extra Packages for Enterprise Linux）<a class="headerlink" href="#epelextra-packages-for-enterprise-linux" title="Permanent link">&para;</a></h5>
+<ul>
+<li>epel源（是基于Fedora的一个项目，为“红帽系”的操作系统提供额外的软件包)</li>
+<li>企业版Linux附加软件包</li>
+</ul>
+<p><code>dnf install epel-release -y</code></p>
+<h5 id="pippip-installs-packages">pip（Pip Installs Packages）<a class="headerlink" href="#pippip-installs-packages" title="Permanent link">&para;</a></h5>
+<ul>
+<li>python</li>
+<li><strong>列出已安装的软件包：<code>pip list</code></strong></li>
+</ul>
+<h2 id="_32">磁盘、分区、文件系统管理<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<hr />
+<p><a class="glightbox" href="../%E5%88%86%E5%8C%BA/#基础概念" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="分区#基础概念" src="../%E5%88%86%E5%8C%BA/#基础概念" /></a></p>
+<h3 id="lsblk">lsblk<a class="headerlink" href="#lsblk" title="Permanent link">&para;</a></h3>
+<p>list block。</p>
+<ul>
+<li>块是<strong>文件系统中</strong>的最小存储单位</li>
+<li>而扇区是<strong>磁盘中</strong>的最小存储单位</li>
+</ul>
+<blockquote>
+<p>[!NOTE] 那为什么有了扇区，还要用块描述？
+因为系统读取硬盘时是一次读取多个扇区，即块。块的大小常见的是1KB（即两个扇区）或4KB。</p>
+</blockquote>
+<p>查看块大小：<code>stat file.txt | grep IO</code> ^64f8c7</p>
+<h3 id="fdisk">fdisk<a class="headerlink" href="#fdisk" title="Permanent link">&para;</a></h3>
+<p>查看/管理（指定）磁盘<strong>分区</strong>。</p>
+<ul>
+<li><code>fdisk -l [/dev/disk_name]</code></li>
+<li><code>fdisk -l</code>显示的内容即<code>fdisk &lt;硬盘，如/dev/sda&gt;</code>进入控制台后按“p”打印的内容。</li>
+</ul>
+<h4 id="gdisk">gdisk<a class="headerlink" href="#gdisk" title="Permanent link">&para;</a></h4>
+<p>主要用来划分容量大于4T的硬盘（fdisk搞不定）</p>
+<ul>
+<li>两种分区表：<a href="../%E5%88%86%E5%8C%BA/#gpt分区表">GPT</a>、<a href="../%E5%88%86%E5%8C%BA/#mrb分区表">MBR</a>。<ul>
+<li>MBR不支持4T以上</li>
+</ul>
+</li>
+</ul>
+<h3 id="mkfs">mkfs<a class="headerlink" href="#mkfs" title="Permanent link">&para;</a></h3>
+<p><code>mkfs.xfs /dev/&lt;分区名&gt;</code>：即<code>mkfs -t xfs</code>，如在sda1分区上创建/格式化xfs<strong>文件系统</strong>。</p>
+<p>创建文件系统后将此分区挂载到目录树，便可通过访问目录使用分区（的文件系统）。</p>
+<h3 id="mount">mount<a class="headerlink" href="#mount" title="Permanent link">&para;</a></h3>
+<p><strong>查看</strong></p>
+<p><code>mount</code>：显示目前挂载的所有文件系统（其中有挂载点信息）。</p>
+<blockquote>
+<p>[!note] 推荐<a href="./#findmnt">findmnt</a>命令更易读，或者 <code>df -hT</code> 更简洁。</p>
+</blockquote>
+<p><strong>挂载</strong></p>
+<p>将分区的文件系统映射到挂载点（目录）。</p>
+<p>临时挂载：<code>mount &lt;分区名&gt; &lt;目录名/挂载点&gt;</code></p>
+<p>永久挂载：需要修改 <code>/etc/fstab</code> 文件，具体修改格式参照：<a href="./#fstab">fstab</a>。修改后可以用 <code>mount -a</code> 应用配置，用 <code>df -hT</code> <strong>确认挂载成功后</strong>再重启（好习惯，否则可能重启后发生进不去等问题）。</p>
+<ul>
+<li><code>mount -a</code>：尝试挂载 <code>/etc/fstab</code> 中<strong>尚未挂载</strong>的文件系统。系统启动时通常会自动执行 <code>mount -a</code> 来挂载 <code>/etc/fstab</code> 中定义的文件系统。</li>
+</ul>
+<p><strong>卸载</strong></p>
+<p><code>umount /mnt/my_mount_point</code></p>
+<h4 id="findmnt">findmnt<a class="headerlink" href="#findmnt" title="Permanent link">&para;</a></h4>
+<p><code>findmnt [/path/to/mountpoint | /dev/sdX]</code>：树形图显示挂载点的信息</p>
+<h3 id="fstab">fstab<a class="headerlink" href="#fstab" title="Permanent link">&para;</a></h3>
+<p><strong>配置开机自动挂载（持久化）</strong></p>
+<p>可用 <code>blkid</code> 命令确认UUID。<br />
+也可以用分区名编写配置文件（<strong>但是要注意如果磁盘重插的话可能系统识别的分区名会变，而UUID不会</strong>）。</p>
+<p><strong>语法、格式：</strong></p>
+<table>
+<thead>
+<tr>
+<th>要挂载的分区设备</th>
+<th>挂载点</th>
+<th>文件系统类型</th>
+<th>挂载选项</th>
+<th>是否备份</th>
+<th>是否检测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sdb1</td>
+<td>/sdb1</td>
+<td>xfs</td>
+<td>defaults</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>- 弄完重启——担心重启有问题的话，可以先 <code>mount -a</code> 看看挂载成功没再配置 <code>fstab</code>。</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="df">df<a class="headerlink" href="#df" title="Permanent link">&para;</a></h3>
+<p><code>df -hT</code>：查看文件系统使用、挂载状况</p>
+<ul>
+<li>文件系统：是用于组织和管理存储数据的方式，通常建立在逻辑卷或标准分区之上。</li>
+<li>tmpfs 是一种虚拟文件系统，它通常用于将数据存储在内存中而不是硬盘上，以提高访问速度。</li>
+</ul>
+<h2 id="_33">压缩和解压<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="tar">tar<a class="headerlink" href="#tar" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>-f 必须，且在最后。指定包的文件名。</p>
+</li>
+<li>
+<p>-c 创建归档/压缩
+    例：tar -cvf &lt;归档后文件名&gt; &lt;要归档的文件&gt; 【tar -cvf jpg.tar *.jpg //将目录里所有jpg文件打包成tar.jpg 】</p>
+</li>
+<li>
+<p>-x 解压
+    解压选项：</p>
+<ul>
+<li>解压【.tar.xz】时：<code>tar -xvf &lt;filename&gt;</code></li>
+<li>解压【.tar.gz】时：<code>tar -zxvf &lt;filename&gt;</code><ul>
+<li>-z 用gzip压缩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>-t 列出包中文件（不释放包内文件）</p>
+</li>
+<li>-r 追加到指定包末尾</li>
+</ul>
+<h3 id="zip">zip<a class="headerlink" href="#zip" title="Permanent link">&para;</a></h3>
+<p><code>zip -r  --symlinks &lt;compressed_file.zip&gt; &lt;file_or_directory&gt;</code></p>
+<ul>
+<li>如果zip文件不存在，则创建</li>
+<li>如果zip文件存在，则是添加文件/目录到zip文件里</li>
+<li>--symlinks：即“-y”，用于确保符号链接被正确处理。如果不使用这个选项，zip 默认会将符号链接指向的实际文件添加到压缩文件中，而不是符号链接本身。</li>
+</ul>
+<p>查看ZIP文件内容：<code>unzip -l file.zip</code></p>
+<h3 id="gz">gz<a class="headerlink" href="#gz" title="Permanent link">&para;</a></h3>
+<ul>
+<li>压缩命令不保留源文件</li>
+<li>解压：gunzip</li>
+</ul>
+<p>查看未压缩大小不用先解压：<code>gzip -l &lt;file&gt;</code><br />
+不解压zip文件查看行数：<code>gzip -dc &lt;file&gt; | wc -l</code></p>
+<ul>
+<li>-d：解压</li>
+</ul>
+<blockquote>
+<p>[!NOTE] <code>zcat</code>与<code>gunzip -c</code>命令等效</p>
+</blockquote>
+<h2 id="_34">进程管理<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="ps">ps<a class="headerlink" href="#ps" title="Permanent link">&para;</a></h3>
+<h4 id="bsd">BSD<a href="../%E5%91%BD%E4%BB%A4%E9%A3%8E%E6%A0%BC/">命令风格</a>的参数<a class="headerlink" href="#bsd" title="Permanent link">&para;</a></h4>
+<p><strong>前面不加短横线。</strong></p>
+<p><strong><code>ps aux</code>：更关注 CPU 和内存使用率，适合系统性能分析。</strong><br />
+（ax为必须的，因为它们解除了“仅限您自己”和“必须有 tty”限制）</p>
+<ul>
+<li><code>ps aux --sort=-%mem | head -n 10</code></li>
+<li><code>ps aux</code></li>
+<li><code>ps axjf</code><ul>
+<li><code>f</code>：表示森林，会显示进程树</li>
+<li><code>j</code>：jobs format</li>
+</ul>
+</li>
+</ul>
+<h4 id="unix">Unix<a href="../%E5%91%BD%E4%BB%A4%E9%A3%8E%E6%A0%BC/">命令风格</a>的参数<a class="headerlink" href="#unix" title="Permanent link">&para;</a></h4>
+<p><strong>前面加一个短横线。</strong></p>
+<p><strong><code>ps -ef</code>：更关注进程的父子关系，适合分析进程的层级结构。</strong></p>
+<ul>
+<li><code>ps -ef</code></li>
+<li><code>ps -Cf</code><ul>
+<li><code>-e</code>：所有进程</li>
+<li><code>-f</code>：完整format列表（UID、PID、PPID等）</li>
+<li><code>-C</code>：命令名称选择</li>
+<li><code>-l</code>：长格式</li>
+</ul>
+</li>
+</ul>
+<h3 id="kill">kill<a class="headerlink" href="#kill" title="Permanent link">&para;</a></h3>
+<p><code>kill &lt;pid&gt;</code></p>
+<h2 id="_35">日志和监控<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h2>
+<hr />
+<ul>
+<li>
+<p>日志查看：<code>dmesg</code>, <code>tail</code>, <code>journalctl</code></p>
+</li>
+<li>
+<p>性能监控：<code>vmstat</code>, <code>iostat</code></p>
+</li>
+</ul>
+<h2 id="_36">备份和恢复<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
+<hr />
+<ul>
+<li>
+<p>备份工具：<code>rsync</code>, <code>dump</code>, <code>dd</code></p>
+</li>
+<li>
+<p>恢复工具：<code>restore</code></p>
+</li>
+</ul>
+<h2 id="_37">调度和计划任务<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="corn">corn<a class="headerlink" href="#corn" title="Permanent link">&para;</a></h3>
+<p>使用<code>crontab -e</code>命令编辑当前用户的crontab文件时，实际上编辑的文件通常存储在<code>/var/spool/cron/crontabs/</code>目录下，并以该用户的用户名命名。</p>
+<blockquote>
+<p>在计算机术语中，"spool"是一个历史悠久的词汇，原意是"Simultaneous Peripheral Operations On-line"的缩写，它描述了一种处理数据的方法，这种方法涉及到将数据或任务临时存储在一个中间区域（通常是硬盘上），以便稍后按顺序处理。这个概念最初是为了解决早期计算机输入输出设备速度与计算速度之间的不匹配问题。
+在当今的使用中，spool这个词主要关联于打印作业的缓冲（打印机spooling）和邮件系统，以及其他需要队列管理的任务，比如cron作业的管理。在这些上下文中，spooling指的是将作业存储到一个队列中，然后按照一定的顺序（通常是先进先出）进行处理。</p>
+</blockquote>
+<p><strong>用事先定义好的cron任务文本替换当前用户的crontab：</strong>
+<code>corntab [-u username] &lt;crontask.txt&gt;</code></p>
+<ul>
+<li><code>-u</code>：如果有权限，可指定替换其他用户。</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.path", "navigation.expand", "search.suggest", "search.highlight", "search.share", "content.code.copy", "header.autohide", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../static/js/extra.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
