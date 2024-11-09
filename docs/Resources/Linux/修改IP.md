@@ -2,6 +2,14 @@
 tags:
   - IT/Linux
 ---
+
+## 刷新DHCP
+
+*[[Kali搭建#Hyper-V]]常用*
+
+`ip a && sudo dhclient -r && sudo dhclient && ip a`
+
+
 ## GUI方式
 
 > NetworkManager 将只处理未在/etc/network/interfaces中声明的接口（即：CLI配置一般优先于GUI）
