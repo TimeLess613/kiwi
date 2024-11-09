@@ -1,4 +1,4 @@
-**Migrate to new repo which integrates Quartz4: https://github.com/TimeLess613/cyber-garden**
+**Migrate to a new [repository](https://github.com/TimeLess613/cyber-garden) that integrates Quartz4. The deployment page is: https://timeless613.github.io/cyber-garden/**
 
 
 ---
